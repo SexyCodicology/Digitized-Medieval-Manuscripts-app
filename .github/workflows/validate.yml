@@ -1,0 +1,82 @@
+# Data Validation Workflow
+#
+# This GitHub Actions workflow validates the data.json file to ensure data quality
+# and schema compliance. It runs automatically on pull requests that modify data.json
+# and can also be triggered manually.
+#
+# Purpose:
+#   - Prevent invalid data from being merged into the main branch
+#   - Ensure all records conform to the defined schema
+#   - Validate JSON syntax and structure
+#   - Check URI format compliance for website fields
+#
+# When it runs:
+#   - Automatically: When a pull request modifies data.json
+#   - Manually: Via the Actions tab using workflow_dispatch
+#
+# What it validates:
+#   1. JSON syntax correctness (well-formed JSON)
+#   2. Schema compliance (all required fields present)
+#   3. Data types (strings, booleans, integers)
+#   4. Format validation (URIs must be valid)
+#   5. Conditional requirements (project fields when is_part_of is true)
+#
+# Validation tools:
+#   - Python json.tool: Validates JSON syntax
+#   - AJV (Another JSON Validator): Validates against schema.json
+#   - ajv-formats: Adds format validation support (URI, email, etc.)
+#
+# Exit behavior:
+#   - Success: All validations pass, pull request can be merged
+#   - Failure: Validation errors found, pull request blocked until fixed
+
+name: Data Guardrails
+
+on:
+  # Trigger on pull requests that modify data.json
+  pull_request:
+    paths:
+      - 'data.json'
+
+  # Allow manual workflow execution from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  validate-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js environment for AJV validator
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Step 3: Install validation tools
+      # - ajv-cli: Command-line interface for JSON schema validation
+      # - ajv-formats: Adds support for format keywords (uri, email, date, etc.)
+      - name: Install Validator & Formats
+        run: npm install -g ajv-cli ajv-formats
+
+      # Step 4: Run validation checks
+      - name: Validate JSON Syntax & Schema
+        run: |
+          # Check 1: Validate strict JSON syntax
+          # Uses Python's json.tool to parse and verify JSON is well-formed
+          # Fails if JSON has syntax errors (missing commas, brackets, etc.)
+          cat data.json | python3 -m json.tool > /dev/null
+          
+          # Check 2: Validate data against schema.json
+          # Uses AJV to verify:
+          #   - All required fields are present
+          #   - Data types match schema definitions
+          #   - URIs are properly formatted
+          #   - Conditional requirements are met
+          # The -c flag enables ajv-formats for URI validation
+          ajv validate -s schema.json -d data.json -c ajv-formats
+
+

@@ -1,0 +1,59 @@
+name: Suggest a New Library
+description: Submit a new manuscript library for the directory.
+labels: ["new-data"]
+body:
+  - type: input
+    id: library_name
+    attributes:
+      label: Library Name
+      description: The official name of the manuscript library or collection.
+      placeholder: "e.g., British Library Digitised Collections"
+    validations:
+      required: true
+
+  - type: input
+    id: city
+    attributes:
+      label: City
+      description: The city or location where the library is based.
+      placeholder: "e.g., London"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: country
+    attributes:
+      label: Country
+      description: The country where the library is located.
+      options:
+        - Select a country
+        - France
+        - Germany
+        - Italy
+        - Spain
+        - United Kingdom
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: website_url
+    attributes:
+      label: Website URL
+      description: The direct link to the manuscript collection (not just the homepage).
+      placeholder: "https://example.library.org/manuscripts"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: iiif_compliant
+    attributes:
+      label: IIIF Compliant?
+      description: Does this library support the IIIF (International Image Interoperability Framework) standard?
+      options:
+        - Unknown
+        - "Yes"
+        - "No"
+    validations:
+      required: false
+

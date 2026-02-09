@@ -1,0 +1,37 @@
+name: Link Health Check
+
+on:
+  schedule:
+    # Run every Monday at 00:00 UTC
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Links in data.json
+        id: lychee
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: '--verbose --no-progress --timeout 10 ./data.json'
+          fail: false
+          output: ./lychee-report.md
+
+      - name: Create Issue if Links are Broken
+        if: env.lychee_exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: ⚠️ Broken Links Detected in Database
+          content-filepath: ./lychee-report.md
+          labels: |
+            maintenance
+            automated-issue
+

@@ -1,0 +1,14 @@
+# DMMapp Context for AI Agents
+
+# Project Name: DMMapp
+# Description: A directory of digitized medieval manuscript libraries.
+
+# The Raw Data (The Source of Truth)
+# AI should use this file to answer questions about specific libraries.
+https://[YOUR-USERNAME].github.io/[REPO]/data.json
+
+# The Documentation (Technical Context)
+https://[YOUR-USERNAME].github.io/[REPO]/docs/
+
+# The Schema (Data Rules)
+https://[YOUR-USERNAME].github.io/[REPO]/schema.json

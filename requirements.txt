@@ -1,0 +1,4 @@
+# MkDocs Material Theme for Documentation
+# Used by GitHub Actions to build the documentation site
+mkdocs-material>=9.5.0
+

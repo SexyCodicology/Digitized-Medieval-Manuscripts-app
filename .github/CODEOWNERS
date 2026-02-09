@@ -1,0 +1,16 @@
+# CODEOWNERS
+# This file defines code ownership for automatic review requests.
+# Each line is a file pattern followed by one or more owners (@username or @org/team-name).
+# When a pull request changes matching files, the listed owners are automatically requested for review.
+#
+# Documentation: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Order matters! Later matches take precedence over earlier ones.
+# Use '#' for comments. Patterns follow .gitignore rules.
+
+# Data Files
+# Owner: @Dioscorides
+# These files contain critical data and schema definitions
+
+data.json @Dioscorides
+schema.json @Dioscorides

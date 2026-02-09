@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Medieval Manuscripts Database",
+  "description": "Schema for cataloging medieval manuscript collections",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "library", "nation", "city", "website", "copyright", "quantity", "iiif", "is_free_cultural_works_license", "is_part_of"],
+    "properties": {
+      "id": {
+        "type": "integer",
+        "description": "Unique identifier for the record"
+      },
+      "library": {
+        "type": "string",
+        "minLength": 2,
+        "description": "Name of the library or institution"
+      },
+      "nation": {
+        "type": "string",
+        "description": "Country where the library is located"
+      },
+      "city": {
+        "type": "string",
+        "description": "City where the library is located"
+      },
+      "website": {
+        "type": "string",
+        "format": "uri",
+        "description": "URL to the library's manuscript collection"
+      },
+      "copyright": {
+        "type": "string",
+        "description": "Copyright or license information"
+      },
+      "quantity": {
+        "type": "string",
+        "enum": ["Few", "Dozens", "Hundreds", "Thousands", "Unknown"],
+        "description": "Approximate number of digitized medieval manuscripts"
+      },
+      "iiif": {
+        "type": "boolean",
+        "description": "Whether the collection supports IIIF (International Image Interoperability Framework)"
+      },
+      "is_free_cultural_works_license": {
+        "type": "boolean",
+        "description": "Whether the collection uses a Creative Commons free cultural works license"
+      },
+      "is_part_of": {
+        "type": "boolean",
+        "description": "Whether this library is part of a larger project or website that aggregates multiple collections"
+      },
+      "is_part_of_project_name": {
+        "type": ["string", "null"],
+        "description": "Name of the main project or website, if is_part_of is true"
+      },
+      "is_part_of_url": {
+        "type": ["string", "null"],
+        "format": "uri",
+        "description": "URL of the main project or website, if is_part_of is true"
+      }
+    },
+    "if": {
+      "properties": {
+        "is_part_of": { "const": true }
+      }
+    },
+    "then": {
+      "properties": {
+        "is_part_of_project_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "is_part_of_url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": ["is_part_of_project_name", "is_part_of_url"]
+    }
+  }
+}
