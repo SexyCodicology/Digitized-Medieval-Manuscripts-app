@@ -153,6 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 badges = `<span class="text-muted small fst-italic">Standard Access</span>`;
             }
 
+            // Project affiliation badge
+            const projectBadge = item.is_part_of && item.is_part_of_project_name
+                ? `<div class="small mt-1"><a href="${item.is_part_of_url}" target="_blank" class="text-muted text-decoration-none"><i class="bi bi-collection me-1"></i>${item.is_part_of_project_name}</a></div>`
+                : '';
+
             // Website handling
             const websiteBtn = item.website
                 ? `<a href="${item.website}" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill">Visit <i class="bi bi-arrow-right-short"></i></a>`
@@ -161,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.innerHTML = `
                 <td>
                     <div class="library-name">${item.library}</div>
+                    ${projectBadge}
                 </td>
                 <td>
                     <div class="fw-medium">${item.nation}</div>
