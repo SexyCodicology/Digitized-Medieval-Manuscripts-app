@@ -193,7 +193,7 @@
                                         <i class="bi bi-collection-play" aria-hidden="true"></i>
                                     </div>
                                     <h3 id="statProjects">0</h3>
-                                    <small>Active Projects</small>
+                                    <small>Linked Projects</small>
                                 </div>
                             </div>
                         </div>
@@ -204,7 +204,7 @@
             <section aria-labelledby="filters-heading">
                 <h2 id="filters-heading" class="visually-hidden">Search and Filter Libraries</h2>
                 <div class="row g-3 mb-4">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label for="searchInput" class="visually-hidden">Search libraries and cities</label>
                         <div class="input-group shadow-sm">
                             <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted" aria-hidden="true"></i></span>
@@ -218,13 +218,25 @@
                             <option value="All">All Nations</option>
                         </select>
                     </div>
-                    <div class="col-md-4 d-flex gap-2">
+                    <div class="col-md-3">
+                        <label for="projectSelect" class="visually-hidden">Filter by project</label>
+                        <select id="projectSelect" class="form-select shadow-sm" aria-label="Filter by project">
+                            <option value="All">All Projects</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 d-flex gap-2">
                         <div class="btn-group w-100 shadow-sm" role="group" aria-label="Feature filters">
-                            <input type="checkbox" class="btn-check" id="iiifCheck" autocomplete="off">
-                            <label class="btn btn-outline-secondary" for="iiifCheck">IIIF Only</label>
+                            <input type="checkbox" class="btn-check" id="iiifCheck" autocomplete="off" aria-label="Filter to show only IIIF-enabled libraries">
+                            <label class="btn btn-outline-secondary btn-filter" for="iiifCheck">
+                                <i class="bi bi-images" aria-hidden="true"></i>
+                                <span class="filter-text">IIIF</span>
+                            </label>
 
-                            <input type="checkbox" class="btn-check" id="freeCheck" autocomplete="off">
-                            <label class="btn btn-outline-secondary" for="freeCheck">Open License</label>
+                            <input type="checkbox" class="btn-check" id="freeCheck" autocomplete="off" aria-label="Filter to show only libraries with open licenses">
+                            <label class="btn btn-outline-secondary btn-filter" for="freeCheck">
+                                <i class="bi bi-unlock" aria-hidden="true"> </i>
+                                <span class="filter-text">Open</span>
+                            </label>
                         </div>
                     </div>
                 </div>

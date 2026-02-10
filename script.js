@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emptyState = document.getElementById('emptyState');
     const searchInput = document.getElementById('searchInput');
     const nationSelect = document.getElementById('nationSelect');
+    const projectSelect = document.getElementById('projectSelect');
     const iiifCheck = document.getElementById('iiifCheck');
     const freeCheck = document.getElementById('freeCheck');
     const clearFiltersBtn = document.getElementById('clearFilters');
@@ -61,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initializeDashboard() {
         populateNationFilter();
+        populateProjectFilter();
         updateStats(allData);
         renderTable(allData);
         initializeSorting();
@@ -217,10 +219,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function populateProjectFilter() {
+        // Extract unique project names from items where is_part_of is true, sort them
+        const projects = [...new Set(
+            allData
+                .filter(item => item.is_part_of === true && item.is_part_of_project_name)
+                .map(item => item.is_part_of_project_name)
+        )].sort();
+
+        projects.forEach(project => {
+            const option = document.createElement('option');
+            option.value = project;
+            option.textContent = project;
+            projectSelect.appendChild(option);
+        });
+    }
+
     // 5. Filter Engine
     function filterData() {
         const term = searchInput.value.toLowerCase().trim();
         const selectedNation = nationSelect.value;
+        const selectedProject = projectSelect.value;
         const requireIIIF = iiifCheck.checked;
         const requireFree = freeCheck.checked;
 
@@ -235,11 +254,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Nation Filter
             const matchesNation = selectedNation === 'All' || item.nation === selectedNation;
 
+            // Project Filter
+            const matchesProject = selectedProject === 'All' || item.is_part_of_project_name === selectedProject;
+
             // Checkbox Filters
             const matchesIIIF = !requireIIIF || item.iiif === true;
             const matchesFree = !requireFree || item.is_free_cultural_works_license === true;
 
-            return matchesSearch && matchesNation && matchesIIIF && matchesFree;
+            return matchesSearch && matchesNation && matchesProject && matchesIIIF && matchesFree;
         });
 
         renderTable(filtered);
@@ -249,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listeners
     searchInput.addEventListener('input', filterData);
     nationSelect.addEventListener('change', filterData);
+    projectSelect.addEventListener('change', filterData);
     iiifCheck.addEventListener('change', filterData);
     freeCheck.addEventListener('change', filterData);
 
@@ -256,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearFiltersBtn.addEventListener('click', () => {
             searchInput.value = '';
             nationSelect.value = 'All';
+            projectSelect.value = 'All';
             iiifCheck.checked = false;
             freeCheck.checked = false;
             filterData();
