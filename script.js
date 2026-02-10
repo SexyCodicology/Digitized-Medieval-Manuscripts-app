@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statTotal = document.getElementById('statTotal');
     const statNations = document.getElementById('statNations');
     const statIIIF = document.getElementById('statIIIF');
+    const statProjects = document.getElementById('statProjects');
     const showingCount = document.getElementById('showingCount');
 
     // 1. Fetch Data
@@ -193,6 +194,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Calculate IIIF Count
         statIIIF.innerText = data.filter(item => item.iiif === true).length;
+
+        // Calculate Active Projects Count
+        const uniqueProjects = new Set(
+            data
+                .filter(item => item.is_part_of === true && item.is_part_of_project_name)
+                .map(item => item.is_part_of_project_name)
+        );
+        statProjects.innerText = uniqueProjects.size;
     }
 
     // 4. Populate Dropdown
