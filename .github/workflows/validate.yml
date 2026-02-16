@@ -48,11 +48,11 @@ jobs:
     steps:
       # Step 1: Check out the repository code
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       # Step 2: Set up Node.js environment for AJV validator
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: '16'
 
