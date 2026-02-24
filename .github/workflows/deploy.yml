@@ -6,26 +6,18 @@ on:
       - master
     paths:
       - 'docs/**'
+      - 'overrides/**'
       - 'mkdocs.yml'
-      - 'index.html'
-      - 'script.js'
-      - 'style.css'
-      - 'data.json'
-      - 'robots.txt'
-      - 'llms.txt'
-      - 'assets/**'
+      - 'schema.json'
+      - 'requirements.txt'
       - '.github/workflows/deploy.yml'
   pull_request:
     paths:
       - 'docs/**'
+      - 'overrides/**'
       - 'mkdocs.yml'
-      - 'index.html'
-      - 'script.js'
-      - 'style.css'
-      - 'data.json'
-      - 'robots.txt'
-      - 'llms.txt'
-      - 'assets/**'
+      - 'schema.json'
+      - 'requirements.txt'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -61,47 +53,20 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install MkDocs Material
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Validate data.json
         run: |
-          # Validate JSON syntax
-          python -m json.tool data.json > /dev/null
+          python -m json.tool docs/assets/data.json > /dev/null
           echo "✓ data.json is valid JSON"
 
-      - name: Build MkDocs Documentation
-        run: |
-          mkdocs build --clean
-          mkdir -p dist/docs
-          cp -r site/* dist/docs/
-
-      - name: Copy App Files to dist
-        run: |
-          # Core app files (required)
-          cp index.html dist/
-          cp script.js dist/
-          cp style.css dist/
-          cp data.json dist/
-
-          # SEO & AI files (optional)
-          [ -f robots.txt ] && cp robots.txt dist/ || echo "⚠ robots.txt not found, skipping"
-          [ -f llms.txt ] && cp llms.txt dist/ || echo "⚠ llms.txt not found, skipping"
-          
-          # Assets directory (optional) - includes site.webmanifest and all icons
-          [ -d assets ] && cp -r assets dist/ || echo "⚠ assets/ directory not found, skipping"
-          
-          # Verify core files were copied
-          for file in index.html script.js style.css data.json; do
-            [ -f "dist/$file" ] || { echo "✗ Failed to copy $file"; exit 1; }
-          done
-          echo "✓ All core files copied successfully"
+      - name: Build MkDocs Site
+        run: mkdocs build --clean
 
       - name: Inject GTM Container ID
         run: |
-          # Replace GTM placeholder with actual Container ID from secrets
-          sed -i "s/GTM-PLACEHOLDER/${{ secrets.GTM_ID }}/g" dist/index.html
-          echo "✓ GTM Container ID injected successfully"
+          sed -i "s/GTM-PLACEHOLDER/${{ secrets.GTM_ID }}/g" site/index.html
+          echo "✓ GTM Container ID injected into site/index.html"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -109,7 +74,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: 'dist'
+          path: 'site'
           retention-days: 1
 
   deploy:

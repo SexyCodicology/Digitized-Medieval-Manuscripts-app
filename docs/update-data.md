@@ -260,7 +260,7 @@ If the dashboard appears broken after approval:
 - [Data schema](schema.md) — Field definitions and format details
 - [IIIF field reference](schema.md) — Understand standardized image format support
 - [Contributing guidelines](contributing.md) — Contribute to other project areas
-- [Dashboard](../index.html) — View how your data appears
+- [Dashboard](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/) — View how your data appears
 - [About the project](about.md) — Project context and history
 
 Happy updating! 🎉

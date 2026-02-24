@@ -1,0 +1,200 @@
+{% extends "main.html" %}
+
+{#
+home.html — DMMapp dashboard template override
+─────────────────────────────────────────────
+Triggered by docs/index.md via `template: home.html` front-matter.
+Extends Material's main.html; overrides only the content block so the
+native navbar, palette toggle, search, and footer remain untouched.
+#}
+
+{% block extrahead %}
+{{ super() }}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="dashboard-root">
+
+    <div aria-label="Loading library directory" id="loader" role="status">
+        <span aria-hidden="true" class="loader__ring"></span>
+        <p class="loader__text">Loading Directory…</p>
+    </div>
+
+    <section aria-labelledby="hero-heading" class="hero">
+
+        <div class="hero__copy">
+            <h1 class="hero__title" id="hero-heading">
+                Digitized Medieval Manuscript Libraries
+            </h1>
+            <p class="hero__lead">
+                Explore a curated directory of libraries worldwide offering digitized
+                medieval manuscripts. Search, filter, and discover collections with
+                IIIF support and open access licenses.
+            </p>
+        </div>
+
+        <div aria-label="Summary statistics" class="stats-grid" role="list">
+
+            <article class="stat-card" role="listitem">
+                <div aria-hidden="true" class="stat-card__icon stat-card__icon--primary">
+                    <i class="bi bi-bank"></i>
+                </div>
+                <strong class="stat-card__value" id="statTotal">0</strong>
+                <span class="stat-card__label">Libraries</span>
+            </article>
+
+            <article class="stat-card" role="listitem">
+                <div aria-hidden="true" class="stat-card__icon stat-card__icon--success">
+                    <i class="bi bi-geo-alt"></i>
+                </div>
+                <strong class="stat-card__value" id="statNations">0</strong>
+                <span class="stat-card__label">Nations</span>
+            </article>
+
+            <article class="stat-card" role="listitem">
+                <div aria-hidden="true" class="stat-card__icon stat-card__icon--info">
+                    <i class="bi bi-images"></i>
+                </div>
+                <strong class="stat-card__value" id="statIIIF">0</strong>
+                <span class="stat-card__label">IIIF Repositories</span>
+            </article>
+
+            <article class="stat-card" role="listitem">
+                <div aria-hidden="true" class="stat-card__icon stat-card__icon--warning">
+                    <i class="bi bi-collection-play"></i>
+                </div>
+                <strong class="stat-card__value" id="statProjects">0</strong>
+                <span class="stat-card__label">Linked Projects</span>
+            </article>
+
+        </div>
+    </section>
+
+    <section aria-labelledby="filters-heading" class="filters">
+        <h2 class="visually-hidden" id="filters-heading">Search and Filter Libraries</h2>
+
+        {# Row 1: Search input + feature toggles #}
+        <div class="filter-row">
+
+            <div class="search-box">
+                <label class="visually-hidden" for="searchInput">Search libraries and cities</label>
+                <i aria-hidden="true" class="bi bi-search search-box__icon"></i>
+                <input
+                        aria-describedby="search-hint"
+                        autocomplete="off"
+                        class="search-box__input"
+                        id="searchInput"
+                        placeholder="Search libraries, cities…"
+                        spellcheck="false"
+                        type="search"
+                >
+                <span class="visually-hidden" id="search-hint">
+          Filter by library name, project name, city, or nation
+        </span>
+            </div>
+
+            <div aria-label="Feature filters" class="toggle-group" role="group">
+                <input
+                        aria-label="Show only IIIF-enabled libraries"
+                        autocomplete="off"
+                        class="toggle-group__check"
+                        id="iiifCheck"
+                        type="checkbox"
+                >
+                <label class="toggle-group__btn toggle-group__btn--iiif" for="iiifCheck">
+                    <i aria-hidden="true" class="bi bi-images"></i>
+                    <span>IIIF</span>
+                </label>
+
+                <input
+                        aria-label="Show only libraries with open licenses"
+                        autocomplete="off"
+                        class="toggle-group__check"
+                        id="freeCheck"
+                        type="checkbox"
+                >
+                <label class="toggle-group__btn toggle-group__btn--open" for="freeCheck">
+                    <i aria-hidden="true" class="bi bi-unlock"></i>
+                    <span>Open</span>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="filter-row filter-row--selects">
+
+            <label class="visually-hidden" for="nationSelect">Filter by nation</label>
+            <select aria-label="Filter by nation" class="filter-select" id="nationSelect">
+                <option value="All">All Nations</option>
+            </select>
+
+            <label class="visually-hidden" for="projectSelect">Filter by project</label>
+            <select aria-label="Filter by project" class="filter-select" id="projectSelect">
+                <option value="All">All Projects</option>
+            </select>
+
+        </div>
+    </section>
+
+    <section aria-labelledby="results-heading" class="results">
+        <h2 class="visually-hidden" id="results-heading">Library Directory Results</h2>
+
+        <div class="table-card">
+            <div class="table-scroll">
+                <table
+                        aria-label="Medieval manuscript libraries directory"
+                        id="libraryTable"
+                >
+                    <caption class="visually-hidden">
+                        A sortable directory of digitized medieval manuscript libraries with
+                        location, feature, and access information.
+                    </caption>
+                    <thead>
+                    <tr>
+                        <th
+                                aria-sort="none"
+                                class="col-library sortable"
+                                data-sort="library"
+                                scope="col"
+                                tabindex="0"
+                        >
+                            Library
+                            <i aria-hidden="true" class="bi bi-arrow-down-up sort-icon sort-icon--neutral"></i>
+                            <i aria-hidden="true" class="bi bi-sort-alpha-down sort-icon sort-icon--asc"></i>
+                            <i aria-hidden="true" class="bi bi-sort-alpha-up-alt sort-icon sort-icon--desc"></i>
+                        </th>
+                        <th
+                                aria-sort="none"
+                                class="col-location sortable"
+                                data-sort="nation"
+                                scope="col"
+                                tabindex="0"
+                        >
+                            Location
+                            <i aria-hidden="true" class="bi bi-arrow-down-up sort-icon sort-icon--neutral"></i>
+                            <i aria-hidden="true" class="bi bi-sort-alpha-down sort-icon sort-icon--asc"></i>
+                            <i aria-hidden="true" class="bi bi-sort-alpha-up-alt sort-icon sort-icon--desc"></i>
+                        </th>
+                        <th class="col-features" scope="col">Features</th>
+                        <th class="col-access" scope="col">Access</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="empty-state" hidden id="emptyState" role="status">
+                <i aria-hidden="true" class="bi bi-search empty-state__icon"></i>
+                <p class="empty-state__text">No libraries found matching your filters.</p>
+                <button class="btn-clear" id="clearFilters">Clear Filters</button>
+            </div>
+        </div>
+
+        <p aria-live="polite" class="results-meta" role="status">
+            <span id="showingCount">0</span> libraries showing
+        </p>
+    </section>
+</div>
+
+{% endblock %}

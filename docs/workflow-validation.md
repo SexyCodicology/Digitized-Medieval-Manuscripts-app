@@ -339,7 +339,7 @@ If you can't figure out the error:
 
 - [Data Structure Guide](./schema.md) — Understanding the data fields
 - [Update the Dashboard Data](./update-data.md) — How to add or edit libraries
-- [Contributing Guide](../CONTRIBUTING.md) — Ways to help the project
+- [Contributing Guide](./contributing.md) — Ways to help the project
 
 ---
 

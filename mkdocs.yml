@@ -1,12 +1,13 @@
 site_name: DMMapp - Digitized Medieval Manuscripts App
-site_description: Discover the beauty of digitized medieval manuscripts with the DMMapp. Our platform collects links to digitized collections from around the world, providing a gateway to the past.
+site_description: Discover the beauty of digitized medieval manuscripts with DMMapp.
+  Our platform collects links to digitized collections from around the world, providing
+  a gateway to the past.
 site_url: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-App/
 
 theme:
   name: material
-  # Visual Identity (Matches your Dashboard App)
+  custom_dir: overrides
   palette:
-    # Light Mode (Default)
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: indigo
@@ -14,7 +15,6 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to dark mode
-    # Dark Mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: indigo
@@ -22,40 +22,47 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to light mode
-
-  # The "Lean" Feature Set
   features:
-    - navigation.tabs           # Top-level tabs (looks like a website header)
-    - navigation.tabs.sticky    # Tabs stay visible when scrolling
-    - navigation.sections       # Groups sidebar items cleanly
-    - navigation.instant        # SPA feel (no page reloads - extremely fast)
-    - navigation.tracking       # URL updates as you scroll headers
-    - navigation.top            # "Back to Top" button appears on long pages
-    - search.suggest            # Live search suggestions
-    - search.highlight          # Highlights search terms in text
-    - search.share              # distinct URL for search results
-    - content.code.copy         # "Copy to Clipboard" button on code blocks
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+
+extra_css:
+  - assets/dashboard.css
+
+extra_javascript:
+  - assets/dashboard.js
 
 markdown_extensions:
-  - admonition                  # Callout boxes (Note, Warning, Tip)
-  - pymdownx.details            # Collapsible "Show More" blocks
-  - pymdownx.superfences        # Advanced code blocks
-  - pymdownx.tabbed:            # Content tabs (e.g. Windows/Mac/Linux instructions)
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
       alternate_style: true
-  - attr_list                   # Allow adding CSS classes to elements
+  - attr_list
   - toc:
-      permalink: true           # Anchor links on hover (for sharing specific sections)
+      permalink: true
 
-# The Navigation Structure
 nav:
-  - Home: index.md
+  - Dashboard: index.md
   - About: about.md
-  - Schema: schema.md
-  - 'Update Data': update-data.md
-  - 'Workflow Validation': workflow-validation.md
-  - 'Link Health Check': workflow-link-checking.md
-  - 'Contributing': contributing.md
-  - 'Back to Dashboard': ../index.html  # <--- Back to the DMMapp Dashboard
+  - Documentation:
+      - Overview: docs-home.md
+      - Getting Started: getting-started.md
+      - Data Schema: schema.md
+      - Update Data: update-data.md
+      - Workflow Validation: workflow-validation.md
+      - Link Health Check: workflow-link-checking.md
+      - Contributing: contributing.md
+      - Project Setup: setup.md
+
 plugins:
   - search
 

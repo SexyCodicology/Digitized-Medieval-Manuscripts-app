@@ -2,7 +2,7 @@
   "name": "DMMapp - Digitized Medieval Manuscripts",
   "short_name": "DMMapp",
   "description": "A curated directory of digitized medieval manuscript libraries worldwide",
-  "start_url": "../index.html",
+  "start_url": "../",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png",

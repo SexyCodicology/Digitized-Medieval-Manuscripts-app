@@ -1,0 +1,730 @@
+/*
+ * docs/assets/dashboard.css
+ * DMMapp Dashboard — MkDocs Material Native Port
+ * ─────────────────────────────────────────────────────────────────────────
+ * Bootstrap removed. Layout: CSS Grid (hero/stats) + Flexbox (filter bar).
+ * Dark mode: [data-md-color-scheme="slate"]  ← Material's body attribute.
+ * Light mode: [data-md-color-scheme="default"] (or unset).
+ * All rules scoped to #dashboard-root to prevent md-typeset interference.
+ * ─────────────────────────────────────────────────────────────────────────
+ */
+
+/* ── 1. Content-width escape ──────────────────────────────────────────────
+   Material's .md-content__inner has a max-width + padding that constrains
+   all page content. The :has() selector (supported in all modern browsers)
+   lets us widen the dashboard container specifically without a JS classname
+   trick.  Fall back to a sensible fixed max-width if :has() is unsupported.
+*/
+.md-content__inner:has(#dashboard-root) {
+  max-width: 1280px;
+  padding: 1.5rem 2rem 3rem;
+}
+
+/* Fallback for browsers without :has() (e.g. Firefox < 121) */
+@supports not (selector(:has(*))) {
+  .md-content__inner {
+    max-width: 1280px;
+  }
+}
+
+/* ── 2. Dashboard root & design tokens ───────────────────────────────────
+   Tokens are built on top of Material's own CSS custom properties so they
+   automatically respond to the palette toggle without extra JS.
+*/
+#dashboard-root {
+  /* Geometry */
+  --dash-radius: 4px;
+  --dash-gap:    1rem;
+
+  /* Elevation */
+  --dash-shadow:       0 0.125rem 0.5rem rgba(0,0,0,.07), 0 0 0.05rem rgba(0,0,0,.09);
+  --dash-shadow-hover: 0 0.25rem  0.75rem rgba(0,0,0,.13);
+
+  /* Surfaces — light mode defaults */
+  --dash-card-bg:    var(--md-default-bg-color);
+  --dash-card-border: rgba(0,0,0,.08);
+
+  /* Input surfaces */
+  --dash-input-bg:     var(--md-default-bg-color);
+  --dash-input-border: rgba(0,0,0,.2);
+
+  /* Typography helpers */
+  --dash-muted:   var(--md-default-fg-color--light,   #546e7a);
+  --dash-lighter: var(--md-default-fg-color--lighter, #90a4ae);
+
+  /* Spacing */
+  --dash-section-gap: 2rem;
+
+  line-height: 1.6;
+  font-size: 1rem; /* reset from md-typeset's em-based scaling */
+}
+
+/* Dark-mode token overrides */
+[data-md-color-scheme="slate"] #dashboard-root {
+  --dash-shadow:       0 0.125rem 0.5rem rgba(0,0,0,.35), 0 0 0.05rem rgba(0,0,0,.45);
+  --dash-shadow-hover: 0 0.25rem  0.75rem rgba(0,0,0,.5);
+  --dash-card-bg:      var(--md-code-bg-color, #2b2d35);
+  --dash-card-border:  rgba(255,255,255,.07);
+  --dash-input-bg:     var(--md-code-bg-color, #2b2d35);
+  --dash-input-border: rgba(255,255,255,.18);
+}
+
+/* ── 3. md-typeset resets ─────────────────────────────────────────────────
+   Material's .md-typeset applies opinionated heading margins, table styles,
+   and form-element rules. We neutralise the ones that conflict with the
+   dashboard layout.
+*/
+#dashboard-root h1,
+#dashboard-root h2,
+#dashboard-root h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--md-default-fg-color);
+}
+
+#dashboard-root p {
+  margin: 0;
+}
+
+/* Reset md-typeset's table styles inside the dashboard */
+#dashboard-root table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.875rem;
+  /* Remove Material's table border-radius wrapper */
+  box-shadow: none;
+  border-radius: 0;
+}
+
+#dashboard-root thead th {
+  background: var(--dash-card-bg);
+  color: var(--dash-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--dash-card-border);
+  /* Reset md-typeset's th borders */
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+#dashboard-root tbody td {
+  padding: 0.875rem 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--dash-card-border);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  /* Material adds background-color to zebra rows — nuke it */
+  background: transparent;
+}
+
+/* ── 4. Loader ────────────────────────────────────────────────────────────*/
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--md-default-bg-color);
+  transition: opacity 0.3s ease;
+}
+
+.loader__ring {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid rgba(63, 81, 181, .2);
+  border-top-color: var(--md-primary-fg-color, #3f51b5);
+  border-radius: 50%;
+  animation: dash-spin 0.75s linear infinite;
+}
+
+.loader__text {
+  color: var(--dash-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+@keyframes dash-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── 5. Hero — CSS Grid ──────────────────────────────────────────────────
+   Two-column grid: copy on the left, stats on the right.
+   Collapses to a single column below 768 px.
+*/
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: var(--dash-section-gap);
+}
+
+.hero__title {
+  font-size: clamp(1.5rem, 3vw, 2rem) !important;
+  margin-bottom: 0.75rem !important;
+  color: var(--md-default-fg-color) !important;
+}
+
+.hero__lead {
+  font-size: 1rem;
+  color: var(--dash-muted);
+  line-height: 1.75;
+}
+
+/* ── 6. Stats Grid — CSS Grid ────────────────────────────────────────────
+   auto-fit so cards reflow naturally at any viewport width.
+*/
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stat-card {
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-card-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-shadow);
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.2rem;
+  transition: box-shadow 0.15s ease;
+}
+
+.stat-card:hover {
+  box-shadow: var(--dash-shadow-hover);
+}
+
+.stat-card__icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+  flex-shrink: 0;
+}
+
+/* Icon colour variants — light mode */
+.stat-card__icon--primary { background: rgba(63,81,181,.1);  color: #3f51b5; }
+.stat-card__icon--success  { background: rgba(76,175,80,.1);  color: #388e3c; }
+.stat-card__icon--info     { background: rgba(33,150,243,.1); color: #0277bd; }
+.stat-card__icon--warning  { background: rgba(255,152,0,.1);  color: #e65100; }
+
+/* Icon colour variants — dark mode (softer tints) */
+[data-md-color-scheme="slate"] .stat-card__icon--primary { color: #9fa8da; }
+[data-md-color-scheme="slate"] .stat-card__icon--success  { color: #a5d6a7; }
+[data-md-color-scheme="slate"] .stat-card__icon--info     { color: #90caf9; }
+[data-md-color-scheme="slate"] .stat-card__icon--warning  { color: #ffcc80; }
+
+.stat-card__value {
+  /* <strong> is block here; Material renders inline by default */
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--md-default-fg-color);
+}
+
+.stat-card__label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--dash-muted);
+}
+
+/* ── 7. Filters — Flexbox ────────────────────────────────────────────────*/
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+/* Second row of selects is centred */
+.filter-row--selects {
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Search box */
+.search-box {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--dash-input-bg);
+  border: 1px solid var(--dash-input-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-shadow);
+  transition: border-color 0.125s, box-shadow 0.125s;
+  overflow: hidden;
+}
+
+.search-box:focus-within {
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, .15);
+}
+
+.search-box__icon {
+  padding: 0 0.75rem;
+  color: var(--dash-muted);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* Heavy-handed reset: Material and some browsers style [type=search] aggressively */
+.search-box__input {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px; /* WCAG 2.5.5 touch target */
+  padding: 0.625rem 0.75rem 0.625rem 0;
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  color: var(--md-default-fg-color) !important;
+  font-family: inherit;
+  font-size: 0.875rem;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-box__input::placeholder {
+  color: var(--dash-lighter);
+}
+
+/* Hide the browser's native "×" clear button on search inputs */
+.search-box__input::-webkit-search-decoration,
+.search-box__input::-webkit-search-cancel-button,
+.search-box__input::-webkit-search-results-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+/* Feature toggle group */
+.toggle-group {
+  display: flex;
+  background: var(--dash-input-bg);
+  border: 1px solid var(--dash-input-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-shadow);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Visually hidden but keyboard + screen-reader accessible */
+.toggle-group__check {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.toggle-group__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0 1rem;
+  min-height: 44px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+/* Divider between the two toggles */
+.toggle-group__btn:not(:last-child) {
+  border-right: 1px solid var(--dash-input-border);
+}
+
+.toggle-group__btn:hover {
+  background: rgba(63,81,181,.07);
+  color: var(--md-primary-fg-color);
+}
+
+/* Keyboard focus indicator */
+.toggle-group__check:focus-visible + .toggle-group__btn {
+  outline: 3px solid var(--md-primary-fg-color);
+  outline-offset: -2px;
+}
+
+/* Checked state — IIIF (blue) */
+#iiifCheck:checked + .toggle-group__btn--iiif {
+  background: #1565c0;
+  color: #fff;
+  border-color: transparent;
+  box-shadow: inset 0 0 0 1px #1565c0;
+}
+
+/* Checked state — Open (teal) */
+#freeCheck:checked + .toggle-group__btn--open {
+  background: #00796b;
+  color: #fff;
+  border-color: transparent;
+  box-shadow: inset 0 0 0 1px #00796b;
+}
+
+/* Dark mode: brighter tints for legibility on slate background */
+[data-md-color-scheme="slate"] #iiifCheck:checked + .toggle-group__btn--iiif {
+  background: #42a5f5;
+  color: #000;
+}
+
+[data-md-color-scheme="slate"] #freeCheck:checked + .toggle-group__btn--open {
+  background: #26a69a;
+  color: #000;
+}
+
+/* Dropdown selects */
+.filter-select {
+  min-width: 180px;
+  min-height: 44px;
+  padding: 0.625rem 2.25rem 0.625rem 0.875rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: var(--md-default-fg-color);
+  background-color: var(--dash-input-bg);
+  /* Custom chevron replaces browser default */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath fill='%23546e7a' d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid var(--dash-input-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-shadow);
+  cursor: pointer;
+  transition: border-color 0.125s, box-shadow 0.125s;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--md-primary-fg-color);
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, .15);
+}
+
+/* ── 8. Results table ─────────────────────────────────────────────────────*/
+.results {
+  margin-bottom: 3rem;
+}
+
+.table-card {
+  background: var(--dash-card-bg);
+  border: 1px solid var(--dash-card-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-shadow);
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+/* Column proportions */
+.col-library  { width: 40%; min-width: 220px; }
+.col-location { width: 22%; min-width: 130px; }
+.col-features { width: 23%; }
+.col-access   { width: 15%; text-align: right; }
+
+/* Hover row highlight */
+#dashboard-root tbody tr:hover td {
+  background: rgba(0,0,0,.03);
+}
+
+[data-md-color-scheme="slate"] #dashboard-root tbody tr:hover td {
+  background: rgba(255,255,255,.04);
+}
+
+/* Cell content helpers */
+.library-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--md-default-fg-color);
+}
+
+.library-project {
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+.library-project a {
+  color: var(--dash-muted);
+  text-decoration: none;
+  transition: color 0.125s;
+}
+
+.library-project a:hover {
+  color: var(--md-primary-fg-color);
+  text-decoration: underline;
+}
+
+.location-nation {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--md-default-fg-color);
+}
+
+.location-city {
+  font-size: 0.8rem;
+  color: var(--dash-muted);
+}
+
+/* ── 9. Feature badges ────────────────────────────────────────────────────*/
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--dash-radius);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-right: 0.25rem;
+}
+
+.badge--iiif {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.badge--open {
+  background: #e0f2f1;
+  color: #00695c;
+}
+
+[data-md-color-scheme="slate"] .badge--iiif {
+  background: rgba(33, 150, 243, .18);
+  color: #90caf9;
+}
+
+[data-md-color-scheme="slate"] .badge--open {
+  background: rgba(0, 150, 136, .18);
+  color: #80cbc4;
+}
+
+.badge--standard {
+  background: transparent;
+  color: var(--dash-muted);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+/* Visit button */
+.btn-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--md-primary-fg-color);
+  border: 1px solid var(--md-primary-fg-color);
+  background: transparent;
+  text-decoration: none;
+  transition: background 0.125s, color 0.125s;
+  white-space: nowrap;
+}
+
+.btn-visit:hover {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color, #fff);
+  text-decoration: none;
+}
+
+/* ── 10. Sortable headers ─────────────────────────────────────────────────*/
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.1s;
+  position: relative;
+}
+
+.sortable:hover,
+.sortable:focus-visible {
+  background: var(--md-primary-fg-color) !important;
+  color: var(--md-primary-bg-color, #fff) !important;
+  outline: none;
+}
+
+.sortable.active {
+  background: var(--md-primary-fg-color) !important;
+  color: var(--md-primary-bg-color, #fff) !important;
+}
+
+/* Sort icon visibility state machine */
+.sort-icon             { margin-left: 0.4rem; font-size: 0.75rem; opacity: 0.4; }
+.sort-icon--neutral    { display: inline; }
+.sort-icon--asc        { display: none; }
+.sort-icon--desc       { display: none; }
+
+.sortable[data-sort-direction="asc"]  .sort-icon--neutral { display: none;   }
+.sortable[data-sort-direction="asc"]  .sort-icon--asc     { display: inline; opacity: 1; }
+.sortable[data-sort-direction="asc"]  .sort-icon--desc    { display: none;   }
+
+.sortable[data-sort-direction="desc"] .sort-icon--neutral { display: none;   }
+.sortable[data-sort-direction="desc"] .sort-icon--asc     { display: none;   }
+.sortable[data-sort-direction="desc"] .sort-icon--desc    { display: inline; opacity: 1; }
+
+/* ── 11. Empty state ──────────────────────────────────────────────────────*/
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-state__icon {
+  display: block;
+  font-size: 3.5rem;
+  color: var(--dash-lighter);
+  opacity: 0.3;
+  margin-bottom: 0.75rem;
+}
+
+.empty-state__text {
+  color: var(--dash-muted);
+  margin-bottom: 1rem;
+}
+
+.btn-clear {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--md-primary-fg-color);
+  border-radius: var(--dash-radius);
+  background: transparent;
+  color: var(--md-primary-fg-color);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.125s, color 0.125s;
+}
+
+.btn-clear:hover {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color, #fff);
+}
+
+/* ── 12. Results meta ─────────────────────────────────────────────────────*/
+.results-meta {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--dash-muted);
+  margin-top: 0.5rem;
+}
+
+/* ── 13. Utility: visually-hidden ─────────────────────────────────────────*/
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Ensure HTML [hidden] always works (MkDocs doesn't override this, but safe) */
+[hidden] { display: none !important; }
+
+/* ── 14. Responsive breakpoints ──────────────────────────────────────────*/
+
+/* ≤ 959 px: hero goes single-column; stats stay 2-col */
+@media (max-width: 959px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .md-content__inner:has(#dashboard-root) {
+    padding: 1.25rem 1.25rem 2.5rem;
+  }
+}
+
+/* ≤ 600 px: filter bar stacks vertically */
+@media (max-width: 600px) {
+  .filter-row {
+    flex-direction: column;
+  }
+
+  .filter-row--selects {
+    align-items: stretch;
+  }
+
+  .filter-select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Hide Features column on very small screens to avoid overflow */
+  .col-features { display: none; }
+}
+
+/* ── 15. Accessibility ────────────────────────────────────────────────────*/
+
+/* Honour reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .loader__ring {
+    animation-duration: 3s;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}
+
+/* High-contrast mode — thicken borders & outlines */
+@media (prefers-contrast: more) {
+  .toggle-group__btn {
+    border-width: 2px;
+  }
+
+  .toggle-group__check:focus-visible + .toggle-group__btn {
+    outline-width: 4px;
+  }
+}
