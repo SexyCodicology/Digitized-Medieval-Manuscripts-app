@@ -7,6 +7,7 @@ site_url: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-App/
 theme:
   name: material
   custom_dir: overrides
+  favicon: assets/favicon.svg
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
