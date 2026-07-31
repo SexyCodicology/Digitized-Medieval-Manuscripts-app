@@ -28,8 +28,8 @@ Find what you need to get started, contribute, or develop.
 ## Quick links
 
 - [Dashboard](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/) — Browse the live library directory
-- [Report an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/issues) — GitHub Issues
-- [GitHub repository](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App) — Source code
+- [Report an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues) — GitHub Issues
+- [GitHub repository](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app) — Source code
 
 ## FAQ
 
@@ -37,14 +37,14 @@ Find what you need to get started, contribute, or develop.
 Yes. See each library's license information on the dashboard. Many collections are freely reusable.
 
 **How do I report errors?**
-[Open an issue on GitHub](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/issues) or contact @Dioscorides.
+[Open an issue on GitHub](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues) or contact @Dioscorides.
 
 **How often is the data updated?**
-Libraries are added continuously. Check back regularly or [watch the repository](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/subscription) for updates.
+Libraries are added continuously. Check back regularly or [watch the repository](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/subscription) for updates.
 
 **Can I access manuscripts offline?**
 Some libraries offer downloadable collections. Visit each library's website to check options.
 
 ---
 
-**Need help?** [Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/issues) or reach out to @Dioscorides.
+**Need help?** [Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues) or reach out to @Dioscorides.

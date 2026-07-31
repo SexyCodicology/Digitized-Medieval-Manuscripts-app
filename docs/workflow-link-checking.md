@@ -227,7 +227,7 @@ If you can't resolve a broken link:
 2. Contact the library directly via email or social media
 3. Check recent news to see if the library merged, closed, or relocated
 4. Search for the collection in larger aggregators like Europeana or DPLA
-5. [Open an issue on GitHub](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/issues) to ask the community for help
+5. [Open an issue on GitHub](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues) to ask the community for help
 
 ## Related documentation
 
