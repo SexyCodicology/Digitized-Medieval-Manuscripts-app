@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{#
+main.html — DMMapp global template override
+────────────────────────────────────────────
+Applies to every page, including home.html (which extends this file).
+Adds the web manifest and Apple touch-icon links that Material's base
+template does not provide out of the box. Keep this override minimal;
+page-specific behaviour belongs in the templates that extend it.
+#}
+
+{% block extrahead %}
+  {{ super() }}
+  <link rel="manifest" href="{{ 'assets/site.webmanifest' | url }}">
+  <link rel="apple-touch-icon" href="{{ 'assets/apple-touch-icon.png' | url }}">
+{% endblock %}
