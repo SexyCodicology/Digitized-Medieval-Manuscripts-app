@@ -17,8 +17,8 @@ Before you start, install these tools:
 Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/[your-username]/Digitized-Medieval-Manuscripts-App.git
-cd Digitized-Medieval-Manuscripts-App
+git clone https://github.com/[your-username]/Digitized-Medieval-Manuscripts-app.git
+cd Digitized-Medieval-Manuscripts-app
 ```
 
 Replace `[your-username]` with the actual repository owner's GitHub username.

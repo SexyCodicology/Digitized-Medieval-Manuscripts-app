@@ -2,7 +2,7 @@ site_name: DMMapp - Digitized Medieval Manuscripts App
 site_description: Discover the beauty of digitized medieval manuscripts with DMMapp.
   Our platform collects links to digitized collections from around the world, providing
   a gateway to the past.
-site_url: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-App/
+site_url: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/
 
 theme:
   name: material
@@ -70,4 +70,4 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App
+      link: https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app

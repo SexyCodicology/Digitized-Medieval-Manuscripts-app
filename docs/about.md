@@ -47,4 +47,4 @@ The platform uses the Material Design system with the Indigo color palette to en
 
 ## Contact
 
-For questions, suggestions, or contributions, please visit our [GitHub repository](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App).
+For questions, suggestions, or contributions, please visit our [GitHub repository](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app).

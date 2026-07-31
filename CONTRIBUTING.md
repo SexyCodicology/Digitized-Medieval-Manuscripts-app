@@ -16,6 +16,6 @@ Improve the dashboard, documentation, or project infrastructure.
 
 ---
 
-Have questions? [Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/issues) or reach out to @Dioscorides.
+Have questions? [Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues) or reach out to @Dioscorides.
 
 We appreciate your contributions! 🙌

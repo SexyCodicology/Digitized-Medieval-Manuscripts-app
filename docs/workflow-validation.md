@@ -333,7 +333,7 @@ If you can't figure out the error:
 1. Review the "Common errors and how to fix them" section above
 2. Check the [Data Structure Guide](./schema.md) for field requirements
 3. Look at other records in the database to see examples of correct formatting
-4. [Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/issues) or contact @Dioscorides for help
+4. [Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues) or contact @Dioscorides for help
 
 ## Related documentation
 

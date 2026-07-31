@@ -3,7 +3,7 @@
 > A curated, interactive directory of digitized medieval manuscript libraries worldwide with support for standardized image formats and open access resources.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-green)](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-App/)
+[![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-green)](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/)
 [![JSON Schema Validation](https://img.shields.io/badge/Data%20Format-JSON%20Schema-blue)](./schema.json)
 
 ## What you can do
@@ -48,7 +48,7 @@ Each library entry includes:
 
 ### For researchers
 Visit the live dashboard to browse and search:
-👉 [Digitized Medieval Manuscripts App](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-App/)
+👉 [Digitized Medieval Manuscripts App](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/)
 
 No installation required. Everything runs in your browser.
 
@@ -56,8 +56,8 @@ No installation required. Everything runs in your browser.
 Clone the repository and set up your local environment:
 
 ```bash
-git clone https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App.git
-cd Digitized-Medieval-Manuscripts-App
+git clone https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app.git
+cd Digitized-Medieval-Manuscripts-app
 ```
 
 The dashboard is a MkDocs Material page, so you preview it the same way as the rest of the documentation. Install the dependencies from `requirements.txt`, then start the MkDocs development server:
@@ -72,7 +72,7 @@ Open `http://localhost:8000` in your browser to see the full dashboard.
 ## Project structure
 
 ```
-Digitized-Medieval-Manuscripts-App/
+Digitized-Medieval-Manuscripts-app/
 ├── mkdocs.yml              # Documentation and dashboard build settings
 ├── requirements.txt        # Python dependencies for MkDocs
 ├── schema.json             # Data format definition
@@ -153,7 +153,7 @@ You can help in several ways:
 
 ### Report issues
 Found an error or have a suggestion?
-[Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/issues)
+[Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues)
 
 ### Improve the codebase
 - Enhance the dashboard
@@ -186,7 +186,7 @@ You're free to use, modify, and distribute this project with proper attribution.
 ## Support and questions
 
 - **Documentation**: See the [docs/](./docs/) folder
-- **Issues and discussions**: [GitHub Issues](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/issues)
+- **Issues and discussions**: [GitHub Issues](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues)
 - **Contributing**: See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Related resources
@@ -224,4 +224,4 @@ Want recognition? [Contribute today!](./CONTRIBUTING.md)
 
 **Made with ❤️ for researchers, historians, and manuscript enthusiasts everywhere.**
 
-[Visit the live dashboard](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-App/) | [View documentation](./docs/) | [Contribute](./CONTRIBUTING.md)
+[Visit the live dashboard](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/) | [View documentation](./docs/) | [Contribute](./CONTRIBUTING.md)

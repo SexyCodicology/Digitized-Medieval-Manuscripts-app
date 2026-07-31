@@ -5,10 +5,10 @@
 
 # The Raw Data (The Source of Truth)
 # AI should use this file to answer questions about specific libraries.
-https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-App/assets/data.json
+https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/assets/data.json
 
 # The Documentation (Technical Context)
-https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-App/
+https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/
 
 # The Schema (Data Rules)
 https://raw.githubusercontent.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/master/schema.json
