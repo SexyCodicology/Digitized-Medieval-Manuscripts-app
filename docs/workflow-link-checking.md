@@ -20,7 +20,7 @@ Link checks happen on a predictable schedule:
 
 ## How the link checker works
 
-We visit every URL in `data.json` and verify it responds correctly. Here's what we check:
+We visit every URL in `docs/assets/data.json` and verify it responds correctly. Here's what we check:
 
 - **Response time**: Links must respond within 10 seconds
 - **HTTP status**: Websites must return a successful response (not error codes like 404 or 500)
@@ -70,7 +70,7 @@ Try to find the new URL if the page moved.
 
 - Search for the library name online to locate the current website
 - Check if the library has a new domain or restructured URL
-- Update the `website` field in `data.json` with the correct URL
+- Update the `website` field in `docs/assets/data.json` with the correct URL
 
 ### 2. Archive it
 
@@ -78,11 +78,11 @@ If the site is down, check [The Wayback Machine](https://web.archive.org/).
 
 - Visit the Wayback Machine and enter the broken URL
 - Look for a recent snapshot of the page and check if digitized manuscripts are visible
-- If a snapshot exists, use that archived URL in `data.json`
+- If a snapshot exists, use that archived URL in `docs/assets/data.json`
 
 ### 3. Delete it
 
-If the content is gone, remove the entry from `data.json`.
+If the content is gone, remove the entry from `docs/assets/data.json`.
 
 - Verify the library and collection no longer exist online
 - Remove the entire record from the data file
@@ -114,7 +114,7 @@ If the content is gone, remove the entry from `data.json`.
 
 ### Step 4: Submit your fixes
 
-1. Edit `data.json` with the corrected information
+1. Edit `docs/assets/data.json` with the corrected information
 2. Follow the [Update the Dashboard Data](./update-data.md) guide to submit changes
 3. Create a pull request with a descriptive message: "Fix broken link for Example Library"
 
