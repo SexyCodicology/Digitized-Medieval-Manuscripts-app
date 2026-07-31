@@ -63,11 +63,6 @@ jobs:
       - name: Build MkDocs Site
         run: mkdocs build --clean
 
-      - name: Inject GTM Container ID
-        run: |
-          sed -i "s/GTM-PLACEHOLDER/${{ secrets.GTM_ID }}/g" site/index.html
-          echo "✓ GTM Container ID injected into site/index.html"
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
