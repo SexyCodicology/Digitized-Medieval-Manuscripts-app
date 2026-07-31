@@ -8,7 +8,7 @@ Thank you for your interest in contributing to the DMMapp Library Directory! Thi
 
 1. **Fork the Repository**: Create your own fork of the project on GitHub
 
-2. **Edit data.json**: Add a new entry following the schema below
+2. **Edit docs/assets/data.json**: Add a new entry following the schema below
 
 3. **Submit a Pull Request**: Create a PR with your changes
 
@@ -18,13 +18,16 @@ Each library entry must include the following fields:
 
 ```json
 {
+    "id": 501,
     "library": "Library Name",
     "nation": "Country Name",
     "city": "City Name",
     "website": "https://example.com",
+    "copyright": "CC BY 4.0",
+    "quantity": "Thousands",
     "iiif": true,
     "is_free_cultural_works_license": false,
-    "quantity": "Thousands"
+    "is_part_of": false
 }
 ```
 
@@ -32,25 +35,33 @@ Each library entry must include the following fields:
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
+| `id` | Integer | ✅ Yes | Unique identifier for the record |
 | `library` | String | ✅ Yes | Official name of the library or institution |
 | `nation` | String | ✅ Yes | Country where the library is located |
 | `city` | String | ✅ Yes | City where the library is located |
 | `website` | URL String | ✅ Yes | Direct link to the digitized collection (must be valid URL) |
+| `copyright` | String | ✅ Yes | Copyright or license information |
+| `quantity` | Enum | ✅ Yes | One of: `"Few"`, `"Dozens"`, `"Hundreds"`, `"Thousands"`, `"Unknown"` |
 | `iiif` | Boolean | ✅ Yes | `true` if the library supports IIIF, `false` otherwise |
 | `is_free_cultural_works_license` | Boolean | ✅ Yes | `true` if content has an open license, `false` otherwise |
-| `quantity` | Enum | ✅ Yes | One of: `"Few"`, `"Dozens"`, `"Hundreds"`, `"Thousands"`, `"Unknown"` |
+| `is_part_of` | Boolean | ✅ Yes | `true` if the library is part of a larger aggregating project, `false` otherwise |
+| `is_part_of_project_name` | String | Only if `is_part_of` is `true` | Name of the larger project |
+| `is_part_of_url` | URL String | Only if `is_part_of` is `true` | URL of the larger project |
 
 ### Example Entry
 
 ```json
 {
+    "id": 502,
     "library": "Bibliothèque nationale de France",
     "nation": "France",
     "city": "Paris",
     "website": "https://gallica.bnf.fr/",
+    "copyright": "CC0 1.0",
+    "quantity": "Thousands",
     "iiif": true,
     "is_free_cultural_works_license": true,
-    "quantity": "Thousands"
+    "is_part_of": false
 }
 ```
 
@@ -90,7 +101,7 @@ Your contribution will be automatically validated against our schema when you su
 
 If you have questions or need help:
 
-1. Check existing entries in `data.json` for examples
+1. Check existing entries in `docs/assets/data.json` for examples
 2. Review the `schema.json` file for technical details
 3. Open an issue on GitHub for assistance
 
