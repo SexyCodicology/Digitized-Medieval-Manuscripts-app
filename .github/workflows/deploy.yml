@@ -6,18 +6,24 @@ on:
       - master
     paths:
       - 'docs/**'
+      - 'hooks/**'
       - 'overrides/**'
+      - 'tests/**'
       - 'mkdocs.yml'
       - 'schema.json'
       - 'requirements.txt'
+      - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
   pull_request:
     paths:
       - 'docs/**'
+      - 'hooks/**'
       - 'overrides/**'
+      - 'tests/**'
       - 'mkdocs.yml'
       - 'schema.json'
       - 'requirements.txt'
+      - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -53,12 +59,15 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install MkDocs Material
-        run: pip install -r requirements.txt
+        run: pip install -r requirements-dev.txt
 
       - name: Validate data.json
         run: |
           python -m json.tool docs/assets/data.json > /dev/null
           echo "✓ data.json is valid JSON"
+
+      - name: Test Build Hooks
+        run: pytest tests -q
 
       - name: Build MkDocs Site
         run: mkdocs build --clean

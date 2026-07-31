@@ -62,6 +62,19 @@ QUANTITY_PHRASES = {
 }
 
 
+def plain_text(value: Any) -> str:
+    """Return ``value`` as text that is safe to place in page front matter.
+
+    MkDocs renders theme templates with autoescaping turned off, so a value
+    reaching ``<title>`` or ``<meta name="description">`` through front matter
+    is written verbatim. Dropping the three characters that can end a tag or
+    an attribute leaves the value inert in both contexts. Ampersands are left
+    alone, because they cannot inject markup and library names contain them.
+    """
+    text = re.sub(r'[<>"]', "", str(value))
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def slugify(library: str, record_id: int) -> str:
     """Return a stable, collision-free slug for a library record.
 
@@ -142,7 +155,11 @@ def build_titles(records: list[dict[str, Any]]) -> list[str]:
     actually tells the two collections apart. The record id settles anything
     the host cannot.
     """
-    bases = [f"{record['library']} — {record['city']}, {record['nation']}" for record in records]
+    bases = [
+        f"{plain_text(record['library'])} — "
+        f"{plain_text(record['city'])}, {plain_text(record['nation'])}"
+        for record in records
+    ]
     counts = Counter(bases)
 
     titles = []
@@ -157,7 +174,10 @@ def build_descriptions(records: list[dict[str, Any]]) -> list[str]:
     """Return one unique meta description per record, built from its own fields."""
     descriptions = []
     for record in records:
-        opening = f"{record['library']} in {record['city']}, {record['nation']}."
+        opening = (
+            f"{plain_text(record['library'])} in "
+            f"{plain_text(record['city'])}, {plain_text(record['nation'])}."
+        )
         quantity = QUANTITY_PHRASES.get(record.get("quantity"), "Digitised")
         facts = [f"{quantity} digitised medieval manuscripts."]
 
