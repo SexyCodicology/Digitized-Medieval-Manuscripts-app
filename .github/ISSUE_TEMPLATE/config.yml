@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Add or edit a library
+    url: https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/blob/master/docs/update-data.md
+    about: Use the guided data-editing workflow instead of a blank issue for library additions or corrections.
+  - name: Contributing guide
+    url: https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App/blob/master/CONTRIBUTING.md
+    about: General questions about contributing to the project.
