@@ -49,11 +49,73 @@ body:
     id: iiif_compliant
     attributes:
       label: IIIF Compliant?
-      description: Does this library support the IIIF (International Image Interoperability Framework) standard?
+      description: Does this library support the IIIF (International Image Interoperability Framework) standard? Give your best answer—the reviewer verifies this before merging.
       options:
-        - Unknown
         - "Yes"
         - "No"
+    validations:
+      required: true
+
+  - type: input
+    id: copyright
+    attributes:
+      label: Copyright or license
+      description: The copyright or license statement shown by the library for its digitized manuscripts.
+      placeholder: "e.g., Public Domain, CC BY 4.0, All rights reserved"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: free_cultural_works_license
+    attributes:
+      label: Free Cultural Works license?
+      description: Does the collection use a Creative Commons Free Cultural Works license (e.g., CC0, CC BY, CC BY-SA)? Give your best answer—the reviewer verifies this before merging.
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: quantity
+    attributes:
+      label: Approximate number of digitized manuscripts
+      description: Roughly how many digitized medieval manuscripts does this collection contain?
+      options:
+        - Few
+        - Dozens
+        - Hundreds
+        - Thousands
+        - Unknown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: is_part_of
+    attributes:
+      label: Part of a larger aggregator project?
+      description: Is this collection part of a larger project or website that aggregates multiple libraries (e.g., a national digital library portal)?
+      options:
+        - "No"
+        - "Yes"
+    validations:
+      required: true
+
+  - type: input
+    id: is_part_of_project_name
+    attributes:
+      label: Aggregator project name
+      description: Required only if you answered "Yes" above. The name of the larger project or website.
+      placeholder: "e.g., Europeana"
+    validations:
+      required: false
+
+  - type: input
+    id: is_part_of_url
+    attributes:
+      label: Aggregator project URL
+      description: Required only if you answered "Yes" above. The URL of the larger project or website.
+      placeholder: "https://example.org"
     validations:
       required: false
 
