@@ -67,6 +67,13 @@ nav:
 plugins:
   - search
 
+# Generates one page per record in docs/assets/data.json at build time.
+# The pages are virtual, so they are never written into docs/ or committed,
+# and they are deliberately kept out of `nav` above — 584 sidebar entries
+# would be unusable. MkDocs still lists them in sitemap.xml.
+hooks:
+  - hooks/library_pages.py
+
 extra:
   social:
     - icon: fontawesome/brands/github
