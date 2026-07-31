@@ -60,43 +60,41 @@ git clone https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-App.g
 cd Digitized-Medieval-Manuscripts-App
 ```
 
-Serve the site locally using Python 3:
-```bash
-python -m http.server 8000
-```
+The dashboard is a MkDocs Material page, so you preview it the same way as the rest of the documentation. Install the dependencies from `requirements.txt`, then start the MkDocs development server:
 
-Or use Node.js:
 ```bash
-npx http-server
-```
-
-Then open `http://localhost:8000` in your browser.
-
-To work with documentation using MkDocs:
-```bash
-pip install mkdocs mkdocs-material
+pip install -r requirements.txt
 mkdocs serve
 ```
+
+Open `http://localhost:8000` in your browser to see the full dashboard.
 
 ## Project structure
 
 ```
 Digitized-Medieval-Manuscripts-App/
-├── index.html              # Main dashboard
-├── script.js               # Dashboard interactivity
-├── style.css               # Custom styling
-├── data.json               # Library database
+├── mkdocs.yml              # Documentation and dashboard build settings
+├── requirements.txt        # Python dependencies for MkDocs
 ├── schema.json             # Data format definition
+├── overrides/
+│   └── home.html           # Dashboard template (extends Material's main.html)
 │
-├── docs/                   # Documentation
-│   ├── index.md           # Home page
-│   ├── about.md           # About the project
-│   └── contributing.md    # How to contribute
+├── docs/                   # Documentation and dashboard source
+│   ├── index.md            # Dashboard home page (uses the home.html template)
+│   ├── about.md            # About the project
+│   ├── getting-started.md  # How to use the dashboard
+│   ├── schema.md            # Data structure guide
+│   ├── update-data.md       # How to add or edit library entries
+│   ├── contributing.md      # How to contribute code or docs
+│   ├── setup.md             # Local development setup
+│   └── assets/
+│       ├── dashboard.js     # Dashboard interactivity
+│       ├── dashboard.css    # Dashboard styling
+│       └── data.json        # Library database
 │
-├── mkdocs.yml             # Documentation settings
-├── README.md              # This file
-├── CONTRIBUTING.md        # Contribution guide
-└── LICENSE                # MIT License
+├── README.md               # This file
+├── CONTRIBUTING.md         # Contribution guide
+└── LICENSE                 # MIT License
 ```
 
 ## Technology stack
@@ -123,19 +121,20 @@ Digitized-Medieval-Manuscripts-App/
 
 ## Data schema
 
-Each library entry in `data.json` follows this structure:
+Each library entry in [docs/assets/data.json](./docs/assets/data.json) follows this structure:
 
 ```json
 {
+  "id": "Unique record identifier",
   "library": "Official institution name",
   "nation": "Country name",
   "city": "City name",
   "website": "URL to digitized collection",
-  "lat": "Latitude (optional)",
-  "lng": "Longitude (optional)",
+  "copyright": "Copyright or license information",
+  "quantity": "Few | Dozens | Hundreds | Thousands | Unknown",
   "iiif": "Supports standardized image format",
   "is_free_cultural_works_license": "Has open license",
-  "quantity": "Few | Dozens | Hundreds | Thousands | Unknown"
+  "is_part_of": "Whether the library is part of a larger project"
 }
 ```
 
@@ -146,7 +145,7 @@ See [schema.json](./schema.json) for the complete definition.
 You can help in several ways:
 
 ### Add libraries
-1. **Search first**: Make sure the library isn't already listed in `data.json`
+1. **Search first**: Make sure the library isn't already listed in [docs/assets/data.json](./docs/assets/data.json)
 2. **Edit the file**: Add your entry following the data format
 3. **Submit a pull request**: Send it to the `master` branch
 
