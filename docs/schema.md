@@ -284,5 +284,5 @@ Collections can be independent or part of projects because:
 ## Related files
 
 - `schema.json` — The technical validation rules for our data
-- `data.json` — The actual library records
+- `docs/assets/data.json` — The actual library records
 - [Update the dashboard data](./update-data.md) — How to add or edit library information
