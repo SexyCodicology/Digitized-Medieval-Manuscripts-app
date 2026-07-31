@@ -75,6 +75,11 @@ def plain_text(value: Any) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
+def slug_for(record: dict[str, Any]) -> str:
+    """Return the slug of a validated record."""
+    return slugify(str(record["library"]), record["id"])
+
+
 def slugify(library: str, record_id: int) -> str:
     """Return a stable, collision-free slug for a library record.
 
@@ -277,7 +282,7 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
 
 def build_pages(records: list[dict[str, Any]]) -> dict[str, str]:
     """Return a mapping of ``libraries/<slug>.md`` to its Markdown source."""
-    slugs = [slugify(str(record["library"]), record["id"]) for record in records]
+    slugs = [slug_for(record) for record in records]
     duplicates = [slug for slug, count in Counter(slugs).items() if count > 1]
     if duplicates:
         raise PluginError(f"Duplicate library slugs generated: {', '.join(sorted(duplicates))}.")
@@ -308,9 +313,7 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
             )
         )
 
-    slug_map = {
-        str(record["id"]): slugify(str(record["library"]), record["id"]) for record in records
-    }
+    slug_map = {str(record["id"]): slug_for(record) for record in records}
     files.append(
         File.generated(
             config,

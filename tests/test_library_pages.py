@@ -245,9 +245,7 @@ def test_a_missing_dataset_fails_the_build(tmp_path):
 
 
 def test_nav_does_not_list_the_generated_pages():
-    config = yaml.safe_load(
-        (REPO_ROOT / "mkdocs.yml").read_text(encoding="utf-8").replace("!!python/name:", "")
-    )
+    config = yaml.safe_load((REPO_ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
 
     assert config["hooks"] == ["hooks/library_pages.py"]
     assert hook.OUTPUT_DIR not in yaml.safe_dump(config["nav"])
