@@ -19,12 +19,13 @@ This guide explains how to add new libraries and edit existing information in th
     GitHub is a platform for storing and collaborating on code and documents. This guide uses GitHub's built-in editor, so you won't need to use the command line.
 
 !!! info "About data governance"
-    The data.json file is maintained by @Dioscorides. When you submit changes, they review your work to ensure quality standards. This keeps the library directory accurate and reliable for researchers worldwide.
+    The docs/assets/data.json file is maintained by @Dioscorides. When you submit changes, they review your work to ensure quality standards. This keeps the library directory accurate and reliable for researchers worldwide.
 
 ## 1. Find the data file
 
 1. Open your GitHub repository in your browser
-2. Click **data.json** in the file list
+2. Open the **docs** folder, then the **assets** folder
+3. Click **data.json** in the file list
 
 The file displays in read-only format.
 
@@ -43,18 +44,20 @@ Your browser switches to an editor. You'll see the data formatted as JSON—a st
 
 Every library entry must include:
 
+- **id**: Unique record identifier (e.g., `503`)
 - **library**: Institution name (e.g., "Bodleian Library")
 - **nation**: Country name (e.g., "United Kingdom")
 - **city**: City name (e.g., "Oxford")
 - **website**: Working URL to the digitized collection (must start with `http://` or `https://`)
-
-### Optional fields
-
-- **lat**: Latitude coordinate as text (e.g., `"51.7540"`)
-- **lng**: Longitude coordinate as text (e.g., `"-1.2566"`)
+- **copyright**: Copyright or license information (e.g., `"CC BY 4.0"`)
+- **quantity**: Manuscript count (`"Few"`, `"Dozens"`, `"Hundreds"`, `"Thousands"`, or `"Unknown"`)
 - **iiif**: Standardized image format support (`true` or `false`)
 - **is_free_cultural_works_license**: Free license status (`true` or `false`)
-- **quantity**: Manuscript count (`"Few"`, `"Dozens"`, `"Hundreds"`, `"Thousands"`, or `"Unknown"`)
+- **is_part_of**: Whether the library belongs to a larger aggregating project (`true` or `false`)
+
+### Conditional fields
+
+- **is_part_of_project_name** and **is_part_of_url**: Required only when `is_part_of` is `true`. Leave them out (or set them to `null`) when `is_part_of` is `false`.
 
 ### Add a new library
 
@@ -62,15 +65,16 @@ Locate the last library entry in the file:
 
 ```json
 {
+    "id": 500,
     "library": "Bodleian Library",
     "nation": "United Kingdom",
     "city": "Oxford",
     "website": "https://digital.bodleian.ox.ac.uk",
-    "lat": "51.7540",
-    "lng": "-1.2566",
+    "copyright": "CC BY-NC 4.0",
+    "quantity": "Hundreds",
     "iiif": true,
-    "is_free_cultural_works_license": true,
-    "quantity": "Hundreds"
+    "is_free_cultural_works_license": false,
+    "is_part_of": false
 }
 ```
 
@@ -86,7 +90,7 @@ Click any value and change it. Examples:
 
 - Update website: `"website": "https://new-collection-link.org"`
 - Correct city name: `"city": "Berlin"`
-- Add coordinates: `"lat": "52.5200"` and `"lng": "13.4050"`
+- Update copyright: `"copyright": "CC0 1.0"`
 - Update quantity: `"quantity": "Thousands"`
 
 !!! danger "Avoid these mistakes"
@@ -109,7 +113,7 @@ Scroll to the bottom and complete the **Propose changes** section.
 
 Select a change type:
 - 🆕 New Library Entry
-- ✏️ Correction (Typo, broken link, coordinate fix)
+- ✏️ Correction (Typo, broken link, or other fix)
 - 🗑️ Removal (Library closed or no longer digitized)
 
 Write a brief description of your change. Examples:
@@ -137,14 +141,14 @@ GitHub runs automatic checks:
 
 - **JSON Syntax Check**: Verifies proper formatting
 - **Schema Validation**: Confirms required fields and correct format
-- **Format Verification**: Validates URLs, coordinates, and quantity values
+- **Format Verification**: Validates URLs and quantity values
 
 A green checkmark (✓) indicates all checks passed.
 
 !!! warning "If validation fails"
     GitHub displays errors describing what's wrong. Common issues:
     
-    - **Missing required field**: Add library, nation, city, and website
+    - **Missing required field**: Add id, library, nation, city, website, copyright, quantity, iiif, is_free_cultural_works_license, and is_part_of
     - **Invalid URL format**: Website must start with http:// or https://
     - **JSON syntax error**: Check for missing commas between fields
     - **Invalid quantity value**: Use "Few", "Dozens", "Hundreds", "Thousands", or "Unknown"
@@ -157,7 +161,6 @@ A green checkmark (✓) indicates all checks passed.
 
 - Accuracy of library information
 - Working website links to digitized manuscripts
-- Correct coordinates (if provided)
 - Overall data quality
 
 Your pull request will be:
@@ -200,7 +203,7 @@ GitHub displays error messages indicating what's wrong:
 |-----------------------------|-----------------------------------------------------------------|
 | `Invalid JSON`              | Check each field—every field before the last needs a comma      |
 | `Invalid URI format`        | Ensure URL starts with `http://` or `https://`                  |
-| `Missing required property` | Add library, nation, city, and website to every entry           |
+| `Missing required property` | Add id, library, nation, city, website, copyright, quantity, iiif, is_free_cultural_works_license, and is_part_of to every entry |
 | `Invalid enum value`        | Use only "Few", "Dozens", "Hundreds", "Thousands", or "Unknown" |
 
 ### Follow up on pending reviews
@@ -228,9 +231,9 @@ If @Dioscorides requests changes:
 If your changes are declined:
 
 1. Read @Dioscorides's explanation
-2. Gather additional information (verify websites, confirm coordinates)
+2. Gather additional information (verify websites, confirm copyright status)
 3. Create a new pull request with improved data
-4. Reference the original PR: "This improves on PR #123 with verified coordinates"
+4. Reference the original PR: "This improves on PR #123 with verified data"
 
 ### Investigate deployment issues
 
@@ -247,11 +250,10 @@ If the dashboard appears broken after approval:
 
 ## Best practices
 
-- **Write specific descriptions**: Instead of "update data," write "Added City Library in Paris with IIIF support and corrected coordinates"
+- **Write specific descriptions**: Instead of "update data," write "Added City Library in Paris with IIIF support and verified copyright"
 - **Test URLs before submitting**: Verify the website link works in your browser
 - **Make one change type per PR**: Add all new libraries in one PR, but keep additions separate from corrections
 - **Verify spelling**: Library names and cities should match official sources
-- **Provide accurate coordinates**: Use Google Maps to verify lat/lng values
 - **Complete the checklist**: Verify all three items before submitting
 - **Allow time for review**: @Dioscorides typically responds within 24-48 hours
 
