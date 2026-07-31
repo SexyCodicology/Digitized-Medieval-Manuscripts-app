@@ -23,7 +23,7 @@ Scroll through the directory to explore libraries. Each entry shows:
 
 ### Read library details
 
-Click any library name to visit their collection website. You'll find manuscripts, catalogs, and research tools.
+Select the **Visit** link next to a library to open their collection website in a new tab. You'll find manuscripts, catalogs, and research tools.
 
 !!! tip "Explore nearby collections"
     Libraries in the same city often share similar manuscript types. If one library has what you need, check others in that area.
@@ -72,9 +72,9 @@ Libraries with IIIF support let you:
 
 ### Use the IIIF toggle
 
-Turn on **IIIF Only** to see libraries that support this standard:
+Turn on the **IIIF** toggle to see libraries that support this standard:
 
-1. Find the **IIIF Only** toggle at the top of the directory
+1. Find the **IIIF** toggle at the top of the directory
 2. Click to turn it on
 3. The list shows only IIIF-enabled libraries
 
