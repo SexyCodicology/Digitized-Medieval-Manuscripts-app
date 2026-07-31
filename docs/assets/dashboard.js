@@ -20,6 +20,8 @@ document$.subscribe(() => {
   if (!document.getElementById('loader')) return;
   /** @type {Array<Object>} */
   let allData = [];
+  /** @type {Record<string, string>} Record id → generated page slug. */
+  let librarySlugs = {};
   let sortColumn = /** @type {string|null} */ (null);
   let sortDirection = /** @type {'asc'|'desc'} */ ('asc');
 
@@ -45,14 +47,28 @@ document$.subscribe(() => {
   // Path is relative to the MkDocs-built site root. The homepage is served
   // from the site root, so 'assets/data.json' resolves correctly on both
   // localhost (mkdocs serve) and GitHub Pages.
-  fetch('assets/data.json')
-    .then(response => {
+  /**
+   * @param {string} path
+   * @returns {Promise<any>}
+   */
+  function loadJson(path) {
+    return fetch(path).then(response => {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
       return response.json();
-    })
-    .then(data => {
+    });
+  }
+
+  Promise.all([
+    loadJson('assets/data.json'),
+    // Written by hooks/library_pages.py alongside the per-library pages, so a
+    // row always links to the slug the build actually produced. If it is
+    // unavailable the directory still renders, just without the row links.
+    loadJson('assets/library-slugs.json').catch(() => ({})),
+  ])
+    .then(([data, slugs]) => {
+      librarySlugs = slugs;
       allData = data.sort((a, b) => a.library.localeCompare(b.library));
       initializeDashboard();
 
@@ -197,9 +213,15 @@ document$.subscribe(() => {
            </a>`
         : `<span style="color:var(--dash-muted);font-size:.8rem">No URL</span>`;
 
+      // ── Library name, linked to its own generated page ───────────────
+      const slug = librarySlugs[item.id];
+      const nameHtml = slug
+        ? `<a class="library-name" href="libraries/${encodeURIComponent(slug)}/">${item.library}</a>`
+        : `<div class="library-name">${item.library}</div>`;
+
       tr.innerHTML = `
         <td>
-          <div class="library-name">${item.library}</div>
+          ${nameHtml}
           ${projectHtml}
         </td>
         <td>
