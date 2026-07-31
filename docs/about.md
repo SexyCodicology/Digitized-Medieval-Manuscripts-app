@@ -12,9 +12,9 @@ This project was created to address the challenge of discovering digitized manus
 
 ### Frontend Dashboard
 - **HTML5**: Semantic markup
-- **CSS3**: Custom Material Design styling
+- **CSS3**: Custom, responsive grid and flexbox layout
 - **Vanilla JavaScript**: No frameworks, pure web standards
-- **Bootstrap 5**: Responsive grid system (heavily customized)
+- **Bootstrap Icons**: Icon set for the dashboard interface
 
 ### Documentation
 - **MkDocs**: Static site generator
