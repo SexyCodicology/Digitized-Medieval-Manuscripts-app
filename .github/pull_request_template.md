@@ -1,6 +1,6 @@
 ## Change Type
 - [ ] 🆕 New Library Entry
-- [ ] ✏️ Correction (Typo, broken link, coord fix)
+- [ ] ✏️ Correction (Typo, broken link, or other fix)
 - [ ] 🗑️ Removal (Library closed/no longer digitized)
 - [ ] 💻 Code / dashboard change
 - [ ] 📚 Documentation change
@@ -17,6 +17,6 @@
 - [ ] I have evidence for any IIIF claim (`iiif: true`) and for the stated `copyright`/`is_free_cultural_works_license` license.
 
 ### Code / documentation changes
-- [ ] I have tested this change locally (e.g. `python -m http.server` for the dashboard, `mkdocs serve` for docs).
+- [ ] I have tested this change locally with `mkdocs serve` (the dashboard and docs are both built by MkDocs).
 - [ ] I have not introduced unrelated formatting or dependency changes.
 - [ ] I have updated relevant docs, if applicable.

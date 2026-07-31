@@ -5,8 +5,8 @@ Welcome to DMMapp, your gateway to discovering digitized medieval manuscript col
 ## What you'll do
 
 - Browse libraries from around the world
-- Search for specific collections by location
-- Filter for high-quality image resources
+- Search for specific collections by name or location
+- Filter for high-quality image resources and open licenses
 
 ## Browse the directory
 
@@ -23,7 +23,7 @@ Scroll through the directory to explore libraries. Each entry shows:
 
 ### Read library details
 
-Click any library name to visit their collection website. You'll find manuscripts, catalogs, and research tools.
+Select the **Visit** link next to a library to open their collection website in a new tab. You'll find manuscripts, catalogs, and research tools.
 
 !!! tip "Explore nearby collections"
     Libraries in the same city often share similar manuscript types. If one library has what you need, check others in that area.
@@ -32,17 +32,17 @@ Click any library name to visit their collection website. You'll find manuscript
 
 Find specific libraries quickly using the search and filter tools.
 
-### Search by location
+### Search by name or location
 
-Type a city or country name in the search box. The list updates instantly to show matching libraries.
+Type a library name, city, or country name in the search box. The list updates instantly to show matching libraries.
 
 **Examples:**
 
+- Type "Bodleian" to find the Bodleian Library
 - Type "Paris" to see French collections in Paris
 - Type "Italy" to see all Italian libraries
-- Type "Oxford" to find Oxford collections
 
-The search looks at both city and country names, so you'll see all relevant results.
+The search matches library names, project names, cities, and countries, so you'll see all relevant results no matter which one you type.
 
 ### Filter by nation
 
@@ -54,8 +54,18 @@ Use the nation filter to view libraries from a specific country:
 
 Select **All Nations** to view the complete directory again.
 
+### Filter by project
+
+Some libraries are part of a larger aggregating project, such as Europeana. Use the project filter to view only libraries that belong to a specific project:
+
+1. Click the **Project** dropdown
+2. Select a project from the list
+3. The directory shows only libraries that belong to that project
+
+Select **All Projects** to view the complete directory again.
+
 !!! tip "Combine search and filter"
-    Use both tools together. Filter by nation, then search for a city. This helps when multiple countries have cities with the same name.
+    Use these tools together. Filter by nation, then search for a city. This helps when multiple countries have cities with the same name.
 
 ## Find IIIF resources
 
@@ -72,9 +82,9 @@ Libraries with IIIF support let you:
 
 ### Use the IIIF toggle
 
-Turn on **IIIF Only** to see libraries that support this standard:
+Turn on the **IIIF** toggle to see libraries that support this standard:
 
-1. Find the **IIIF Only** toggle at the top of the directory
+1. Find the **IIIF** toggle at the top of the directory
 2. Click to turn it on
 3. The list shows only IIIF-enabled libraries
 
@@ -82,6 +92,20 @@ Turn it off to see all libraries again.
 
 !!! info "About IIIF"
     IIIF is a global standard that makes digitized images more useful for research. Not all libraries support it yet, but the number grows each year.
+
+## Find openly licensed collections
+
+Some libraries offer their collections under a Creative Commons or other open license, so you can reuse the images freely in your own work.
+
+### Use the Open toggle
+
+Turn on the **Open** toggle to see libraries with an open license:
+
+1. Find the **Open** toggle at the top of the directory, next to the IIIF toggle
+2. Click to turn it on
+3. The list shows only libraries with an open license
+
+Turn it off to see all libraries again.
 
 ## Tips for your research
 
