@@ -43,8 +43,9 @@ SLUG_MAP_URI = "assets/library-slugs.json"
 # Only these URL schemes may become a clickable link on a generated page.
 SAFE_SCHEMES = frozenset({"http", "https"})
 
-# Fields every record must provide before a page can be generated for it.
-REQUIRED_FIELDS = ("id", "library", "city", "nation")
+# Text fields every record must provide before a page can be generated for it.
+# The id is checked separately, because it is an integer and 0 is valid.
+REQUIRED_TEXT_FIELDS = ("library", "city", "nation")
 
 # Longest slug body kept before the disambiguating record id is appended.
 MAX_SLUG_LENGTH = 80
@@ -143,11 +144,15 @@ def load_records(docs_dir: str) -> list[dict[str, Any]]:
     for position, record in enumerate(records):
         if not isinstance(record, dict):
             raise PluginError(f"{path}: record {position} is not an object.")
-        missing = [field for field in REQUIRED_FIELDS if not record.get(field)]
+        if not isinstance(record.get("id"), int) or isinstance(record["id"], bool):
+            raise PluginError(f"{path}: record {position} has a missing or non-integer id.")
+        missing = [
+            field
+            for field in REQUIRED_TEXT_FIELDS
+            if not str(record.get(field) or "").strip()
+        ]
         if missing:
             raise PluginError(f"{path}: record {position} is missing {', '.join(missing)}.")
-        if not isinstance(record["id"], int) or isinstance(record["id"], bool):
-            raise PluginError(f"{path}: record {position} has a non-integer id.")
 
     return records
 

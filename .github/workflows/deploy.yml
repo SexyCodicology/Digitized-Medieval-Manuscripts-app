@@ -58,7 +58,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install MkDocs Material
+      - name: Install Dependencies
         run: pip install -r requirements-dev.txt
 
       - name: Validate data.json
