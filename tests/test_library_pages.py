@@ -224,7 +224,9 @@ def test_records_differing_only_by_id_still_get_unique_metadata():
         '{"records": []}',
         "[{}]",
         '[{"id": "12", "library": "L", "city": "C", "nation": "N"}]',
+        '[{"id": true, "library": "L", "city": "C", "nation": "N"}]',
         '[{"library": "L", "city": "C", "nation": "N"}]',
+        '[{"id": 1, "library": "   ", "city": "C", "nation": "N"}]',
         "[1, 2, 3]",
     ],
 )
@@ -234,6 +236,19 @@ def test_a_broken_dataset_fails_the_build(tmp_path, content):
 
     with pytest.raises(hook.PluginError):
         hook.load_records(str(tmp_path))
+
+
+def test_a_record_with_id_zero_is_accepted(tmp_path):
+    """0 is a legal integer id, so it must not be read as a missing field."""
+    (tmp_path / "assets").mkdir()
+    (tmp_path / "assets" / "data.json").write_text(
+        '[{"id": 0, "library": "Zeroth Library", "city": "C", "nation": "N"}]',
+        encoding="utf-8",
+    )
+
+    records = hook.load_records(str(tmp_path))
+
+    assert hook.slug_for(records[0]) == "zeroth-library-0"
 
 
 def test_a_missing_dataset_fails_the_build(tmp_path):
