@@ -12,5 +12,5 @@
 # Owner: @Dioscorides
 # These files contain critical data and schema definitions
 
-data.json @Dioscorides
+docs/assets/data.json @Dioscorides
 schema.json @Dioscorides
