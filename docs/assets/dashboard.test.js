@@ -29,6 +29,8 @@ function baseHtml(rowsHtml) {
       <input id="searchInput">
       <select id="nationSelect"><option value="All">All</option></select>
       <select id="projectSelect"><option value="All">All</option></select>
+      <select id="quantitySelect"><option value="All">All</option></select>
+      <select id="copyrightSelect"><option value="All">All</option></select>
       <input id="iiifCheck" type="checkbox">
       <input id="freeCheck" type="checkbox">
       <button id="clearFilters"></button>
@@ -275,4 +277,211 @@ test('random library: repeated activations can select different records', async 
   randomLibraryBtn.click();
 
   assert.deepEqual(navigations, ['libraries/alpha-library-1/', 'libraries/beta-library-2/']);
+});
+
+test('quantity and copyright filters: options follow the declared order and narrow the results', async () => {
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Thousands', copyright: 'CC BY-NC 4.0' },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const quantitySelect = window.document.getElementById('quantitySelect');
+  const copyrightSelect = window.document.getElementById('copyrightSelect');
+
+  // QUANTITY_ORDER, not alphabetical: 'Few' before 'Thousands' even though
+  // alphabetising would put 'Thousands' first.
+  assert.deepEqual([...quantitySelect.options].map(o => o.value), ['All', 'Few', 'Thousands']);
+  // Copyright has no declared order, so it is alphabetised like nation/project.
+  assert.deepEqual([...copyrightSelect.options].map(o => o.value), ['All', 'CC BY-NC 4.0', 'Public Domain Mark 1.0']);
+
+  quantitySelect.value = 'Few';
+  quantitySelect.dispatchEvent(new window.Event('change'));
+
+  let rows = [...window.document.querySelectorAll('#tableBody tr')];
+  assert.deepEqual(rows.map(r => r.dataset.recordId), ['1']);
+  assert.equal(window.document.getElementById('showingCount').textContent, '1');
+
+  quantitySelect.value = 'All';
+  quantitySelect.dispatchEvent(new window.Event('change'));
+  copyrightSelect.value = 'CC BY-NC 4.0';
+  copyrightSelect.dispatchEvent(new window.Event('change'));
+
+  rows = [...window.document.querySelectorAll('#tableBody tr')];
+  assert.deepEqual(rows.map(r => r.dataset.recordId), ['2']);
+});
+
+test('quantity filter: a value outside the known enum is appended, and an empty copyright does not throw', async () => {
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 2, library: 'Zeta Library', nation: 'Nation Z', city: 'City Z', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Millions', copyright: '' },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Zeta Library</td><td>Nation Z</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  // 'Millions' is not in QUANTITY_ORDER, so it must not be dropped — it is
+  // appended after the known values instead.
+  assert.deepEqual(
+    [...window.document.getElementById('quantitySelect').options].map(o => o.value),
+    ['All', 'Few', 'Millions'],
+  );
+
+  const rows = [...window.document.querySelectorAll('#tableBody tr')];
+  assert.equal(rows.length, 2, 'a record with an empty copyright must still be shown unfiltered');
+});
+
+test('copyright filter: a value containing markup becomes a plain option label, never injected markup', async () => {
+  const maliciousCopyright = '<img src=x onerror="window.__pwned = true"> "quoted"';
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: maliciousCopyright },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const copyrightSelect = window.document.getElementById('copyrightSelect');
+  const option = [...copyrightSelect.options].find(o => o.value !== 'All');
+
+  assert.equal(copyrightSelect.querySelector('img'), null, 'no element must be injected into the select');
+  assert.equal(option.textContent, maliciousCopyright, 'the raw value must still be usable as an option label');
+  assert.equal(window.__pwned, undefined);
+
+  copyrightSelect.value = maliciousCopyright;
+  copyrightSelect.dispatchEvent(new window.Event('change'));
+
+  const rows = [...window.document.querySelectorAll('#tableBody tr')];
+  assert.deepEqual(rows.map(r => r.dataset.recordId), ['1']);
+});
+
+test('load failure: the quantity and copyright filters stay seeded with only their default option', async () => {
+  const dom = loadDashboard({
+    fetchImpl: () => Promise.reject(new Error('network down')),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  assert.deepEqual(
+    [...window.document.getElementById('quantitySelect').options].map(o => o.value),
+    ['All'],
+  );
+  assert.deepEqual(
+    [...window.document.getElementById('copyrightSelect').options].map(o => o.value),
+    ['All'],
+  );
+});
+
+test('quantity and copyright filters compose with search, nation, project, and the toggles', async () => {
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, is_part_of: true, is_part_of_project_name: 'Project X', quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 2, library: 'Alpha Annex', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, is_part_of: true, is_part_of_project_name: 'Project X', quantity: 'Thousands', copyright: 'Public Domain Mark 1.0' },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Alpha Annex</td><td>Nation A</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const searchInput      = window.document.getElementById('searchInput');
+  const nationSelect     = window.document.getElementById('nationSelect');
+  const projectSelect    = window.document.getElementById('projectSelect');
+  const quantitySelect   = window.document.getElementById('quantitySelect');
+  const copyrightSelect  = window.document.getElementById('copyrightSelect');
+  const iiifCheck        = window.document.getElementById('iiifCheck');
+  const freeCheck        = window.document.getElementById('freeCheck');
+
+  searchInput.value = 'alpha';
+  searchInput.dispatchEvent(new window.Event('input'));
+  nationSelect.value = 'Nation A';
+  nationSelect.dispatchEvent(new window.Event('change'));
+  projectSelect.value = 'Project X';
+  projectSelect.dispatchEvent(new window.Event('change'));
+  copyrightSelect.value = 'Public Domain Mark 1.0';
+  copyrightSelect.dispatchEvent(new window.Event('change'));
+  iiifCheck.checked = true;
+  iiifCheck.dispatchEvent(new window.Event('change'));
+  freeCheck.checked = true;
+  freeCheck.dispatchEvent(new window.Event('change'));
+  quantitySelect.value = 'Few';
+  quantitySelect.dispatchEvent(new window.Event('change'));
+
+  let rows = [...window.document.querySelectorAll('#tableBody tr')];
+  assert.deepEqual(rows.map(r => r.dataset.recordId), ['1'], 'the intersection of every active filter must be record 1 only');
+
+  quantitySelect.value = 'Thousands';
+  quantitySelect.dispatchEvent(new window.Event('change'));
+
+  rows = [...window.document.querySelectorAll('#tableBody tr')];
+  assert.deepEqual(rows.map(r => r.dataset.recordId), ['2'], 'switching quantity alone must switch which record matches');
+
+  searchInput.value = 'no such library';
+  searchInput.dispatchEvent(new window.Event('input'));
+
+  rows = [...window.document.querySelectorAll('#tableBody tr')];
+  assert.equal(rows.length, 0);
+  assert.equal(window.document.getElementById('emptyState').hidden, false);
+});
+
+test('clearFilters resets the quantity and copyright filters along with the rest', async () => {
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Thousands', copyright: 'CC BY-NC 4.0' },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const quantitySelect = window.document.getElementById('quantitySelect');
+  const copyrightSelect = window.document.getElementById('copyrightSelect');
+
+  quantitySelect.value = 'Few';
+  quantitySelect.dispatchEvent(new window.Event('change'));
+  copyrightSelect.value = 'Public Domain Mark 1.0';
+  copyrightSelect.dispatchEvent(new window.Event('change'));
+
+  assert.equal([...window.document.querySelectorAll('#tableBody tr')].length, 1);
+
+  window.document.getElementById('clearFilters').click();
+
+  assert.equal(quantitySelect.value, 'All');
+  assert.equal(copyrightSelect.value, 'All');
+  assert.equal([...window.document.querySelectorAll('#tableBody tr')].length, 2);
 });

@@ -18,6 +18,10 @@
  * ─────────────────────────────────────────────────────────────────────────
  */
 
+// Explicit, stable display order for the quantity filter: the enum's
+// meaning ("how much is digitised") does not sort alphabetically.
+const QUANTITY_ORDER = ['Few', 'Dozens', 'Hundreds', 'Thousands', 'Unknown'];
+
 document$.subscribe(() => {
   if (!document.getElementById('loader')) return;
   /** @type {Array<Object>} */
@@ -26,12 +30,14 @@ document$.subscribe(() => {
   let sortDirection = /** @type {'asc'|'desc'} */ ('asc');
 
   // ── DOM references ────────────────────────────────────────────────────
-  const loader        = /** @type {HTMLElement} */ (document.getElementById('loader'));
-  const tableBody     = /** @type {HTMLTableSectionElement} */ (document.getElementById('tableBody'));
-  const emptyState    = /** @type {HTMLElement} */ (document.getElementById('emptyState'));
-  const searchInput   = /** @type {HTMLInputElement} */ (document.getElementById('searchInput'));
-  const nationSelect  = /** @type {HTMLSelectElement} */ (document.getElementById('nationSelect'));
-  const projectSelect = /** @type {HTMLSelectElement} */ (document.getElementById('projectSelect'));
+  const loader          = /** @type {HTMLElement} */ (document.getElementById('loader'));
+  const tableBody       = /** @type {HTMLTableSectionElement} */ (document.getElementById('tableBody'));
+  const emptyState      = /** @type {HTMLElement} */ (document.getElementById('emptyState'));
+  const searchInput     = /** @type {HTMLInputElement} */ (document.getElementById('searchInput'));
+  const nationSelect    = /** @type {HTMLSelectElement} */ (document.getElementById('nationSelect'));
+  const projectSelect   = /** @type {HTMLSelectElement} */ (document.getElementById('projectSelect'));
+  const quantitySelect  = /** @type {HTMLSelectElement} */ (document.getElementById('quantitySelect'));
+  const copyrightSelect = /** @type {HTMLSelectElement} */ (document.getElementById('copyrightSelect'));
   const iiifCheck     = /** @type {HTMLInputElement} */ (document.getElementById('iiifCheck'));
   const freeCheck     = /** @type {HTMLInputElement} */ (document.getElementById('freeCheck'));
   const clearFiltersBtn = document.getElementById('clearFilters');
@@ -115,6 +121,8 @@ document$.subscribe(() => {
   function initializeDashboard() {
     populateNationFilter();
     populateProjectFilter();
+    populateQuantityFilter();
+    populateCopyrightFilter();
     updateStats(allData);
     renderTable(allData);
     initializeSorting();
@@ -255,13 +263,42 @@ document$.subscribe(() => {
     });
   }
 
+  /**
+   * Options follow QUANTITY_ORDER rather than the alphabetised values seen
+   * in the data. A value present in the data but absent from that list
+   * (a dataset drifted from schema.json's enum) is appended rather than
+   * dropped, so it stays filterable instead of silently disappearing.
+   */
+  function populateQuantityFilter() {
+    const present = new Set(allData.map(d => d.quantity).filter(Boolean));
+    const known   = QUANTITY_ORDER.filter(q => present.has(q));
+    const unknown = [...present].filter(q => !QUANTITY_ORDER.includes(q)).sort();
+
+    [...known, ...unknown].forEach(quantity => {
+      const opt = document.createElement('option');
+      opt.value = opt.textContent = quantity;
+      quantitySelect.appendChild(opt);
+    });
+  }
+
+  function populateCopyrightFilter() {
+    const values = [...new Set(allData.map(d => d.copyright).filter(Boolean))].sort();
+    values.forEach(copyright => {
+      const opt = document.createElement('option');
+      opt.value = opt.textContent = copyright;
+      copyrightSelect.appendChild(opt);
+    });
+  }
+
   // ── Filter engine ─────────────────────────────────────────────────────
   function filterData() {
-    const term    = searchInput.value.toLowerCase().trim();
-    const nation  = nationSelect.value;
-    const project = projectSelect.value;
-    const wantIIIF = iiifCheck.checked;
-    const wantFree = freeCheck.checked;
+    const term      = searchInput.value.toLowerCase().trim();
+    const nation    = nationSelect.value;
+    const project   = projectSelect.value;
+    const quantity  = quantitySelect.value;
+    const copyright = copyrightSelect.value;
+    const wantIIIF  = iiifCheck.checked;
+    const wantFree  = freeCheck.checked;
 
     const filtered = allData.filter(d => {
       const matchSearch =
@@ -269,14 +306,18 @@ document$.subscribe(() => {
         d.library?.toLowerCase().includes(term) ||
         d.city?.toLowerCase().includes(term)    ||
         d.nation?.toLowerCase().includes(term)  ||
-        d.is_part_of_project_name?.toLowerCase().includes(term);
+        d.is_part_of_project_name?.toLowerCase().includes(term) ||
+        d.copyright?.toLowerCase().includes(term);
 
-      const matchNation  = nation  === 'All' || d.nation === nation;
-      const matchProject = project === 'All' || d.is_part_of_project_name === project;
-      const matchIIIF    = !wantIIIF || d.iiif === true;
-      const matchFree    = !wantFree || d.is_free_cultural_works_license === true;
+      const matchNation    = nation    === 'All' || d.nation === nation;
+      const matchProject   = project   === 'All' || d.is_part_of_project_name === project;
+      const matchQuantity  = quantity  === 'All' || d.quantity === quantity;
+      const matchCopyright = copyright === 'All' || d.copyright === copyright;
+      const matchIIIF      = !wantIIIF || d.iiif === true;
+      const matchFree      = !wantFree || d.is_free_cultural_works_license === true;
 
-      return matchSearch && matchNation && matchProject && matchIIIF && matchFree;
+      return matchSearch && matchNation && matchProject && matchQuantity &&
+        matchCopyright && matchIIIF && matchFree;
     });
 
     renderTable(filtered);
@@ -315,15 +356,19 @@ document$.subscribe(() => {
   searchInput.addEventListener('input', filterData);
   nationSelect.addEventListener('change', filterData);
   projectSelect.addEventListener('change', filterData);
+  quantitySelect.addEventListener('change', filterData);
+  copyrightSelect.addEventListener('change', filterData);
   iiifCheck.addEventListener('change', filterData);
   freeCheck.addEventListener('change', filterData);
 
   clearFiltersBtn?.addEventListener('click', () => {
-    searchInput.value    = '';
-    nationSelect.value   = 'All';
-    projectSelect.value  = 'All';
-    iiifCheck.checked    = false;
-    freeCheck.checked    = false;
+    searchInput.value     = '';
+    nationSelect.value    = 'All';
+    projectSelect.value   = 'All';
+    quantitySelect.value  = 'All';
+    copyrightSelect.value = 'All';
+    iiifCheck.checked     = false;
+    freeCheck.checked     = false;
     filterData();
   });
 });
