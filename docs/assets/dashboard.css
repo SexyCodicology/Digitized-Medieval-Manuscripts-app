@@ -275,6 +275,77 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Disclosure holding the four secondary selects. Native <details> gives
+   expand/collapse, keyboard support, and a screen-reader-announced state
+   for free, so no JS is needed to toggle it. */
+.filters-more {
+  border: 1px solid var(--dash-input-border);
+  border-radius: var(--dash-radius);
+  background: var(--dash-input-bg);
+}
+
+.filters-more__summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  list-style: none; /* hide default marker so the custom chevron is the only one */
+}
+
+.filters-more__summary::-webkit-details-marker {
+  display: none;
+}
+
+.filters-more__summary::after {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-left: 0.15rem;
+  border-right: 2px solid var(--dash-muted);
+  border-bottom: 2px solid var(--dash-muted);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+
+.filters-more[open] .filters-more__summary::after {
+  transform: rotate(-135deg);
+}
+
+.filters-more__summary:focus-visible {
+  outline: 2px solid var(--md-primary-fg-color);
+  outline-offset: -2px;
+  border-radius: var(--dash-radius);
+}
+
+.filters-more__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.4rem;
+  border-radius: 100px;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color, #fff);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.filters-more[open] {
+  padding-bottom: 0.875rem;
+}
+
+.filters-more .filter-row--selects {
+  padding: 0 0.875rem;
 }
 
 /* Search box */

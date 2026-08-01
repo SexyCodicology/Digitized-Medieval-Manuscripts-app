@@ -42,6 +42,7 @@ document$.subscribe(() => {
   const freeCheck     = /** @type {HTMLInputElement} */ (document.getElementById('freeCheck'));
   const clearFiltersBtn = document.getElementById('clearFilters');
   const randomLibraryBtn = /** @type {HTMLButtonElement} */ (document.getElementById('randomLibraryBtn'));
+  const filtersActiveBadge = document.getElementById('filtersActiveBadge');
 
   // Stats spans
   const statTotal    = document.getElementById('statTotal');
@@ -290,8 +291,22 @@ document$.subscribe(() => {
     });
   }
 
+  // The four selects behind the "More filters" disclosure are collapsed by
+  // default, so an active one among them would otherwise be invisible.
+  // Counted separately from the always-visible search box and toggles,
+  // which have no such visibility problem.
+  function updateFiltersActiveBadge() {
+    if (!filtersActiveBadge) return;
+    const count = [nationSelect, projectSelect, quantitySelect, copyrightSelect]
+      .filter(select => select.value !== 'All').length;
+    filtersActiveBadge.textContent = String(count);
+    filtersActiveBadge.hidden = count === 0;
+  }
+
   // ── Filter engine ─────────────────────────────────────────────────────
   function filterData() {
+    updateFiltersActiveBadge();
+
     const term      = searchInput.value.toLowerCase().trim();
     const nation    = nationSelect.value;
     const project   = projectSelect.value;
