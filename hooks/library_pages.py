@@ -1,9 +1,12 @@
-"""Generate one static page per manuscript library at build time.
+"""Generate the static parts of the site from the library dataset at build time.
 
-MkDocs calls this hook (registered under ``hooks:`` in ``mkdocs.yml``) during
-``on_files``. It reads ``docs/assets/data.json`` and adds one virtual page per
-record at ``libraries/<slug>/``, so every library has its own crawlable URL,
-its own ``<title>``, and its own meta description.
+MkDocs calls this hook (registered under ``hooks:`` in ``mkdocs.yml``) twice.
+During ``on_files`` it reads ``docs/assets/data.json`` and adds one virtual page
+per record at ``libraries/<slug>/``, so every library has its own crawlable URL,
+its own ``<title>``, and its own meta description. During ``on_env`` it renders
+the homepage directory table from the same dataset and hands it to
+``overrides/home.html``, so the rows and the summary counts are in the HTML
+before any JavaScript runs.
 
 The pages are virtual: nothing is written into ``docs/``, so ``mkdocs serve``
 and the CI build in ``.github/workflows/deploy.yml`` produce identical output
@@ -27,6 +30,8 @@ from typing import Any
 from urllib.parse import urlsplit
 
 import yaml
+from jinja2 import Environment
+from markupsafe import Markup
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.exceptions import PluginError
 from mkdocs.structure.files import File, Files, InclusionLevel
@@ -37,8 +42,11 @@ DATA_PATH = ("assets", "data.json")
 # Directory that generated pages live under, relative to the docs directory.
 OUTPUT_DIR = "libraries"
 
-# Where the id-to-slug map is published for the homepage table to consume.
+# Where the id-to-slug map is published for other consumers of the built site.
 SLUG_MAP_URI = "assets/library-slugs.json"
+
+# Jinja global that overrides/home.html reads the pre-rendered directory from.
+TEMPLATE_GLOBAL = "dmm_directory"
 
 # Only these URL schemes may become a clickable link on a generated page.
 SAFE_SCHEMES = frozenset({"http", "https"})
@@ -301,6 +309,117 @@ def build_pages(records: list[dict[str, Any]]) -> dict[str, str]:
     }
 
 
+# ── Homepage directory table ──────────────────────────────────────────────
+#
+# docs/assets/dashboard.js no longer builds table rows. It reuses the rows
+# generated here, matching each one to its record through data-record-id, so
+# the markup of a row is defined in one place only.
+
+
+def render_badges(record: dict[str, Any]) -> str:
+    """Return the feature badges of one record."""
+    badges = []
+    if record.get("iiif"):
+        badges.append(
+            '<span class="badge badge--iiif">'
+            '<i class="bi bi-images" aria-hidden="true"></i>IIIF</span>'
+        )
+    if record.get("is_free_cultural_works_license"):
+        badges.append(
+            '<span class="badge badge--open">'
+            '<i class="bi bi-unlock" aria-hidden="true"></i>Open</span>'
+        )
+    if not badges:
+        badges.append('<span class="badge badge--standard">Standard Access</span>')
+    return "".join(badges)
+
+
+def render_project(record: dict[str, Any]) -> str:
+    """Return the project affiliation shown under the library name, if any.
+
+    The project is named even when its URL is unusable, because the name is
+    still a fact about the collection. Only the link is dropped.
+    """
+    name = record.get("is_part_of_project_name")
+    if not record.get("is_part_of") or not name:
+        return ""
+
+    label = f'<i class="bi bi-collection" aria-hidden="true"></i>{escape(str(name))}'
+    url = safe_url(record.get("is_part_of_url"))
+    body = (
+        f'<a href="{escape(url, quote=True)}" target="_blank" '
+        f'rel="noopener noreferrer">{label}</a>'
+        if url
+        else label
+    )
+    return f'<div class="library-project">{body}</div>'
+
+
+def render_visit(record: dict[str, Any]) -> str:
+    """Return the Visit control of one record, or a placeholder without a URL."""
+    website = safe_url(record.get("website"))
+    if not website:
+        return '<span style="color:var(--dash-muted);font-size:.8rem">No URL</span>'
+    return (
+        f'<a href="{escape(website, quote=True)}" target="_blank" '
+        'rel="noopener noreferrer" class="btn-visit">Visit'
+        '<i class="bi bi-arrow-right-short" aria-hidden="true"></i></a>'
+    )
+
+
+def render_row(record: dict[str, Any]) -> str:
+    """Return one directory row. Every dataset value is escaped on the way in."""
+    # slugify only ever emits [a-z0-9-], so the href cannot break its attribute.
+    slug = escape(slug_for(record), quote=True)
+    return (
+        f'<tr data-record-id="{record["id"]}">'
+        f'<td><a class="library-name" href="libraries/{slug}/">'
+        f'{escape(str(record["library"]))}</a>{render_project(record)}</td>'
+        f'<td><div class="location-nation">{escape(str(record["nation"]))}</div>'
+        '<div class="location-city"><i class="bi bi-dot" aria-hidden="true"></i>'
+        f'{escape(str(record["city"]))}</div></td>'
+        f"<td>{render_badges(record)}</td>"
+        f'<td style="text-align:right">{render_visit(record)}</td>'
+        "</tr>"
+    )
+
+
+def directory_sort_key(record: dict[str, Any]) -> tuple[str, int]:
+    """Order records the way a reader expects to find them.
+
+    dashboard.js sorts with ``localeCompare``, which no Python key can
+    reproduce exactly. Folding accents away and casefolding gets close enough
+    that the reorder JavaScript performs on load happens behind the loader and
+    is never seen. The id breaks ties so the order is stable across builds.
+    """
+    library = str(record["library"])
+    folded = unicodedata.normalize("NFKD", library).encode("ascii", "ignore").decode()
+    return (folded.casefold() or library.casefold(), record["id"])
+
+
+def summarise(records: list[dict[str, Any]]) -> dict[str, int]:
+    """Return the four homepage counts, using the same rules as dashboard.js."""
+    return {
+        "libraries": len(records),
+        "nations": len({str(record["nation"]) for record in records}),
+        "iiif": sum(1 for record in records if record.get("iiif")),
+        "projects": len(
+            {
+                str(record["is_part_of_project_name"])
+                for record in records
+                if record.get("is_part_of") and record.get("is_part_of_project_name")
+            }
+        ),
+    }
+
+
+def build_directory(records: list[dict[str, Any]]) -> dict[str, Any]:
+    """Return the rows and counts that overrides/home.html renders."""
+    rows = "".join(render_row(record) for record in sorted(records, key=directory_sort_key))
+    # Markup keeps the rows intact whether or not the theme autoescapes.
+    return {"rows": Markup(rows), "stats": summarise(records)}
+
+
 def on_files(files: Files, config: MkDocsConfig) -> Files:
     """Add one generated page per library record, plus the id-to-slug map."""
     records = load_records(config.docs_dir)
@@ -328,3 +447,13 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
     )
 
     return files
+
+
+def on_env(env: Environment, config: MkDocsConfig, files: Files) -> None:
+    """Hand the pre-rendered directory table to the homepage template.
+
+    The dataset is read again rather than carried over from ``on_files``, so
+    that a change to data.json is picked up on every ``mkdocs serve`` rebuild
+    and neither entry point depends on the other having run.
+    """
+    env.globals[TEMPLATE_GLOBAL] = build_directory(load_records(config.docs_dir))
