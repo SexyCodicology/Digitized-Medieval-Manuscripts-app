@@ -123,7 +123,7 @@ same rows over for searching, sorting, and filtering.
                         type="search"
                 >
                 <span class="visually-hidden" id="search-hint">
-          Filter by library name, project name, city, or nation
+          Filter by library name, project name, city, nation, or copyright
         </span>
             </div>
 
@@ -165,6 +165,16 @@ same rows over for searching, sorting, and filtering.
             <label class="visually-hidden" for="projectSelect">Filter by project</label>
             <select aria-label="Filter by project" class="filter-select" id="projectSelect">
                 <option value="All">All Projects</option>
+            </select>
+
+            <label class="visually-hidden" for="quantitySelect">Filter by quantity</label>
+            <select aria-label="Filter by approximate number of digitised manuscripts" class="filter-select" id="quantitySelect">
+                <option value="All">All Quantities</option>
+            </select>
+
+            <label class="visually-hidden" for="copyrightSelect">Filter by copyright</label>
+            <select aria-label="Filter by copyright or licence" class="filter-select" id="copyrightSelect">
+                <option value="All">All Licences</option>
             </select>
 
         </div>

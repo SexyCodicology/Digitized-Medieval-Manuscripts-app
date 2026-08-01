@@ -273,6 +273,7 @@
 /* Second row of selects is centred */
 .filter-row--selects {
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
