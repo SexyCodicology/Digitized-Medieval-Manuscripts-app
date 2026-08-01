@@ -291,7 +291,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 22,
@@ -3110,13 +3110,13 @@
     {
         "id": 232,
         "nation": "Germany",
-        "city": "Wolfenbuttel",
+        "city": "Wolfenbüttel",
         "library": "Herzog August Bibliothek",
         "quantity": "Unknown",
         "website": "https://diglib.hab.de/?db=mss",
-        "copyright": "Unknown",
+        "copyright": "Public Domain Mark 1.0",
         "iiif": false,
-        "is_free_cultural_works_license": false,
+        "is_free_cultural_works_license": true,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
         "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
@@ -3798,14 +3798,14 @@
         "nation": "Germany",
         "city": "Kiel",
         "library": "Universitätsbibliothek",
-        "quantity": "Unknown",
-        "website": "http://www.ub.uni-kiel.de/digiport/Handschriften/hand.html",
+        "quantity": "Few",
+        "website": "https://www.ub.uni-kiel.de/digiport/Handschriften/hand.html",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "is_part_of": false,
-        "is_part_of_project_name": null,
-        "is_part_of_url": null
+        "is_part_of": true,
+        "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 284,
@@ -3973,7 +3973,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 296,
@@ -3987,7 +3987,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 297,
@@ -4001,12 +4001,12 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 298,
         "nation": "Germany",
-        "city": "Gottingen",
+        "city": "Göttingen",
         "library": "Seminar für Mittlere und Neuere Geschichte der Georg-August-Universität, Diplomatischer Apparat",
         "quantity": "Few",
         "website": "https://diglib.hab.de/?db=mss&list=collection&id=ed&settlement=G%C3%B6ttingen",
@@ -4015,7 +4015,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 299,
@@ -4029,7 +4029,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 300,
@@ -4043,7 +4043,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 301,
@@ -4057,7 +4057,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 302,
@@ -4071,7 +4071,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 303,
@@ -4085,12 +4085,12 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 304,
         "nation": "Germany",
-        "city": "Hanover",
+        "city": "Hannover",
         "library": "Hauptstaatsarchiv",
         "quantity": "Few",
         "website": "https://diglib.hab.de/?db=mss&list=collection&id=ed&settlement=Hannover",
@@ -4099,7 +4099,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 305,
@@ -4113,7 +4113,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 306,
@@ -4127,7 +4127,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 307,
@@ -4141,12 +4141,12 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 308,
         "nation": "Germany",
-        "city": "Kothen",
+        "city": "Köthen",
         "library": "Historisches Museum",
         "quantity": "Unknown",
         "website": "https://diglib.hab.de/?db=mss&list=collection&id=ed&settlement=K%C3%B6then",
@@ -4155,12 +4155,12 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 309,
         "nation": "Germany",
-        "city": "Luneburg",
+        "city": "Lüneburg",
         "library": "Ratsbücherei",
         "quantity": "Hundreds",
         "website": "https://diglib.hab.de/?db=mss&list=collection&id=ed&settlement=L%C3%BCneburg",
@@ -4169,7 +4169,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 310,
@@ -4183,13 +4183,13 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 311,
         "nation": "Germany",
-        "city": "Wolfenbuttel",
-        "library": "Niedersächsisches Staatsarchiv",
+        "city": "Wolfenbüttel",
+        "library": "Niedersächsisches Landesarchiv, Abteilung Wolfenbüttel",
         "quantity": "Few",
         "website": "https://diglib.hab.de/?db=mss&list=collection&id=ed&settlement=Wolfenb%C3%BCttel&repository=Staatsarchiv%2BWolfenb%C3%BCttel",
         "copyright": "Unknown",
@@ -4197,7 +4197,7 @@
         "is_free_cultural_works_license": false,
         "is_part_of": true,
         "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
-        "is_part_of_url": "http://diglib.hab.de"
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 312,
@@ -4216,16 +4216,16 @@
     {
         "id": 313,
         "nation": "Germany",
-        "city": "Lubeck",
+        "city": "Lübeck",
         "library": "Stadtbibliothek",
         "quantity": "Unknown",
-        "website": "http://digital.stadtbibliothek.luebeck.de",
+        "website": "https://digital-stadtbibliothek.luebeck.de/viewer/index/",
         "copyright": "Unknown",
-        "iiif": false,
+        "iiif": true,
         "is_free_cultural_works_license": false,
-        "is_part_of": false,
-        "is_part_of_project_name": null,
-        "is_part_of_url": null
+        "is_part_of": true,
+        "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     },
     {
         "id": 314,
@@ -8692,5 +8692,75 @@
         "is_part_of": true,
         "is_part_of_project_name": "BiblioPhilly",
         "is_part_of_url": "https://bibliophilly.library.upenn.edu/"
+    },
+    {
+        "id": 637,
+        "nation": "Germany",
+        "city": "Bremen",
+        "library": "Staats- und Universitätsbibliothek Bremen",
+        "quantity": "Hundreds",
+        "website": "https://brema.suub.uni-bremen.de/ms",
+        "copyright": "Public Domain Mark 1.0",
+        "iiif": true,
+        "is_free_cultural_works_license": true,
+        "is_part_of": true,
+        "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
+    },
+    {
+        "id": 638,
+        "nation": "Germany",
+        "city": "Göttingen",
+        "library": "Niedersächsische Staats- und Universitätsbibliothek Göttingen",
+        "quantity": "Dozens",
+        "website": "https://gdz.sub.uni-goettingen.de/collection/DDB_NEUSTART_KULTUR?filter%5B0%5D%5Bdc%5D=handschriften",
+        "copyright": "Public Domain Mark 1.0",
+        "iiif": true,
+        "is_free_cultural_works_license": true,
+        "is_part_of": true,
+        "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
+    },
+    {
+        "id": 639,
+        "nation": "Germany",
+        "city": "Hildesheim",
+        "library": "Dombibliothek",
+        "quantity": "Few",
+        "website": "https://www.dombibliothek-hildesheim.de/bestand/highlights/medinger-handschriften/",
+        "copyright": "Unknown",
+        "iiif": true,
+        "is_free_cultural_works_license": false,
+        "is_part_of": true,
+        "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
+    },
+    {
+        "id": 640,
+        "nation": "Germany",
+        "city": "Oldenburg",
+        "library": "Landesbibliothek Oldenburg",
+        "quantity": "Few",
+        "website": "https://digital.lb-oldenburg.de/urn/urn%3Anbn%3Ade%3Agbv%3A45%3A1-3571",
+        "copyright": "Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+        "iiif": true,
+        "is_free_cultural_works_license": true,
+        "is_part_of": true,
+        "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
+    },
+    {
+        "id": 641,
+        "nation": "Germany",
+        "city": "Wolfenbüttel",
+        "library": "Landeskirchliches Archiv, Depositum Predigerseminar Braunschweig",
+        "quantity": "Few",
+        "website": "https://diglib.hab.de/?db=mss&id=wf-lk-bs-h-1-h-1a&list=ms",
+        "copyright": "Unknown",
+        "iiif": false,
+        "is_free_cultural_works_license": false,
+        "is_part_of": true,
+        "is_part_of_project_name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
+        "is_part_of_url": "https://diglib.hab.de/?db=mss&lang=en"
     }
 ]
