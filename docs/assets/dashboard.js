@@ -82,15 +82,33 @@ document$.subscribe(() => {
       setTimeout(() => loader.remove(), 400);
     })
     .catch(err => {
-      loader.innerHTML = `
-        <i class="bi bi-exclamation-triangle"
-           style="font-size:3rem;color:#c62828;"
-           aria-hidden="true"></i>
-        <p style="color:#c62828;margin-top:.75rem;font-size:.875rem">
-          Failed to load data.json<br>
-          <small>${err.message}</small>
-        </p>`;
+      showLoadError(err.message);
     });
+
+  /**
+   * Replace the loader with an error state, built from safe DOM APIs so a
+   * fetch/parse error message is always shown as text, never parsed as HTML.
+   * @param {string} message
+   */
+  function showLoadError(message) {
+    const icon = document.createElement('i');
+    icon.className = 'bi bi-exclamation-triangle';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.style.fontSize = '3rem';
+    icon.style.color = '#c62828';
+
+    const text = document.createElement('p');
+    text.style.color = '#c62828';
+    text.style.marginTop = '.75rem';
+    text.style.fontSize = '.875rem';
+    text.append('Failed to load data.json', document.createElement('br'));
+
+    const small = document.createElement('small');
+    small.textContent = message;
+    text.appendChild(small);
+
+    loader.replaceChildren(icon, text);
+  }
 
   // ── Bootstrap ─────────────────────────────────────────────────────────
   function initializeDashboard() {

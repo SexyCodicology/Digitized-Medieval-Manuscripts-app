@@ -1,0 +1,12 @@
+{
+  "name": "dmmapp-dev-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Development-only Node test tooling for docs/assets/dashboard.js. Not required to build or serve the MkDocs site.",
+  "scripts": {
+    "test": "node --test docs/assets/dashboard.test.js"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.1"
+  }
+}
