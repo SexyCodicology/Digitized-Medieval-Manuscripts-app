@@ -9,8 +9,10 @@
  *    [data-md-color-scheme="slate"] on <body> — handled in dashboard.css.
  *  - fetch() path updated: 'data.json' → 'assets/data.json' to resolve
  *    correctly from the MkDocs-built root.
- *  - renderTable() updated to use new BEM class names (badge--, btn-visit,
- *    library-name, location-*, sort-icon--*).
+ *  - renderTable() no longer builds rows. hooks/library_pages.py writes one
+ *    <tr data-record-id="…"> per record into the built index.html, so the
+ *    directory is readable without JavaScript. renderTable() now reorders and
+ *    detaches those rows, which keeps the row markup defined in one place.
  *  - Sort header aria-sort attribute is now toggled for a11y.
  *  - No global mutable state beyond allData/sort tracking inside the IIFE.
  * ─────────────────────────────────────────────────────────────────────────
@@ -20,8 +22,6 @@ document$.subscribe(() => {
   if (!document.getElementById('loader')) return;
   /** @type {Array<Object>} */
   let allData = [];
-  /** @type {Record<string, string>} Record id → generated page slug. */
-  let librarySlugs = {};
   let sortColumn = /** @type {string|null} */ (null);
   let sortDirection = /** @type {'asc'|'desc'} */ ('asc');
 
@@ -43,6 +43,17 @@ document$.subscribe(() => {
   const statProjects = document.getElementById('statProjects');
   const showingCount = document.getElementById('showingCount');
 
+  // ── Pre-rendered rows ─────────────────────────────────────────────────
+  // The build writes one row per record into the page, so the table is
+  // already complete before this script runs. Index those rows by record id
+  // once; renderTable() then moves the ones a filter keeps and leaves the
+  // rest detached, ready to come back when the filter changes.
+  /** @type {Map<string, HTMLTableRowElement>} */
+  const rowsById = new Map();
+  tableBody.querySelectorAll('tr[data-record-id]').forEach(row => {
+    rowsById.set(row.dataset.recordId, row);
+  });
+
   // ── Data loading ──────────────────────────────────────────────────────
   // Path is relative to the MkDocs-built site root. The homepage is served
   // from the site root, so 'assets/data.json' resolves correctly on both
@@ -60,15 +71,8 @@ document$.subscribe(() => {
     });
   }
 
-  Promise.all([
-    loadJson('assets/data.json'),
-    // Written by hooks/library_pages.py alongside the per-library pages, so a
-    // row always links to the slug the build actually produced. If it is
-    // unavailable the directory still renders, just without the row links.
-    loadJson('assets/library-slugs.json').catch(() => ({})),
-  ])
-    .then(([data, slugs]) => {
-      librarySlugs = slugs;
+  loadJson('assets/data.json')
+    .then(data => {
       allData = data.sort((a, b) => a.library.localeCompare(b.library));
       initializeDashboard();
 
@@ -152,14 +156,23 @@ document$.subscribe(() => {
 
   // ── Render ────────────────────────────────────────────────────────────
   /**
-   * Render the filtered/sorted dataset into the table.
+   * Show the given records, in the given order, using the pre-rendered rows.
+   *
+   * Appending a row that is already in the document moves it, so this both
+   * reorders and filters in one pass. A record with no pre-rendered row is
+   * skipped: that can only happen if a cached data.json is newer than the
+   * page, and dropping the row is safer than inventing markup for it.
+   *
    * @param {Array<Object>} data
    */
   function renderTable(data) {
-    tableBody.innerHTML = '';
+    const rows = data
+      .map(item => rowsById.get(String(item.id)))
+      .filter(Boolean);
     const tableScroll = document.querySelector('.table-scroll');
 
-    if (data.length === 0) {
+    if (rows.length === 0) {
+      tableBody.replaceChildren();
       if (tableScroll) tableScroll.style.display = 'none';
       emptyState.hidden = false;
       if (showingCount) showingCount.textContent = '0';
@@ -170,75 +183,10 @@ document$.subscribe(() => {
     emptyState.hidden = true;
 
     const frag = document.createDocumentFragment();
+    rows.forEach(row => frag.appendChild(row));
+    tableBody.replaceChildren(frag);
 
-    data.forEach(item => {
-      const tr = document.createElement('tr');
-
-      // ── Feature badges ──────────────────────────────────────────────
-      let badges = '';
-      if (item.iiif) {
-        badges += `<span class="badge badge--iiif">
-                     <i class="bi bi-images" aria-hidden="true"></i>IIIF
-                   </span>`;
-      }
-      if (item.is_free_cultural_works_license) {
-        badges += `<span class="badge badge--open">
-                     <i class="bi bi-unlock" aria-hidden="true"></i>Open
-                   </span>`;
-      }
-      if (!badges) {
-        badges = `<span class="badge badge--standard">Standard Access</span>`;
-      }
-
-      // ── Project affiliation ─────────────────────────────────────────
-      const projectHtml = item.is_part_of && item.is_part_of_project_name
-        ? `<div class="library-project">
-             <a href="${item.is_part_of_url}"
-                target="_blank"
-                rel="noopener noreferrer">
-               <i class="bi bi-collection" aria-hidden="true"></i>
-               ${item.is_part_of_project_name}
-             </a>
-           </div>`
-        : '';
-
-      // ── Visit button ────────────────────────────────────────────────
-      const visitBtn = item.website
-        ? `<a href="${item.website}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-visit">
-             Visit
-             <i class="bi bi-arrow-right-short" aria-hidden="true"></i>
-           </a>`
-        : `<span style="color:var(--dash-muted);font-size:.8rem">No URL</span>`;
-
-      // ── Library name, linked to its own generated page ───────────────
-      const slug = librarySlugs[item.id];
-      const nameHtml = slug
-        ? `<a class="library-name" href="libraries/${encodeURIComponent(slug)}/">${item.library}</a>`
-        : `<div class="library-name">${item.library}</div>`;
-
-      tr.innerHTML = `
-        <td>
-          ${nameHtml}
-          ${projectHtml}
-        </td>
-        <td>
-          <div class="location-nation">${item.nation}</div>
-          <div class="location-city">
-            <i class="bi bi-dot" aria-hidden="true"></i>${item.city}
-          </div>
-        </td>
-        <td>${badges}</td>
-        <td style="text-align:right">${visitBtn}</td>
-      `;
-
-      frag.appendChild(tr);
-    });
-
-    tableBody.appendChild(frag);
-    if (showingCount) showingCount.textContent = String(data.length);
+    if (showingCount) showingCount.textContent = String(rows.length);
   }
 
   // ── Stats ─────────────────────────────────────────────────────────────
