@@ -583,6 +583,18 @@ a.library-name:focus-visible {
   text-decoration: none;
 }
 
+.hero__random-btn {
+  margin-top: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.hero__random-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
 /* ── 10. Sortable headers ─────────────────────────────────────────────────*/
 .sortable {
   cursor: pointer;

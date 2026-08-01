@@ -32,6 +32,7 @@ function baseHtml(rowsHtml) {
       <input id="iiifCheck" type="checkbox">
       <input id="freeCheck" type="checkbox">
       <button id="clearFilters"></button>
+      <button disabled id="randomLibraryBtn"></button>
       <span id="statTotal"></span>
       <span id="statNations"></span>
       <span id="statIIIF"></span>
@@ -127,4 +128,151 @@ test('regression guard: pre-rendered rows still load, sort, and update stats on 
   assert.equal(rows[1].dataset.recordId, '2');
   assert.equal(window.document.getElementById('statTotal').textContent, '2');
   assert.equal(window.document.getElementById('emptyState').hidden, true);
+  assert.equal(
+    window.document.getElementById('randomLibraryBtn').disabled,
+    false,
+    'the random-library control must be enabled once the dataset has loaded',
+  );
+});
+
+test('load failure: the random-library control stays disabled and does not navigate', async () => {
+  const dom = loadDashboard({
+    fetchImpl: () => Promise.reject(new Error('network down')),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const randomLibraryBtn = window.document.getElementById('randomLibraryBtn');
+  const navigations = [];
+  window.open = (url) => navigations.push(url);
+
+  assert.equal(randomLibraryBtn.disabled, true);
+  randomLibraryBtn.click();
+  assert.deepEqual(navigations, [], 'a disabled control must not navigate anywhere');
+});
+
+test('random library: happy path navigates to a real record URL from its pre-rendered row', async () => {
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td><a class="library-name" href="libraries/alpha-library-1/">Alpha Library</a></td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td><a class="library-name" href="libraries/beta-library-2/">Beta Library</a></td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  // Deterministic pick: Math.random() * 2 → floor(0) selects allData[0], the
+  // first record after the library.localeCompare sort (Alpha).
+  window.Math.random = () => 0;
+  const navigations = [];
+  window.open = (url) => navigations.push(url);
+
+  window.document.getElementById('randomLibraryBtn').click();
+
+  assert.deepEqual(navigations, ['libraries/alpha-library-1/']);
+});
+
+test('random library: the target comes from the pre-rendered row, never rebuilt from dataset fields', async () => {
+  // A library name that a naive JS slugify would mangle differently from the
+  // Python build. The href on the pre-rendered row is what the build
+  // actually generated, and is deliberately not derivable from the name.
+  const data = [
+    { id: 7, library: 'Bibliothèque Ñoño & Co. <script>', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="7"><td><a class="library-name" href="libraries/bibliotheque-nono-and-co-7/">Bibliothèque Ñoño &amp; Co. &lt;script&gt;</a></td><td>Nation A</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  window.Math.random = () => 0;
+  const navigations = [];
+  window.open = (url) => navigations.push(url);
+
+  window.document.getElementById('randomLibraryBtn').click();
+
+  assert.deepEqual(navigations, ['libraries/bibliotheque-nono-and-co-7/']);
+});
+
+test('random library: a record with no matching pre-rendered row produces no navigation', async () => {
+  // rowsById is built only from rows actually present in the page, so a
+  // record present in data.json but missing its row (a stale cache) has
+  // nothing to resolve to.
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: '',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  window.Math.random = () => 0;
+  const navigations = [];
+  window.open = (url) => navigations.push(url);
+
+  window.document.getElementById('randomLibraryBtn').click();
+
+  assert.deepEqual(navigations, [], 'no row means no derivable URL, so nothing must be navigated to');
+});
+
+test('random library: an empty dataset does not throw and does not navigate', async () => {
+  const dom = loadDashboard({
+    rowsHtml: '',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve([]) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const navigations = [];
+  window.open = (url) => navigations.push(url);
+
+  assert.doesNotThrow(() => window.document.getElementById('randomLibraryBtn').click());
+  assert.deepEqual(navigations, []);
+});
+
+test('random library: repeated activations can select different records', async () => {
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td><a class="library-name" href="libraries/alpha-library-1/">Alpha Library</a></td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td><a class="library-name" href="libraries/beta-library-2/">Beta Library</a></td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const navigations = [];
+  window.open = (url) => navigations.push(url);
+  const randomLibraryBtn = window.document.getElementById('randomLibraryBtn');
+
+  window.Math.random = () => 0;
+  randomLibraryBtn.click();
+  window.Math.random = () => 0.99;
+  randomLibraryBtn.click();
+
+  assert.deepEqual(navigations, ['libraries/alpha-library-1/', 'libraries/beta-library-2/']);
 });
