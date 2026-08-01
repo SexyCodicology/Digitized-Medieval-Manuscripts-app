@@ -6,11 +6,22 @@ home.html — DMMapp dashboard template override
 Triggered by docs/index.md via `template: home.html` front-matter.
 Extends Material's main.html; overrides only the content block so the
 native navbar, palette toggle, search, and footer remain untouched.
+
+The directory rows and the summary counts come from `dmm_directory`, which
+hooks/library_pages.py builds from docs/assets/data.json during `on_env`.
+They are therefore in the built HTML before any JavaScript runs, which is
+what crawlers and readers without JavaScript see. dashboard.js takes the
+same rows over for searching, sorting, and filtering.
 #}
 
 {% block extrahead %}
 {{ super() }}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+{# The loader covers the whole viewport and only JavaScript clears it, so
+   without JavaScript it would hide the directory it is announcing. #}
+<noscript>
+    <style>#loader { display: none; }</style>
+</noscript>
 {% endblock %}
 
 {% block content %}
@@ -40,7 +51,7 @@ native navbar, palette toggle, search, and footer remain untouched.
                 <div aria-hidden="true" class="stat-card__icon stat-card__icon--primary">
                     <i class="bi bi-bank"></i>
                 </div>
-                <strong class="stat-card__value" id="statTotal">0</strong>
+                <strong class="stat-card__value" id="statTotal">{{ dmm_directory.stats.libraries }}</strong>
                 <span class="stat-card__label">Libraries</span>
             </article>
 
@@ -48,7 +59,7 @@ native navbar, palette toggle, search, and footer remain untouched.
                 <div aria-hidden="true" class="stat-card__icon stat-card__icon--success">
                     <i class="bi bi-geo-alt"></i>
                 </div>
-                <strong class="stat-card__value" id="statNations">0</strong>
+                <strong class="stat-card__value" id="statNations">{{ dmm_directory.stats.nations }}</strong>
                 <span class="stat-card__label">Nations</span>
             </article>
 
@@ -56,7 +67,7 @@ native navbar, palette toggle, search, and footer remain untouched.
                 <div aria-hidden="true" class="stat-card__icon stat-card__icon--info">
                     <i class="bi bi-images"></i>
                 </div>
-                <strong class="stat-card__value" id="statIIIF">0</strong>
+                <strong class="stat-card__value" id="statIIIF">{{ dmm_directory.stats.iiif }}</strong>
                 <span class="stat-card__label">IIIF Repositories</span>
             </article>
 
@@ -64,7 +75,7 @@ native navbar, palette toggle, search, and footer remain untouched.
                 <div aria-hidden="true" class="stat-card__icon stat-card__icon--warning">
                     <i class="bi bi-collection-play"></i>
                 </div>
-                <strong class="stat-card__value" id="statProjects">0</strong>
+                <strong class="stat-card__value" id="statProjects">{{ dmm_directory.stats.projects }}</strong>
                 <span class="stat-card__label">Linked Projects</span>
             </article>
 
@@ -180,7 +191,7 @@ native navbar, palette toggle, search, and footer remain untouched.
                         <th class="col-access" scope="col">Access</th>
                     </tr>
                     </thead>
-                    <tbody id="tableBody"></tbody>
+                    <tbody id="tableBody">{{ dmm_directory.rows }}</tbody>
                 </table>
             </div>
 
@@ -192,7 +203,7 @@ native navbar, palette toggle, search, and footer remain untouched.
         </div>
 
         <p aria-live="polite" class="results-meta" role="status">
-            <span id="showingCount">0</span> libraries showing
+            <span id="showingCount">{{ dmm_directory.stats.libraries }}</span> libraries showing
         </p>
     </section>
 </div>
