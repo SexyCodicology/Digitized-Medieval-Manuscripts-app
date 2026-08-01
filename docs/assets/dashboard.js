@@ -57,15 +57,19 @@ document$.subscribe(() => {
   const clearFiltersBtn = document.getElementById('clearFilters');
   const randomLibraryBtn = /** @type {HTMLButtonElement} */ (document.getElementById('randomLibraryBtn'));
   const filtersActiveBadge = document.getElementById('filtersActiveBadge');
-  const exportCsvBtn  = /** @type {HTMLButtonElement} */ (document.getElementById('exportCsvBtn'));
-  const exportJsonBtn = /** @type {HTMLButtonElement} */ (document.getElementById('exportJsonBtn'));
+  // Export controls and the "N libraries showing" count each appear twice —
+  // once above the table, once below — so 700+ pre-rendered rows never put
+  // them out of reach. Selecting by attribute/class rather than a second
+  // hardcoded id lets both instances stay wired through one code path.
+  const exportCsvBtns  = document.querySelectorAll('[data-export="csv"]');
+  const exportJsonBtns = document.querySelectorAll('[data-export="json"]');
 
   // Stats spans
   const statTotal    = document.getElementById('statTotal');
   const statNations  = document.getElementById('statNations');
   const statIIIF     = document.getElementById('statIIIF');
   const statProjects = document.getElementById('statProjects');
-  const showingCount = document.getElementById('showingCount');
+  const showingCountEls = document.querySelectorAll('.js-showing-count');
 
   // ── Pre-rendered rows ─────────────────────────────────────────────────
   // The build writes one row per record into the page, so the table is
@@ -147,8 +151,8 @@ document$.subscribe(() => {
     // The dataset is only trustworthy once it has loaded, so the random-pick
     // and export controls are enabled here rather than at page load.
     if (randomLibraryBtn) randomLibraryBtn.disabled = false;
-    if (exportCsvBtn)  exportCsvBtn.disabled  = false;
-    if (exportJsonBtn) exportJsonBtn.disabled = false;
+    exportCsvBtns.forEach(btn => { btn.disabled = false; });
+    exportJsonBtns.forEach(btn => { btn.disabled = false; });
   }
 
   // ── Sorting ───────────────────────────────────────────────────────────
@@ -225,7 +229,7 @@ document$.subscribe(() => {
       tableBody.replaceChildren();
       if (tableScroll) tableScroll.style.display = 'none';
       emptyState.hidden = false;
-      if (showingCount) showingCount.textContent = '0';
+      showingCountEls.forEach(el => { el.textContent = '0'; });
       return;
     }
 
@@ -236,7 +240,7 @@ document$.subscribe(() => {
     rows.forEach(row => frag.appendChild(row));
     tableBody.replaceChildren(frag);
 
-    if (showingCount) showingCount.textContent = String(rows.length);
+    showingCountEls.forEach(el => { el.textContent = String(rows.length); });
   }
 
   // ── Stats ─────────────────────────────────────────────────────────────
@@ -421,12 +425,16 @@ document$.subscribe(() => {
     URL.revokeObjectURL(url);
   }
 
-  exportCsvBtn?.addEventListener('click', () => {
-    downloadFile(toCsv(currentFiltered), 'dmm-libraries.csv', 'text/csv;charset=utf-8');
+  exportCsvBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      downloadFile(toCsv(currentFiltered), 'dmm-libraries.csv', 'text/csv;charset=utf-8');
+    });
   });
 
-  exportJsonBtn?.addEventListener('click', () => {
-    downloadFile(JSON.stringify(currentFiltered, null, 2), 'dmm-libraries.json', 'application/json');
+  exportJsonBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      downloadFile(JSON.stringify(currentFiltered, null, 2), 'dmm-libraries.json', 'application/json');
+    });
   });
 
   // ── Explore a random library ─────────────────────────────────────────

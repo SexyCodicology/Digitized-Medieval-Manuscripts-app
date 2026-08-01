@@ -739,12 +739,20 @@ a.library-name:focus-visible {
 }
 
 /* ── 12. Results meta ─────────────────────────────────────────────────────*/
+.results-header,
 .results-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+.results-header {
+  margin-bottom: 0.75rem;
+}
+
+.results-footer {
   margin-top: 0.5rem;
 }
 

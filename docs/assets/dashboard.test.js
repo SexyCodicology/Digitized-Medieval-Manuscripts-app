@@ -44,13 +44,16 @@ function baseHtml(rowsHtml) {
       <input id="freeCheck" type="checkbox">
       <button id="clearFilters"></button>
       <button disabled id="randomLibraryBtn"></button>
-      <button disabled id="exportCsvBtn"></button>
-      <button disabled id="exportJsonBtn"></button>
+      <button data-export="csv" disabled id="exportCsvBtnTop"></button>
+      <button data-export="json" disabled id="exportJsonBtnTop"></button>
+      <button data-export="csv" disabled id="exportCsvBtn"></button>
+      <button data-export="json" disabled id="exportJsonBtn"></button>
       <span id="statTotal"></span>
       <span id="statNations"></span>
       <span id="statIIIF"></span>
       <span id="statProjects"></span>
-      <span id="showingCount"></span>
+      <span class="js-showing-count" id="showingCountTop"></span>
+      <span class="js-showing-count" id="showingCount"></span>
     </div>
   `;
 }
@@ -575,7 +578,7 @@ function makeRecord(overrides) {
   }, overrides);
 }
 
-test('load failure: the export controls stay disabled', async () => {
+test('load failure: every export control instance stays disabled', async () => {
   const dom = loadDashboard({
     fetchImpl: () => Promise.reject(new Error('network down')),
   });
@@ -585,6 +588,49 @@ test('load failure: the export controls stay disabled', async () => {
   const { window } = dom;
   assert.equal(window.document.getElementById('exportCsvBtn').disabled, true);
   assert.equal(window.document.getElementById('exportJsonBtn').disabled, true);
+  assert.equal(window.document.getElementById('exportCsvBtnTop').disabled, true);
+  assert.equal(window.document.getElementById('exportJsonBtnTop').disabled, true);
+});
+
+test('duplicated controls: the top and bottom export buttons and showing-count spans stay in sync', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' }),
+    makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B' }),
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const doc = window.document;
+
+  // Both instances of each control must be enabled the moment data loads.
+  assert.equal(doc.getElementById('exportCsvBtnTop').disabled, false);
+  assert.equal(doc.getElementById('exportJsonBtnTop').disabled, false);
+
+  // Narrowing the result set must update both showing-count spans, not just
+  // the one below the table.
+  const nationSelect = doc.getElementById('nationSelect');
+  nationSelect.value = 'Nation A';
+  nationSelect.dispatchEvent(new window.Event('change'));
+  assert.equal(doc.getElementById('showingCountTop').textContent, '1');
+  assert.equal(doc.getElementById('showingCount').textContent, '1');
+
+  // Clicking the TOP button — not just the established bottom one — must
+  // trigger a real export, proving both are wired through the same handler.
+  const downloads = stubDownloads(window);
+  doc.getElementById('exportCsvBtnTop').click();
+
+  assert.equal(downloads.length, 1);
+  assert.ok(downloads[0].content.includes('Alpha Library'));
+  assert.ok(!downloads[0].content.includes('Beta Library'));
 });
 
 test('export: CSV and JSON reflect the currently filtered records, not the full dataset', async () => {

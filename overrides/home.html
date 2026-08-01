@@ -194,6 +194,26 @@ same rows over for searching, sorting, and filtering.
     <section aria-labelledby="results-heading" class="results">
         <h2 class="visually-hidden" id="results-heading">Library Directory Results</h2>
 
+        {# Mirrors .results-footer below: with 700+ pre-rendered rows, a
+           visitor who never scrolls to the bottom would otherwise never see
+           an export control at all. #}
+        <div class="results-header">
+            <p aria-live="polite" class="results-meta" role="status">
+                <span class="js-showing-count" id="showingCountTop">{{ dmm_directory.stats.libraries }}</span> libraries showing
+            </p>
+
+            <div aria-label="Export the currently visible libraries" class="export-group" role="group">
+                <button class="btn-clear export-group__btn" data-export="csv" disabled id="exportCsvBtnTop" type="button">
+                    <i aria-hidden="true" class="bi bi-filetype-csv"></i>
+                    CSV
+                </button>
+                <button class="btn-clear export-group__btn" data-export="json" disabled id="exportJsonBtnTop" type="button">
+                    <i aria-hidden="true" class="bi bi-filetype-json"></i>
+                    JSON
+                </button>
+            </div>
+        </div>
+
         <div class="table-card">
             <div class="table-scroll">
                 <table
@@ -247,17 +267,17 @@ same rows over for searching, sorting, and filtering.
 
         <div class="results-footer">
             <p aria-live="polite" class="results-meta" role="status">
-                <span id="showingCount">{{ dmm_directory.stats.libraries }}</span> libraries showing
+                <span class="js-showing-count" id="showingCount">{{ dmm_directory.stats.libraries }}</span> libraries showing
             </p>
 
             {# Disabled until dashboard.js has data to export, following the
                same progressive-enhancement pattern as #randomLibraryBtn. #}
             <div aria-label="Export the currently visible libraries" class="export-group" role="group">
-                <button class="btn-clear export-group__btn" disabled id="exportCsvBtn" type="button">
+                <button class="btn-clear export-group__btn" data-export="csv" disabled id="exportCsvBtn" type="button">
                     <i aria-hidden="true" class="bi bi-filetype-csv"></i>
                     CSV
                 </button>
-                <button class="btn-clear export-group__btn" disabled id="exportJsonBtn" type="button">
+                <button class="btn-clear export-group__btn" data-export="json" disabled id="exportJsonBtn" type="button">
                     <i aria-hidden="true" class="bi bi-filetype-json"></i>
                     JSON
                 </button>
