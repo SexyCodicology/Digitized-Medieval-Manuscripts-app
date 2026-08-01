@@ -22,10 +22,24 @@
 // meaning ("how much is digitised") does not sort alphabetically.
 const QUANTITY_ORDER = ['Few', 'Dozens', 'Hundreds', 'Thousands', 'Unknown'];
 
+// Fixed column order for CSV/JSON export, matching schema.json's field
+// list. Fixed rather than derived from the current result set, so a
+// zero-record export still produces a correct header row.
+const EXPORT_FIELDS = [
+  'id', 'library', 'nation', 'city', 'website', 'copyright', 'quantity',
+  'iiif', 'is_free_cultural_works_license', 'is_part_of',
+  'is_part_of_project_name', 'is_part_of_url',
+];
+
 document$.subscribe(() => {
   if (!document.getElementById('loader')) return;
   /** @type {Array<Object>} */
   let allData = [];
+  // The record set currently passed to renderTable(), kept in sync by
+  // filterData() and initializeDashboard(), so export can read "what the
+  // visitor sees now" without recomputing the filter predicate.
+  /** @type {Array<Object>} */
+  let currentFiltered = [];
   let sortColumn = /** @type {string|null} */ (null);
   let sortDirection = /** @type {'asc'|'desc'} */ ('asc');
 
@@ -43,6 +57,8 @@ document$.subscribe(() => {
   const clearFiltersBtn = document.getElementById('clearFilters');
   const randomLibraryBtn = /** @type {HTMLButtonElement} */ (document.getElementById('randomLibraryBtn'));
   const filtersActiveBadge = document.getElementById('filtersActiveBadge');
+  const exportCsvBtn  = /** @type {HTMLButtonElement} */ (document.getElementById('exportCsvBtn'));
+  const exportJsonBtn = /** @type {HTMLButtonElement} */ (document.getElementById('exportJsonBtn'));
 
   // Stats spans
   const statTotal    = document.getElementById('statTotal');
@@ -126,10 +142,13 @@ document$.subscribe(() => {
     populateCopyrightFilter();
     updateStats(allData);
     renderTable(allData);
+    currentFiltered = allData; // no filter has run yet, so this is everything
     initializeSorting();
     // The dataset is only trustworthy once it has loaded, so the random-pick
-    // control is enabled here rather than at page load.
+    // and export controls are enabled here rather than at page load.
     if (randomLibraryBtn) randomLibraryBtn.disabled = false;
+    if (exportCsvBtn)  exportCsvBtn.disabled  = false;
+    if (exportJsonBtn) exportJsonBtn.disabled = false;
   }
 
   // ── Sorting ───────────────────────────────────────────────────────────
@@ -335,9 +354,80 @@ document$.subscribe(() => {
         matchCopyright && matchIIIF && matchFree;
     });
 
+    currentFiltered = filtered;
     renderTable(filtered);
     updateStats(filtered);
   }
+
+  // ── Export ────────────────────────────────────────────────────────────
+  /**
+   * A value a spreadsheet application would read as a formula (leading
+   * =, +, -, @, tab, or carriage return) is prefixed with a single quote,
+   * so it opens as literal text instead of being evaluated. See OWASP's
+   * CSV injection guidance — this is publicly contributed data, so it must
+   * be treated as untrusted the same way rendered HTML already is.
+   * @param {string} value
+   * @returns {string}
+   */
+  function neutraliseFormula(value) {
+    return /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+  }
+
+  /**
+   * @param {*} value
+   * @returns {string}
+   */
+  function csvField(value) {
+    const text = neutraliseFormula(value == null ? '' : String(value));
+    return /["\r\n,]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+  }
+
+  /**
+   * @param {Array<Object>} records
+   * @returns {string}
+   */
+  function toCsv(records) {
+    const lines = [EXPORT_FIELDS.join(',')];
+    records.forEach(record => {
+      lines.push(EXPORT_FIELDS.map(field => csvField(record[field])).join(','));
+    });
+    return lines.join('\r\n');
+  }
+
+  /**
+   * Builds a Blob, triggers a download through a detached <a>, and revokes
+   * the object URL immediately after — the link never needs to stay in the
+   * document once the download has started.
+   * @param {string} content
+   * @param {string} filename
+   * @param {string} mimeType
+   */
+  function downloadFile(content, filename, mimeType) {
+    let url;
+    try {
+      url = URL.createObjectURL(new Blob([content], { type: mimeType }));
+    } catch {
+      // Blob/URL.createObjectURL can be missing or throw in a locked-down
+      // environment; degrade to doing nothing rather than breaking the page.
+      return;
+    }
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  exportCsvBtn?.addEventListener('click', () => {
+    downloadFile(toCsv(currentFiltered), 'dmm-libraries.csv', 'text/csv;charset=utf-8');
+  });
+
+  exportJsonBtn?.addEventListener('click', () => {
+    downloadFile(JSON.stringify(currentFiltered, null, 2), 'dmm-libraries.json', 'application/json');
+  });
 
   // ── Explore a random library ─────────────────────────────────────────
   // Draws from the full directory rather than the visitor's current filters:

@@ -245,9 +245,24 @@ same rows over for searching, sorting, and filtering.
             </div>
         </div>
 
-        <p aria-live="polite" class="results-meta" role="status">
-            <span id="showingCount">{{ dmm_directory.stats.libraries }}</span> libraries showing
-        </p>
+        <div class="results-footer">
+            <p aria-live="polite" class="results-meta" role="status">
+                <span id="showingCount">{{ dmm_directory.stats.libraries }}</span> libraries showing
+            </p>
+
+            {# Disabled until dashboard.js has data to export, following the
+               same progressive-enhancement pattern as #randomLibraryBtn. #}
+            <div aria-label="Export the currently visible libraries" class="export-group" role="group">
+                <button class="btn-clear export-group__btn" disabled id="exportCsvBtn" type="button">
+                    <i aria-hidden="true" class="bi bi-filetype-csv"></i>
+                    CSV
+                </button>
+                <button class="btn-clear export-group__btn" disabled id="exportJsonBtn" type="button">
+                    <i aria-hidden="true" class="bi bi-filetype-json"></i>
+                    JSON
+                </button>
+            </div>
+        </div>
     </section>
 </div>
 
