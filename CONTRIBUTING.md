@@ -18,4 +18,6 @@ Improve the dashboard, documentation, or project infrastructure.
 
 Have questions? [Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues) or reach out to @Dioscorides.
 
+Please also read our [Code of Conduct](./CODE_OF_CONDUCT.md) before participating.
+
 We appreciate your contributions! 🙌
