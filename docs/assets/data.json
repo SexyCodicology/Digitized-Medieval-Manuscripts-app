@@ -8804,5 +8804,19 @@
         "is_part_of": true,
         "is_part_of_project_name": "Erfgoedparels",
         "is_part_of_url": "https://erfgoedparels.be/"
+    },
+    {
+        "id": 645,
+        "nation": "Belgium",
+        "city": "Postel",
+        "library": "Norbertijnen Abdij van Postel",
+        "quantity": "Few",
+        "website": "https://erfgoedparels.be/zoeken?materials%5B%5D=handschrift&providers%5B%5D=norbertijnen+abdij+van+postel",
+        "copyright": "Unknown",
+        "iiif": true,
+        "is_free_cultural_works_license": false,
+        "is_part_of": true,
+        "is_part_of_project_name": "Erfgoedparels",
+        "is_part_of_url": "https://erfgoedparels.be/"
     }
 ]
