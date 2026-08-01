@@ -35,6 +35,7 @@ document$.subscribe(() => {
   const iiifCheck     = /** @type {HTMLInputElement} */ (document.getElementById('iiifCheck'));
   const freeCheck     = /** @type {HTMLInputElement} */ (document.getElementById('freeCheck'));
   const clearFiltersBtn = document.getElementById('clearFilters');
+  const randomLibraryBtn = /** @type {HTMLButtonElement} */ (document.getElementById('randomLibraryBtn'));
 
   // Stats spans
   const statTotal    = document.getElementById('statTotal');
@@ -117,6 +118,9 @@ document$.subscribe(() => {
     updateStats(allData);
     renderTable(allData);
     initializeSorting();
+    // The dataset is only trustworthy once it has loaded, so the random-pick
+    // control is enabled here rather than at page load.
+    if (randomLibraryBtn) randomLibraryBtn.disabled = false;
   }
 
   // ── Sorting ───────────────────────────────────────────────────────────
@@ -278,6 +282,34 @@ document$.subscribe(() => {
     renderTable(filtered);
     updateStats(filtered);
   }
+
+  // ── Explore a random library ─────────────────────────────────────────
+  // Draws from the full directory rather than the visitor's current filters:
+  // this control exists for serendipitous discovery, so narrowing it to a
+  // small or empty filtered view would undermine the point, and it would
+  // otherwise need its own "no results" handling separate from filterData().
+  /**
+   * Return a randomly chosen record's page URL, read from that record's own
+   * pre-rendered row rather than rebuilt from its dataset fields, so a
+   * mismatch between data.json and the built page can never invent a URL
+   * that no page actually exists at.
+   * @returns {string|null}
+   */
+  function pickRandomLibraryUrl() {
+    if (allData.length === 0) return null;
+    const record = allData[Math.floor(Math.random() * allData.length)];
+    const row = rowsById.get(String(record.id));
+    const link = /** @type {HTMLAnchorElement|null} */ (row?.querySelector('a.library-name') ?? null);
+    return link ? link.getAttribute('href') : null;
+  }
+
+  randomLibraryBtn?.addEventListener('click', () => {
+    const url = pickRandomLibraryUrl();
+    // window.open(url, '_self') rather than location.assign(url): both
+    // navigate the current tab, but this leaves navigation on a property
+    // that a test can stub instead of one the platform makes read-only.
+    if (url) window.open(url, '_self');
+  });
 
   // ── Event listeners ───────────────────────────────────────────────────
   searchInput.addEventListener('input', filterData);
