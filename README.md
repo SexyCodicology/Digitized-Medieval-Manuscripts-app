@@ -188,6 +188,7 @@ You're free to use, modify, and distribute this project with proper attribution.
 - **Documentation**: See the [docs/](./docs/) folder
 - **Issues and discussions**: [GitHub Issues](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues)
 - **Contributing**: See [CONTRIBUTING.md](./CONTRIBUTING.md)
+- **Code of Conduct**: See [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
 
 ## Related resources
 
