@@ -22,6 +22,15 @@ same rows over for searching, sorting, and filtering.
 <noscript>
     <style>#loader { display: none; }</style>
 </noscript>
+{% set website_schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": config.site_name,
+    "url": config.site_url,
+    "description": page.meta.description or config.site_description,
+    "inLanguage": lang.t("language")
+} %}
+<script type="application/ld+json">{{ website_schema | tojson }}</script>
 {% endblock %}
 
 {% block content %}
