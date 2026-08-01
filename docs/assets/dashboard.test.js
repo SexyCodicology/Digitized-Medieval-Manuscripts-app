@@ -8,10 +8,18 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { JSDOM } = require('jsdom');
+const { JSDOM, VirtualConsole } = require('jsdom');
 
 const SCRIPT_PATH = path.join(__dirname, 'dashboard.js');
 const SCRIPT_SOURCE = fs.readFileSync(SCRIPT_PATH, 'utf8');
+
+// jsdom doesn't implement the `download` attribute, so clicking the export
+// anchor triggers its "Not implemented: navigation" warning even though the
+// click itself does exactly what production code intends. Routing jsdom's
+// own diagnostic errors through omitJSDOMErrors keeps that expected noise
+// out of test output without hiding a genuine console message from the page.
+const virtualConsole = new VirtualConsole();
+virtualConsole.sendTo(console, { omitJSDOMErrors: true });
 
 function baseHtml(rowsHtml) {
   return `
@@ -36,6 +44,8 @@ function baseHtml(rowsHtml) {
       <input id="freeCheck" type="checkbox">
       <button id="clearFilters"></button>
       <button disabled id="randomLibraryBtn"></button>
+      <button disabled id="exportCsvBtn"></button>
+      <button disabled id="exportJsonBtn"></button>
       <span id="statTotal"></span>
       <span id="statNations"></span>
       <span id="statIIIF"></span>
@@ -52,6 +62,7 @@ function loadDashboard({ rowsHtml = '', fetchImpl }) {
   const dom = new JSDOM(baseHtml(rowsHtml), {
     runScripts: 'outside-only',
     url: 'https://example.invalid/',
+    virtualConsole,
   });
   const { window } = dom;
   window.document$ = { subscribe: (fn) => fn() };
@@ -65,6 +76,26 @@ function loadDashboard({ rowsHtml = '', fetchImpl }) {
 // scheduled timer callback.
 function flushMicrotasks() {
   return new Promise((resolve) => setTimeout(resolve, 0));
+}
+
+// jsdom's Blob has no .text()/.arrayBuffer(), so content can't be read back
+// off a real Blob instance. Overriding window.Blob to a plain capturing
+// constructor — rather than trying to unwrap jsdom's Blob — is what lets a
+// test see the exact string dashboard.js handed to `new Blob([content])`.
+// window.URL.createObjectURL/revokeObjectURL are stubbed alongside it so no
+// test depends on jsdom's (partial) real implementation of either.
+function stubDownloads(window) {
+  const downloads = [];
+  window.Blob = function (parts, opts) {
+    this.__content = parts.join('');
+    this.__type = opts && opts.type;
+  };
+  window.URL.createObjectURL = (blob) => {
+    downloads.push({ content: blob.__content, type: blob.__type });
+    return 'blob:stub';
+  };
+  window.URL.revokeObjectURL = () => {};
+  return downloads;
 }
 
 test('a rejected fetch renders its error message as text, not as parsed HTML', async () => {
@@ -531,4 +562,149 @@ test('filters-active badge: hidden with none active, counts only the four collap
   window.document.getElementById('clearFilters').click();
   assert.equal(badge.hidden, true, 'clearFilters must reset the count back to zero');
   assert.equal(badge.textContent, '0');
+});
+
+const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,is_free_cultural_works_license,is_part_of,is_part_of_project_name,is_part_of_url';
+
+function makeRecord(overrides) {
+  return Object.assign({
+    id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A',
+    website: 'https://alpha.example', copyright: 'CC0 1.0', quantity: 'Few',
+    iiif: true, is_free_cultural_works_license: true, is_part_of: false,
+    is_part_of_project_name: null, is_part_of_url: null,
+  }, overrides);
+}
+
+test('load failure: the export controls stay disabled', async () => {
+  const dom = loadDashboard({
+    fetchImpl: () => Promise.reject(new Error('network down')),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  assert.equal(window.document.getElementById('exportCsvBtn').disabled, true);
+  assert.equal(window.document.getElementById('exportJsonBtn').disabled, true);
+});
+
+test('export: CSV and JSON reflect the currently filtered records, not the full dataset', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' }),
+    makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B' }),
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const downloads = stubDownloads(window);
+
+  const nationSelect = window.document.getElementById('nationSelect');
+  nationSelect.value = 'Nation A';
+  nationSelect.dispatchEvent(new window.Event('change'));
+
+  window.document.getElementById('exportCsvBtn').click();
+  window.document.getElementById('exportJsonBtn').click();
+
+  assert.equal(downloads.length, 2);
+  const [csvDownload, jsonDownload] = downloads;
+  assert.equal(csvDownload.type, 'text/csv;charset=utf-8');
+  assert.equal(jsonDownload.type, 'application/json');
+
+  const csvLines = csvDownload.content.split('\r\n');
+  assert.equal(csvLines.length, 2, 'header row plus exactly one data row for the filtered record');
+  assert.equal(csvLines[0], EXPORT_CSV_HEADER);
+  assert.ok(csvLines[1].includes('Alpha Library'));
+  assert.ok(!csvDownload.content.includes('Beta Library'), 'the filtered-out record must not appear in the export');
+
+  assert.deepEqual(JSON.parse(jsonDownload.content), [data[0]]);
+});
+
+test('export CSV: commas, quotes, and newlines are quoted so the row still parses correctly', async () => {
+  const data = [makeRecord({ library: 'Alpha, "The" Library\nSecond line' })];
+
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const downloads = stubDownloads(window);
+  window.document.getElementById('exportCsvBtn').click();
+
+  // RFC 4180: the field is quoted, and its embedded double quotes are doubled.
+  assert.ok(downloads[0].content.includes('"Alpha, ""The"" Library\nSecond line"'));
+});
+
+test('export CSV: a value beginning with a formula character is neutralised as text', async () => {
+  const data = [makeRecord({ library: "=cmd|' /C calc'!A1", copyright: '+1' })];
+
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const downloads = stubDownloads(window);
+  window.document.getElementById('exportCsvBtn').click();
+
+  const csv = downloads[0].content;
+  assert.ok(csv.includes("'=cmd"), 'a leading = must be prefixed with a single quote so it opens as text');
+  assert.ok(csv.includes("'+1"), 'a leading + must also be neutralised');
+});
+
+test('export: if URL.createObjectURL throws, the page stays interactive and nothing leaks into the DOM', async () => {
+  const data = [makeRecord()];
+
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  window.URL.createObjectURL = () => { throw new Error('blocked'); };
+
+  assert.doesNotThrow(() => window.document.getElementById('exportCsvBtn').click());
+  assert.equal(window.document.querySelectorAll('#tableBody tr').length, 1, 'the table must remain intact');
+  assert.equal(window.document.querySelector('a[download]'), null, 'no leftover download link should remain in the document');
+});
+
+test('export: a zero-match filter still produces a header-only CSV and an empty JSON array, and revokes the object URL', async () => {
+  const data = [makeRecord()];
+
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const downloads = stubDownloads(window);
+  let revokedCount = 0;
+  window.URL.revokeObjectURL = () => { revokedCount++; };
+
+  const searchInput = window.document.getElementById('searchInput');
+  searchInput.value = 'no such library';
+  searchInput.dispatchEvent(new window.Event('input'));
+
+  window.document.getElementById('exportCsvBtn').click();
+  window.document.getElementById('exportJsonBtn').click();
+
+  assert.equal(downloads[0].content, EXPORT_CSV_HEADER, 'header only, no data rows');
+  assert.equal(downloads[1].content, '[]');
+  assert.equal(revokedCount, 2, 'each export must revoke its own object URL');
 });
