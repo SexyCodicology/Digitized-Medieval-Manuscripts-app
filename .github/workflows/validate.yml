@@ -1,8 +1,10 @@
 # Data Validation Workflow
 #
 # Validates docs/assets/data.json on every pull request that touches it,
-# and on manual dispatch. Checks JSON syntax, schema compliance, data types,
-# URI formats, and conditional project-field requirements.
+# and on manual dispatch. Runs scripts/validate_data.py, the same entry
+# point .github/workflows/deploy.yml runs before building the site, which
+# checks JSON syntax, schema compliance (required fields, data types, HTTP(S)
+# URLs), duplicate ids, and is_part_of project-field consistency.
 
 name: Data Guardrails
 
@@ -10,6 +12,8 @@ on:
   pull_request:
     paths:
       - 'docs/assets/data.json'
+      - 'schema.json'
+      - 'scripts/validate_data.py'
   workflow_dispatch:
 
 jobs:
@@ -20,21 +24,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v7
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
+      - name: Setup Python
+        uses: actions/setup-python@v6
         with:
-          node-version: '16'
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: '**/requirements*.txt'
 
-      - name: Install Validator & Formats
-        run: npm install -g ajv-cli ajv-formats
+      - name: Install Dependencies
+        run: pip install -r requirements-dev.txt
 
-      - name: Validate JSON Syntax & Schema
-        run: |
-          # Check 1: well-formed JSON
-          python3 -m json.tool docs/assets/data.json > /dev/null
-          echo "✓ JSON syntax valid"
-
-          # Check 2: schema compliance (required fields, types, URIs,
-          # conditional project fields)
-          ajv validate -s schema.json -d docs/assets/data.json -c ajv-formats
-          echo "✓ Schema validation passed"
+      - name: Validate data.json
+        run: python scripts/validate_data.py

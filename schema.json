@@ -5,10 +5,12 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["id", "library", "nation", "city", "website", "copyright", "quantity", "iiif", "is_free_cultural_works_license", "is_part_of"],
+    "additionalProperties": false,
+    "required": ["id", "library", "nation", "city", "website", "copyright", "quantity", "iiif", "is_free_cultural_works_license", "is_part_of", "is_part_of_project_name", "is_part_of_url"],
     "properties": {
       "id": {
         "type": "integer",
+        "minimum": 1,
         "description": "Unique identifier for the record"
       },
       "library": {
@@ -27,7 +29,8 @@
       "website": {
         "type": "string",
         "format": "uri",
-        "description": "URL to the library's manuscript collection"
+        "pattern": "^https?://",
+        "description": "URL to the library's manuscript collection; must use HTTP or HTTPS"
       },
       "copyright": {
         "type": "string",
@@ -52,31 +55,15 @@
       },
       "is_part_of_project_name": {
         "type": ["string", "null"],
-        "description": "Name of the main project or website, if is_part_of is true"
+        "minLength": 1,
+        "description": "Name of the main project or website, if is_part_of is true; null otherwise"
       },
       "is_part_of_url": {
         "type": ["string", "null"],
         "format": "uri",
-        "description": "URL of the main project or website, if is_part_of is true"
+        "pattern": "^https?://",
+        "description": "URL of the main project or website, if is_part_of is true; must use HTTP or HTTPS when present; null otherwise"
       }
-    },
-    "if": {
-      "properties": {
-        "is_part_of": { "const": true }
-      }
-    },
-    "then": {
-      "properties": {
-        "is_part_of_project_name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "is_part_of_url": {
-          "type": "string",
-          "format": "uri"
-        }
-      },
-      "required": ["is_part_of_project_name", "is_part_of_url"]
     }
   }
 }

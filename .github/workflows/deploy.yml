@@ -11,6 +11,7 @@ on:
       - 'tests/**'
       - 'mkdocs.yml'
       - 'schema.json'
+      - 'scripts/**'
       - 'requirements.txt'
       - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
@@ -22,6 +23,7 @@ on:
       - 'tests/**'
       - 'mkdocs.yml'
       - 'schema.json'
+      - 'scripts/**'
       - 'requirements.txt'
       - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
@@ -62,9 +64,7 @@ jobs:
         run: pip install -r requirements-dev.txt
 
       - name: Validate data.json
-        run: |
-          python -m json.tool docs/assets/data.json > /dev/null
-          echo "✓ data.json is valid JSON"
+        run: python scripts/validate_data.py
 
       - name: Test Build Hooks
         run: pytest tests -q
