@@ -192,7 +192,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "is_part_of": true,
-        "is_part_of_project_name": null,
+        "is_part_of_project_name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
         "is_part_of_url": "https://manuscripta.at/"
     },
     {
@@ -4588,7 +4588,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "is_part_of": true,
-        "is_part_of_project_name": null,
+        "is_part_of_project_name": "Internet Culturale",
         "is_part_of_url": "https://www.internetculturale.it/"
     },
     {
@@ -7975,8 +7975,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "is_part_of": false,
-        "is_part_of_project_name": null,
+        "is_part_of": true,
+        "is_part_of_project_name": "BiblioPhilly",
         "is_part_of_url": "https://bibliophilly.library.upenn.edu/"
     },
     {
@@ -7990,7 +7990,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "is_part_of": true,
-        "is_part_of_project_name": null,
+        "is_part_of_project_name": "BiblioPhilly",
         "is_part_of_url": "https://bibliophilly.library.upenn.edu/"
     },
     {
