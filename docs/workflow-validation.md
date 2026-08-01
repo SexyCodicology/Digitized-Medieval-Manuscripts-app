@@ -57,24 +57,29 @@ The second check ensures all your data follows the required structure and contai
 
 The system verifies:
 
-1. **All required fields are present**
-   - Every library record must include: ID, name, country, city, website, copyright information, manuscript count, format support, license type, and project information
+1. **All required fields are present, and no unrecognised fields are included**
+   - Every library record must include exactly: ID, name, country, city, website, copyright information, manuscript count, format support, license type, and project information
+   - Extra fields that aren't part of this list are rejected, so a typo in a field name is caught rather than silently ignored
 
 2. **Data types are correct**
    - Text fields contain text (not numbers)
    - Yes/No fields use true or false (not the words "true" or "false")
    - Number fields contain whole numbers
 
-3. **Websites are valid**
+3. **IDs are unique**
+   - Every record's ID must be a positive whole number
+   - No two records may share the same ID
+
+4. **Websites are valid**
    - Website addresses follow proper format: `https://example.com`
    - URLs start with `http://` or `https://`
    - Links are reachable and functional
 
-4. **Relationships are consistent**
+5. **Relationships are consistent**
    - When you indicate a library is part of a larger project, you must provide the project name and website
    - When a library operates independently, project fields must be empty
 
-5. **Categories use correct values**
+6. **Categories use correct values**
    - Manuscript counts must be: "Few", "Dozens", "Hundreds", "Thousands", or "Unknown"
    - No other values are accepted
 
@@ -137,36 +142,44 @@ When validation fails, GitHub shows you exactly what needs to be fixed.
 !!! example "Missing field"
 
     ```
-    data/123 must have required property 'iiif'
+    record 122 (id: 123): <record>: 'iiif' is a required property
     ```
     
-    **What it means**: Record number 123 is missing the IIIF field.  
+    **What it means**: The record at position 122 (with ID 123) is missing the IIIF field.  
     **How to fix**: Add `"iiif": true` or `"iiif": false` to that record.
 
 !!! example "Invalid website"
 
     ```
-    data/456/website must match format "uri"
+    record 455 (id: 456): website: 'not-a-valid-url' does not match '^https?://'
     ```
     
-    **What it means**: The website address in record 456 is not formatted correctly.  
+    **What it means**: The website address in the record with ID 456 doesn't start with `http://` or `https://`.  
     **How to fix**: Ensure the URL starts with `https://` and is a working link. Example: `"website": "https://example.com/manuscripts"`
 
 !!! example "Incomplete project information"
 
     ```
-    data/789 must match "then" schema
-    data/789/is_part_of_project_name must NOT have fewer than 1 characters
+    record 788 (id: 789): is_part_of is true but is_part_of_project_name is missing
     ```
     
-    **What it means**: Record 789 says it's part of a project but doesn't provide the project name.  
+    **What it means**: The record with ID 789 says it's part of a project but doesn't provide the project name.  
     **How to fix**: Either provide both the project name and project website, or set the library as independent (`"is_part_of": false`).
+
+!!! example "Duplicate ID"
+
+    ```
+    record 583 (id: 42): duplicate id, already used by record 17
+    ```
+    
+    **What it means**: Two records share the same ID (42).  
+    **How to fix**: Give the new record an ID that isn't already used anywhere in `data.json`.
 
 ## Common errors and how to fix them
 
 ### Missing required fields
 
-**Error message**: `must have required property`
+**Error message**: `is a required property`
 
 **What went wrong**: You forgot to include one or more required fields.
 
@@ -208,7 +221,7 @@ Missing: country, city, website, copyright information, manuscript count, format
 
 ### Website URL missing the protocol
 
-**Error message**: `must match format "uri"`
+**Error message**: `does not match '^https?://'`
 
 **What went wrong**: Your website address doesn't start with `http://` or `https://`.
 
@@ -254,7 +267,7 @@ Approved values: "Few", "Dozens", "Hundreds", "Thousands", "Unknown"
 
 ### Project marked as true but no project name provided
 
-**Error message**: `is_part_of_project_name must NOT have fewer than 1 characters`
+**Error message**: `is_part_of is true but is_part_of_project_name is missing`
 
 **What went wrong**: You indicated the library is part of a project but didn't provide the project's name.
 
@@ -284,6 +297,26 @@ Or mark the library as independent:
   "is_part_of_url": null
 }
 ```
+
+---
+
+### Duplicate ID
+
+**Error message**: `duplicate id, already used by record`
+
+**What went wrong**: You reused an ID that another record in `data.json` already has.
+
+**How to fix**: Give your new record a whole number that isn't used anywhere else in the file. IDs don't need to be sequential — gaps are fine.
+
+---
+
+### Unrecognised field
+
+**Error message**: `Additional properties are not allowed`
+
+**What went wrong**: Your record includes a field name that isn't part of the twelve recognised fields (for example, a typo such as `webiste` instead of `website`).
+
+**How to fix**: Check the field name against the [Data Structure Guide](./schema.md) and correct or remove it.
 
 ## Manual validation check
 
@@ -343,4 +376,4 @@ If you can't figure out the error:
 
 ---
 
-**Last Updated**: February 6, 2026
+**Last Updated**: August 1, 2026
