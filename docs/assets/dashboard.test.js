@@ -31,6 +31,7 @@ function baseHtml(rowsHtml) {
       <select id="projectSelect"><option value="All">All</option></select>
       <select id="quantitySelect"><option value="All">All</option></select>
       <select id="copyrightSelect"><option value="All">All</option></select>
+      <span hidden id="filtersActiveBadge">0</span>
       <input id="iiifCheck" type="checkbox">
       <input id="freeCheck" type="checkbox">
       <button id="clearFilters"></button>
@@ -484,4 +485,50 @@ test('clearFilters resets the quantity and copyright filters along with the rest
   assert.equal(quantitySelect.value, 'All');
   assert.equal(copyrightSelect.value, 'All');
   assert.equal([...window.document.querySelectorAll('#tableBody tr')].length, 2);
+});
+
+test('filters-active badge: hidden with none active, counts only the four collapsed selects, and resets on clearFilters', async () => {
+  const data = [
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+  ];
+
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const badge = window.document.getElementById('filtersActiveBadge');
+  const nationSelect    = window.document.getElementById('nationSelect');
+  const quantitySelect  = window.document.getElementById('quantitySelect');
+  const copyrightSelect = window.document.getElementById('copyrightSelect');
+  const searchInput     = window.document.getElementById('searchInput');
+  const iiifCheck       = window.document.getElementById('iiifCheck');
+
+  assert.equal(badge.hidden, true, 'no filter is active on load, so the badge must stay hidden');
+
+  // The always-visible search box and IIIF toggle are not among the four
+  // collapsed selects, so activating them must not move the badge.
+  searchInput.value = 'alpha';
+  searchInput.dispatchEvent(new window.Event('input'));
+  iiifCheck.checked = true;
+  iiifCheck.dispatchEvent(new window.Event('change'));
+  assert.equal(badge.hidden, true, 'search and the toggles are always visible and must not be counted');
+
+  nationSelect.value = 'Nation A';
+  nationSelect.dispatchEvent(new window.Event('change'));
+  assert.equal(badge.hidden, false);
+  assert.equal(badge.textContent, '1');
+
+  quantitySelect.value = 'Few';
+  quantitySelect.dispatchEvent(new window.Event('change'));
+  copyrightSelect.value = 'Public Domain Mark 1.0';
+  copyrightSelect.dispatchEvent(new window.Event('change'));
+  assert.equal(badge.textContent, '3');
+
+  window.document.getElementById('clearFilters').click();
+  assert.equal(badge.hidden, true, 'clearFilters must reset the count back to zero');
+  assert.equal(badge.textContent, '0');
 });

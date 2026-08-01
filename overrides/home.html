@@ -155,29 +155,40 @@ same rows over for searching, sorting, and filtering.
 
         </div>
 
-        <div class="filter-row filter-row--selects">
+        {# A <details> disclosure needs no JavaScript to expand or collapse, so
+           these four selects stay reachable even if dashboard.js fails to
+           load — unlike a button whose handler lives entirely in that file. #}
+        <details class="filters-more" id="filtersMore">
+            <summary class="filters-more__summary">
+                <i aria-hidden="true" class="bi bi-sliders"></i>
+                <span>More filters</span>
+                <span class="filters-more__badge" hidden id="filtersActiveBadge">0</span>
+            </summary>
 
-            <label class="visually-hidden" for="nationSelect">Filter by nation</label>
-            <select aria-label="Filter by nation" class="filter-select" id="nationSelect">
-                <option value="All">All Nations</option>
-            </select>
+            <div class="filter-row filter-row--selects">
 
-            <label class="visually-hidden" for="projectSelect">Filter by project</label>
-            <select aria-label="Filter by project" class="filter-select" id="projectSelect">
-                <option value="All">All Projects</option>
-            </select>
+                <label class="visually-hidden" for="nationSelect">Filter by nation</label>
+                <select aria-label="Filter by nation" class="filter-select" id="nationSelect">
+                    <option value="All">All Nations</option>
+                </select>
 
-            <label class="visually-hidden" for="quantitySelect">Filter by quantity</label>
-            <select aria-label="Filter by approximate number of digitised manuscripts" class="filter-select" id="quantitySelect">
-                <option value="All">All Quantities</option>
-            </select>
+                <label class="visually-hidden" for="projectSelect">Filter by project</label>
+                <select aria-label="Filter by project" class="filter-select" id="projectSelect">
+                    <option value="All">All Projects</option>
+                </select>
 
-            <label class="visually-hidden" for="copyrightSelect">Filter by copyright</label>
-            <select aria-label="Filter by copyright or licence" class="filter-select" id="copyrightSelect">
-                <option value="All">All Licences</option>
-            </select>
+                <label class="visually-hidden" for="quantitySelect">Filter by quantity</label>
+                <select aria-label="Filter by approximate number of digitised manuscripts" class="filter-select" id="quantitySelect">
+                    <option value="All">All Quantities</option>
+                </select>
 
-        </div>
+                <label class="visually-hidden" for="copyrightSelect">Filter by copyright</label>
+                <select aria-label="Filter by copyright or licence" class="filter-select" id="copyrightSelect">
+                    <option value="All">All Licences</option>
+                </select>
+
+            </div>
+        </details>
     </section>
 
     <section aria-labelledby="results-heading" class="results">
