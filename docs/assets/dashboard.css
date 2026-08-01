@@ -739,11 +739,37 @@ a.library-name:focus-visible {
 }
 
 /* ── 12. Results meta ─────────────────────────────────────────────────────*/
+.results-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
 .results-meta {
-  text-align: right;
   font-size: 0.8rem;
   color: var(--dash-muted);
-  margin-top: 0.5rem;
+}
+
+.export-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.export-group__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.export-group__btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* ── 13. Utility: visually-hidden ─────────────────────────────────────────*/
