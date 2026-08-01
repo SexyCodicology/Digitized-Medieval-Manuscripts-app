@@ -4,11 +4,26 @@
 main.html — DMMapp global template override
 ────────────────────────────────────────────
 Applies to every page, including home.html (which extends this file).
-Adds the web manifest, Apple touch-icon, and Open Graph/Twitter Card tags
-that Material's base template does not provide out of the box. Keep this
-override minimal; page-specific behaviour belongs in the templates that
-extend it.
+Adds the web manifest, Apple touch-icon, Open Graph/Twitter Card tags,
+and a BreadcrumbList JSON-LD block that Material's base template does
+not provide out of the box. The homepage's own WebSite JSON-LD block
+lives in home.html instead, since the homepage has no breadcrumb trail
+of its own. Keep this override minimal; page-specific behaviour
+belongs in the templates that extend it.
 #}
+
+{% import "partials/language.html" as lang with context %}
+
+{% macro dmm_breadcrumb_url(nav_item) -%}
+  {#- Sections have no URL of their own (mirrors Material's own
+     partials/path-item.html), so the breadcrumb points at their
+     first descendant page instead. -#}
+  {%- if nav_item.canonical_url -%}
+    {{- nav_item.canonical_url -}}
+  {%- elif nav_item.children -%}
+    {{- dmm_breadcrumb_url(nav_item.children | first) -}}
+  {%- endif -%}
+{%- endmacro %}
 
 {% block extrahead %}
   {{ super() }}
@@ -34,4 +49,22 @@ extend it.
   <meta name="twitter:title" content="{{ og_title }}">
   <meta name="twitter:description" content="{{ og_description }}">
   <meta name="twitter:image" content="{{ og_image }}">
+
+  {% if page and not page.is_homepage %}
+    {% set crumbs = [] %}
+    {% if nav.homepage %}
+      {% set _ = crumbs.append({"name": nav.homepage.title, "url": nav.homepage.canonical_url}) %}
+    {% endif %}
+    {% for ancestor in page.ancestors | reverse %}
+      {% set _ = crumbs.append({"name": ancestor.title, "url": dmm_breadcrumb_url(ancestor)}) %}
+    {% endfor %}
+    {% set _ = crumbs.append({"name": page.title, "url": page.canonical_url}) %}
+    {% set breadcrumb_list = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": []} %}
+    {% for crumb in crumbs %}
+      {% set list_item = {"@type": "ListItem", "position": loop.index, "name": crumb.name} %}
+      {% if crumb.url %}{% set _ = list_item.update({"item": crumb.url}) %}{% endif %}
+      {% set _ = breadcrumb_list.itemListElement.append(list_item) %}
+    {% endfor %}
+    <script type="application/ld+json">{{ breadcrumb_list | tojson }}</script>
+  {% endif %}
 {% endblock %}
