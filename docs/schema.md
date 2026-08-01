@@ -1,3 +1,9 @@
+---
+description: >-
+  A field-by-field guide to DMMapp's library data structure, covering
+  required fields, validation rules, and how to fill out each entry.
+---
+
 # Data structure guide
 
 This guide explains how DMMapp organizes information about manuscript libraries. Whether you're adding a new library or editing an existing entry, understanding the data structure helps you provide complete and accurate information.

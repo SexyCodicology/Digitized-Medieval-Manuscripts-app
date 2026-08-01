@@ -1,3 +1,9 @@
+---
+description: >-
+  Find your way around DMMapp's documentation, with guides for new users,
+  data contributors, and developers extending the project.
+---
+
 # DMMapp Documentation
 
 Find what you need to get started, contribute, or develop.

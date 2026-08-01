@@ -1,3 +1,9 @@
+---
+description: >-
+  How DMMapp automatically checks library website links every week,
+  reports broken links, and how to fix, archive, or remove them.
+---
+
 # How we check for broken links
 
 We automatically check every library website link each week to ensure they're still active. This keeps the dashboard reliable and helps you discover manuscripts without encountering dead links.

@@ -1,3 +1,9 @@
+---
+description: >-
+  Guidelines for contributing to DMMapp, including how to add library
+  entries, follow the data schema, and pass automated validation.
+---
+
 # Contributing Guide
 
 Thank you for your interest in contributing to the DMMapp Library Directory! This guide will help you add new libraries or improve existing entries.

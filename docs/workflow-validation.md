@@ -1,3 +1,9 @@
+---
+description: >-
+  An overview of DMMapp's automated data validation checks, common error
+  messages, and how to fix them before your pull request is merged.
+---
+
 # How we validate data
 
 When you submit changes to the library directory, an automated system checks your data before it's added to the live dashboard. This ensures that all library records are accurate, complete, and formatted correctly.
