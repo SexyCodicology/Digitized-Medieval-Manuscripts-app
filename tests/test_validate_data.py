@@ -192,23 +192,10 @@ def test_is_part_of_false_with_project_url_fails(schema):
     assert any("is_part_of_url is not null" in error for error in errors)
 
 
-@pytest.mark.parametrize(
-    "record_id, field",
-    [
-        (14, "is_part_of_project_name"),
-        (338, "is_part_of_project_name"),
-        (585, "is_part_of_project_name"),
-        (584, "is_part_of_url"),
-    ],
-)
-def test_known_legacy_exceptions_are_narrowly_scoped(record_id, field):
-    """Each grandfathered id is exempt only for its one documented field."""
-    other_field = "is_part_of_url" if field == "is_part_of_project_name" else "is_part_of_project_name"
-
-    allowed = validator.KNOWN_PROJECT_FIELD_EXCEPTIONS[record_id]
-
-    assert field in allowed
-    assert other_field not in allowed
+def test_known_legacy_exceptions_are_narrowly_scoped():
+    """The four previously grandfathered records (14, 338, 585, 584) have
+    since been fixed (see issue #37), so no exceptions remain."""
+    assert validator.KNOWN_PROJECT_FIELD_EXCEPTIONS == {}
 
 
 # ── External dependency failure ──────────────────────────────────────────────

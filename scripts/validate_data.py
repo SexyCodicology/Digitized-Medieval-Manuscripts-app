@@ -29,18 +29,13 @@ DATA_PATH = REPO_ROOT / "docs" / "assets" / "data.json"
 
 # schema.json cannot express "every record except these must satisfy the
 # is_part_of project-field rule", so the rule itself lives in
-# check_project_consistency() below rather than in a schema if/then. These
-# four records predate that rule being enforced anywhere; rewriting existing
-# library records is out of scope for validation-tooling work (tracked in
-# https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues/31),
-# so they are grandfathered explicitly instead of silently loosening the rule
-# for every record, present and future.
-KNOWN_PROJECT_FIELD_EXCEPTIONS: dict[int, frozenset[str]] = {
-    14: frozenset({"is_part_of_project_name"}),
-    338: frozenset({"is_part_of_project_name"}),
-    585: frozenset({"is_part_of_project_name"}),
-    584: frozenset({"is_part_of_url"}),
-}
+# check_project_consistency() below rather than in a schema if/then. The
+# four records that predated this rule being enforced have since been
+# fixed (see https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues/37),
+# leaving no current exceptions. The mechanism is kept in place so a future
+# legacy-data fix can be grandfathered the same way instead of silently
+# loosening the rule for every record, present and future.
+KNOWN_PROJECT_FIELD_EXCEPTIONS: dict[int, frozenset[str]] = {}
 
 
 def load_json(path: Path) -> Any:
