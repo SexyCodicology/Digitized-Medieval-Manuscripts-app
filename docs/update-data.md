@@ -1,3 +1,9 @@
+---
+description: >-
+  Learn how to add new libraries or edit existing entries in DMMapp's
+  directory using GitHub's built-in editor, with no coding required.
+---
+
 # Update the dashboard data
 
 This guide explains how to add new libraries and edit existing information in the DMMapp library directory. You don't need coding knowledge—the process uses GitHub's built-in editor.

@@ -1,3 +1,9 @@
+---
+description: >-
+  Learn about DMMapp's mission to centralise digitized medieval manuscript
+  collections, its history, technology stack, and design principles.
+---
+
 # About DMMapp
 
 ## Mission

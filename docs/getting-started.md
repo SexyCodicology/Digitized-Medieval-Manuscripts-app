@@ -1,3 +1,9 @@
+---
+description: >-
+  Learn how to browse, search, and filter DMMapp's directory of digitized
+  medieval manuscript libraries by nation, IIIF support, and licence.
+---
+
 # Getting started with DMMapp
 
 Welcome to DMMapp, your gateway to discovering digitized medieval manuscript collections worldwide. This guide shows you how to find the libraries you need.

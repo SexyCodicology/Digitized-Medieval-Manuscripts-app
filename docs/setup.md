@@ -1,3 +1,9 @@
+---
+description: >-
+  Step-by-step instructions for setting up DMMapp locally, including
+  prerequisites, installing dependencies, and running the MkDocs server.
+---
+
 # Set up your local environment
 
 This guide walks you through setting up DMMapp on your local machine for development and testing.
