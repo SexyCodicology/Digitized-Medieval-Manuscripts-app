@@ -20,19 +20,12 @@ body:
     validations:
       required: true
 
-  - type: dropdown
+  - type: input
     id: country
     attributes:
       label: Country
       description: The country where the library is located.
-      options:
-        - Select a country
-        - France
-        - Germany
-        - Italy
-        - Spain
-        - United Kingdom
-        - Other
+      placeholder: "e.g., Germany"
     validations:
       required: true
 
