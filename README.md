@@ -4,6 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-green)](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/)
+[![Build Status](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/actions/workflows/deploy.yml/badge.svg)](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/actions/workflows/deploy.yml)
 [![JSON Schema Validation](https://img.shields.io/badge/Data%20Format-JSON%20Schema-blue)](./schema.json)
 
 ## What you can do
