@@ -4,3 +4,6 @@
 
 # Test runner for the build-time hooks in hooks/
 pytest>=8.0
+
+# Schema validation for docs/assets/data.json, used by scripts/validate_data.py
+jsonschema>=4.23,<5
