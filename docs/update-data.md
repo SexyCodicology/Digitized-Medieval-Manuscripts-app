@@ -77,6 +77,22 @@ for the same library:
 Use the aggregator's home page for **url**, spell the **name** the way other
 records spell it, and don't list the same aggregator twice on one library.
 
+### Link status fields
+
+Two optional fields record whether a collection URL still works:
+
+- **is_disabled**: Set it to `true` only when the link has been confirmed
+  dead. Leave the field out otherwise.
+- **last_checked**: The date the link was checked, written as `YYYY-MM-DD`.
+  Required when **is_disabled** is `true`, so the warning a reader sees can be
+  dated.
+
+The weekly link check normally sets these for you and opens a pull request
+with its proposal, so you rarely need to write them by hand. See
+[How we check for broken links](./workflow-link-checking.md) for what the
+check does and does not conclude. If a collection has moved rather than
+closed, update **website** instead of marking it broken.
+
 ### Add a new library
 
 Locate the last library entry in the file:

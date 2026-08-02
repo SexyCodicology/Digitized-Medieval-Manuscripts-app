@@ -238,9 +238,78 @@ A direct link to the aggregator's website or portal.
 **Why it matters:** Researchers can access the aggregator directly to explore
 other participating collections.
 
+### Link status
+
+Both fields are optional and are normally set for you by the weekly link
+check rather than by hand. See [How we check for broken links](./workflow-link-checking.md).
+
+#### Broken link
+
+Whether the collection URL has been confirmed unreachable.
+
+**Choose one:**
+- `true` — The link was checked and found to be dead
+- Leave the field out — The link is believed to work
+
+**Example:** `true`
+
+**Tips:**
+- Only set this when you have confirmed the link is dead, not when a site is
+  merely slow or blocks automated checks
+- If the collection has simply moved, update the website address instead
+
+**Why it matters:** A reader is warned before clicking a URL the project
+already knows is dead, and can filter those collections out of the directory.
+
+#### Last checked
+
+The date the collection URL was last checked, as an ISO 8601 calendar date.
+
+**Requirements:**
+- Write it as `YYYY-MM-DD`, for example `2026-08-02`
+- Required when the broken-link field is `true`, so the warning can be dated
+- Must be a real date
+
+**Example:** `"2026-08-02"`
+
+**Why it matters:** A warning without a date tells a reader nothing about how
+current it is. A link confirmed broken years ago deserves less trust than one
+checked last week.
+
 ## How we check the data
 
 All records are validated against our data structure standards before being added to the directory.
+
+### Link status consistency
+
+A record marked as having a broken link must say when that was established,
+so no warning shown to a reader is undated. The date must be a real calendar
+date written as `YYYY-MM-DD`.
+
+**Valid example:**
+
+```json
+{
+  "is_disabled": true,
+  "last_checked": "2026-08-02"
+}
+```
+
+**Also valid (checked recently and working):**
+
+```json
+{
+  "last_checked": "2026-08-02"
+}
+```
+
+**Rejected (no date for the warning):**
+
+```json
+{
+  "is_disabled": true
+}
+```
 
 ### Aggregator membership consistency
 

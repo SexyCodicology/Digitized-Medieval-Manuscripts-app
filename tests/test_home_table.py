@@ -334,3 +334,72 @@ def test_the_hostile_record_injects_nothing_into_the_built_homepage(built_home):
     assert "<img" not in body
     assert "javascript:" not in body
     assert "data:text/html" not in body
+
+
+# ── Broken-link status on a directory row ─────────────────────────────────
+
+
+BROKEN_RECORD = {**SAFE_RECORD, "is_disabled": True, "last_checked": "2026-08-02"}
+
+
+def test_a_broken_link_row_is_badged_and_its_control_is_not_a_visit_button():
+    row = hook.render_row(BROKEN_RECORD)
+
+    assert 'class="badge badge--broken"' in row
+    assert "Broken link" in row
+    # The URL stays reachable, but never labelled as a working collection.
+    assert "btn-visit--broken" in row
+    assert ">Visit<" not in row
+    assert SAFE_RECORD["website"] in row
+
+
+def test_the_broken_badge_does_not_displace_the_feature_badges():
+    row = hook.render_row({**BROKEN_RECORD, "iiif": True})
+
+    assert 'class="badge badge--iiif"' in row
+    assert 'class="badge badge--broken"' in row
+
+
+def test_a_broken_record_without_features_still_shows_standard_access():
+    """The warning is prepended, so it must not swallow the fallback badge."""
+    row = hook.render_row(
+        {**BROKEN_RECORD, "iiif": False, "is_free_cultural_works_license": False}
+    )
+
+    assert "Standard Access" in row
+    assert "Broken link" in row
+
+
+def test_a_record_without_the_field_renders_exactly_as_before():
+    plain = {k: v for k, v in SAFE_RECORD.items() if k not in ("is_disabled", "last_checked")}
+
+    assert hook.render_row(plain) == hook.render_row({**plain, "is_disabled": False})
+    assert "broken" not in hook.render_row(plain).lower()
+
+
+@pytest.mark.parametrize("value", ["true", 1, "yes", None, [], {}])
+def test_only_an_explicit_true_marks_a_row_broken(value):
+    """Wrongly warning a reader off a live collection is the worse failure."""
+    row = hook.render_row({**SAFE_RECORD, "is_disabled": value})
+
+    assert "badge--broken" not in row
+    assert ">Visit<" in row
+
+
+def test_a_hostile_last_checked_cannot_break_out_of_the_title_attribute():
+    row = hook.render_row(
+        {**BROKEN_RECORD, "last_checked": '"><script>alert(1)</script>'}
+    )
+
+    assert "<script" not in row
+    assert 'alert(1)' not in row or "&lt;script&gt;" in row
+    assert "&quot;&gt;&lt;script&gt;" in row
+    # The row still has exactly the four cells the table header describes.
+    assert row.count("<td") == 4
+
+
+def test_a_broken_record_with_no_website_still_shows_the_placeholder():
+    row = hook.render_row({**BROKEN_RECORD, "website": "javascript:alert(1)"})
+
+    assert "No URL" in row
+    assert "javascript:" not in row

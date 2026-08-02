@@ -151,6 +151,20 @@ same rows over for searching, sorting, and filtering.
                     <i aria-hidden="true" class="bi bi-unlock"></i>
                     <span>Open</span>
                 </label>
+
+                {# Phrased as "show only working" rather than "hide broken" so
+                   all three toggles narrow the results the same way. #}
+                <input
+                        aria-label="Show only libraries whose link is not known to be broken"
+                        autocomplete="off"
+                        class="toggle-group__check"
+                        id="workingCheck"
+                        type="checkbox"
+                >
+                <label class="toggle-group__btn toggle-group__btn--working" for="workingCheck">
+                    <i aria-hidden="true" class="bi bi-link-45deg"></i>
+                    <span>Working link</span>
+                </label>
             </div>
 
         </div>

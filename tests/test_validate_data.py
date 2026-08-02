@@ -343,3 +343,96 @@ def test_missing_file_raises_system_exit(tmp_path):
 
 def test_main_returns_zero_for_the_real_dataset():
     assert validator.main() == 0
+
+
+# ── Broken-link status ───────────────────────────────────────────────────────
+
+
+BROKEN_RECORD = {
+    **VALID_RECORD,
+    "id": 4,
+    "is_disabled": True,
+    "last_checked": "2026-08-02",
+}
+
+
+def test_a_record_without_either_link_status_field_is_valid(schema):
+    """The dataset's records carry neither field, so omitting both must pass."""
+    assert validator.validate(schema, [VALID_RECORD]) == []
+
+
+def test_a_valid_broken_record_passes(schema):
+    assert validator.validate(schema, [BROKEN_RECORD]) == []
+
+
+def test_a_working_record_may_still_record_when_it_was_checked(schema):
+    record = {**copy.deepcopy(VALID_RECORD), "is_disabled": False, "last_checked": "2026-08-02"}
+
+    assert validator.validate(schema, [record]) == []
+
+
+@pytest.mark.parametrize("missing", [None, ""])
+def test_is_disabled_true_without_last_checked_fails(schema, missing):
+    record = copy.deepcopy(BROKEN_RECORD)
+    if missing is None:
+        del record["last_checked"]
+    else:
+        record["last_checked"] = missing
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+    assert any("last_checked is missing" in error for error in errors)
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "2026-02-30",   # a date that does not exist
+        "2026-13-01",   # month out of range
+        "02-08-2026",   # the wrong field order
+        "2026-8-2",     # not zero-padded
+        "not-a-date",
+        "2026-08-02T00:00:00Z",
+    ],
+)
+def test_a_last_checked_that_is_not_an_iso_date_fails(schema, value):
+    record = {**copy.deepcopy(BROKEN_RECORD), "last_checked": value}
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_a_non_string_last_checked_fails(schema):
+    record = {**copy.deepcopy(BROKEN_RECORD), "last_checked": 20260802}
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_a_non_boolean_is_disabled_fails(schema):
+    record = {**copy.deepcopy(VALID_RECORD), "is_disabled": "true"}
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_the_date_rule_holds_without_the_schema_format_checker(schema):
+    """check_link_status must not rely on jsonschema's optional "date" format
+    checker, which silently passes everything when the runtime lacks it."""
+    record = {**copy.deepcopy(BROKEN_RECORD), "last_checked": "2026-02-30"}
+
+    errors = validator.check_link_status([record])
+
+    assert any("is not an ISO 8601 date" in error for error in errors)
+
+
+@pytest.mark.parametrize(
+    "value, expected",
+    [("2026-08-02", True), ("2026-02-30", False), ("", False), ("2026-8-2", False)],
+)
+def test_is_iso_date(value, expected):
+    assert validator.is_iso_date(value) is expected

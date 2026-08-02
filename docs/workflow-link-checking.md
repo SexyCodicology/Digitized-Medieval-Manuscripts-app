@@ -66,6 +66,39 @@ When we find broken links, we automatically create a GitHub Issue with details a
 - Broken links are flagged for review and correction
 - You can prioritize fixes based on impact
 
+### The dataset is updated by pull request, never automatically
+
+After filing the issue, the check proposes changes to `docs/assets/data.json`
+and opens a pull request titled "fix(data): update broken-link status from the
+weekly link check". Nothing reaches the public site until you merge it.
+
+**What the check proposes**:
+
+- **Marks a collection broken** only when its URL returns 404 or 410. Those
+  are the only responses that show the collection is no longer at that
+  address.
+- **Clears the mark** when a URL that was previously broken responds again.
+- **Refreshes the date** on a collection that is still broken.
+
+**What it deliberately leaves alone**: timeouts and 403, 429, and 5xx
+responses. Those describe the server on the day, not whether the collection
+exists. In the first run after the check was repaired, 111 URLs reported a
+problem but only 18 were conclusive — acting on the rest would have marked
+dozens of working collections as dead.
+
+Review each proposed change before merging. A URL can return 404 because a
+catalogue moved rather than closed, and the right fix is then a new **website**
+value rather than a broken-link warning.
+
+### What a reader sees
+
+A collection marked broken carries a "Broken link" badge in the directory and
+a dated notice on its own page. Its outbound link stays clickable but is
+labelled as broken rather than presented as a working collection, so nothing
+is hidden from someone checking whether the site has come back. Readers can
+also switch on the **Working link** filter on the homepage to leave those
+collections out of the list.
+
 ## How to handle broken links
 
 When you find a broken link, follow this decision tree to determine the best action:

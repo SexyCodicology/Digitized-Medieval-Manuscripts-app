@@ -406,3 +406,56 @@ def test_the_slug_map_matches_the_generated_pages(built_site):
     }
     for slug in slugs.values():
         assert (built_site / "libraries" / slug / "index.html").is_file()
+
+
+# ── Broken-link status on a generated page ────────────────────────────────
+
+
+def test_a_broken_link_page_carries_a_dated_notice():
+    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org",
+                       "is_disabled": True, "last_checked": "2026-08-02"})
+
+    assert 'class="library-page__broken"' in body
+    assert "confirmed broken on 2026-08-02" in body
+    assert 'class="badge badge--broken"' in body
+    # The link stays reachable but is never offered as a working collection.
+    assert "Visit the collection" not in body
+    assert "Try the collection anyway" in body
+    assert "btn-visit--broken" in body
+
+
+def test_a_broken_page_without_a_date_still_warns():
+    """Validation forbids this combination, but the page must not print
+    "confirmed broken on " with a dangling date if bad data reaches it."""
+    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org",
+                       "is_disabled": True})
+
+    assert "confirmed broken." in body
+    assert "broken on" not in body
+
+
+def test_a_page_without_the_field_has_no_notice():
+    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org"})
+
+    assert "library-page__broken" not in body
+    assert "Visit the collection" in body
+    assert "broken" not in body.lower()
+
+
+def test_a_hostile_last_checked_is_escaped_on_the_page():
+    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org",
+                       "is_disabled": True,
+                       "last_checked": '<img src=x onerror=alert(1)>'})
+
+    assert "<img" not in body
+    assert "&lt;img src=x onerror=alert(1)&gt;" in body
+
+
+def test_a_broken_record_with_no_usable_website_says_so():
+    body = _page_body({**HOSTILE_RECORD, "is_disabled": True,
+                       "last_checked": "2026-08-02"})
+
+    assert "No collection URL is recorded" in body
+    assert "javascript:" not in body
+    # The warning is still shown; the missing URL is a separate fact.
+    assert 'class="library-page__broken"' in body

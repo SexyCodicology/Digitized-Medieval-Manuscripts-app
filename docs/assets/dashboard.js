@@ -28,6 +28,7 @@ const QUANTITY_ORDER = ['Few', 'Dozens', 'Hundreds', 'Thousands', 'Unknown'];
 const EXPORT_FIELDS = [
   'id', 'library', 'nation', 'city', 'website', 'copyright', 'quantity',
   'iiif', 'is_free_cultural_works_license', 'aggregators',
+  'is_disabled', 'last_checked',
 ];
 
 // Separates the aggregator memberships of one library inside the single
@@ -72,6 +73,7 @@ document$.subscribe(() => {
   const copyrightSelect = /** @type {HTMLSelectElement} */ (document.getElementById('copyrightSelect'));
   const iiifCheck     = /** @type {HTMLInputElement} */ (document.getElementById('iiifCheck'));
   const freeCheck     = /** @type {HTMLInputElement} */ (document.getElementById('freeCheck'));
+  const workingCheck  = /** @type {HTMLInputElement} */ (document.getElementById('workingCheck'));
   const clearFiltersBtn = document.getElementById('clearFilters');
   const randomLibraryBtn = /** @type {HTMLButtonElement} */ (document.getElementById('randomLibraryBtn'));
   const filtersActiveBadge = document.getElementById('filtersActiveBadge');
@@ -349,6 +351,7 @@ document$.subscribe(() => {
     const copyright = copyrightSelect.value;
     const wantIIIF  = iiifCheck.checked;
     const wantFree  = freeCheck.checked;
+    const wantWorking = workingCheck?.checked ?? false;
 
     const filtered = allData.filter(d => {
       const names = aggregatorsOf(d).map(a => a.name);
@@ -369,9 +372,13 @@ document$.subscribe(() => {
       const matchCopyright = copyright === 'All' || d.copyright === copyright;
       const matchIIIF      = !wantIIIF || d.iiif === true;
       const matchFree      = !wantFree || d.is_free_cultural_works_license === true;
+      // Only an explicit true counts as broken, matching link_is_broken()
+      // in hooks/library_pages.py, so a record that omits the field is
+      // never hidden from a visitor filtering for working links.
+      const matchWorking   = !wantWorking || d.is_disabled !== true;
 
       return matchSearch && matchNation && matchProject && matchQuantity &&
-        matchCopyright && matchIIIF && matchFree;
+        matchCopyright && matchIIIF && matchFree && matchWorking;
     });
 
     currentFiltered = filtered;
@@ -506,6 +513,7 @@ document$.subscribe(() => {
   copyrightSelect.addEventListener('change', filterData);
   iiifCheck.addEventListener('change', filterData);
   freeCheck.addEventListener('change', filterData);
+  workingCheck?.addEventListener('change', filterData);
 
   clearFiltersBtn?.addEventListener('click', () => {
     searchInput.value     = '';
@@ -515,6 +523,7 @@ document$.subscribe(() => {
     copyrightSelect.value = 'All';
     iiifCheck.checked     = false;
     freeCheck.checked     = false;
+    if (workingCheck) workingCheck.checked = false;
     filterData();
   });
 });
