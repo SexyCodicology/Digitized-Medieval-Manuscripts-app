@@ -135,7 +135,7 @@ Each library entry in [docs/assets/data.json](./docs/assets/data.json) follows t
   "quantity": "Few | Dozens | Hundreds | Thousands | Unknown",
   "iiif": "Supports standardized image format",
   "is_free_cultural_works_license": "Has open license",
-  "is_part_of": "Whether the library is part of a larger project"
+  "aggregators": "Aggregating projects the library is discoverable through, as a list of { name, url }"
 }
 ```
 

@@ -4,7 +4,7 @@
 # and on manual dispatch. Runs scripts/validate_data.py, the same entry
 # point .github/workflows/deploy.yml runs before building the site, which
 # checks JSON syntax, schema compliance (required fields, data types, HTTP(S)
-# URLs), duplicate ids, and is_part_of project-field consistency.
+# URLs), duplicate ids, and aggregator name/URL uniqueness.
 
 name: Data Guardrails
 

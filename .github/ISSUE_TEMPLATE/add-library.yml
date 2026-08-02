@@ -84,7 +84,7 @@ body:
       required: true
 
   - type: dropdown
-    id: is_part_of
+    id: aggregator_membership
     attributes:
       label: Part of a larger aggregator project?
       description: Is this collection part of a larger project or website that aggregates multiple libraries (e.g., a national digital library portal)?
@@ -95,7 +95,7 @@ body:
       required: true
 
   - type: input
-    id: is_part_of_project_name
+    id: aggregator_name
     attributes:
       label: Aggregator project name
       description: Required only if you answered "Yes" above. The name of the larger project or website.
@@ -104,11 +104,21 @@ body:
       required: false
 
   - type: input
-    id: is_part_of_url
+    id: aggregator_url
     attributes:
       label: Aggregator project URL
-      description: Required only if you answered "Yes" above. The URL of the larger project or website.
+      description: Required only if you answered "Yes" above. The home page of the larger project or website.
       placeholder: "https://example.org"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_aggregators
+    attributes:
+      label: Other aggregator projects
+      description: A collection can belong to several aggregators. List any beyond the one above, one per line, as `name — URL`. You can also add these later as a data update.
+      placeholder: |
+        Digital Scriptorium — https://search.digital-scriptorium.org/
     validations:
       required: false
 

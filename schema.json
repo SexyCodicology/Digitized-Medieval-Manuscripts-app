@@ -6,7 +6,7 @@
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["id", "library", "nation", "city", "website", "copyright", "quantity", "iiif", "is_free_cultural_works_license", "is_part_of", "is_part_of_project_name", "is_part_of_url"],
+    "required": ["id", "library", "nation", "city", "website", "copyright", "quantity", "iiif", "is_free_cultural_works_license", "aggregators"],
     "properties": {
       "id": {
         "type": "integer",
@@ -49,20 +49,27 @@
         "type": "boolean",
         "description": "Whether the collection uses a Creative Commons free cultural works license"
       },
-      "is_part_of": {
-        "type": "boolean",
-        "description": "Whether this library is part of a larger project or website that aggregates multiple collections"
-      },
-      "is_part_of_project_name": {
-        "type": ["string", "null"],
-        "minLength": 1,
-        "description": "Name of the main project or website, if is_part_of is true; null otherwise"
-      },
-      "is_part_of_url": {
-        "type": ["string", "null"],
-        "format": "uri",
-        "pattern": "^https?://",
-        "description": "URL of the main project or website, if is_part_of is true; must use HTTP or HTTPS when present; null otherwise"
+      "aggregators": {
+        "type": "array",
+        "description": "Aggregator projects or websites this collection is discoverable through, if any. Use an empty array for a collection with no aggregator membership.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "url"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Name of the aggregator project or website"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https?://",
+              "description": "Canonical home page of the aggregator; must use HTTP or HTTPS"
+            }
+          }
+        }
       }
     }
   }

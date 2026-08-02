@@ -27,9 +27,27 @@ const QUANTITY_ORDER = ['Few', 'Dozens', 'Hundreds', 'Thousands', 'Unknown'];
 // zero-record export still produces a correct header row.
 const EXPORT_FIELDS = [
   'id', 'library', 'nation', 'city', 'website', 'copyright', 'quantity',
-  'iiif', 'is_free_cultural_works_license', 'is_part_of',
-  'is_part_of_project_name', 'is_part_of_url',
+  'iiif', 'is_free_cultural_works_license', 'aggregators',
 ];
+
+// Separates the aggregator memberships of one library inside the single
+// CSV cell they share. CSV is flat, so the array is written as text; the
+// JSON export carries the array itself and needs no such flattening.
+const CSV_AGGREGATOR_SEPARATOR = '; ';
+
+/**
+ * Return a record's usable aggregator entries, in dataset order.
+ *
+ * An entry without a name is dropped, matching hooks/library_pages.py:
+ * the name is what identifies the aggregator to a reader and to the filter.
+ * @param {Object} record
+ * @returns {Array<{name: string, url?: string}>}
+ */
+function aggregatorsOf(record) {
+  const entries = record?.aggregators;
+  if (!Array.isArray(entries)) return [];
+  return entries.filter(entry => entry && String(entry.name ?? '').trim());
+}
 
 document$.subscribe(() => {
   if (!document.getElementById('loader')) return;
@@ -252,11 +270,9 @@ document$.subscribe(() => {
     if (statNations)  statNations.textContent  = String(new Set(data.map(d => d.nation)).size);
     if (statIIIF)     statIIIF.textContent     = String(data.filter(d => d.iiif).length);
     if (statProjects) {
-      const projects = new Set(
-        data
-          .filter(d => d.is_part_of && d.is_part_of_project_name)
-          .map(d => d.is_part_of_project_name),
-      );
+      // Distinct aggregators across every membership, so a library counted
+      // once per project it belongs to never inflates the total.
+      const projects = new Set(data.flatMap(d => aggregatorsOf(d).map(a => a.name)));
       statProjects.textContent = String(projects.size);
     }
   }
@@ -273,11 +289,7 @@ document$.subscribe(() => {
 
   function populateProjectFilter() {
     const projects = [
-      ...new Set(
-        allData
-          .filter(d => d.is_part_of && d.is_part_of_project_name)
-          .map(d => d.is_part_of_project_name),
-      ),
+      ...new Set(allData.flatMap(d => aggregatorsOf(d).map(a => a.name))),
     ].sort();
 
     projects.forEach(project => {
@@ -339,16 +351,20 @@ document$.subscribe(() => {
     const wantFree  = freeCheck.checked;
 
     const filtered = allData.filter(d => {
+      const names = aggregatorsOf(d).map(a => a.name);
+
       const matchSearch =
         !term ||
         d.library?.toLowerCase().includes(term) ||
         d.city?.toLowerCase().includes(term)    ||
         d.nation?.toLowerCase().includes(term)  ||
-        d.is_part_of_project_name?.toLowerCase().includes(term) ||
+        names.some(name => name.toLowerCase().includes(term)) ||
         d.copyright?.toLowerCase().includes(term);
 
       const matchNation    = nation    === 'All' || d.nation === nation;
-      const matchProject   = project   === 'All' || d.is_part_of_project_name === project;
+      // Any one membership is enough, so a library in several aggregators
+      // appears under each of their filters.
+      const matchProject   = project   === 'All' || names.includes(project);
       const matchQuantity  = quantity  === 'All' || d.quantity === quantity;
       const matchCopyright = copyright === 'All' || d.copyright === copyright;
       const matchIIIF      = !wantIIIF || d.iiif === true;
@@ -387,13 +403,30 @@ document$.subscribe(() => {
   }
 
   /**
+   * Return the value written to one CSV cell.
+   *
+   * Every field is scalar except aggregators, which is flattened to
+   * "name (url)" per membership so the column stays readable in a
+   * spreadsheet instead of becoming "[object Object]".
+   * @param {Object} record
+   * @param {string} field
+   * @returns {*}
+   */
+  function exportValue(record, field) {
+    if (field !== 'aggregators') return record[field];
+    return aggregatorsOf(record)
+      .map(a => (a.url ? `${a.name} (${a.url})` : a.name))
+      .join(CSV_AGGREGATOR_SEPARATOR);
+  }
+
+  /**
    * @param {Array<Object>} records
    * @returns {string}
    */
   function toCsv(records) {
     const lines = [EXPORT_FIELDS.join(',')];
     records.forEach(record => {
-      lines.push(EXPORT_FIELDS.map(field => csvField(record[field])).join(','));
+      lines.push(EXPORT_FIELDS.map(field => csvField(exportValue(record, field))).join(','));
     });
     return lines.join('\r\n');
   }

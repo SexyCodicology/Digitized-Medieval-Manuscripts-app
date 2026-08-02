@@ -59,11 +59,23 @@ Every library entry must include:
 - **quantity**: Manuscript count (`"Few"`, `"Dozens"`, `"Hundreds"`, `"Thousands"`, or `"Unknown"`)
 - **iiif**: Standardized image format support (`true` or `false`)
 - **is_free_cultural_works_license**: Free license status (`true` or `false`)
-- **is_part_of**: Whether the library belongs to a larger aggregating project (`true` or `false`)
+- **aggregators**: The aggregating projects the library is discoverable through, as a list. Use `[]` when there are none.
 
-### Conditional fields
+### Aggregator entries
 
-- **is_part_of_project_name** and **is_part_of_url**: Required only when `is_part_of` is `true`. Leave them out (or set them to `null`) when `is_part_of` is `false`.
+Each entry in **aggregators** needs a **name** and a **url**. List one entry per
+aggregator when a library belongs to several, rather than adding a second row
+for the same library:
+
+```json
+"aggregators": [
+    { "name": "Europeana Manuscripts", "url": "https://www.europeana.eu/" },
+    { "name": "Digital Scriptorium", "url": "https://search.digital-scriptorium.org/" }
+]
+```
+
+Use the aggregator's home page for **url**, spell the **name** the way other
+records spell it, and don't list the same aggregator twice on one library.
 
 ### Add a new library
 
@@ -80,7 +92,7 @@ Locate the last library entry in the file:
     "quantity": "Hundreds",
     "iiif": true,
     "is_free_cultural_works_license": false,
-    "is_part_of": false
+    "aggregators": []
 }
 ```
 
@@ -154,7 +166,7 @@ A green checkmark (✓) indicates all checks passed.
 !!! warning "If validation fails"
     GitHub displays errors describing what's wrong. Common issues:
     
-    - **Missing required field**: Add id, library, nation, city, website, copyright, quantity, iiif, is_free_cultural_works_license, and is_part_of
+    - **Missing required field**: Add id, library, nation, city, website, copyright, quantity, iiif, is_free_cultural_works_license, and aggregators
     - **Invalid URL format**: Website must start with http:// or https://
     - **JSON syntax error**: Check for missing commas between fields
     - **Invalid quantity value**: Use "Few", "Dozens", "Hundreds", "Thousands", or "Unknown"
@@ -209,7 +221,7 @@ GitHub displays error messages indicating what's wrong:
 |-----------------------------|-----------------------------------------------------------------|
 | `Invalid JSON`              | Check each field—every field before the last needs a comma      |
 | `Invalid URI format`        | Ensure URL starts with `http://` or `https://`                  |
-| `Missing required property` | Add id, library, nation, city, website, copyright, quantity, iiif, is_free_cultural_works_license, and is_part_of to every entry |
+| `Missing required property` | Add id, library, nation, city, website, copyright, quantity, iiif, is_free_cultural_works_license, and aggregators to every entry |
 | `Invalid enum value`        | Use only "Few", "Dozens", "Hundreds", "Thousands", or "Unknown" |
 
 ### Follow up on pending reviews

@@ -64,7 +64,7 @@ The second check ensures all your data follows the required structure and contai
 The system verifies:
 
 1. **All required fields are present, and no unrecognised fields are included**
-   - Every library record must include exactly: ID, name, country, city, website, copyright information, manuscript count, format support, license type, and project information
+   - Every library record must include exactly: ID, name, country, city, website, copyright information, manuscript count, format support, license type, and aggregator memberships
    - Extra fields that aren't part of this list are rejected, so a typo in a field name is caught rather than silently ignored
 
 2. **Data types are correct**
@@ -81,9 +81,11 @@ The system verifies:
    - URLs start with `http://` or `https://`
    - Links are reachable and functional
 
-5. **Relationships are consistent**
-   - When you indicate a library is part of a larger project, you must provide the project name and website
-   - When a library operates independently, project fields must be empty
+5. **Aggregator memberships are consistent**
+   - Every membership must provide both the aggregator name and its website
+   - A library must not list the same aggregator twice
+   - One aggregator name must use the same URL in every record that names it
+   - A library with no membership uses an empty list
 
 6. **Categories use correct values**
    - Manuscript counts must be: "Few", "Dozens", "Hundreds", "Thousands", or "Unknown"
@@ -163,14 +165,15 @@ When validation fails, GitHub shows you exactly what needs to be fixed.
     **What it means**: The website address in the record with ID 456 doesn't start with `http://` or `https://`.  
     **How to fix**: Ensure the URL starts with `https://` and is a working link. Example: `"website": "https://example.com/manuscripts"`
 
-!!! example "Incomplete project information"
+!!! example "Incomplete aggregator information"
 
     ```
-    record 788 (id: 789): is_part_of is true but is_part_of_project_name is missing
+    record 788 (id: 789): aggregators/0/url: 'europeana.eu' does not match '^https?://'
     ```
     
-    **What it means**: The record with ID 789 says it's part of a project but doesn't provide the project name.  
-    **How to fix**: Either provide both the project name and project website, or set the library as independent (`"is_part_of": false`).
+    **What it means**: The first aggregator listed on the record with ID 789 has a URL that doesn't start with `http://` or `https://`.
+
+    **How to fix**: Provide the aggregator's full home page URL, or remove the membership and use an empty list (`"aggregators": []`).
 
 !!! example "Duplicate ID"
 
@@ -197,7 +200,7 @@ When validation fails, GitHub shows you exactly what needs to be fixed.
 }
 ```
 
-Missing: country, city, website, copyright information, manuscript count, format support, license type, and project information.
+Missing: country, city, website, copyright information, manuscript count, format support, license type, and aggregator memberships.
 
 **How to fix**: Review the [Data Structure Guide](./schema.md) and add all required fields to your record.
 
@@ -271,38 +274,45 @@ Approved values: "Few", "Dozens", "Hundreds", "Thousands", "Unknown"
 
 ---
 
-### Project marked as true but no project name provided
+### Aggregator listed twice on one library
 
-**Error message**: `is_part_of is true but is_part_of_project_name is missing`
+**Error message**: `duplicate aggregator 'e-codices' listed more than once`
 
-**What went wrong**: You indicated the library is part of a project but didn't provide the project's name.
+**What went wrong**: The same aggregator appears twice in one library's list.
+Names are compared ignoring case and surrounding spaces, so `e-codices` and
+`E-Codices` count as the same aggregator.
 
 **Example**:
 ```json
 {
-  "is_part_of": true,
-  "is_part_of_project_name": null,
-  "is_part_of_url": null
+  "aggregators": [
+    { "name": "e-codices", "url": "https://www.e-codices.unifr.ch" },
+    { "name": "E-Codices", "url": "https://www.e-codices.unifr.ch" }
+  ]
 }
 ```
 
-**How to fix**: Either provide the project name and website:
+**How to fix**: Keep one entry per aggregator:
 ```json
 {
-  "is_part_of": true,
-  "is_part_of_project_name": "Europeana Manuscripts",
-  "is_part_of_url": "https://www.europeana.eu/"
+  "aggregators": [
+    { "name": "e-codices", "url": "https://www.e-codices.unifr.ch" }
+  ]
 }
 ```
 
-Or mark the library as independent:
-```json
-{
-  "is_part_of": false,
-  "is_part_of_project_name": null,
-  "is_part_of_url": null
-}
-```
+---
+
+### One aggregator recorded under two URLs
+
+**Error message**: `aggregator 'e-codices' uses url 'https://e-codices.ch/', but record 12 (id: 13) uses 'https://www.e-codices.unifr.ch'`
+
+**What went wrong**: Another record already names this aggregator with a
+different URL. The URL is the aggregator's canonical home page, so it must be
+the same everywhere.
+
+**How to fix**: Use the same URL the other records use. If the aggregator has
+genuinely moved, update every record that names it in the same change.
 
 ---
 

@@ -45,9 +45,9 @@ HOSTILE_RECORD = {
     "website": "javascript:alert(3)",
     "iiif": True,
     "is_free_cultural_works_license": True,
-    "is_part_of": True,
-    "is_part_of_project_name": "<b>Project</b>",
-    "is_part_of_url": "data:text/html,<script>alert(4)</script>",
+    "aggregators": [
+        {"name": "<b>Project</b>", "url": "data:text/html,<script>alert(4)</script>"}
+    ],
 }
 
 
@@ -180,17 +180,54 @@ def test_unsafe_links_do_not_become_clickable():
     assert "<a" not in body
 
 
+# ── Multiple memberships on a library page ────────────────────────────────
+
+
+def _page_body(record: dict) -> str:
+    markdown = hook.render_page(record, "Title", "Description")
+    return markdown.split("---", 2)[2]
+
+
+def test_the_part_of_row_lists_every_membership():
+    body = _page_body({**HOSTILE_RECORD, "aggregators": [
+        {"name": "Polonsky", "url": "https://polonsky.example.org"},
+        {"name": "Biblissima", "url": "https://biblissima.example.org"},
+    ]})
+
+    assert "<dt>Part of</dt>" in body
+    assert body.count("<dt>Part of</dt>") == 1, "one row, not one row per membership"
+    assert "Polonsky" in body
+    assert "Biblissima" in body
+    assert 'href="https://polonsky.example.org"' in body
+    assert 'href="https://biblissima.example.org"' in body
+
+
+def test_no_part_of_row_without_a_membership():
+    body = _page_body({**HOSTILE_RECORD, "aggregators": []})
+
+    assert "Part of" not in body
+
+
+def test_an_unlinkable_membership_is_still_named_alongside_a_linked_one():
+    body = _page_body({**HOSTILE_RECORD, "aggregators": [
+        {"name": "Unsafe", "url": "javascript:alert(1)"},
+        {"name": "Biblissima", "url": "https://biblissima.example.org"},
+    ]})
+
+    assert "javascript:" not in body
+    assert "Unsafe" in body
+    assert 'href="https://biblissima.example.org"' in body
+
+
 # ── Collisions ────────────────────────────────────────────────────────────
 
 
 def test_identical_library_names_get_distinct_slugs_and_titles():
     twins = [
         {**HOSTILE_RECORD, "id": 1, "library": "Stadtbibliothek", "city": "Trier",
-         "nation": "Germany", "website": "https://a.example.org", "is_part_of": False,
-         "is_part_of_project_name": None, "is_part_of_url": None},
+         "nation": "Germany", "website": "https://a.example.org", "aggregators": []},
         {**HOSTILE_RECORD, "id": 2, "library": "Stadtbibliothek", "city": "Trier",
-         "nation": "Germany", "website": "https://b.example.org", "is_part_of": False,
-         "is_part_of_project_name": None, "is_part_of_url": None},
+         "nation": "Germany", "website": "https://b.example.org", "aggregators": []},
     ]
     pages = hook.build_pages(twins)
 
@@ -204,8 +241,7 @@ def test_identical_library_names_get_distinct_slugs_and_titles():
 def test_records_differing_only_by_id_still_get_unique_metadata():
     clones = [
         {**HOSTILE_RECORD, "id": index, "library": "Same", "city": "Same", "nation": "Same",
-         "website": "https://same.example.org", "is_part_of": False,
-         "is_part_of_project_name": None, "is_part_of_url": None}
+         "website": "https://same.example.org", "aggregators": []}
         for index in (1, 2, 3)
     ]
     meta = [_front_matter(markdown) for markdown in hook.build_pages(clones).values()]
@@ -288,9 +324,7 @@ def built_site(tmp_path_factory) -> Path:
             "website": "https://digital.bodleian.ox.ac.uk",
             "iiif": True,
             "is_free_cultural_works_license": True,
-            "is_part_of": False,
-            "is_part_of_project_name": None,
-            "is_part_of_url": None,
+            "aggregators": [],
         },
         HOSTILE_RECORD,
     ]

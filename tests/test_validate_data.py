@@ -40,17 +40,22 @@ VALID_RECORD = {
     "quantity": "Thousands",
     "iiif": True,
     "is_free_cultural_works_license": True,
-    "is_part_of": False,
-    "is_part_of_project_name": None,
-    "is_part_of_url": None,
+    "aggregators": [],
 }
 
 VALID_PROJECT_RECORD = {
     **VALID_RECORD,
     "id": 2,
-    "is_part_of": True,
-    "is_part_of_project_name": "Europeana Manuscripts",
-    "is_part_of_url": "https://www.europeana.eu/",
+    "aggregators": [{"name": "Europeana Manuscripts", "url": "https://www.europeana.eu/"}],
+}
+
+VALID_MULTI_PROJECT_RECORD = {
+    **VALID_RECORD,
+    "id": 3,
+    "aggregators": [
+        {"name": "Europeana Manuscripts", "url": "https://www.europeana.eu/"},
+        {"name": "Digital Scriptorium", "url": "https://search.digital-scriptorium.org/"},
+    ],
 }
 
 
@@ -76,6 +81,10 @@ def test_a_normal_record_passes(schema):
 
 def test_a_valid_project_record_passes(schema):
     assert validator.validate(schema, [VALID_PROJECT_RECORD]) == []
+
+
+def test_a_record_with_several_memberships_passes(schema):
+    assert validator.validate(schema, [VALID_MULTI_PROJECT_RECORD]) == []
 
 
 # ── Malformed input ───────────────────────────────────────────────────────
@@ -117,8 +126,75 @@ def test_non_http_website_fails(schema, field, value):
     assert errors != []
 
 
-def test_non_http_project_url_fails(schema):
-    record = {**copy.deepcopy(VALID_PROJECT_RECORD), "is_part_of_url": "data:text/html,x"}
+@pytest.mark.parametrize(
+    "value",
+    ["data:text/html,x", "javascript:alert(1)", "ftp://example.org/", "not-a-url"],
+)
+def test_non_http_aggregator_url_fails(schema, value):
+    record = copy.deepcopy(VALID_PROJECT_RECORD)
+    record["aggregators"][0]["url"] = value
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_aggregator_entry_without_a_name_fails(schema):
+    record = copy.deepcopy(VALID_PROJECT_RECORD)
+    del record["aggregators"][0]["name"]
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_aggregator_entry_without_a_url_fails(schema):
+    record = copy.deepcopy(VALID_PROJECT_RECORD)
+    del record["aggregators"][0]["url"]
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_aggregator_entry_with_an_unexpected_property_fails(schema):
+    record = copy.deepcopy(VALID_PROJECT_RECORD)
+    record["aggregators"][0]["note"] = "not allowed"
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_an_empty_aggregator_name_fails(schema):
+    record = copy.deepcopy(VALID_PROJECT_RECORD)
+    record["aggregators"][0]["name"] = ""
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_aggregators_must_be_an_array(schema):
+    record = {**copy.deepcopy(VALID_RECORD), "aggregators": None}
+
+    errors = validator.validate(schema, [record])
+
+    assert errors != []
+
+
+def test_a_record_missing_aggregators_fails(schema):
+    record = copy.deepcopy(VALID_RECORD)
+    del record["aggregators"]
+
+    errors = validator.validate(schema, [record])
+
+    assert any("aggregators" in error for error in errors)
+
+
+@pytest.mark.parametrize("field", ["is_part_of", "is_part_of_project_name", "is_part_of_url"])
+def test_the_legacy_singular_fields_are_now_rejected(schema, field):
+    record = {**copy.deepcopy(VALID_RECORD), field: None}
 
     errors = validator.validate(schema, [record])
 
@@ -153,49 +229,91 @@ def test_non_positive_or_non_integer_id_fails(schema, bad_id):
     assert errors != []
 
 
-# ── Project-field consistency ────────────────────────────────────────────────
+# ── Aggregator uniqueness ────────────────────────────────────────────────────
 
 
-def test_independent_record_with_null_project_fields_is_valid(schema):
+def test_a_record_with_no_memberships_is_valid(schema):
     assert validator.validate(schema, [VALID_RECORD]) == []
 
 
-def test_is_part_of_true_without_project_name_fails(schema):
-    record = {**copy.deepcopy(VALID_PROJECT_RECORD), "id": 9999, "is_part_of_project_name": None}
+def test_the_same_aggregator_listed_twice_on_one_record_fails(schema):
+    record = copy.deepcopy(VALID_PROJECT_RECORD)
+    record["aggregators"].append(
+        {"name": "Europeana Manuscripts", "url": "https://www.europeana.eu/"}
+    )
 
-    errors = validator.check_project_consistency([record])
+    errors = validator.validate(schema, [record])
 
-    assert any("is_part_of_project_name is missing" in error for error in errors)
-
-
-def test_is_part_of_true_without_project_url_fails(schema):
-    record = {**copy.deepcopy(VALID_PROJECT_RECORD), "id": 9999, "is_part_of_url": None}
-
-    errors = validator.check_project_consistency([record])
-
-    assert any("is_part_of_url is missing" in error for error in errors)
+    assert any("duplicate aggregator" in error for error in errors)
 
 
-def test_is_part_of_false_with_project_name_fails(schema):
-    record = {**copy.deepcopy(VALID_RECORD), "id": 9999, "is_part_of_project_name": "Should not be here"}
+@pytest.mark.parametrize("variant", ["europeana manuscripts", "  Europeana Manuscripts  "])
+def test_duplicate_aggregator_names_are_compared_case_and_space_insensitively(schema, variant):
+    record = copy.deepcopy(VALID_PROJECT_RECORD)
+    record["aggregators"].append({"name": variant, "url": "https://www.europeana.eu/"})
 
-    errors = validator.check_project_consistency([record])
+    errors = validator.check_aggregator_uniqueness([record])
 
-    assert any("is_part_of_project_name is not null" in error for error in errors)
-
-
-def test_is_part_of_false_with_project_url_fails(schema):
-    record = {**copy.deepcopy(VALID_RECORD), "id": 9999, "is_part_of_url": "https://example.org"}
-
-    errors = validator.check_project_consistency([record])
-
-    assert any("is_part_of_url is not null" in error for error in errors)
+    assert any("duplicate aggregator" in error for error in errors)
 
 
-def test_known_legacy_exceptions_are_narrowly_scoped():
-    """The four previously grandfathered records (14, 338, 585, 584) have
-    since been fixed (see issue #37), so no exceptions remain."""
-    assert validator.KNOWN_PROJECT_FIELD_EXCEPTIONS == {}
+def test_two_different_aggregators_on_one_record_are_valid(schema):
+    assert validator.check_aggregator_uniqueness([VALID_MULTI_PROJECT_RECORD]) == []
+
+
+def test_one_aggregator_name_with_conflicting_urls_across_records_fails(schema):
+    first = copy.deepcopy(VALID_PROJECT_RECORD)
+    second = {
+        **copy.deepcopy(VALID_RECORD),
+        "id": 9999,
+        "aggregators": [{"name": "Europeana Manuscripts", "url": "https://europeana.example/"}],
+    }
+
+    errors = validator.validate(schema, [first, second])
+
+    assert any("uses url" in error for error in errors)
+
+
+def test_a_conflicting_url_is_detected_across_normalised_name_variants(schema):
+    first = copy.deepcopy(VALID_PROJECT_RECORD)
+    second = {
+        **copy.deepcopy(VALID_RECORD),
+        "id": 9999,
+        "aggregators": [{"name": "EUROPEANA manuscripts", "url": "https://europeana.example/"}],
+    }
+
+    errors = validator.check_aggregator_uniqueness([first, second])
+
+    assert any("uses url" in error for error in errors)
+
+
+def test_the_same_aggregator_url_repeated_across_records_is_valid(schema):
+    first = copy.deepcopy(VALID_PROJECT_RECORD)
+    second = {**copy.deepcopy(VALID_PROJECT_RECORD), "id": 9999}
+
+    assert validator.check_aggregator_uniqueness([first, second]) == []
+
+
+def test_a_url_conflict_can_be_grandfathered_by_record_id(schema, monkeypatch):
+    first = copy.deepcopy(VALID_PROJECT_RECORD)
+    second = {
+        **copy.deepcopy(VALID_RECORD),
+        "id": 9999,
+        "aggregators": [{"name": "Europeana Manuscripts", "url": "https://europeana.example/"}],
+    }
+    monkeypatch.setattr(
+        validator,
+        "KNOWN_AGGREGATOR_URL_EXCEPTIONS",
+        {"europeana manuscripts": frozenset({9999})},
+    )
+
+    assert validator.check_aggregator_uniqueness([first, second]) == []
+
+
+def test_no_url_exceptions_are_currently_needed():
+    """The dataset has no aggregator recorded under two URLs, so the narrow
+    escape hatch stays empty; it exists for a future legitimate exception."""
+    assert validator.KNOWN_AGGREGATOR_URL_EXCEPTIONS == {}
 
 
 # ── External dependency failure ──────────────────────────────────────────────

@@ -179,78 +179,107 @@ Whether the collection uses a very permissive open license that allows maximum r
 
 **Why it matters:** Researchers quickly identify collections with the most generous permissions for reuse in their own work.
 
-### Project association
+### Aggregator memberships
 
-#### Part of a larger project
+#### Aggregators
 
-Whether this library's collection is part of a coordinated digitization initiative.
-
-**Choose one:**
-- `true` — Collection is part of a larger project
-- `false` — Collection operates independently
-
-**Example:** `true`
-
-**Tips:**
-- Check if the library mentions a larger initiative or program
-- Examples: Europeana, Internet Archive, Digital Humanities projects
-
-**Why it matters:** Researchers can discover related collections within the same initiative.
-
-#### Project name (if applicable)
-
-The name of the larger project to which this collection belongs.
+The aggregator projects or websites this collection is discoverable through. A
+collection can belong to none, one, or several.
 
 **Requirements:**
-- Only fill this in if you answered `true` above
-- Must not be empty when filled in
+- Always include the field, even when the collection belongs to no aggregator
+- Use an empty array (`[]`) when the collection is discoverable only through the library's own site
+- Give each membership a `name` and a `url`
+- Don't list the same aggregator twice on one library
+
+**Example:**
+
+```json
+"aggregators": [
+    { "name": "Europeana Manuscripts", "url": "https://www.europeana.eu/" }
+]
+```
+
+**Tips:**
+- Check whether the library mentions a larger initiative or programme
+- Examples: Europeana, Internet Archive, digital humanities projects
+- Add every aggregator the collection appears in, not just the best-known one
+
+**Why it matters:** Researchers can discover related collections within the same
+initiative, and a library that participates in several is findable under each of
+them.
+
+#### Aggregator name
+
+The name of the aggregator project the collection belongs to.
+
+**Requirements:**
+- Must not be empty
+- Use the same spelling other records use for that aggregator
 
 **Example:** `"Europeana Manuscripts"`
 
-**Why it matters:** The project name helps researchers understand the organizational context and find other related collections.
+**Why it matters:** The name helps researchers understand the organisational
+context, and it's what the project filter on the homepage groups records by, so
+a spelling that differs from other records splits one aggregator into two
+filter entries.
 
-#### Project website (if applicable)
+#### Aggregator URL
 
-A direct link to the larger project's website or portal.
+A direct link to the aggregator's website or portal.
 
 **Requirements:**
-- Only fill this in if you answered `true` above
-- Must be a working URL
+- Must be a working URL that starts with `http://` or `https://`
+- Use the aggregator's home page, not a deep link to this library's results
+- Every record naming the same aggregator must use the same URL
 
 **Example:** `"https://www.europeana.eu/"`
 
-**Why it matters:** Researchers can access the project directly to explore other participating collections.
+**Why it matters:** Researchers can access the aggregator directly to explore
+other participating collections.
 
 ## How we check the data
 
 All records are validated against our data structure standards before being added to the directory.
 
-### Project information consistency
+### Aggregator membership consistency
 
-If you indicate that a collection is part of a larger project (`true`), you must provide:
+Every membership you list must carry both a name and a working URL, so the
+information is complete and usable. Two further rules keep the aggregator
+filter trustworthy:
 
-- The project name (at least 1 character)
-- The project website (a valid URL)
+- Don't list the same aggregator twice on one library. Names are compared
+  ignoring case and surrounding spaces, so `e-codices` and `E-Codices` count
+  as the same aggregator.
+- Don't give one aggregator two different URLs. Every record naming the same
+  aggregator must point at the same address.
 
-This ensures that project information is complete and usable.
-
-**Valid example:**
+**Valid example (one membership):**
 
 ```json
 {
-  "is_part_of": true,
-  "is_part_of_project_name": "Europeana Manuscripts",
-  "is_part_of_url": "https://www.europeana.eu/"
+  "aggregators": [
+    { "name": "Europeana Manuscripts", "url": "https://www.europeana.eu/" }
+  ]
 }
 ```
 
-**Also valid (independent collection):**
+**Also valid (several memberships):**
 
 ```json
 {
-  "is_part_of": false,
-  "is_part_of_project_name": null,
-  "is_part_of_url": null
+  "aggregators": [
+    { "name": "Europeana Manuscripts", "url": "https://www.europeana.eu/" },
+    { "name": "Digital Scriptorium", "url": "https://search.digital-scriptorium.org/" }
+  ]
+}
+```
+
+**Also valid (no membership):**
+
+```json
+{
+  "aggregators": []
 }
 ```
 
@@ -279,13 +308,14 @@ We use simple Yes/No choices for format support and license type because:
 - Fast to search and filter
 - Straightforward for researchers to find what they need
 
-### Flexible project association
+### Flexible aggregator association
 
-Collections can be independent or part of projects because:
+Collections can be independent or belong to any number of aggregators because:
 
 - Not all libraries participate in coordinated initiatives
+- Many that do participate in more than one
 - When they do, researchers benefit from discovering related collections
-- Optional project information accommodates both types
+- A list accommodates all three cases without duplicating the library
 
 ## Related files
 
