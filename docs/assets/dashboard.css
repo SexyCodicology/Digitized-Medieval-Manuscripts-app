@@ -472,6 +472,14 @@
   box-shadow: inset 0 0 0 1px #00796b;
 }
 
+/* Checked state — Working link (green) */
+#workingCheck:checked + .toggle-group__btn--working {
+  background: #2e7d32;
+  color: #fff;
+  border-color: transparent;
+  box-shadow: inset 0 0 0 1px #2e7d32;
+}
+
 /* Dark mode: brighter tints for legibility on slate background */
 [data-md-color-scheme="slate"] #iiifCheck:checked + .toggle-group__btn--iiif {
   background: #42a5f5;
@@ -480,6 +488,11 @@
 
 [data-md-color-scheme="slate"] #freeCheck:checked + .toggle-group__btn--open {
   background: #26a69a;
+  color: #000;
+}
+
+[data-md-color-scheme="slate"] #workingCheck:checked + .toggle-group__btn--working {
+  background: #66bb6a;
   color: #000;
 }
 
@@ -632,6 +645,18 @@ a.library-name:focus-visible {
   padding: 0;
 }
 
+/* Broken-link warning. Amber rather than red: the collection may well still
+   exist at another address, so this is a caution, not an error. */
+.badge--broken {
+  background: #fdecea;
+  color: #b71c1c;
+}
+
+[data-md-color-scheme="slate"] .badge--broken {
+  background: rgba(244, 67, 54, .18);
+  color: #ef9a9a;
+}
+
 /* Visit button */
 .btn-visit {
   display: inline-flex;
@@ -653,6 +678,43 @@ a.library-name:focus-visible {
   background: var(--md-primary-fg-color);
   color: var(--md-primary-bg-color, #fff);
   text-decoration: none;
+}
+
+/* A link known to be dead stays clickable, so it must not look like a
+   working control. Muted and dashed reads as "try at your own risk". */
+.btn-visit--broken {
+  color: #b71c1c;
+  border-style: dashed;
+  border-color: #ef9a9a;
+}
+
+.btn-visit--broken:hover {
+  background: #b71c1c;
+  border-color: #b71c1c;
+  color: #fff;
+}
+
+[data-md-color-scheme="slate"] .btn-visit--broken {
+  color: #ef9a9a;
+  border-color: rgba(244, 67, 54, .5);
+}
+
+/* Broken-link notice on a generated library page */
+.library-page__broken {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #b71c1c;
+  border-radius: var(--dash-radius);
+  background: #fdecea;
+  color: #7f1d1d;
+  font-size: 0.9rem;
+}
+
+[data-md-color-scheme="slate"] .library-page__broken {
+  background: rgba(244, 67, 54, .12);
+  color: #ef9a9a;
 }
 
 .hero__random-btn {

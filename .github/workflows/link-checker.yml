@@ -7,8 +7,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  # create-issue-from-file files the human-readable weekly report.
   issues: write
+  # create-pull-request pushes the proposal branch and opens the pull request.
+  # The dataset is never written on master directly: a status only reaches the
+  # public site once a human has confirmed it.
+  contents: write
+  pull-requests: write
 
 jobs:
   link-check:
@@ -48,3 +53,55 @@ jobs:
           labels: |
             maintenance
             automated-issue
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: '**/requirements*.txt'
+
+      # jsonschema lives in requirements-dev.txt, which is what the validation
+      # step below needs; apply_link_status.py itself uses only the standard
+      # library.
+      - name: Install Dependencies
+        run: pip install -r requirements-dev.txt
+
+      # Marks a record broken only for a response that proves the collection
+      # has gone (404 or 410). Most of a real report is timeouts and 403/429/
+      # 5xx, none of which tells the difference between a dead collection and
+      # a slow or bot-averse server. The script exits non-zero if the report
+      # cannot be parsed, so a format change fails the job rather than
+      # quietly proposing that every link is healthy.
+      - name: Propose broken-link status changes
+        run: |
+          python scripts/apply_link_status.py \
+            --report ./lychee-report.md \
+            --today "$(date -u +%F)"
+
+      # A proposal that would not validate must never reach a pull request.
+      - name: Validate the proposed dataset
+        run: python scripts/validate_data.py
+
+      - name: Open a Pull Request with the proposed changes
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automated/link-status
+          delete-branch: true
+          title: 'fix(data): update broken-link status from the weekly link check'
+          commit-message: 'fix(data): update broken-link status from the weekly link check'
+          labels: |
+            maintenance
+            automated-issue
+          body: |
+            Proposed `is_disabled` and `last_checked` changes from the weekly
+            link check.
+
+            Only a 404 or 410 marks a collection broken. Timeouts and
+            403/429/5xx responses are left alone, because they describe the
+            server on the day rather than whether the collection still
+            exists.
+
+            Check each URL before merging. A link can 404 because a
+            catalogue moved rather than closed, in which case the fix is a
+            new URL rather than a broken-link warning.

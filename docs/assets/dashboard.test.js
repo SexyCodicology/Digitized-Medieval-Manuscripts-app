@@ -42,6 +42,7 @@ function baseHtml(rowsHtml) {
       <span hidden id="filtersActiveBadge">0</span>
       <input id="iiifCheck" type="checkbox">
       <input id="freeCheck" type="checkbox">
+      <input id="workingCheck" type="checkbox">
       <button id="clearFilters"></button>
       <button disabled id="randomLibraryBtn"></button>
       <button data-export="csv" disabled id="exportCsvBtnTop"></button>
@@ -567,7 +568,7 @@ test('filters-active badge: hidden with none active, counts only the four collap
   assert.equal(badge.textContent, '0');
 });
 
-const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,is_free_cultural_works_license,aggregators';
+const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,is_free_cultural_works_license,aggregators,is_disabled,last_checked';
 
 function makeRecord(overrides) {
   return Object.assign({
@@ -873,14 +874,21 @@ test('export CSV: memberships are flattened into one readable cell', async () =>
 
   const lines = downloads[0].content.split('\r\n');
   assert.equal(lines[0], EXPORT_CSV_HEADER);
+
+  // Locate the column by header name rather than by position, so adding a
+  // later column cannot silently turn this into a different assertion.
+  const columns = lines[0].split(',');
+  const cellsOf = (line) => line.split(',');
+  const aggregatorCell = (line) => cellsOf(line)[columns.indexOf('aggregators')];
+
   // "; " rather than ", " keeps the cell free of the delimiter, so it needs
   // no quoting and stays readable in a spreadsheet.
-  assert.ok(
-    lines[1].endsWith('Project X (https://x.invalid/); Project Y (https://y.invalid/)'),
-    `unexpected cell: ${lines[1]}`,
+  assert.equal(
+    aggregatorCell(lines[1]),
+    'Project X (https://x.invalid/); Project Y (https://y.invalid/)',
   );
   assert.equal(lines[1].includes('[object Object]'), false);
-  assert.equal(lines[3].endsWith(','), true, 'no memberships means an empty cell');
+  assert.equal(aggregatorCell(lines[3]), '', 'no memberships means an empty cell');
 });
 
 test('export JSON: the aggregators array is carried through unflattened', async () => {
@@ -896,4 +904,105 @@ test('export JSON: the aggregators array is carried through unflattened', async 
     { name: 'Project Y', url: 'https://y.invalid/' },
   ]);
   assert.deepEqual(parsed[2].aggregators, []);
+});
+
+// ── Working-link filter ──────────────────────────────────────────────────
+
+const LINK_STATUS_DATA = [
+  makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' }),
+  makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B', is_disabled: true, last_checked: '2026-08-02' }),
+  makeRecord({ id: 3, library: 'Gamma Library', nation: 'Nation C', is_disabled: false }),
+];
+
+async function loadLinkStatusDashboard(data = LINK_STATUS_DATA) {
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+      <tr data-record-id="3"><td>Gamma Library</td><td>Nation C</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+  await flushMicrotasks();
+  return dom;
+}
+
+test('working-link filter: off by default, so a broken record is still listed', async () => {
+  const { window } = await loadLinkStatusDashboard();
+
+  assert.equal(window.document.getElementById('workingCheck').checked, false);
+  assert.deepEqual(visibleIds(window), ['1', '2', '3']);
+});
+
+test('working-link filter: hides only the records marked broken', async () => {
+  const { window } = await loadLinkStatusDashboard();
+  const workingCheck = window.document.getElementById('workingCheck');
+
+  workingCheck.checked = true;
+  workingCheck.dispatchEvent(new window.Event('change'));
+
+  assert.deepEqual(visibleIds(window), ['1', '3'], 'omitted and false both count as working');
+});
+
+test('working-link filter: only an explicit true is treated as broken', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', is_disabled: 'true' }),
+    makeRecord({ id: 2, library: 'Beta Library', is_disabled: 1 }),
+    makeRecord({ id: 3, library: 'Gamma Library', is_disabled: null }),
+  ];
+  const { window } = await loadLinkStatusDashboard(data);
+  const workingCheck = window.document.getElementById('workingCheck');
+
+  workingCheck.checked = true;
+  workingCheck.dispatchEvent(new window.Event('change'));
+
+  assert.deepEqual(visibleIds(window), ['1', '2', '3'], 'no truthy lookalike may hide a record');
+});
+
+test('working-link filter: composes with the other filters', async () => {
+  const { window } = await loadLinkStatusDashboard();
+  const workingCheck = window.document.getElementById('workingCheck');
+  const searchInput = window.document.getElementById('searchInput');
+
+  workingCheck.checked = true;
+  workingCheck.dispatchEvent(new window.Event('change'));
+  searchInput.value = 'beta';
+  searchInput.dispatchEvent(new window.Event('input'));
+
+  assert.deepEqual(visibleIds(window), [], 'Beta is broken, so the pair matches nothing');
+});
+
+test('clearFilters resets the working-link toggle with the rest', async () => {
+  const { window } = await loadLinkStatusDashboard();
+  const workingCheck = window.document.getElementById('workingCheck');
+
+  workingCheck.checked = true;
+  workingCheck.dispatchEvent(new window.Event('change'));
+  assert.deepEqual(visibleIds(window), ['1', '3']);
+
+  window.document.getElementById('clearFilters').click();
+
+  assert.equal(workingCheck.checked, false);
+  assert.deepEqual(visibleIds(window), ['1', '2', '3']);
+});
+
+test('export: link status columns carry through to CSV and JSON', async () => {
+  const dom = await loadLinkStatusDashboard();
+  const { window } = dom;
+  const downloads = stubDownloads(window);
+
+  window.document.getElementById('exportCsvBtn').click();
+  window.document.getElementById('exportJsonBtn').click();
+
+  const lines = downloads[0].content.split('\r\n');
+  const columns = lines[0].split(',');
+  const cell = (line, name) => line.split(',')[columns.indexOf(name)];
+
+  assert.equal(cell(lines[2], 'is_disabled'), 'true');
+  assert.equal(cell(lines[2], 'last_checked'), '2026-08-02');
+  assert.equal(cell(lines[1], 'is_disabled'), '', 'an absent field exports as empty');
+
+  const parsed = JSON.parse(downloads[1].content);
+  assert.equal(parsed[1].is_disabled, true);
+  assert.equal(parsed[1].last_checked, '2026-08-02');
 });

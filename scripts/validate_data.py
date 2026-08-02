@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -147,6 +148,54 @@ def check_aggregator_uniqueness(records: list) -> list[str]:
     return errors
 
 
+def check_link_status(records: list) -> list[str]:
+    """Return one message per broken-link status inconsistency.
+
+    A reader is told a link is dead and when that was established, so a record
+    claiming is_disabled without a usable last_checked would produce an
+    undated warning. schema.json checks the shape of last_checked, but its
+    "date" format check is only enforced when the runtime supplies that
+    format checker, and it cannot express the dependency between the two
+    fields; both rules are therefore settled here as well.
+    """
+    errors = []
+    for index, record in enumerate(records):
+        if not isinstance(record, dict):
+            continue
+        record_id = record.get("id")
+        disabled = record.get("is_disabled")
+        checked = record.get("last_checked")
+
+        if disabled is True and not checked:
+            errors.append(
+                f"record {index} (id: {record_id}): is_disabled is true but "
+                "last_checked is missing"
+            )
+
+        if checked is not None:
+            if not isinstance(checked, str) or not is_iso_date(checked):
+                errors.append(
+                    f"record {index} (id: {record_id}): last_checked "
+                    f"{checked!r} is not an ISO 8601 date (YYYY-MM-DD)"
+                )
+
+    return errors
+
+
+def is_iso_date(value: str) -> bool:
+    """Return whether ``value`` is a real calendar date written as YYYY-MM-DD.
+
+    date.fromisoformat accepts only the extended format on Python 3.11, which
+    is the version both workflows pin, so a same-day check here matches what
+    schema.json's pattern allows.
+    """
+    try:
+        date.fromisoformat(value)
+    except (ValueError, TypeError):
+        return False
+    return True
+
+
 def validate(schema: dict, records: Any) -> list[str]:
     """Return every validation failure found for ``records`` against ``schema``."""
     if not isinstance(records, list):
@@ -156,6 +205,7 @@ def validate(schema: dict, records: Any) -> list[str]:
         *check_schema(schema, records),
         *check_duplicate_ids(records),
         *check_aggregator_uniqueness(records),
+        *check_link_status(records),
     ]
 
 

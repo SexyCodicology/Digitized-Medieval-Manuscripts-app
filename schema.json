@@ -70,6 +70,16 @@
             }
           }
         }
+      },
+      "is_disabled": {
+        "type": "boolean",
+        "description": "Whether the collection URL has been confirmed unreachable. Optional: omit it for a collection whose link is believed to work."
+      },
+      "last_checked": {
+        "type": "string",
+        "format": "date",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "ISO 8601 calendar date (YYYY-MM-DD) the collection URL was last checked. Required when is_disabled is true, so a warning shown to a reader can always be dated."
       }
     }
   }

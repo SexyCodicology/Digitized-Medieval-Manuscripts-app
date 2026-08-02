@@ -252,6 +252,10 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
     if not badges:
         badges.append('<span class="badge badge--standard">Standard access</span>')
 
+    broken = link_is_broken(record)
+    if broken:
+        badges.insert(0, '<span class="badge badge--broken">Broken link</span>')
+
     facts = [
         ("Digitised manuscripts", escape(str(record.get("quantity") or "Unknown"))),
         ("Rights", escape(str(record.get("copyright") or "Unknown"))),
@@ -277,12 +281,35 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
     rows = "".join(f"<dt>{name}</dt><dd>{value}</dd>" for name, value in facts)
 
     website = safe_url(record.get("website"))
-    visit = (
-        f'<p><a class="btn-visit" href="{escape(website, quote=True)}" '
-        f'rel="noopener noreferrer" target="_blank">Visit the collection</a></p>'
-        if website
-        else "<p>No collection URL is recorded for this library.</p>"
-    )
+    if not website:
+        visit = "<p>No collection URL is recorded for this library.</p>"
+    elif broken:
+        # Kept clickable so a reader can check whether the collection has come
+        # back, but never presented as a working link.
+        visit = (
+            f'<p><a class="btn-visit btn-visit--broken" '
+            f'href="{escape(website, quote=True)}" rel="noopener noreferrer" '
+            f'target="_blank">Try the collection anyway</a></p>'
+        )
+    else:
+        visit = (
+            f'<p><a class="btn-visit" href="{escape(website, quote=True)}" '
+            f'rel="noopener noreferrer" target="_blank">Visit the collection</a></p>'
+        )
+
+    # role="status" rather than "alert": the warning is part of the page a
+    # reader has just opened, not an interruption of something they were doing.
+    notice = ""
+    if broken:
+        checked = checked_on(record)
+        when = f" on {checked}" if checked else ""
+        notice = (
+            '<p class="library-page__broken" role="status">'
+            '<i class="bi bi-exclamation-triangle" aria-hidden="true"></i> '
+            f"This collection's link was confirmed broken{when}. "
+            "It might have moved, or the collection might no longer be online."
+            "</p>\n\n"
+        )
 
     return (
         f"---\n{meta}---\n\n"
@@ -290,6 +317,7 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         f"<p class=\"library-page__location\">{escape(str(record['city']))}, "
         f"{escape(str(record['nation']))}</p>\n\n"
         f'<p class="library-page__badges">{"".join(badges)}</p>\n\n'
+        f"{notice}"
         f'<dl class="library-page__facts">{rows}</dl>\n\n'
         f"{visit}\n\n"
         "[Back to the library directory](../index.md)\n"
@@ -320,7 +348,12 @@ def build_pages(records: list[dict[str, Any]]) -> dict[str, str]:
 
 
 def render_badges(record: dict[str, Any]) -> str:
-    """Return the feature badges of one record."""
+    """Return the feature badges of one record.
+
+    A broken-link warning is prepended rather than folded into the list, so
+    the "Standard Access" fallback keeps meaning "no notable features" instead
+    of being suppressed by the presence of a warning.
+    """
     badges = []
     if record.get("iiif"):
         badges.append(
@@ -334,6 +367,14 @@ def render_badges(record: dict[str, Any]) -> str:
         )
     if not badges:
         badges.append('<span class="badge badge--standard">Standard Access</span>')
+
+    if link_is_broken(record):
+        badges.insert(
+            0,
+            '<span class="badge badge--broken">'
+            '<i class="bi bi-exclamation-triangle" aria-hidden="true"></i>'
+            "Broken link</span>",
+        )
     return "".join(badges)
 
 
@@ -352,6 +393,25 @@ def aggregators_of(record: dict[str, Any]) -> list[dict[str, Any]]:
         for entry in entries
         if isinstance(entry, dict) and str(entry.get("name") or "").strip()
     ]
+
+
+def link_is_broken(record: dict[str, Any]) -> bool:
+    """Return whether the collection URL has been confirmed unreachable.
+
+    Only an explicit ``True`` counts. A record that omits the field, or that
+    carries a truthy-looking string from a bad edit, is treated as working:
+    wrongly warning a reader away from a live collection is the more harmful
+    mistake, and scripts/validate_data.py rejects the malformed value anyway.
+    """
+    return record.get("is_disabled") is True
+
+
+def checked_on(record: dict[str, Any]) -> str:
+    """Return the escaped date the link was last checked, or an empty string."""
+    value = record.get("last_checked")
+    if not isinstance(value, str) or not value.strip():
+        return ""
+    return escape(value.strip())
 
 
 def render_projects(record: dict[str, Any]) -> str:
@@ -379,10 +439,32 @@ def render_projects(record: dict[str, Any]) -> str:
 
 
 def render_visit(record: dict[str, Any]) -> str:
-    """Return the Visit control of one record, or a placeholder without a URL."""
+    """Return the Visit control of one record, or a placeholder without a URL.
+
+    A URL confirmed unreachable stays clickable but is labelled as broken:
+    removing it would hide the only evidence a reader has of where the
+    collection used to live, and someone checking whether it has come back
+    needs the address.
+    """
     website = safe_url(record.get("website"))
     if not website:
         return '<span style="color:var(--dash-muted);font-size:.8rem">No URL</span>'
+
+    if link_is_broken(record):
+        checked = checked_on(record)
+        title = (
+            f"This link was confirmed broken on {checked}"
+            if checked
+            else "This link was confirmed broken"
+        )
+        return (
+            f'<a href="{escape(website, quote=True)}" target="_blank" '
+            'rel="noopener noreferrer" class="btn-visit btn-visit--broken" '
+            f'title="{title}">'
+            '<i class="bi bi-exclamation-triangle" aria-hidden="true"></i>'
+            "Broken</a>"
+        )
+
     return (
         f'<a href="{escape(website, quote=True)}" target="_blank" '
         'rel="noopener noreferrer" class="btn-visit">Visit'
