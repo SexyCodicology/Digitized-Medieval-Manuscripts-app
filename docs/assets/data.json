@@ -7241,7 +7241,7 @@
         "city": "Philadelphia",
         "library": "Free Library of Philadelphia",
         "quantity": "Thousands",
-        "website": "https://search.digital-scriptorium.org/?f%5Binstitution_facet%5D%5B%5D=Free%2BLibrary%2Bof%2BPhiladelphia",
+        "website": "https://openn.library.upenn.edu/html/0023.html",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
@@ -7249,6 +7249,10 @@
             {
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
+            },
+            {
+                "name": "BiblioPhilly",
+                "url": "https://bibliophilly.library.upenn.edu/"
             }
         ]
     },
@@ -7986,6 +7990,10 @@
             {
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
+            },
+            {
+                "name": "Digital Scriptorium",
+                "url": "https://search.digital-scriptorium.org/"
             }
         ]
     },
@@ -7996,23 +8004,6 @@
         "library": "Franklin & Marshall College Library, Archives & Special Collections",
         "quantity": "Few",
         "website": "https://openn.library.upenn.edu/html/0038.html",
-        "copyright": "Public Domain Mark 1.0",
-        "iiif": false,
-        "is_free_cultural_works_license": true,
-        "aggregators": [
-            {
-                "name": "BiblioPhilly",
-                "url": "https://bibliophilly.library.upenn.edu/"
-            }
-        ]
-    },
-    {
-        "id": 586,
-        "nation": "United States of America",
-        "city": "Philadelphia",
-        "library": "Free Library of Philadelphia, Special Collections",
-        "quantity": "Thousands",
-        "website": "https://openn.library.upenn.edu/html/0023.html",
         "copyright": "Public Domain Mark 1.0",
         "iiif": false,
         "is_free_cultural_works_license": true,
@@ -8155,7 +8146,7 @@
         "city": "Philadelphia",
         "library": "University of Pennsylvania",
         "quantity": "Thousands",
-        "website": "https://search.digital-scriptorium.org/?f%5Binstitution_facet%5D%5B%5D=University%2Bof%2BPennsylvania",
+        "website": "https://openn.library.upenn.edu/html/0002.html",
         "copyright": "CC-BY",
         "iiif": true,
         "is_free_cultural_works_license": true,
@@ -8163,6 +8154,10 @@
             {
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
+            },
+            {
+                "name": "BiblioPhilly",
+                "url": "https://bibliophilly.library.upenn.edu/"
             }
         ]
     },
@@ -8552,7 +8547,7 @@
         "nation": "United States of America",
         "city": "Chicago",
         "library": "The Newberry Library",
-        "quantity": "Few",
+        "quantity": "Hundreds",
         "website": "https://www.e-codices.unifr.ch/en/search/?iCurrentPage=1&sQueryString=&sSearchField=fullText&sSortField=score&aSelectedFacets[collection_facet][]=Chicago%2C+The+Newberry+Library",
         "copyright": "CC BY-NC 4.0",
         "iiif": true,
@@ -8561,6 +8556,10 @@
             {
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
+            },
+            {
+                "name": "Digital Scriptorium",
+                "url": "https://search.digital-scriptorium.org/"
             }
         ]
     },
@@ -8705,7 +8704,7 @@
         "nation": "United States of America",
         "city": "Bethlehem",
         "library": "Lehigh University Libraries, Special Collections",
-        "quantity": "Few",
+        "quantity": "Hundreds",
         "website": "https://openn.library.upenn.edu/html/0007.html",
         "copyright": "Public Domain Mark 1.0",
         "iiif": false,
@@ -8714,6 +8713,10 @@
             {
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
+            },
+            {
+                "name": "Digital Scriptorium",
+                "url": "https://search.digital-scriptorium.org/"
             }
         ]
     },
@@ -8765,6 +8768,10 @@
             {
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
+            },
+            {
+                "name": "Digital Scriptorium",
+                "url": "https://search.digital-scriptorium.org/"
             }
         ]
     },
@@ -8792,23 +8799,6 @@
         "library": "University of Delaware Library",
         "quantity": "Few",
         "website": "https://openn.library.upenn.edu/html/0029.html",
-        "copyright": "Public Domain Mark 1.0",
-        "iiif": false,
-        "is_free_cultural_works_license": true,
-        "aggregators": [
-            {
-                "name": "BiblioPhilly",
-                "url": "https://bibliophilly.library.upenn.edu/"
-            }
-        ]
-    },
-    {
-        "id": 634,
-        "nation": "United States of America",
-        "city": "Philadelphia",
-        "library": "University of Pennsylvania Libraries",
-        "quantity": "Thousands",
-        "website": "https://openn.library.upenn.edu/html/0002.html",
         "copyright": "Public Domain Mark 1.0",
         "iiif": false,
         "is_free_cultural_works_license": true,
@@ -9041,23 +9031,6 @@
         ]
     },
     {
-        "id": 648,
-        "nation": "United States of America",
-        "city": "Chicago",
-        "library": "Newberry Library",
-        "quantity": "Hundreds",
-        "website": "https://search.digital-scriptorium.org/?f%5Binstitution_facet%5D%5B%5D=Newberry%2BLibrary",
-        "copyright": "Unknown",
-        "iiif": false,
-        "is_free_cultural_works_license": false,
-        "aggregators": [
-            {
-                "name": "Digital Scriptorium",
-                "url": "https://search.digital-scriptorium.org/"
-            }
-        ]
-    },
-    {
         "id": 649,
         "nation": "United States of America",
         "city": "Columbus",
@@ -9083,23 +9056,6 @@
         "website": "https://search.digital-scriptorium.org/?f%5Binstitution_facet%5D%5B%5D=Boston%2BPublic%2BLibrary",
         "copyright": "Unknown",
         "iiif": true,
-        "is_free_cultural_works_license": false,
-        "aggregators": [
-            {
-                "name": "Digital Scriptorium",
-                "url": "https://search.digital-scriptorium.org/"
-            }
-        ]
-    },
-    {
-        "id": 651,
-        "nation": "United States of America",
-        "city": "Bethlehem",
-        "library": "Lehigh University",
-        "quantity": "Hundreds",
-        "website": "https://search.digital-scriptorium.org/?f%5Binstitution_facet%5D%5B%5D=Lehigh%2BUniversity",
-        "copyright": "Unknown",
-        "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [
             {
@@ -9245,23 +9201,6 @@
         ]
     },
     {
-        "id": 660,
-        "nation": "United States of America",
-        "city": "Bryn Mawr",
-        "library": "Bryn Mawr College",
-        "quantity": "Dozens",
-        "website": "https://search.digital-scriptorium.org/?f%5Binstitution_facet%5D%5B%5D=Bryn%2BMawr%2BCollege",
-        "copyright": "Unknown",
-        "iiif": true,
-        "is_free_cultural_works_license": false,
-        "aggregators": [
-            {
-                "name": "Digital Scriptorium",
-                "url": "https://search.digital-scriptorium.org/"
-            }
-        ]
-    },
-    {
         "id": 661,
         "nation": "United States of America",
         "city": "Buffalo",
@@ -9321,23 +9260,6 @@
         "website": "https://search.digital-scriptorium.org/?f%5Binstitution_facet%5D%5B%5D=Pepperdine%2BUniversity",
         "copyright": "Unknown",
         "iiif": false,
-        "is_free_cultural_works_license": false,
-        "aggregators": [
-            {
-                "name": "Digital Scriptorium",
-                "url": "https://search.digital-scriptorium.org/"
-            }
-        ]
-    },
-    {
-        "id": 665,
-        "nation": "United States of America",
-        "city": "Philadelphia",
-        "library": "Science History Institute",
-        "quantity": "Few",
-        "website": "https://search.digital-scriptorium.org/?f%5Binstitution_facet%5D%5B%5D=Science%2BHistory%2BInstitute",
-        "copyright": "Unknown",
-        "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [
             {
