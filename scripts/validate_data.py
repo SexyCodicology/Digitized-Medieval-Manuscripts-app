@@ -27,15 +27,23 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = REPO_ROOT / "schema.json"
 DATA_PATH = REPO_ROOT / "docs" / "assets" / "data.json"
 
-# schema.json cannot express "every record except these must satisfy the
-# is_part_of project-field rule", so the rule itself lives in
-# check_project_consistency() below rather than in a schema if/then. The
-# four records that predated this rule being enforced have since been
-# fixed (see https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues/37),
-# leaving no current exceptions. The mechanism is kept in place so a future
-# legacy-data fix can be grandfathered the same way instead of silently
-# loosening the rule for every record, present and future.
-KNOWN_PROJECT_FIELD_EXCEPTIONS: dict[int, frozenset[str]] = {}
+# An aggregator's url is its canonical home page, so the same aggregator must
+# not be recorded with two different URLs across the dataset. schema.json
+# validates one record at a time and cannot express a cross-record rule, so it
+# lives in check_aggregator_uniqueness() below.
+#
+# The mapping is normalised aggregator name -> the record ids allowed to
+# disagree with the rest of the dataset about that aggregator's URL. It is
+# empty because the current data has no conflict; the mechanism is kept so a
+# future legitimate exception (an aggregator that genuinely moved, recorded
+# both ways during a transition) can be grandfathered narrowly instead of
+# silently loosening the rule for every record, present and future.
+KNOWN_AGGREGATOR_URL_EXCEPTIONS: dict[str, frozenset[int]] = {}
+
+
+def normalise_aggregator_name(name: str) -> str:
+    """Return the form of an aggregator name used to compare two entries."""
+    return name.strip().lower()
 
 
 def load_json(path: Path) -> Any:
@@ -80,45 +88,62 @@ def check_duplicate_ids(records: list) -> list[str]:
     return errors
 
 
-def check_project_consistency(records: list) -> list[str]:
-    """Return one message per is_part_of/project-field inconsistency.
+def check_aggregator_uniqueness(records: list) -> list[str]:
+    """Return one message per aggregator naming or URL conflict.
 
-    When is_part_of is true, both project fields must be set. When it is
-    false, both must be null. KNOWN_PROJECT_FIELD_EXCEPTIONS narrowly exempts
-    specific (id, field) pairs that already violate this on production data.
+    Two rules that schema.json cannot express, both compared on the name
+    normalised by ``normalise_aggregator_name``:
+
+    * within one record, an aggregator must not be listed twice;
+    * across the dataset, one aggregator name must resolve to exactly one
+      canonical URL, so the same project cannot be recorded under two
+      addresses. KNOWN_AGGREGATOR_URL_EXCEPTIONS narrowly exempts named
+      records from the second rule.
     """
     errors = []
+    # normalised name -> (url, index, id) of the first record that used it.
+    canonical: dict[str, tuple[str, int, Any]] = {}
+
     for index, record in enumerate(records):
         if not isinstance(record, dict):
             continue
         record_id = record.get("id")
-        allowed = KNOWN_PROJECT_FIELD_EXCEPTIONS.get(record_id, frozenset())
-        is_part_of = record.get("is_part_of")
-        name = record.get("is_part_of_project_name")
-        url = record.get("is_part_of_url")
+        aggregators = record.get("aggregators")
+        if not isinstance(aggregators, list):
+            # Shape is schema.json's job; check_schema has already reported it.
+            continue
 
-        if is_part_of is True:
-            if not url and "is_part_of_url" not in allowed:
+        seen: set[str] = set()
+        for entry in aggregators:
+            if not isinstance(entry, dict):
+                continue
+            name = entry.get("name")
+            url = entry.get("url")
+            if not isinstance(name, str) or not isinstance(url, str):
+                continue
+            key = normalise_aggregator_name(name)
+
+            if key in seen:
                 errors.append(
-                    f"record {index} (id: {record_id}): is_part_of is true but "
-                    "is_part_of_url is missing"
+                    f"record {index} (id: {record_id}): duplicate aggregator "
+                    f"{name!r} listed more than once"
                 )
-            if not name and "is_part_of_project_name" not in allowed:
+                continue
+            seen.add(key)
+
+            if record_id in KNOWN_AGGREGATOR_URL_EXCEPTIONS.get(key, frozenset()):
+                continue
+
+            first = canonical.get(key)
+            if first is None:
+                canonical[key] = (url, index, record_id)
+            elif first[0] != url:
                 errors.append(
-                    f"record {index} (id: {record_id}): is_part_of is true but "
-                    "is_part_of_project_name is missing"
+                    f"record {index} (id: {record_id}): aggregator {name!r} uses "
+                    f"url {url!r}, but record {first[1]} (id: {first[2]}) uses "
+                    f"{first[0]!r}"
                 )
-        elif is_part_of is False:
-            if name is not None and "is_part_of_project_name" not in allowed:
-                errors.append(
-                    f"record {index} (id: {record_id}): is_part_of is false but "
-                    "is_part_of_project_name is not null"
-                )
-            if url is not None and "is_part_of_url" not in allowed:
-                errors.append(
-                    f"record {index} (id: {record_id}): is_part_of is false but "
-                    "is_part_of_url is not null"
-                )
+
     return errors
 
 
@@ -130,7 +155,7 @@ def validate(schema: dict, records: Any) -> list[str]:
     return [
         *check_schema(schema, records),
         *check_duplicate_ids(records),
-        *check_project_consistency(records),
+        *check_aggregator_uniqueness(records),
     ]
 
 

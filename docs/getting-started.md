@@ -62,11 +62,13 @@ Select **All Nations** to view the complete directory again.
 
 ### Filter by project
 
-Some libraries are part of a larger aggregating project, such as Europeana. Use the project filter to view only libraries that belong to a specific project:
+Some libraries are part of one or more larger aggregating projects, such as Europeana. Use the project filter to view only libraries that belong to a specific project:
 
 1. Click the **Project** dropdown
 2. Select a project from the list
 3. The directory shows only libraries that belong to that project
+
+A library that belongs to several projects appears under each of their filters.
 
 Select **All Projects** to view the complete directory again.
 

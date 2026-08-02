@@ -33,7 +33,7 @@ Each library entry must include the following fields:
     "quantity": "Thousands",
     "iiif": true,
     "is_free_cultural_works_license": false,
-    "is_part_of": false
+    "aggregators": []
 }
 ```
 
@@ -52,7 +52,7 @@ For the full field-by-field definitions, requirements, and the manuscript-count 
     "quantity": "Thousands",
     "iiif": true,
     "is_free_cultural_works_license": true,
-    "is_part_of": false
+    "aggregators": []
 }
 ```
 

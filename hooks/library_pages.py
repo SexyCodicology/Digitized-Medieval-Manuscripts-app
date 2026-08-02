@@ -259,17 +259,20 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         ("Open licence", "Yes" if record.get("is_free_cultural_works_license") else "No"),
     ]
 
-    project_url = safe_url(record.get("is_part_of_url"))
-    project_name = record.get("is_part_of_project_name")
-    if record.get("is_part_of") and project_name:
-        label = escape(str(project_name))
-        value = (
-            f'<a href="{escape(project_url, quote=True)}" rel="noopener noreferrer" '
+    # One "Part of" row listing every membership, so a collection findable
+    # through several aggregators names all of them.
+    links = []
+    for entry in aggregators_of(record):
+        label = escape(str(entry["name"]))
+        url = safe_url(entry.get("url"))
+        links.append(
+            f'<a href="{escape(url, quote=True)}" rel="noopener noreferrer" '
             f'target="_blank">{label}</a>'
-            if project_url
+            if url
             else label
         )
-        facts.append(("Part of", value))
+    if links:
+        facts.append(("Part of", ", ".join(links)))
 
     rows = "".join(f"<dt>{name}</dt><dd>{value}</dd>" for name, value in facts)
 
@@ -334,25 +337,45 @@ def render_badges(record: dict[str, Any]) -> str:
     return "".join(badges)
 
 
-def render_project(record: dict[str, Any]) -> str:
-    """Return the project affiliation shown under the library name, if any.
+def aggregators_of(record: dict[str, Any]) -> list[dict[str, Any]]:
+    """Return the record's usable aggregator entries, in dataset order.
 
-    The project is named even when its URL is unusable, because the name is
-    still a fact about the collection. Only the link is dropped.
+    An entry without a name is dropped, because the name is what identifies
+    the aggregator to a reader and to the homepage filter. The URL is allowed
+    to be missing or unusable here; only the link is dropped further down.
     """
-    name = record.get("is_part_of_project_name")
-    if not record.get("is_part_of") or not name:
-        return ""
+    entries = record.get("aggregators")
+    if not isinstance(entries, list):
+        return []
+    return [
+        entry
+        for entry in entries
+        if isinstance(entry, dict) and str(entry.get("name") or "").strip()
+    ]
 
-    label = f'<i class="bi bi-collection" aria-hidden="true"></i>{escape(str(name))}'
-    url = safe_url(record.get("is_part_of_url"))
-    body = (
-        f'<a href="{escape(url, quote=True)}" target="_blank" '
-        f'rel="noopener noreferrer">{label}</a>'
-        if url
-        else label
-    )
-    return f'<div class="library-project">{body}</div>'
+
+def render_projects(record: dict[str, Any]) -> str:
+    """Return the aggregator affiliations shown under the library name, if any.
+
+    One block per membership, in dataset order. An aggregator is named even
+    when its URL is unusable, because the name is still a fact about the
+    collection. Only the link is dropped.
+    """
+    blocks = []
+    for entry in aggregators_of(record):
+        label = (
+            '<i class="bi bi-collection" aria-hidden="true"></i>'
+            f'{escape(str(entry["name"]))}'
+        )
+        url = safe_url(entry.get("url"))
+        body = (
+            f'<a href="{escape(url, quote=True)}" target="_blank" '
+            f'rel="noopener noreferrer">{label}</a>'
+            if url
+            else label
+        )
+        blocks.append(f'<div class="library-project">{body}</div>')
+    return "".join(blocks)
 
 
 def render_visit(record: dict[str, Any]) -> str:
@@ -374,7 +397,7 @@ def render_row(record: dict[str, Any]) -> str:
     return (
         f'<tr data-record-id="{record["id"]}">'
         f'<td><a class="library-name" href="libraries/{slug}/">'
-        f'{escape(str(record["library"]))}</a>{render_project(record)}</td>'
+        f'{escape(str(record["library"]))}</a>{render_projects(record)}</td>'
         f'<td><div class="location-nation">{escape(str(record["nation"]))}</div>'
         '<div class="location-city"><i class="bi bi-dot" aria-hidden="true"></i>'
         f'{escape(str(record["city"]))}</div></td>'
@@ -405,9 +428,9 @@ def summarise(records: list[dict[str, Any]]) -> dict[str, int]:
         "iiif": sum(1 for record in records if record.get("iiif")),
         "projects": len(
             {
-                str(record["is_part_of_project_name"])
+                str(entry["name"])
                 for record in records
-                if record.get("is_part_of") and record.get("is_part_of_project_name")
+                for entry in aggregators_of(record)
             }
         ),
     }

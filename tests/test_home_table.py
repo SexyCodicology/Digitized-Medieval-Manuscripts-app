@@ -51,9 +51,9 @@ HOSTILE_RECORD = {
     "website": "javascript:alert(3)",
     "iiif": True,
     "is_free_cultural_works_license": True,
-    "is_part_of": True,
-    "is_part_of_project_name": "<b>Project</b>",
-    "is_part_of_url": "data:text/html,<script>alert(4)</script>",
+    "aggregators": [
+        {"name": "<b>Project</b>", "url": "data:text/html,<script>alert(4)</script>"}
+    ],
 }
 
 SAFE_RECORD = {
@@ -66,9 +66,7 @@ SAFE_RECORD = {
     "website": "https://digital.bodleian.ox.ac.uk",
     "iiif": True,
     "is_free_cultural_works_license": True,
-    "is_part_of": True,
-    "is_part_of_project_name": "Polonsky",
-    "is_part_of_url": "https://polonsky.example.org",
+    "aggregators": [{"name": "Polonsky", "url": "https://polonsky.example.org"}],
 }
 
 
@@ -134,17 +132,21 @@ def test_counts_use_the_same_rules_as_dashboard_js():
     dataset = [
         {**SAFE_RECORD, "id": 1, "nation": "France", "iiif": True},
         {**SAFE_RECORD, "id": 2, "nation": "France", "iiif": False},
+        # Two memberships: both aggregators count, the library counts once.
         {**SAFE_RECORD, "id": 3, "nation": "Italy", "iiif": True,
-         "is_part_of_project_name": "Biblissima"},
-        # Named but not flagged as part of a project, so it counts for neither.
-        {**SAFE_RECORD, "id": 4, "nation": "Italy", "iiif": False, "is_part_of": False,
-         "is_part_of_project_name": "Ignored"},
+         "aggregators": [
+             {"name": "Biblissima", "url": "https://biblissima.example.org"},
+             {"name": "Polonsky", "url": "https://polonsky.example.org"},
+         ]},
+        # No membership at all, so it counts towards no aggregator.
+        {**SAFE_RECORD, "id": 4, "nation": "Italy", "iiif": False, "aggregators": []},
     ]
 
     assert hook.summarise(dataset) == {
         "libraries": 4,
         "nations": 2,
         "iiif": 2,
+        # Polonsky (records 1-3) and Biblissima (record 3), counted once each.
         "projects": 2,
     }
 
@@ -193,11 +195,62 @@ def test_unsafe_urls_do_not_become_clickable():
     ["javascript:alert(1)", "data:text/html,<b>", "//example.org", "not a url", "", None, 42],
 )
 def test_an_unusable_project_url_leaves_the_name_unlinked(value):
-    row = hook.render_row({**SAFE_RECORD, "is_part_of_url": value})
+    row = hook.render_row(
+        {**SAFE_RECORD, "aggregators": [{"name": "Polonsky", "url": value}]}
+    )
 
     assert '<div class="library-project">' in row
     assert "Polonsky" in row
     assert row.count("<a ") == 2  # library name and Visit, not the project
+
+
+# ── Multiple memberships ──────────────────────────────────────────────────
+
+
+def test_every_membership_gets_its_own_block():
+    row = hook.render_row(
+        {**SAFE_RECORD, "aggregators": [
+            {"name": "Polonsky", "url": "https://polonsky.example.org"},
+            {"name": "Biblissima", "url": "https://biblissima.example.org"},
+        ]}
+    )
+
+    assert row.count('<div class="library-project">') == 2
+    assert "Polonsky" in row
+    assert "Biblissima" in row
+    # Library name, Visit, and one link per membership.
+    assert row.count("<a ") == 4
+
+
+def test_a_record_with_no_memberships_renders_no_project_block():
+    row = hook.render_row({**SAFE_RECORD, "aggregators": []})
+
+    assert '<div class="library-project">' not in row
+    assert row.count("<td") == 4
+
+
+def test_one_hostile_membership_cannot_poison_the_others():
+    row = hook.render_row(
+        {**SAFE_RECORD, "aggregators": [
+            {"name": '<script>alert(1)</script>', "url": "javascript:alert(2)"},
+            {"name": "Biblissima", "url": "https://biblissima.example.org"},
+        ]}
+    )
+
+    assert "<script" not in row
+    assert "javascript:" not in row
+    assert "&lt;script&gt;" in row
+    # The safe membership keeps its link; the hostile one is named only.
+    assert row.count('<div class="library-project">') == 2
+    assert 'href="https://biblissima.example.org"' in row
+
+
+@pytest.mark.parametrize("aggregators", [None, "Polonsky", 42, [None], [{"url": "https://x.example"}]])
+def test_a_malformed_aggregators_value_does_not_break_the_row(aggregators):
+    row = hook.render_row({**SAFE_RECORD, "aggregators": aggregators})
+
+    assert row.count("<td") == 4
+    assert '<div class="library-project">' not in row
 
 
 # ── External dependency failure ───────────────────────────────────────────

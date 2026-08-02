@@ -139,8 +139,8 @@ test('an HTTP error status renders its status text as text, not as parsed HTML',
 
 test('regression guard: pre-rendered rows still load, sort, and update stats on success', async () => {
   const data = [
-    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [] },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [] },
   ];
 
   const dom = loadDashboard({
@@ -191,8 +191,8 @@ test('load failure: the random-library control stays disabled and does not navig
 
 test('random library: happy path navigates to a real record URL from its pre-rendered row', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
-    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [] },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [] },
   ];
 
   const dom = loadDashboard({
@@ -222,7 +222,7 @@ test('random library: the target comes from the pre-rendered row, never rebuilt 
   // Python build. The href on the pre-rendered row is what the build
   // actually generated, and is deliberately not derivable from the name.
   const data = [
-    { id: 7, library: 'Bibliothèque Ñoño & Co. <script>', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+    { id: 7, library: 'Bibliothèque Ñoño & Co. <script>', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [] },
   ];
 
   const dom = loadDashboard({
@@ -249,7 +249,7 @@ test('random library: a record with no matching pre-rendered row produces no nav
   // record present in data.json but missing its row (a stale cache) has
   // nothing to resolve to.
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [] },
   ];
 
   const dom = loadDashboard({
@@ -287,8 +287,8 @@ test('random library: an empty dataset does not throw and does not navigate', as
 
 test('random library: repeated activations can select different records', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
-    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [] },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [] },
   ];
 
   const dom = loadDashboard({
@@ -316,8 +316,8 @@ test('random library: repeated activations can select different records', async 
 
 test('quantity and copyright filters: options follow the declared order and narrow the results', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
-    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Thousands', copyright: 'CC BY-NC 4.0' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Thousands', copyright: 'CC BY-NC 4.0' },
   ];
 
   const dom = loadDashboard({
@@ -358,8 +358,8 @@ test('quantity and copyright filters: options follow the declared order and narr
 
 test('quantity filter: a value outside the known enum is appended, and an empty copyright does not throw', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
-    { id: 2, library: 'Zeta Library', nation: 'Nation Z', city: 'City Z', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Millions', copyright: '' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 2, library: 'Zeta Library', nation: 'Nation Z', city: 'City Z', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Millions', copyright: '' },
   ];
 
   const dom = loadDashboard({
@@ -387,7 +387,7 @@ test('quantity filter: a value outside the known enum is appended, and an empty 
 test('copyright filter: a value containing markup becomes a plain option label, never injected markup', async () => {
   const maliciousCopyright = '<img src=x onerror="window.__pwned = true"> "quoted"';
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: maliciousCopyright },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: maliciousCopyright },
   ];
 
   const dom = loadDashboard({
@@ -432,8 +432,8 @@ test('load failure: the quantity and copyright filters stay seeded with only the
 
 test('quantity and copyright filters compose with search, nation, project, and the toggles', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, is_part_of: true, is_part_of_project_name: 'Project X', quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
-    { id: 2, library: 'Alpha Annex', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, is_part_of: true, is_part_of_project_name: 'Project X', quantity: 'Thousands', copyright: 'Public Domain Mark 1.0' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, aggregators: [{ name: 'Project X', url: 'https://project-x.invalid/' }], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 2, library: 'Alpha Annex', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, aggregators: [{ name: 'Project X', url: 'https://project-x.invalid/' }], quantity: 'Thousands', copyright: 'Public Domain Mark 1.0' },
   ];
 
   const dom = loadDashboard({
@@ -489,8 +489,8 @@ test('quantity and copyright filters compose with search, nation, project, and t
 
 test('clearFilters resets the quantity and copyright filters along with the rest', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
-    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Thousands', copyright: 'CC BY-NC 4.0' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Thousands', copyright: 'CC BY-NC 4.0' },
   ];
 
   const dom = loadDashboard({
@@ -523,7 +523,7 @@ test('clearFilters resets the quantity and copyright filters along with the rest
 
 test('filters-active badge: hidden with none active, counts only the four collapsed selects, and resets on clearFilters', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, is_part_of: false, is_part_of_project_name: null, quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
   ];
 
   const dom = loadDashboard({
@@ -567,14 +567,13 @@ test('filters-active badge: hidden with none active, counts only the four collap
   assert.equal(badge.textContent, '0');
 });
 
-const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,is_free_cultural_works_license,is_part_of,is_part_of_project_name,is_part_of_url';
+const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,is_free_cultural_works_license,aggregators';
 
 function makeRecord(overrides) {
   return Object.assign({
     id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A',
     website: 'https://alpha.example', copyright: 'CC0 1.0', quantity: 'Few',
-    iiif: true, is_free_cultural_works_license: true, is_part_of: false,
-    is_part_of_project_name: null, is_part_of_url: null,
+    iiif: true, is_free_cultural_works_license: true, aggregators: [],
   }, overrides);
 }
 
@@ -753,4 +752,148 @@ test('export: a zero-match filter still produces a header-only CSV and an empty 
   assert.equal(downloads[0].content, EXPORT_CSV_HEADER, 'header only, no data rows');
   assert.equal(downloads[1].content, '[]');
   assert.equal(revokedCount, 2, 'each export must revoke its own object URL');
+});
+
+// ── Multiple aggregator memberships ──────────────────────────────────────
+
+// A library in two aggregators, one in a single aggregator, and one in none:
+// enough to tell "matches any entry" apart from "matches the first entry".
+const MEMBERSHIP_DATA = [
+  makeRecord({
+    id: 1, library: 'Alpha Library', nation: 'Nation A',
+    aggregators: [
+      { name: 'Project X', url: 'https://x.invalid/' },
+      { name: 'Project Y', url: 'https://y.invalid/' },
+    ],
+  }),
+  makeRecord({
+    id: 2, library: 'Beta Library', nation: 'Nation B',
+    aggregators: [{ name: 'Project Y', url: 'https://y.invalid/' }],
+  }),
+  makeRecord({ id: 3, library: 'Gamma Library', nation: 'Nation C', aggregators: [] }),
+];
+
+const MEMBERSHIP_ROWS = `
+  <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+  <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+  <tr data-record-id="3"><td>Gamma Library</td><td>Nation C</td><td></td><td></td></tr>
+`;
+
+function visibleIds(window) {
+  return [...window.document.getElementById('tableBody').querySelectorAll('tr')]
+    .map(row => row.dataset.recordId);
+}
+
+async function loadMembershipDashboard(data = MEMBERSHIP_DATA) {
+  const dom = loadDashboard({
+    rowsHtml: MEMBERSHIP_ROWS,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+  await flushMicrotasks();
+  return dom;
+}
+
+test('project filter: options are the distinct aggregators across every membership', async () => {
+  const { window } = await loadMembershipDashboard();
+
+  assert.deepEqual(
+    [...window.document.getElementById('projectSelect').options].map(o => o.value),
+    ['All', 'Project X', 'Project Y'],
+  );
+});
+
+test('project filter: a library matches on any entry, not just the first', async () => {
+  const { window } = await loadMembershipDashboard();
+  const projectSelect = window.document.getElementById('projectSelect');
+
+  projectSelect.value = 'Project X';
+  projectSelect.dispatchEvent(new window.Event('change'));
+  assert.deepEqual(visibleIds(window), ['1'], 'only the library listing Project X');
+
+  // Project Y is Alpha's *second* membership, so this is the case a
+  // single-field model could not express.
+  projectSelect.value = 'Project Y';
+  projectSelect.dispatchEvent(new window.Event('change'));
+  assert.deepEqual(visibleIds(window), ['1', '2']);
+});
+
+test('project stat counts distinct aggregators, not memberships', async () => {
+  const { window } = await loadMembershipDashboard();
+
+  assert.equal(window.document.getElementById('statProjects').textContent, '2');
+  assert.equal(window.document.getElementById('statTotal').textContent, '3');
+});
+
+test('search matches a second-position aggregator name', async () => {
+  const { window } = await loadMembershipDashboard();
+  const searchInput = window.document.getElementById('searchInput');
+
+  searchInput.value = 'project y';
+  searchInput.dispatchEvent(new window.Event('input'));
+
+  assert.deepEqual(visibleIds(window), ['1', '2']);
+});
+
+test('a library with no memberships survives every aggregator filter unscathed', async () => {
+  const { window } = await loadMembershipDashboard();
+  const projectSelect = window.document.getElementById('projectSelect');
+
+  projectSelect.value = 'All';
+  projectSelect.dispatchEvent(new window.Event('change'));
+  assert.ok(visibleIds(window).includes('3'));
+
+  projectSelect.value = 'Project X';
+  projectSelect.dispatchEvent(new window.Event('change'));
+  assert.equal(visibleIds(window).includes('3'), false);
+});
+
+test('a malformed aggregators value neither throws nor matches a filter', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', aggregators: null }),
+    makeRecord({ id: 2, library: 'Beta Library', aggregators: 'Project Y' }),
+    makeRecord({ id: 3, library: 'Gamma Library', aggregators: [{ url: 'https://y.invalid/' }] }),
+  ];
+  const { window } = await loadMembershipDashboard(data);
+
+  assert.deepEqual(
+    [...window.document.getElementById('projectSelect').options].map(o => o.value),
+    ['All'],
+    'no option can be built from an entry with no name',
+  );
+  assert.equal(window.document.getElementById('statProjects').textContent, '0');
+  assert.deepEqual(visibleIds(window), ['1', '2', '3']);
+});
+
+test('export CSV: memberships are flattened into one readable cell', async () => {
+  const dom = await loadMembershipDashboard();
+  const { window } = dom;
+  const downloads = stubDownloads(window);
+
+  window.document.getElementById('exportCsvBtn').click();
+
+  const lines = downloads[0].content.split('\r\n');
+  assert.equal(lines[0], EXPORT_CSV_HEADER);
+  // "; " rather than ", " keeps the cell free of the delimiter, so it needs
+  // no quoting and stays readable in a spreadsheet.
+  assert.ok(
+    lines[1].endsWith('Project X (https://x.invalid/); Project Y (https://y.invalid/)'),
+    `unexpected cell: ${lines[1]}`,
+  );
+  assert.equal(lines[1].includes('[object Object]'), false);
+  assert.equal(lines[3].endsWith(','), true, 'no memberships means an empty cell');
+});
+
+test('export JSON: the aggregators array is carried through unflattened', async () => {
+  const dom = await loadMembershipDashboard();
+  const { window } = dom;
+  const downloads = stubDownloads(window);
+
+  window.document.getElementById('exportJsonBtn').click();
+
+  const parsed = JSON.parse(downloads[0].content);
+  assert.deepEqual(parsed[0].aggregators, [
+    { name: 'Project X', url: 'https://x.invalid/' },
+    { name: 'Project Y', url: 'https://y.invalid/' },
+  ]);
+  assert.deepEqual(parsed[2].aggregators, []);
 });
