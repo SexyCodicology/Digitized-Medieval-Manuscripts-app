@@ -45,7 +45,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 5,
@@ -105,7 +107,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 10,
@@ -320,7 +324,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 25,
@@ -499,7 +505,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 40,
@@ -819,7 +827,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 66,
@@ -843,7 +853,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 68,
@@ -3023,7 +3035,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 213,
@@ -3387,7 +3401,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 241,
@@ -3471,7 +3487,9 @@
         "copyright": "CC BY-NC-SA 4.0",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 249,
@@ -3483,7 +3501,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 250,
@@ -3507,7 +3527,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 252,
@@ -3795,7 +3817,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 271,
@@ -4057,7 +4081,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 293,
@@ -4865,7 +4891,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 349,
@@ -5463,7 +5491,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 394,
@@ -5881,7 +5911,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 430,
@@ -7885,7 +7917,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 577,
@@ -8200,7 +8234,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-08-05"
     },
     {
         "id": 599,
