@@ -31,6 +31,43 @@ same rows over for searching, sorting, and filtering.
     "inLanguage": lang.t("language")
 } %}
 <script type="application/ld+json">{{ website_schema | tojson }}</script>
+
+{# Machine-readable description of the directory as a dataset, not just a
+   web page: what Google Dataset Search and dataset-aware RAG pipelines
+   look for. The record count comes from dmm_directory, which hooks/
+   library_pages.py builds from the live data.json on every build, so it
+   can never drift from what the page itself reports. #}
+{% set dataset_schema = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "DMMapp: Digitized Medieval Manuscript Libraries Directory",
+    "description": (
+        "A directory of " ~ dmm_directory.stats.libraries ~
+        " libraries across " ~ dmm_directory.stats.nations ~
+        " nations that hold digitized medieval manuscript collections, " ~
+        "tracking IIIF support and open-licence status for each."
+    ),
+    "url": config.site_url,
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "creator": {
+        "@type": "Organization",
+        "name": config.site_name,
+        "url": config.repo_url
+    },
+    "keywords": [
+        "medieval manuscripts", "digitized manuscripts", "digital humanities",
+        "IIIF", "libraries", "digital libraries", "open data"
+    ],
+    "inLanguage": lang.t("language"),
+    "distribution": [
+        {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": config.site_url ~ "assets/data.json"
+        }
+    ]
+} %}
+<script type="application/ld+json">{{ dataset_schema | tojson }}</script>
 {% endblock %}
 
 {% block content %}
