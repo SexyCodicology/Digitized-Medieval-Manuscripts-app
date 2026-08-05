@@ -1,0 +1,25 @@
+# DMMapp
+
+> DMMapp (Digitized Medieval Manuscripts Application) is a directory of libraries worldwide that hold digitized medieval manuscript collections. It aggregates links to those collections and tracks, per library, whether the collection supports IIIF and whether it is available under an open licence.
+
+DMMapp is a directory, not an archive: it does not host manuscript images itself. Each entry points to the digitization project run by the holding library, museum, or aggregator. The directory is community-maintained through pull requests against a single JSON dataset, validated against a JSON Schema in CI.
+
+## Data
+
+- [Library dataset (JSON)](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/assets/data.json): The full directory as structured records, one per library — name, city, nation, collection URL, approximate manuscript quantity, IIIF support, licence status, and aggregator memberships.
+- [Data schema](https://raw.githubusercontent.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/master/schema.json): The JSON Schema every record in the dataset above is validated against.
+- [Directory homepage](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/): A searchable, filterable view of the same dataset, with CSV and JSON export of the current filter.
+
+## Docs
+
+- [About DMMapp](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/about/): Project mission, history, and technology stack.
+- [Data schema guide](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/schema/): Field-by-field documentation of the dataset.
+- [Getting started](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/getting-started/): How to browse, search, and filter the directory.
+- [Contributing](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/contributing/): How to add or correct a library entry.
+
+## Optional
+
+- [Update data](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/update-data/): How to submit dataset changes.
+- [Workflow validation](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/workflow-validation/): The automated checks run against every dataset change.
+- [Link health check](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/workflow-link-checking/): How collection links are checked weekly and marked broken.
+- [Project setup](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/setup/): Local development setup for contributors.
