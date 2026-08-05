@@ -1,0 +1,20 @@
+{#-
+  DMMapp override of Material's partials/source.html.
+
+  Identical to the stock template except for dropping
+  data-md-component="source". That attribute is what Material's bundled JS
+  uses to find this element and enhance it with a client-side fetch to the
+  GitHub API for stars/forks/latest release — the one external runtime
+  request the privacy plugin can't self-host, since it's live per-visitor
+  data, not a static asset. Dropping it keeps the repository link and icon
+  in the header without that request.
+-#}
+<a href="{{ config.repo_url }}" title="{{ lang.t('source') }}" class="md-source">
+  <div class="md-source__icon md-icon">
+    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}
+  </div>
+  <div class="md-source__repository">
+    {{ config.repo_name }}
+  </div>
+</a>

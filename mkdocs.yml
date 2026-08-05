@@ -3,6 +3,9 @@ site_description: Discover the beauty of digitized medieval manuscripts with DMM
   Our platform collects links to digitized collections from around the world, providing
   a gateway to the past.
 site_url: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/
+repo_url: https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app
+repo_name: SexyCodicology/Digitized-Medieval-Manuscripts-app
+edit_uri: edit/master/docs/
 
 theme:
   name: material
@@ -34,6 +37,7 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
+    - content.action.edit
 
 extra_css:
   - assets/dashboard.css
