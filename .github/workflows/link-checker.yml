@@ -20,11 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Check Links in data.json
         id: lychee
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
         with:
           args: '--verbose --no-progress --timeout 10 ./docs/assets/data.json'
           fail: false
@@ -46,7 +46,7 @@ jobs:
       # step silently stopped running and the weekly check went unreported.
       - name: Create Issue if Links are Broken
         if: steps.lychee.outputs.exit_code != 0
-        uses: peter-evans/create-issue-from-file@v6
+        uses: peter-evans/create-issue-from-file@fca9117c27cdc29c6c4db3b86c48e4115a786710 # v6
         with:
           title: ⚠️ Broken Links Detected in Database
           content-filepath: ./lychee-report.md
@@ -55,7 +55,7 @@ jobs:
             automated-issue
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -84,7 +84,7 @@ jobs:
         run: python scripts/validate_data.py
 
       - name: Open a Pull Request with the proposed changes
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
         with:
           branch: automated/link-status
           delete-branch: true
