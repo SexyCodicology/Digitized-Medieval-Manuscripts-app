@@ -238,7 +238,9 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
     inject markup or Markdown syntax into the page.
     """
     meta = yaml.safe_dump(
-        {"title": title, "description": description},
+        # Cards off: rendering one per record would mean thousands of social
+        # card images for pages that are never shared individually.
+        {"title": title, "description": description, "social": {"cards": False}},
         allow_unicode=True,
         default_flow_style=False,
         sort_keys=False,

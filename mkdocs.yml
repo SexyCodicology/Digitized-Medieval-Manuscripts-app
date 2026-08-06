@@ -73,6 +73,7 @@ nav:
 plugins:
   - search
   - privacy
+  - social
   - blog:
       blog_dir: blog
       post_url_format: "{slug}"
