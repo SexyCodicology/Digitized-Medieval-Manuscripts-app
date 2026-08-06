@@ -4,7 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- Medieval Scribe
 authors:
 - giulio
 slug: scribes-medieval-manuscripts

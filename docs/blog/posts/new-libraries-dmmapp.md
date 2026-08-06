@@ -4,8 +4,8 @@ date:
   updated: 2023-04-19
 categories:
 - Digitized Libraries
-- crowdsourcing
-- DMMapp
+- Crowdsourcing
+- DMMapp Updates
 authors:
 - giulio
 slug: new-libraries-dmmapp

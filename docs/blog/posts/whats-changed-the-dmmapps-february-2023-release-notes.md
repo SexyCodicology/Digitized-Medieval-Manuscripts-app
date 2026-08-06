@@ -2,7 +2,7 @@
 date:
   created: 2023-02-25
 categories:
-- Release Notes
+- DMMapp Updates
 authors:
 - giulio
 slug: whats-changed-the-dmmapps-february-2023-release-notes

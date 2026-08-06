@@ -4,8 +4,7 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- DMMapp
-- Maps of Digitized Medieval Manuscripts Available Online
+- DMMapp Updates
 authors:
 - giulio
 slug: new-old-missing-digitized-manuscripts

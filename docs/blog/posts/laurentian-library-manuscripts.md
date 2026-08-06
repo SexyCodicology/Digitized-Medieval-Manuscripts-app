@@ -4,9 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- Florence
-- Italy
-- website
 authors:
 - giulio
 slug: laurentian-library-manuscripts

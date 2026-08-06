@@ -4,9 +4,6 @@ date:
   updated: 2023-04-19
 categories:
 - Digital Humanities
-- Social Media Codicologists
-- Resource
-- website
 authors:
 - giulio
 slug: quill-medieval-manuscripts

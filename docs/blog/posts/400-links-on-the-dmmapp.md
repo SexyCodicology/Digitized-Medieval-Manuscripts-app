@@ -3,8 +3,8 @@ date:
   created: 2015-08-24
   updated: 2023-04-03
 categories:
-- New Additions
-- DMMapp
+- Digitized Libraries
+- DMMapp Updates
 authors:
 - giulio
 slug: 400-links-on-the-dmmapp

@@ -3,7 +3,6 @@ date:
   created: 2023-05-28
 categories:
 - Digitized Libraries
-- New Additions
 authors:
 - giulio
 slug: uppsala-university-library

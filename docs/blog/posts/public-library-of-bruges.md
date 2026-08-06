@@ -4,11 +4,6 @@ date:
   updated: 2023-04-19
 categories:
 - Digitized Libraries
-- Belgium
-- Bruges
-- Brugge
-- Openbare Bibliotheek Brugge
-- Public Library of Bruges
 authors:
 - marjolein
 slug: public-library-of-bruges

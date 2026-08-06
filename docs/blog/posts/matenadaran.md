@@ -4,9 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- Armenia
-- Matenadaran
-- Toros Roslin
 authors:
 - giulio
 slug: matenadaran

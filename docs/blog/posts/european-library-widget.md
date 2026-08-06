@@ -4,7 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- European Library
 authors:
 - giulio
 slug: european-library-widget

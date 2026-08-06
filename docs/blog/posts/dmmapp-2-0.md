@@ -4,7 +4,7 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- DMMapp
+- DMMapp Updates
 authors:
 - giulio
 slug: dmmapp-2-0

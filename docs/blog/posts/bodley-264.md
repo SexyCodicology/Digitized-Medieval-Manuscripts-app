@@ -3,9 +3,7 @@ date:
   created: 2014-07-20
   updated: 2023-04-03
 categories:
-- A Medieval Manuscript a Week
-- Social Media Codicologists
-- Bodleian
+- Manuscript Curiosities
 authors:
 - giulio
 slug: bodley-264

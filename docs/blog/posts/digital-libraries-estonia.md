@@ -4,8 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- Social Media Codicologists
-- Estonia
 authors:
 - giulio
 slug: digital-libraries-estonia

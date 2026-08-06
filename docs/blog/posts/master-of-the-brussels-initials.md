@@ -3,7 +3,7 @@ date:
   created: 2014-03-11
   updated: 2023-04-03
 categories:
-- A Medieval Manuscript a Week
+- Manuscript Curiosities
 authors:
 - giulio
 slug: master-of-the-brussels-initials

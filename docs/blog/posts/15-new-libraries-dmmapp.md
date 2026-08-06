@@ -3,7 +3,7 @@ date:
   created: 2014-07-05
   updated: 2023-04-19
 categories:
-- New Additions
+- Digitized Libraries
 authors:
 - giulio
 slug: 15-new-libraries-dmmapp

@@ -4,7 +4,6 @@ date:
 categories:
 - Digital Humanities
 - DMMapp Updates
-- DMMapp
 authors:
 - giulio
 slug: the-end-of-an-era-saying-goodbye-to-the-dmmapp-after-12-years

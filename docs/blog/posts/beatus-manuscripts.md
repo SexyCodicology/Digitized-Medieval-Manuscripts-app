@@ -3,7 +3,7 @@ date:
   created: 2014-05-13
   updated: 2023-04-19
 categories:
-- A Medieval Manuscript a Week
+- Manuscript Curiosities
 authors:
 - giulio
 slug: beatus-manuscripts

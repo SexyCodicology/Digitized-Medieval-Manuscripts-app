@@ -3,9 +3,7 @@ date:
   created: 2014-12-24
   updated: 2016-11-20
 categories:
-- Medieval Bunnies
-- medieval instruments
-- music
+- Manuscript Curiosities
 authors:
 - marjolein
 slug: killer-bunny-vacation

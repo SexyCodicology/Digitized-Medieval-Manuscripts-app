@@ -3,9 +3,7 @@ date:
   created: 2015-04-25
   updated: 2023-04-03
 categories:
-- A Medieval Manuscript a Week
 - Digital Humanities
-- Leiden Aratea
 authors:
 - giulio
 slug: leiden-aratea

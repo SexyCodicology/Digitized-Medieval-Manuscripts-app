@@ -4,8 +4,6 @@ date:
   updated: 2023-04-19
 categories:
 - Digitized Libraries
-- Cambridge
-- England
 authors:
 - giulio
 slug: fitzwilliam-museum-digital-manuscripts

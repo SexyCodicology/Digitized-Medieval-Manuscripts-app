@@ -3,8 +3,7 @@ date:
   created: 2013-12-09
   updated: 2023-04-03
 categories:
-- Social Media Codicologists
-- Book of Kells
+- Manuscript Curiosities
 authors:
 - giulio
 slug: madonna-child-book-of-kells

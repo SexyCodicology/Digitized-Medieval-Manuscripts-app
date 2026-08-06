@@ -4,8 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- The J. Paul Getty Museum
-- USA
 authors:
 - giulio
 slug: paul-getty-museum

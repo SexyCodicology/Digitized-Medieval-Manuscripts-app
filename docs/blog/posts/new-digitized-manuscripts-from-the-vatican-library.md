@@ -4,10 +4,6 @@ date:
   updated: 2023-04-19
 categories:
 - Digital Humanities
-- Maps of Digitized Medieval Manuscripts Available Online
-- Resource
-- vatican library
-- website
 authors:
 - giulio
 slug: new-digitized-manuscripts-from-the-vatican-library

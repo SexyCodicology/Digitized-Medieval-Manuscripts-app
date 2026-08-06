@@ -3,8 +3,7 @@ date:
   created: 2014-04-22
   updated: 2023-04-03
 categories:
-- Beautiful Manuscripts Leaves
-- Easter
+- Manuscript Curiosities
 authors:
 - giulio
 slug: holy-week-medieval-manuscripts

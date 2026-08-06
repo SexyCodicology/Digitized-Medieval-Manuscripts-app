@@ -5,7 +5,7 @@ date:
 categories:
 - Digital Humanities
 - Digitized Libraries
-- DMMapp
+- DMMapp Updates
 authors:
 - giulio
 slug: new-dmmapp

@@ -4,7 +4,7 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- New Additions
+- Digitized Libraries
 authors:
 - giulio
 slug: april-links-update-list

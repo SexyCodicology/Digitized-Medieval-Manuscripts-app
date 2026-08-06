@@ -5,7 +5,6 @@ date:
 categories:
 - Digital Humanities
 - Video
-- YouTube
 authors:
 - giulio
 slug: sexy-codicology-youtube

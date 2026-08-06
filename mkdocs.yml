@@ -80,6 +80,20 @@ plugins:
       authors_file: blog/.authors.yml
       authors_profiles: true
       post_excerpt: required
+      # Curated vocabulary — replaces 72 mostly one-off WordPress tags
+      # (per-institution, per-country, per-manuscript labels used once each)
+      # that didn't aid discovery. Keeps a new post from silently
+      # reintroducing that sprawl.
+      categories_allowed:
+        - Digital Humanities
+        - Digitized Libraries
+        - DMMapp Updates
+        - Video
+        - Crowdsourcing
+        - Manuscript Curiosities
+        - Community & Events
+        - IIIF
+        - Broken Links
   - rss:
       match_path: "blog/posts/.*"
       # Migrated posts all landed in one or two commits, so git log dates

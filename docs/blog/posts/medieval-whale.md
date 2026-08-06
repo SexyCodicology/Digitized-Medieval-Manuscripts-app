@@ -3,9 +3,7 @@ date:
   created: 2013-12-10
   updated: 2023-04-03
 categories:
-- Social Media Codicologists
-- bestiray
-- whale
+- Manuscript Curiosities
 authors:
 - giulio
 slug: medieval-whale

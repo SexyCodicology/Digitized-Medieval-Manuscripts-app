@@ -4,9 +4,8 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- New Additions
-- crowdsourcing
-- DMMapp
+- Crowdsourcing
+- DMMapp Updates
 authors:
 - giulio
 slug: new-libraries-dmmapp-medieval-bacon

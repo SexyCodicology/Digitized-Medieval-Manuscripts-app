@@ -3,7 +3,6 @@ date:
   created: 2018-05-20
 categories:
 - Digitized Libraries
-- Parker Library
 authors:
 - marjolein
 slug: parker-library-digitized-manuscripts

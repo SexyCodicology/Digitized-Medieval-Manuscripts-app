@@ -3,8 +3,7 @@ date:
   created: 2015-01-19
   updated: 2023-04-03
 categories:
-- A Medieval Manuscript a Week
-- Book of Hours
+- Manuscript Curiosities
 authors:
 - giulio
 slug: petau-rothschild-hours

@@ -4,10 +4,6 @@ date:
   updated: 2023-04-19
 categories:
 - Digital Humanities
-- Social Media Codicologists
-- Quill
-- Resource
-- website
 authors:
 - giulio
 slug: quill-extended-edition

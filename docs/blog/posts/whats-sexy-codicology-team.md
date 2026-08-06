@@ -4,9 +4,7 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- DMMapp
-- Sexy Codicology Blog
-- Update
+- DMMapp Updates
 authors:
 - giulio
 slug: whats-sexy-codicology-team

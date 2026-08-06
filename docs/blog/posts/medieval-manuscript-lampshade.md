@@ -3,7 +3,7 @@ date:
   created: 2014-06-17
   updated: 2023-04-03
 categories:
-- Social Media Codicologists
+- Manuscript Curiosities
 authors:
 - giulio
 slug: medieval-manuscript-lampshade

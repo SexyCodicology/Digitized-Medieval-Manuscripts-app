@@ -3,10 +3,7 @@ date:
   created: 2013-10-20
   updated: 2023-04-03
 categories:
-- Books
 - Digital Humanities
-- Free Books
-- Metropolitan Museum of Art
 authors:
 - marjolein
 slug: free-online-books-metropolitan-museum-art

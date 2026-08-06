@@ -4,7 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- Social Media Codicologists
 authors:
 - giulio
 slug: schoenberg-institute-manuscript-studies-youtube

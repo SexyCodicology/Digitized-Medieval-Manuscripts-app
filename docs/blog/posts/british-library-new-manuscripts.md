@@ -4,10 +4,7 @@ date:
   updated: 2023-04-19
 categories:
 - Digitized Libraries
-- bestiray
-- Bibliothèque Nationale de France
-- British Library
-- digitization
+- Manuscript Curiosities
 authors:
 - giulio
 slug: british-library-new-manuscripts

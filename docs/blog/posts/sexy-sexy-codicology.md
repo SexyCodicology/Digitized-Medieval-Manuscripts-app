@@ -4,7 +4,6 @@ date:
   updated: 2024-08-07
 categories:
 - Digital Humanities
-- Maps of Digitized Medieval Manuscripts Available Online
 authors:
 - giulio
 slug: sexy-sexy-codicology

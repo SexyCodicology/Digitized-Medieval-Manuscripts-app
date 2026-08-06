@@ -4,7 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- New Additions
 authors:
 - giulio
 slug: april-links-update-list-pt-2

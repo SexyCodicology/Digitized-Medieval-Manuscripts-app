@@ -4,8 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- England
-- Trinity College
 authors:
 - giulio
 slug: trinity-college-cambridge

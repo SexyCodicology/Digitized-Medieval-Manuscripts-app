@@ -4,7 +4,6 @@ date:
   updated: 2016-11-20
 categories:
 - Digital Humanities
-- Social Media Codicologists
 authors:
 - giulio
 slug: 31-new-manuscripts-e-codices

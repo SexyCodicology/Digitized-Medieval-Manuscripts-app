@@ -3,10 +3,8 @@ date:
   created: 2014-12-13
   updated: 2023-04-03
 categories:
-- A Medieval Manuscript a Week
 - Digital Humanities
 - Video
-- Utrecht Psalter
 authors:
 - giulio
 slug: utrecht-psalter

@@ -4,8 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- Germany
-- MDZ
 authors:
 - giulio
 slug: munchener-digitalisierungszentrum-mdz

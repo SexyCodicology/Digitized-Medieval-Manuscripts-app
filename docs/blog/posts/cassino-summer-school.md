@@ -4,9 +4,7 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- Cassino
-- Montecassino
-- Summer School
+- Community & Events
 authors:
 - giulio
 slug: cassino-summer-school

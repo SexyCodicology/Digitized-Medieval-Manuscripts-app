@@ -3,8 +3,7 @@ date:
   created: 2014-03-09
 categories:
 - Digital Humanities
-- Social Media Codicologists
-- Stats
+- DMMapp Updates
 authors:
 - giulio
 slug: dmmmaps-project-so-far

@@ -4,7 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- Germany
 authors:
 - giulio
 slug: herzog-august-bibliothek-wolfenbuttel

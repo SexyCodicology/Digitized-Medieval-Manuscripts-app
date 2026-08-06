@@ -3,7 +3,7 @@ date:
   created: 2014-10-24
   updated: 2023-04-03
 categories:
-- A Medieval Manuscript a Week
+- Manuscript Curiosities
 authors:
 - marjolein
 slug: crusader-bible-morgan-library

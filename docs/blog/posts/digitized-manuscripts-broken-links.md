@@ -4,8 +4,8 @@ date:
   updated: 2023-03-13
 categories:
 - Digitized Libraries
-- broken links
-- DMMapp
+- Broken Links
+- DMMapp Updates
 authors:
 - giulio
 slug: digitized-manuscripts-broken-links

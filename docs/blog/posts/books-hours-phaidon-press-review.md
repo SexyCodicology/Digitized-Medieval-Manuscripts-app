@@ -3,7 +3,7 @@ date:
   created: 2014-01-20
   updated: 2023-04-03
 categories:
-- Books
+- Digital Humanities
 authors:
 - marjolein
 slug: books-hours-phaidon-press-review

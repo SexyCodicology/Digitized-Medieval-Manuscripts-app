@@ -4,7 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- Elsevier Heritage Collection
 authors:
 - giulio
 slug: medieval-maniculae-printed-books

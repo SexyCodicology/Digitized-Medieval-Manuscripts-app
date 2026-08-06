@@ -4,8 +4,7 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- MOOC
-- Online Course
+- Community & Events
 authors:
 - marjolein
 slug: england-time-king-richard-iii

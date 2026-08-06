@@ -3,8 +3,7 @@ date:
   created: 2013-07-27
   updated: 2023-04-03
 categories:
-- Medieval Bunnies
-- Bestiaries
+- Manuscript Curiosities
 authors:
 - marjolein
 slug: medieval-killer-bunny

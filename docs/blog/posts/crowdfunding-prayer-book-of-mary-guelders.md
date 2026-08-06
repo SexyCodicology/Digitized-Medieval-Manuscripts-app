@@ -4,9 +4,7 @@ date:
   updated: 2023-04-03
 categories:
 - Digital Humanities
-- crowdsourcing
-- Resource
-- website
+- Crowdsourcing
 authors:
 - giulio
 slug: crowdfunding-prayer-book-of-mary-guelders

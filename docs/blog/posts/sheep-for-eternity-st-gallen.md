@@ -3,7 +3,7 @@ date:
   created: 2014-06-15
   updated: 2023-04-03
 categories:
-- Books
+- Digital Humanities
 authors:
 - giulio
 slug: sheep-for-eternity-st-gallen

@@ -4,8 +4,6 @@ date:
   updated: 2023-04-03
 categories:
 - Digitized Libraries
-- Barcelona
-- Spain
 authors:
 - giulio
 slug: biblioteca-universidad-barcelona
