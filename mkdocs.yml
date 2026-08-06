@@ -33,6 +33,7 @@ theme:
     - navigation.instant
     - navigation.tracking
     - navigation.top
+    - navigation.indexes
     - search.suggest
     - search.highlight
     - search.share
@@ -58,6 +59,7 @@ markdown_extensions:
 nav:
   - Dashboard: index.md
   - About: about.md
+  - Blog: blog/index.md
   - Documentation:
       - Overview: docs-home.md
       - Getting Started: getting-started.md
@@ -71,6 +73,10 @@ nav:
 plugins:
   - search
   - privacy
+  - blog:
+      blog_dir: blog
+      post_url_format: "{slug}"
+      authors_file: blog/.authors.yml
 
 # Generates one page per record in docs/assets/data.json at build time.
 # The pages are virtual, so they are never written into docs/ or committed,
