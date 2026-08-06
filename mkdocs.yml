@@ -78,6 +78,7 @@ plugins:
       blog_dir: blog
       post_url_format: "{slug}"
       authors_file: blog/.authors.yml
+      authors_profiles: true
       post_excerpt: required
   - rss:
       match_path: "blog/posts/.*"
