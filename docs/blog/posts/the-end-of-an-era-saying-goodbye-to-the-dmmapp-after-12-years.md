@@ -1,5 +1,6 @@
 ---
-date: 2025-12-19
+date:
+  created: 2025-12-19
 categories:
 - Digital Humanities
 - DMMapp Updates

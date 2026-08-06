@@ -1,5 +1,6 @@
 ---
-date: 2023-02-25
+date:
+  created: 2023-02-25
 categories:
 - Release Notes
 authors:

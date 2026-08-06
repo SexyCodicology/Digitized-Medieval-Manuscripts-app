@@ -1,5 +1,6 @@
 ---
-date: 2018-05-20
+date:
+  created: 2018-05-20
 categories:
 - Digitized Libraries
 - Parker Library

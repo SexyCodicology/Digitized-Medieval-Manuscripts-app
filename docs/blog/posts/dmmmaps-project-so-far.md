@@ -1,5 +1,6 @@
 ---
-date: 2014-03-09
+date:
+  created: 2014-03-09
 categories:
 - Digital Humanities
 - Social Media Codicologists

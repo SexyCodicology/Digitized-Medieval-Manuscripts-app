@@ -1,5 +1,6 @@
 ---
-date: 2023-05-28
+date:
+  created: 2023-05-28
 categories:
 - Digitized Libraries
 - New Additions
