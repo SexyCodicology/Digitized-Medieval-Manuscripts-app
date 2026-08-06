@@ -25,7 +25,7 @@ What does this mean? Although Sexy Codicology focuses on digitized medieval manu
 ...and so on. The applications are endless.
 Thanks to your amazing support on Patreon we were able to convert our DMMapp into what it was meant to be: a free-for-all tool that can be reused, by anyone, to create something amazing.
 
-### The DMMapp vs. the Open Source edition
+## The DMMapp vs. the Open Source edition
 
 The Open Source version is very similar to what you are used to see on the DMMapp: an interactive map, together with tables to show off the data.
 Besides some structural edits (i.e.: the name of the pages) the main difference between the Open Source edition and the DMMapp is that the the administrative side of the DMMapp is available only to us, Sexy Codicology Team, to edit the contents of the database. **The Open Source edition, instead, allows you to create, read, update, and delete database entries ("CRUD", in jargon), register admins, reset passwords, etc.**

@@ -24,7 +24,7 @@ When I ordered the book I knew that it was going to be small format, but it stil
 One of the downsides of this book for me is that the descriptions of the illustrations are rather short. Some of the manuscript pages have been reproduced in their original size, but not all of them. It’s a shame that the captions of the photos don’t mention which ones are original size. Other than that, some descriptions mention (in short) what you see in the pictures, some don’t. As it turns out, at the end of the book there is a whole section with really nice and informative descriptions. I just wish this info wasn’t banned to the end of *Books of Hours*. I very well understand it would be difficult (if not impossible) to incorporate all that into the main text and the captions. However, now the reader has to go back and forth to combine the right image to the right explanation. Not super practical.
 Don’t read this book if you are looking for an in-depth work on books of hours. I think this publication is a nice place to start when you want to read some ‘beginner’s literature’ on this subject. The text is well-written and informative. It discusses the contents of books of hours and explains how it can vary. **Overall I believe this book is worth buying, also because it costs very little. It could make a nice gift for your fellow manuscript lover.** *Books of hours* is a nice, quick read with an interesting variety of images to illustrate the text.
 
-Rating: \[usr 3\]
+Rating: 3
 
 ![Vault Case MS 131 Newberry library](assets/uploads/2014/01/Vault-Case-MS-131-Newberry-library.webp)
 

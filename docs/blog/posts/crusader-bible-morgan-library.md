@@ -16,7 +16,7 @@ According to the Morgan Library, it is not only one of the most awesome and beau
 
 <!-- more -->
 
-*2 Samuel 18:9 \- And Absalom met the servants of David. And Absalom rode upon a mule, and the mule went under the thick boughs of a great oak, and his head caught hold of the oak, and he was taken up between the heaven and the earth; and the mule that was under him went away.*
+*2 Samuel 18:9 - And Absalom met the servants of David. And Absalom rode upon a mule, and the mule went under the thick boughs of a great oak, and his head caught hold of the oak, and he was taken up between the heaven and the earth; and the mule that was under him went away.*
 
 This manuscript was, for some time, **associated with the French King Louis IX and his Seventh Crusade (1244-1254)**. Unfortunately, there is no clear and definitive evidence to support the claim that this manuscript was owned or commissioned by this king. The proof is only circumstantial.
 

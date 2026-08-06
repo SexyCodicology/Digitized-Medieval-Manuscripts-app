@@ -17,7 +17,7 @@ Now, this has been a great improvement for everyone; but it has lead to a new pr
 
 <!-- more -->
 
-### **The issue**
+## **The issue**
 
 Some background information for the curious ones:
 All the data that generates the pins on the DMMmap and the browsable table at digitizedmedievalmanucripts.org is contained in a JSON file called data.json, a copy of which is [publicly available for everyone at GitHub](https://github.com/SexyCodicology/DMMapp/blob/master/js/data.json).
@@ -73,4 +73,4 @@ The advantages of this structure are clear and can be summarized in a few words:
 ![](assets/uploads/2023/02/1c1549745a5e32c1b64c3eaa20ddd9e0.webp)
 ![](assets/uploads/2023/02/e6f93a29787403d3a88d2a485cf9e2c1.webp)
 Your Sexy Codicologists,
-Giulio \& Marjolein
+Giulio & Marjolein

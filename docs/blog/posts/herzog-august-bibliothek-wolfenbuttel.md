@@ -30,4 +30,4 @@ Overall, the whole experience of browsing through the Herzog August Bibliothek 
 ## Copyrights
 
 One last remark: among the many excellent features of the Herzog August Bibliothek there is the copyright under which the images are made available: Creative Commons' CC BY-SA 3.0 DE. This is **an extremely flexible license** that allows blogs like this one to create posts and videos to highlight the treasures in the library.
-Have fun browsing! Let us know which treasures you discover and which is you favorite manuscript from this library!
+Have fun browsing! Let us know which treasures you discover and which is your favourite manuscript from this library!

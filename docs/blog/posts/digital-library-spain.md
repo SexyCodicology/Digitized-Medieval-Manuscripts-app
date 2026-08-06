@@ -36,9 +36,9 @@ Which, legally talking, is a contradiction in terms: if it's Public Domain, I ca
 Enjoy these leaves nonetheless. Clicking on them will lead you to the whole digitized manuscript. **Then go discover many other from other institutions through our app!**
 [![Book of Hours of Charles VIII, King of France](assets/uploads/2014/05/1.webp)](https://bdh-rd.bne.es/viewer.vm?id=0000037462)
 
-*Full page miniature from the Book of Hours of Charles VIII, King of France \- The Virgin Mary*
+*Full page miniature from the Book of Hours of Charles VIII, King of France - The Virgin Mary*
 
- Full page miniature from the Book of Hours of Charles VIII, King of France \- Charles VIII
+ Full page miniature from the Book of Hours of Charles VIII, King of France - Charles VIII
  Miniature from the Poetic Works by Francesco Petrarca
  Miniature from the Poetic Works by Francesco Petrarca
  Miniature from the Poetic Works by Francesco Petrarca

@@ -25,7 +25,7 @@ Among the great number of publications from this museum there is a subsection of
 It is amazing and great of the MET to share their publications as free online books. **For people who love art and history there is much, much goodness to find and read.** For this blog post we went through this list and we will highlight the most interesting and awesome books for you here (in random order). These are not book reviews, we just wanted to share this list as soon as we could – reading all of the titles mentioned here would’ve taken much too long.
 The focus will be mostly on medieval manuscripts of course, but we include also other books about medieval life, history, art and culture that are just too amazing not to mention.
 
-### **1\.****[The Art of Illumination: The Limbourg Brothers and the Belles Heures of Jean de France, Duc de Berry](https://www.metmuseum.org/art/metpublications/The_Art_of_Illumination_The_Limbourg_Brothers_and_the_Belles_Heures_of_Jean_de_France_Duc_de_Berr?title=&fmt=0&Tag=limbourg&tc=0&author=&dept=0&pt=0)**
+### **1.****[The Art of Illumination: The Limbourg Brothers and the Belles Heures of Jean de France, Duc de Berry](https://www.metmuseum.org/art/metpublications/The_Art_of_Illumination_The_Limbourg_Brothers_and_the_Belles_Heures_of_Jean_de_France_Duc_de_Berr?title=&fmt=0&Tag=limbourg&tc=0&author=&dept=0&pt=0)**
 
 ![A book focusing on the Belles Heures of Jean de France, Duc de Berry is one of the many free online books!](assets/uploads/2013/10/Metropolitan-Museum-of-Art.webp)
 
@@ -33,7 +33,7 @@ The focus will be mostly on medieval manuscripts of course, but we include also 
 
 The title of this publication already makes it clear that it will be full of manuscript goodness. It has the looks of the perfect book about this sort of subject: first a nice background overview and then it continues to discuss the manuscript in quite some detail. **The author explains a massive number of the illuminations of the *Belles Heures* including small transcripts and translations of the text with the miniatures.** Furthermore, there are chapters on the books that the Limbourg Brothers worked on and, also quite fascinating, who and what influenced their artistic style. We can say nothing other about this book than that it is simply amazing (on first browsing it). It is chock-full of colour photos and stacked with information. Why is this book of out print? We want to buy it now! Very much recommended.
 
-### **2\.****[The Unicorn Tapestries](https://www.metmuseum.org/art/metpublications/The_Unicorn_Tapestries?title=&fmt=&Tag=&tc=&author=&dept=&pt=)**
+### **2.****[The Unicorn Tapestries](https://www.metmuseum.org/art/metpublications/The_Unicorn_Tapestries?title=&fmt=&Tag=&tc=&author=&dept=&pt=)**
 
  
 In the Cloisters Museum (part of the MET) in New York, on permanent display you can find seven late Gothic tapestries that portray the Hunt of the Unicorn (believed to have been made in the Southern Netherlands). The unicorn is a common imaginary animal that can be found in medieval art and in manuscripts (some books have margins full of unicorns!). **The tapestries are an amazing, captivating and fascinating pieces of art and *The Unicorn Tapestries* discusses various aspects of it.** For manuscript enthusiasts we believe this is a recommended read since the first chapter of the book discusses the unicorn in ancient and medieval texts. Also in other chapters we find many links to medieval manuscript and literary culture. Because of this, this book could be of interest for anyone that wants to know more about beasts and fantastic creatures in medieval manuscript, literature and art. Because of this, this book could be of interest for anyone that wants to know more about beasts and fantastic creatures in medieval manuscript, literature and art.
@@ -42,20 +42,20 @@ More on this subject: [Masterpieces of Tapestry from the Fourteenth to the Sixte
 
 *The Cloisters Apocalypse: An Early Fourteenth-Century Manuscript in Facsimile is one of the many free online books from the Met!*
 
-### **3\.****[Pen and Parchment: Drawing in the Middle Ages](https://www.metmuseum.org/art/metpublications/Pen_and_Parchment_Drawing_in_the_Middle_Ages?title=&fmt=&Tag=&tc=&author=&dept=&pt=)**
+### **3.****[Pen and Parchment: Drawing in the Middle Ages](https://www.metmuseum.org/art/metpublications/Pen_and_Parchment_Drawing_in_the_Middle_Ages?title=&fmt=&Tag=&tc=&author=&dept=&pt=)**
 
 Another beautiful book from the MET collection! **This one also begins with an introduction on the subject of pen drawings in medieval manuscripts in various areas (such as Anglo-Saxon England) and how it changed throughout the centuries.** The largest part of the book is a catalogue stocked with beautiful colour pictures and interesting (not too short, not too long) descriptions of what you are looking at. This books shows the reader very well how ‘simple’ pen drawings can also make beautiful manuscripts.
 
-### **4\.****[The Secular Spirit: Life and Art at the End of the Middle Ages](https://www.metmuseum.org/art/metpublications/The_Secular_Spirit_Life_and_Art_at_the_End_of_the_Middle_Ages?title=&fmt=&Tag=&tc=&author=&dept=&pt=)**
+### **4.****[The Secular Spirit: Life and Art at the End of the Middle Ages](https://www.metmuseum.org/art/metpublications/The_Secular_Spirit_Life_and_Art_at_the_End_of_the_Middle_Ages?title=&fmt=&Tag=&tc=&author=&dept=&pt=)**
 
 This title contains information on all the various aspects of medieval life that you can think of: the household, fashion, music, ceremonies and traditions, science and technology, music, food, travel, trade and of course also a part on the medieval book. **The authors discuss how books were made (including the early printed book), readership and books as artefacts of learning, private libraries and what sort of titles were the ‘bestsellers’ of the middle ages.** Also this book is full of nice illustrations of amazing and curious objects, which is a great addition. This book appears to be a good read for someone who is interested in medieval life and wants a general overview with lots of cool and fascinating facts.
 
-### **5\.****[The Armored Horse in Europe, 1480-1620](https://www.metmuseum.org/art/metpublications/The_Armored_Horse_in_Europe_1480_1620?title=&fmt=&Tag=&tc=&author=&dept=&pt=)**
+### **5.****[The Armored Horse in Europe, 1480-1620](https://www.metmuseum.org/art/metpublications/The_Armored_Horse_in_Europe_1480_1620?title=&fmt=&Tag=&tc=&author=&dept=&pt=)**
 
 Already reading the title made us very curious! This book is about quite a specific subject, but fascinating. It is a different way of looking at medieval battles and the life of knights and warriors.  The book starts out with an introduction with some pictures from manuscripts and the second part of the book is a catalogue of related items in the collection of the MET. This might not sound particularly exciting, but on the contrary, it is. **The book has all sorts of images of objects with nice explanations and some background information.** They include, for example horse armour from famous medieval people (Henry II of France, Emperor Charles V), cute but amazingly made chess pieces of knights on horses. Also, the pictures give you a nice idea of a particular aspect of medieval warfare and it shows well how the horse armour is also often a beautifully decorated piece of art.
 For more related awesomeness about medieval chivalry, weapons and armour, also take a look at this MET publication: [The Art of Chivalry](https://www.metmuseum.org/art/metpublications/The_Art_of_Chivalry_European_Arms_and_Armor_from_The_Metropolitan_Museum_of_Art?title=&fmt=0&Tag=&tc=%7B9652921F-519F-4987-BA2A-FA6BD8E0BF33%7D&author=&dept=0&pt=0) and [European Helmets, 1450–1650: Treasures from the Reserve Collection](https://www.metmuseum.org/art/metpublications/European_Helmets_1450_1650_Treasures_from_the_Reserve_Collection?title=&fmt=&Tag=&tc=&author=&dept=&pt=).
 
-### **6\.****On Illuminated Manuscripts and Manuscript Culture:**
+### **6.****On Illuminated Manuscripts and Manuscript Culture:**
 
 [Medieval Art from Private Collections](https://www.metmuseum.org/art/metpublications/Medieval_Art_from_Private_Collections?title=&fmt=&Tag=&tc=&author=&dept=&pt=) – with a section on Illuminated manuscripts
 [Treasures of Early Irish Art, 1500 B.C. to 1500 A.D.](https://www.metmuseum.org/art/metpublications/Treasures_of_Early_Irish_Art_1500_BC_to_1500_AD?title=&fmt=&Tag=&tc=&author=&dept=&pt=) – amazing book with great detailed pictures of artworks. Furthermore, contains also information and pictures about Insular manuscripts. Recommended!
@@ -68,7 +68,7 @@ For more related awesomeness about medieval chivalry, weapons and armour, also t
 [The Cloisters Apocalypse: An Early Fourteenth-Century Manuscript in Facsimile](https://www.metmuseum.org/art/metpublications/The_Cloisters_Apocalypse_An_Early_Fourteenth_Century_Manuscript_in_Facsimile?title=&fmt=0&Tag=apocalypse&tc=0&author=&dept=0&pt=0)
 
 
-### **7\.****Variety of titles on Medieval Art \& Architecture:**
+### **7.****Variety of titles on Medieval Art & Architecture:**
 
 [The Art of Medieval Spain: A.D. 500-1200](https://www.metmuseum.org/art/metpublications/The_Art_of_Medieval_Spain_AD_500_1200?title=&fmt=&Tag=&tc=&author=&dept=&pt=)
 [The Cloisters Cross: Its Art and Meaning](https://www.metmuseum.org/art/metpublications/The_Cloisters_Cross_Its_Art_and_Meaning?title=&fmt=&Tag=&tc=&author=&dept=&pt=)

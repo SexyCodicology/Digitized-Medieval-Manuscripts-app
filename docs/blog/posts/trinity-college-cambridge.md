@@ -16,9 +16,7 @@ A couple of days ago I received an email from Cambridge Trinity College. I was k
 
 <!-- more -->
 
-## \[gallery type\="rectangular" link\="none" ids\="605,604,603,602,601,600,599,598,597,596,595,594,593"\]
-
-\[aio\_button align\="center" animation\="none" color\="blue" size\="small" icon\="book" text\="Visit this Digital Library" relationship\="dofollow" url\="https://sites.trin.cam.ac.uk/james/browse.php?show\=virtual\_listing"\]
+[Visit this Digital Library](https://sites.trin.cam.ac.uk/james/browse.php?show=virtual_listing)
 
 ## Trinity College in Cambridge goes Mobile
 
@@ -52,4 +50,4 @@ But, this is just my opinion of course. Who knows... Maybe one day!
 
 The Trinity College's collection of medieval manuscripts is sensational; and **it is fantastic that these manuscripts are available for everyone to look at and study over the internet**. I am really pleased to finally see a mobile friendly website for digitized medieval manuscripts too. This definitely sets an example for other institutions. Too bad for the copyrights restrictions and the impossibility to download the images, but these are minor aspects that affect only a few people.
 It is definitely worth visiting the renewed page and spend hours discovering all the manuscripts. Once you have done that, head back to the DMMapp, and have fun discovering another library, of course!
-**Which is you favorite manuscript from this institution? Let us know in the comment section below!**
+**Which is your favourite manuscript from this institution? Let us know in the comments section below!**

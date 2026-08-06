@@ -26,7 +26,7 @@ Recently **e-codices has updated this interface** with what we believe to be eve
 There is a new viewer based on OpenSeadragon and SharedCanvas is being used to unite dispersed manuscripts.
 A new side bar is also in place, which can be shown or hidden, and it displays the metadata and basic information about each manuscript.
 To finish up: Search has been improved even further, and there have been improvements also on the back-end of things.
- An example of the exquisite details you can explore, thanks to the great quality of the digitized manuscripts on e-codices. (St. Gallen, Stiftsbibliothek / Cod. Sang. 53\)
+ An example of the exquisite details you can explore, thanks to the great quality of the digitized manuscripts on e-codices. (St. Gallen, Stiftsbibliothek / Cod. Sang. 53)
 **I can’t but urge you all to go and visit (and enjoy) this beautiful site.** It is done with a lot of love and passion, and it really shines through
 
 - [Main website](https://www.e-codices.unifr.ch/en)

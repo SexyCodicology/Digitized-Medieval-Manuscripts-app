@@ -13,7 +13,7 @@ slug: dmmapp-update
 It's [#WorldHeritageDay](https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fhashtag%2Fworldheritageday%3Fsource%3Dfeed_text)!
 So we are sharing all the digitized medieval manuscripts we know: https://j.mp/DMMapp
 On top of that:
-\+30 new links that give you access to more than 250 digitized items!
++30 new links that give you access to more than 250 digitized items!
 Also: the new "report broken link" button!
 Also: improved search! (special characters are no longer an issue)
 Also: a Chrome plugin for those in a hurry to find digitized manuscripts! ([https://bit.ly/DMMappChromePlugin](https://chrome.google.com/webstore/detail/dmmapp-plugin/lfddboglgfimpmokggiapioogkhgical))

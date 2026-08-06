@@ -15,16 +15,16 @@ We have reviewed our reported broken links on the DMMapp, added two new reposito
 
 <!-- more -->
 
-### New repositories
+## New repositories
 
-From Ljubljana in Slovenia we have added the Digital Library of Slovenia \- National and University Library of Slovenia, which includes the Central Library Srecko Vilhar, and  [Manuscripta – A Digital Catalogue of Manuscripts in Sweden.](https://digitizedmedievalmanuscripts.org/)
+From Ljubljana in Slovenia we have added the Digital Library of Slovenia - National and University Library of Slovenia, which includes the Central Library Srecko Vilhar, and  [Manuscripta – A Digital Catalogue of Manuscripts in Sweden.](https://digitizedmedievalmanuscripts.org/)
 
 ### **Updates**
 
 The following institutions have their links updated:
 
 - [Universitätsbibliothek Rostock](https://digitizedmedievalmanuscripts.org/universitatsbibliothek-rostock)
-- [Banque d'images \- Bibliotheque Nationale de France](https://digitizedmedievalmanuscripts.org/banque-d-images-bibliotheque-nationale-de-france)
+- [Banque d'images - Bibliotheque Nationale de France](https://digitizedmedievalmanuscripts.org/banque-d-images-bibliotheque-nationale-de-france)
 - [Germanischen Nationalmuseum](https://digitizedmedievalmanuscripts.org/germanischen-nationalmuseum)
 - [National Library of Bulgaria](https://digitizedmedievalmanuscripts.org/national-library-of-bulgaria)
 - [The Fitzwilliam Museum](https://digitizedmedievalmanuscripts.org/the-fitzwilliam-museum)

@@ -22,14 +22,14 @@ We have received an email containing a link to **20 digitized medieval manuscrip
 
 We gave a brief look at the digitized manuscripts, and we are very excited to say that **there is a wealth of beauties contained in them**. We are posting a few of the highlights we have discovered, but there is so much more to be seen.
 **Enjoy exploring!**
-\[aio\_button align\="center" animation\="none" color\="blue" size\="small" icon\="map-marker" text\="Discover 250\+ More libraries with the DMMmaps!" relationship\="dofollow" url\="https://digitizedmedievalmanuscripts.org/maps/standard/"\]
+[Discover 250+ more libraries with the DMMmaps!](https://digitizedmedievalmanuscripts.org/maps/standard/)
 Scuba divers, 16th century...  
-Kriegsbuch \- UER MS.B 26
+Kriegsbuch - UER MS.B 26
 Gear for Scuba divers, 16th century...  
-Kriegsbuch \- UER MS.B 26
-When you are not ready for scuba diving, yet. 16th Century. Kriegsbuch \- UER MS.B 26
-Front Cover \- Quattuor Evangelia \- UER MS 9
-Front Cover \- Quattuor Evangelia \- UER MS 10 / 1
-\[aio\_button align\="center" animation\="none" color\="blue" size\="small" icon\="map-marker" text\="Discover 250\+ other Libraries the DMMmaps!" relationship\="dofollow" url\="https://digitizedmedievalmanuscripts.org/maps/standard/"\]
-Minor Prohets as Harbingers of Jesus \- Universitätsbibliothek Erlangen-Nürnberg MS 1
+Kriegsbuch - UER MS.B 26
+When you are not ready for scuba diving, yet. 16th Century. Kriegsbuch - UER MS.B 26
+Front Cover - Quattuor Evangelia - UER MS 9
+Front Cover - Quattuor Evangelia - UER MS 10 / 1
+[Discover 250+ other libraries on the DMMmaps!](https://digitizedmedievalmanuscripts.org/maps/standard/)
+Minor Prohets as Harbingers of Jesus - Universitätsbibliothek Erlangen-Nürnberg MS 1
 Beautiful, aren't they? Let us know what you think in the comment section below! Also, if you know any other repository of digitized medieval manuscript missing from the DMMmaps data, let us know. Send us an email through our send us a tip page, or write a comment.

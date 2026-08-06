@@ -12,7 +12,7 @@ slug: dmmapp-4-0-open-beta-ending-soon-release-planned
 
 In over two months you have helped us spotting quite some bugs on our new DMMapp, and now we believe that the time has come to embrace the future and archive the old DMMapp completely. An what better period to do so if not early in the new year?
 ![](assets/uploads/2023/02/dfb5f66a8dfd2400ecaf085a2eb6f2e1.webp)
-> *Unknown -The Construction of the Tower of Babel, about 1400 \- 1410, Tempera colors, gold, silver paint, and ink on parchment*
+> *Unknown -The Construction of the Tower of Babel, about 1400 - 1410, Tempera colors, gold, silver paint, and ink on parchment*
 
 <!-- more -->
 
@@ -31,7 +31,7 @@ We are taking our sweet time: we have prepared the data in the past couple of we
 - The new DMMapp will also be on GitHub, just like the previous iteration. We will have to clean some of the details before be publish it there; also, this time around, it will be a little bit more complex to recreate: you will need to know some PHP and some Laravel.
 
 **Who will make the magic happen?**
-But you trusty Sexy Codicology team, of course: Giulio \& Marjolein.
+But your trusty Sexy Codicology team, of course: Giulio & Marjolein.
 **How will you carry out this migration?**
 We will explain technicalities on a separate post. Let's say that, due to technical limitations, a lot of drag-and-drop will be involved.
 **Why is this migration necessary?**

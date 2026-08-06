@@ -12,19 +12,19 @@ slug: iiif-international-image-interoperability-framework
 ---
 # IIIF - The digitized manuscripts revolution we've all been waiting for!
 
-We created the DMMapp to make it easier for you to find collections of digitized manuscripts \- and **IIIF is making it easier for you to view, study, and compare manuscripts**. In this post we are going to tell you all about why it’s awesome!
-In 2011, a group of international libraries and universities ((Stanford University, The British Library, Bodleian Libraries, The Bibliothèque nationale de France, the National Library of Norway, Cornell University, and Los Alamos National Laboratory Research Library)) set up the [International Image Interoperability Framework](https://iiif.io/), or, in short, IIIF (pronounced as triple-I-F).
+We created the DMMapp to make it easier for you to find collections of digitized manuscripts - and **IIIF is making it easier for you to view, study, and compare manuscripts**. In this post we are going to tell you all about why it’s awesome!
+In 2011, a group of international libraries and universities  (Stanford University, The British Library, Bodleian Libraries, The Bibliothèque nationale de France, the National Library of Norway, Cornell University, and Los Alamos National Laboratory Research Library) set up the [International Image Interoperability Framework](https://iiif.io/), or, in short, IIIF (pronounced as triple-I-F).
 [![IIIF example from the Bodleian Library](assets/uploads/2017/03/3.webp)](https://iiif.bodleian.ox.ac.uk/iiif/mirador/?iiif-content=https://iiif.bodleian.ox.ac.uk/iiif/manifest/ac893a68-b735-4cf8-873f-bf05442d7887.json)
 
 <!-- more -->
 
-*Example of the zoom capabilities in a manuscript from the Bodleian Libraries  
+*Example of the zoom capabilities in a manuscript from the Bodleian Libraries
 See the manuscript in Mirador yourself by clicking this image.*
 
 ## Why IIIF?
 
 One of the biggest issues that we at Sexy Codicology have always run into is the fact that **almost every library, museum, or other heritage institute, deals with the presentation of digitized manuscripts in their own, unique, way.** There is a big variety in the viewers that are used for images, and you can only use *their* viewers or download the images yourself. Some of these viewers are not always easy to work with, and have often big limitations to how you can view the manuscript or what you can do with it.
-This is exactly the issue that the collaborating libraries are addressing with the IIIF initiative((See the original "[about page](https://iiif.io/about/)" on the International Image Interoperability Framework website for more info.)). **Scholars and programmers from all over the world are working together on providing a technology that give researchers, and heritage enthusiasts, a rich and uniform experience when viewing digitized heritage**. Most of all, they want to make it possible that as many digital collections as possible all work in the same way, so that any image from any museum or library can be seen in any viewer online, together with any other manuscript or artwork that is IIIF compliant! Side-by-side!
+This is exactly the issue that the collaborating libraries are addressing with the IIIF initiative (See the original "[about page](https://iiif.io/about/)" on the International Image Interoperability Framework website for more info.). **Scholars and programmers from all over the world are working together on providing a technology that give researchers, and heritage enthusiasts, a rich and uniform experience when viewing digitized heritage**. Most of all, they want to make it possible that as many digital collections as possible all work in the same way, so that any image from any museum or library can be seen in any viewer online, together with any other manuscript or artwork that is IIIF compliant! Side-by-side!
 
 ## I want IIIF! Where do I get it?
 
@@ -43,7 +43,7 @@ Combine and compare manuscripts from various libraries and museums in one viewer
 **Another possibility of IIIF is the annotations option**. This means that you cannot only make notes on the images for yourself, but also share these with others. Think of creating a gallery or exhibition with selected manuscripts and notes about interesting features, ready to share with your students, fellow researchers, or just for you own fun!
 ![IIIF Colour inversion in a manuscript from the BSB ](assets/uploads/2017/03/2.webp)
 
-*Annotation example from the Bayerische Staatsbibliotheek \- BSB CLM 826\.*
+*Annotation example from the Bayerische Staatsbibliotheek - BSB CLM 826.*
 
 ## Awesome, but...
 
@@ -60,14 +60,14 @@ Still, this is moving so fast right now, with many libraries picking up this tec
 
 ## Who is IIIF-ied?
 
-Want to check out some institutions that have live IIIF-ified collections already? This is a short overview of institutions that we found (a full list of all institutions working on IIIF can be found [here](https://iiif.io/community/consortium/#members)): 
+Want to check out some institutions that have live IIIF-ified collections already? This is a short overview of institutions that we found (a full list of all institutions working on IIIF can be found [here](https://iiif.io/community/consortium/#members)):
 
 - [The Digital Bodleian](https://digital.bodleian.ox.ac.uk/migration/#/?p=c+,t+,rsrs+0,rsps+10,fa+ox%3Acollection%5EWestern%20Manuscripts,so+ox%3Asort%5Easc,scids+,pid+,vi+)
 - [Houghton Library](https://hcl.harvard.edu/libraries/houghton/collections/early_manuscripts/about.cfm#collection)
 - [Universitätsbibliothek Heidelberg](https://www.ub.uni-heidelberg.de/helios/digi/handschriften.html)
 - [E-codices](https://e-codices.unifr.ch/en)
 - [Vatican Library](https://digi.vatlib.it/)
-- [Wellcome](https://wellcomecollection.org/collections)((Click a manuscript and scroll down to see if the IIIF-logo is there))
+- [Wellcome](https://wellcomecollection.org/collections) (Click a manuscript and scroll down to see if the IIIF-logo is there)
 - [Bayerische StaatsBibliothek](https://www.digitale-sammlungen.de/en/)
 
 If you have become as enthusiastic about the possibilities of IIIF as we are, keep on watching this space! Soon we will publish a short guide on how to work with a viewer and make awesome comparisons and collections yourself!

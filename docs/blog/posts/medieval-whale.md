@@ -18,7 +18,7 @@ slug: medieval-whale
 
 <!-- more -->
 
-*The Whale \- Bodleian Library, MS. Ashmole 1511, Folio 86v.*
+*The Whale - Bodleian Library, MS. Ashmole 1511, Folio 86v.*
 
 [venasaphena](https://venasaphena.tumblr.com/post/68357374132/bodleian-library-ms-ashmole-1511-folio-86v-a) shared this beautiful representation of a whale from Bodleian Library, MS. Ashmole 1511, Folio 86v:
 

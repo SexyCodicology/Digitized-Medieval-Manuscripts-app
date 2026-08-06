@@ -12,7 +12,7 @@ slug: fitzwilliam-museum-digital-manuscripts
 ---
 # The digitized manuscripts of the Fitzwilliam Museum
 
-Marlay cutting It. 12 \- The Burial of St Monica at Ostia (left) and St Augustine Departing for Africa (right).
+Marlay cutting It. 12 - The Burial of St Monica at Ostia (left) and St Augustine Departing for Africa (right).
 That little jewel in the in the center of Cambridge that is the Fitzwilliam Museum is home to **an extraordinary collection of paintings, engravings, and most importantly for us, [digitized medieval manuscripts](https://webapps.fitzmuseum.cam.ac.uk/explorer/index.php?qu=manuscript)**. These manuscripts are available online (and linked in our app) so we went to give a look to see what wealth is available to us.
 
 <!-- more -->
@@ -30,5 +30,5 @@ Although rather small and not perfect to navigate, **the digitized pages are sti
 
 Fascinating to us is the **presence of an inhabited letter attributed to the [Master of the Murano Gradual](https://webapps.fitzmuseum.cam.ac.uk/explorer/index.php?qu=manuscript&oid=176542)**. If you have visited the [Getty Museum's collection](https://www.getty.edu/art/collection/) after reading our post about it, you will note a striking resemblance to [one of the digitized images available there](https://www.getty.edu/art/collection/object/109F1Y). To prove the quality the descriptions available there, we strongly recommend that you give a look at the notes available on the Fitzwilliam Museum's page regarding their initial. It narrates a very fascinating story about miniature painting in Italy in the late 14th century.
 And don't forget the miniatures by the "Masters of the Beady Eyes"! Awesome!
-MS 1-1974 \- Illumination in the style of the Masters of the Beady Eyes (Maîtres aux Yeux-Bridés), who were active mainly in Ghent during the third quarter of the fifteenth century.
+MS 1-1974 - Illumination in the style of the Masters of the Beady Eyes (Maîtres aux Yeux-Bridés), who were active mainly in Ghent during the third quarter of the fifteenth century.
 Overall, **the Fitzwilliam Museum's website and its digitized collection is most certainly worth more than a visit**. There is a lot of content worth viewing, and navigating through it is a pleasure. Go and see for yourself!

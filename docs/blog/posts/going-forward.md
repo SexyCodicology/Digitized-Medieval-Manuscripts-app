@@ -52,7 +52,7 @@ The reasoning behind this is that we want to attract users to little-known repos
 
 
 
-These pages will follow a standardize template, and will not act as "reviews" of the repositories. The aim will be, rather, to inform the audience that the repository exists, what it contains, where it is, and \- if the copyrights allow it \- show some sample of the digitized material in an attempt to drive traffic towards it.
+These pages will follow a standardize template, and will not act as "reviews" of the repositories. The aim will be, rather, to inform the audience that the repository exists, what it contains, where it is, and - if the copyrights allow it - show some sample of the digitized material in an attempt to drive traffic towards it.
 
 
 

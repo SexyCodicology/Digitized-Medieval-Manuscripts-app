@@ -17,7 +17,6 @@ It has been a busy Easter here at Sexy Codicology. You have certainly seen our p
 
 ## Miniatures of the Holy Week
 
-\[gallery type\="rectangular" ids\="1587,1592,1593,1584,1585,1583,1586,1582,1589,1590,1591,1581,1580,1588"\]
 
 ## The Holy Week and Easter Sunday: A Summary
 
@@ -28,4 +27,4 @@ The Holy Week (in Latin: Hebdomas Sancta or Hebdomas Maior, "Greater Week")is th
 - Good Friday
 - Holy Saturday
 
-**It does not include Easter Sunday.**Easter celebrates the Resurrection of Jesus Christ from the dead, described in the New Testament as having occurred three days after his crucifixion by Romans at Calvary.\[[1](https://en.wikipedia.org/wiki/Easter)\]
+**It does not include Easter Sunday.**Easter celebrates the Resurrection of Jesus Christ from the dead, described in the New Testament as having occurred three days after his crucifixion by Romans at Calvary.[[1](https://en.wikipedia.org/wiki/Easter)]

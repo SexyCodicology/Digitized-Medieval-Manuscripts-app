@@ -11,7 +11,7 @@ slug: hochschul-und-landesbibliothek-fulda
 ---
 # Hochschul und Landesbibliothek Fulda
 
-Emperor Frederick I in a manuscript from Hochschul und Landesbibliothek Fulda (100 D 11\)
+Emperor Frederick I in a manuscript from Hochschul und Landesbibliothek Fulda (100 D 11)
 Today we will be looking at the digitized medieval manuscripts from the *Hochschul- und Landesbibliothek Fulda* (University and State Library of Fulda). You can access them [here](https://fuldig.hs-fulda.de/viewer/browse/handschriften*/-/1/-/-/).
 
 <!-- more -->
@@ -24,15 +24,14 @@ Sadly, as of 2013 the Fulda manuscripts have become widely dispersed; some have 
 ## Browsing the Medieval Manuscripts
 
 **There are exactly 100 digitized manuscripts available on the website.**
-We are highliting the following:
+We are highlighting the following:
 
-- 100 Bonifatianus 3 (Cadmug-Codex) \- Cadmug is the name of the Irish scribe that wrote the manuscript during the second half of the 8th Century.
-- 100 Bonifatianus 1 (Victor-Codex) \- Also known as Codex Fuldensis, dating back to the 6th century. considered the second most important witness to the Vulgate text.
-- 100 Aa 124 \- A Dutch Book of Hours from the 15th Century.
-- 100 D 11 \- Weingartner Welfenchronik
-- [100 Aa 86](https://fuldig.hs-fulda.de/viewer/image/PPN321296737/1/LOG_0000/) \- Flemish Book of Hours from the 1500's, with a beautiful cover.
+- 100 Bonifatianus 3 (Cadmug-Codex) - Cadmug is the name of the Irish scribe that wrote the manuscript during the second half of the 8th Century.
+- 100 Bonifatianus 1 (Victor-Codex) - Also known as Codex Fuldensis, dating back to the 6th century. considered the second most important witness to the Vulgate text.
+- 100 Aa 124 - A Dutch Book of Hours from the 15th Century.
+- 100 D 11 - Weingartner Welfenchronik
+- [100 Aa 86](https://fuldig.hs-fulda.de/viewer/image/PPN321296737/1/LOG_0000/) - Flemish Book of Hours from the 1500's, with a beautiful cover.
 
-\[gallery type\="rectangular" ids\="625,636,633,626,634,627,623,640,624,630,631,632,638,639,641"\]
 The *Hochschul und Landesbibliothek Fulda*'s website has the possibility to display a whole manuscript's thumbnails, offering a nice overview. This is something that is always very welcome, since they quickly display the content of a manuscript. The thumbnails are limited to ten per page and the number cannot be modified; this is a bit limiting, especially considering contemporary web design standards. Endless scrolling with lazy-loading would be a nice improvement, allowing the visitor to view the manuscript in one go, without having to load ten different pages.
 It is possible to download high-resolution images (although, to do this you have to go Into DFG viewer. A link on the left column is offered next to each image or manuscript). It is also possible to view them full-screen within the website. In full-screen mode you can zoom in and appreciate the smallest details of a manuscript. At the highest resolutions the images lack some sharpness though.
 **The website navigation is fairly easy and straightforward.** What is missing on the front page where the digitized manuscripts are presented is the date in which the manuscripts were created, and the place of origin. At the moment the website only shows the shelfmark and the title.

@@ -31,7 +31,7 @@ We have taken the liberty of selecting some of the most beautiful manuscript exa
 
 ## A Surprise: The Copyright
 
- A full-page miniature in Pal. lat. 1632\. Serious looking falcon. Again, the absence of a description doesn't help the viewer understand why it is there.
+ A full-page miniature in Pal. lat. 1632. Serious looking falcon. Again, the absence of a description doesn't help the viewer understand why it is there.
 One of the most surprising aspects of the Biblioteca Apostolica Vaticana digital library is the copyright with which the digitized medieval manuscripts are protected; this **Creative Commons license that, surprisingly, also allows a commercial reuse of the images.** The downside is that **on all the pictures of the digitized folios there is a quite evident watermark.** Nothing so invasive that will obstruct the viewing of a detail or a miniature, but it is clearly noticeable. Nevertheless, it is extremely positive to see that some of the most treasured medieval manuscripts of the world in the Biblioteca Apostolica Vaticana are made available with such a license. With a [little investigation](https://www.vaticanlibrary.va/), it is possible to notice that the Heidelberg University Library did the digitizing of the "Palatini" manuscripts ( a majority of the available digitized manuscripts.) This library already shares its own images under the same license. We hope that many other institutions will follow this example.
 
 ## Final Words

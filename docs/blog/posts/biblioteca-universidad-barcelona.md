@@ -12,7 +12,7 @@ slug: biblioteca-universidad-barcelona
 ---
 # Digitized Manuscript from the Biblioteca de la Universidad de Barcelona
 
-The Biblioteca de la Universidad de Barcelona one of the many new digitized libraries to the DMMapp (we are now at 500\+!). The link to the Barcelona University Library was given to us through a tweet from [@Archivalia\_kg](https://twitter.com/Archivalia_kg) (he also has an [excellent blog in German](https://archiv.twoday.net/)!)
+The Biblioteca de la Universidad de Barcelona one of the many new digitized libraries to the DMMapp (we are now at 500+!). The link to the Barcelona University Library was given to us through a tweet from [@Archivalia_kg](https://twitter.com/Archivalia_kg) (he also has an [excellent blog in German](https://archiv.twoday.net/)!)
 
 <!-- more -->
 
@@ -27,5 +27,5 @@ The images from the the Barcelona University Library are public domain, that mea
 ## Highlights from the Biblioteca de la Universidad de Barcelona
 
 The Universidad de Barcelona digital collection is full of interesting manuscripts to be explored. Here are some examples:
- Psalterium \- Universitat de Barcelona. CRAI. Manuscrit. Ms. 165
- Liber horarum \- Universitat de Barcelona. CRAI. Manuscrit. Ms. 1841
+ Psalterium - Universitat de Barcelona. CRAI. Manuscrit. Ms. 165
+ Liber horarum - Universitat de Barcelona. CRAI. Manuscrit. Ms. 1841

@@ -14,7 +14,7 @@ Thanks to the many reports we have received over the past couple of months we ar
 
 <!-- more -->
 
-### **What has the Sexy Codicology Team been doing?**
+## **What has the Sexy Codicology Team been doing?**
 
 - Updated the database thanks to the feedback of our users that kindly reported data errors and new entries.
 - A couple of weeks ago we **moved our Sexy Codicology website and the DMMapp to new, faster, servers.** The migration went quite well, except a couple of hiccups that took us offline for a few hours.

@@ -22,11 +22,11 @@ Let's take a look at what's new in this DMMapp iteration:
 
 
 
-### Overview
+## Overview
 
 
 
-One of the key changes we've made is a redesign of the user interface, especially when it comes to "broken links": **Libraries that were added to the DMMapp, but that no longer lead to digitized manuscripts are now clearly marked** in the [Data page](https://digitizedmedievalmanuscripts.org/data) and on the [Single Institution Page](https://digitizedmedievalmanuscripts.org/mediatheque-du-grand-troyes) \- along with the date of when the broken link was confirmed broken, plus a button to report a working link to us.
+One of the key changes we've made is a redesign of the user interface, especially when it comes to "broken links": **Libraries that were added to the DMMapp, but that no longer lead to digitized manuscripts are now clearly marked** in the [Data page](https://digitizedmedievalmanuscripts.org/data) and on the [Single Institution Page](https://digitizedmedievalmanuscripts.org/mediatheque-du-grand-troyes) - along with the date of when the broken link was confirmed broken, plus a button to report a working link to us.
 
 
 ![](assets/uploads/2023/02/brokenlinks-700x322.webp)
@@ -119,7 +119,7 @@ A more detailed look at what we did:
 
 
 
-- **Broken links are not properly marked, yet, on the Map page:** This change is planned for the next update. The Map currently gets little traffic (\< 5% of the total traffic to the DMMapp) and consequently has a lower priority.
+- **Broken links are not properly marked, yet, on the Map page:** This change is planned for the next update. The Map currently gets little traffic (< 5% of the total traffic to the DMMapp) and consequently has a lower priority.
 - **On mobile devices:** the link to a repository without a working link will be correctly marked in red, but the normal 'Explore' button will still appear while the correct 'More information' button in red should appear instead. We are looking into a fix.
 
 

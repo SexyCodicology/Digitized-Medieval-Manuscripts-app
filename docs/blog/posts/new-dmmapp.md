@@ -66,7 +66,7 @@ An example of the data that is now visible to everyone.
 
 
 
-**The aim, once out of beta, would be to create permalinks that will be valid for at least 5 years \- depending on our technical possibilities.**
+**The aim, once out of beta, would be to create permalinks that will be valid for at least 5 years - depending on our technical possibilities.**
 
 
 

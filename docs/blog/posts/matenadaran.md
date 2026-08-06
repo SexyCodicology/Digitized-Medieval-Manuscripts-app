@@ -14,7 +14,7 @@ slug: matenadaran
 # The Matenadaran
 
 Well, yesterday it was a success! We launched the Digitized Medieval Manuscripts Maps one hour ahead of schedule (it leaked through Twitter... eheh...), but we like to believe it was a lucky event, since what followed on Twitter was a feast of re-tweets and new followers.
-**In just 48 hours, the website was visited around 3'000 times.** We would like to thank all of you who have shared, liked, re-tweeted, re-tumbled, \+1ed, etc. It really helped a lot and it certainly got the message out there.
+**In just 48 hours, the website was visited around 3'000 times.** We would like to thank all of you who have shared, liked, re-tweeted, re-tumbled, +1ed, etc. It really helped a lot and it certainly got the message out there.
 **This blog is going to be about digitized special collections only**. The Sexy Codicology Blog, instead, covers all the aspects of medieval manuscripts. As of today, there are 246 libraries and institutions on the DMMmaps. Same are very famous; others are a bit less traveled by but are, nonetheless,  the keepers of fantastic treasures that are available online for everyone to be discovered.
 
 <!-- more -->

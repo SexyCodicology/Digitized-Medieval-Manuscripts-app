@@ -14,7 +14,7 @@ We have been working a bit in the shadows lately, and we thought it might be use
 
 <!-- more -->
 
-### **DMMapp updates**
+## **DMMapp updates**
 
 - **The "Added Resources" tab is growing with new links.** As we go, we see that there might be then need to expand the info that is given next to every link; unlike the "Digitized Manuscripts" tab, which, rather clearly, links to "digitized manuscripts" ("duh!"), the "added resources" links to a variety of content: blogs, collections, portals, etc. We will discuss how to further improve the table, and we also ask you to chime in and help us. We are open to ideas!
 - There has been a lot of work in the depths of the DMMapp. We have **further optimized the performance for both mobile and desktop users.** Even Google compliments us... There is always work to do, and things can always be better, yet we can proudly say that the DMMapp is faster than ever!

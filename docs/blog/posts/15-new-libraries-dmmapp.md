@@ -14,7 +14,7 @@ June has been a productive month for the DMMmaps project: we were at the [DH Ben
 
 <!-- more -->
 
-- [Eesti Ajaloomuuseum \- Estonian History Museum](https://www.ra.ee/apps/pargamendid/index.php/en/parchment/search?institution=AM&end_year=1500&q=1&sort=years)
+- [Eesti Ajaloomuuseum - Estonian History Museum](https://www.ra.ee/apps/pargamendid/index.php/en/parchment/search?institution=AM&end_year=1500&q=1&sort=years)
 - [Estonian Historical Archives](https://www.ra.ee/apps/pargamendid/index.php/en/parchment/search?institution=EAA&end_year=1500&q=1&sort=years)
 - [Tallinn City Archives](https://www.ra.ee/apps/pargamendid/index.php/en/parchment/search?institution=TLA&end_year=1500&q=1&sort=years)
 - [Bibliotheek Rijksuniversiteit Groningen](https://facsimile.ub.rug.nl/digital/collection/manuscripts/search/order/date)
@@ -32,14 +32,14 @@ June has been a productive month for the DMMmaps project: we were at the [DH Ben
 
 ## The New Libraries
 
-### Eesti Ajaloomuuseum \- Estonian History Museum
+### Eesti Ajaloomuuseum - Estonian History Museum
 
- AM.115.1.1 \- Charter from Pope Innocent IV
-The first of three libraries under the same website. 39 digitized medieval material dating from 1247 until 1500\. Mostly documents and charters. Title of the texts are in Estonian or German.
+ AM.115.1.1 - Charter from Pope Innocent IV
+The first of three libraries under the same website. 39 digitized medieval material dating from 1247 until 1500. Mostly documents and charters. Title of the texts are in Estonian or German.
 
 ### Estonian Historical Archives
 
- EAA.854.2.352 \- Poor Latin and a bad seal. A forgery from the 13th century.
+ EAA.854.2.352 - Poor Latin and a bad seal. A forgery from the 13th century.
 366 digitized objects in this library. Same site as above, but different institution. An as above, also here you can find a plethora of documents, charters, testaments, memorandum, etc. The titles are in German (mostly), Latvian, and Russian.
 
 ### Tallinn City Archives
@@ -59,13 +59,13 @@ Great addition from Austria: 229 manuscripts dating from the 9th century on. Rea
 
 ### Royal Canonry of Premonstratensians
 
-DA II 28 \- Heraldic decoration.
+DA II 28 - Heraldic decoration.
 [Manoscriptorium](https://www.manuscriptorium.com/) is home to thousands of manuscripts from so many different institutions. The problem is: it is difficult to sort them out and link to an individual library. This time we received a link to the manuscripts of the Royal Canonry of Premonstratensians:
-> Four manuscripts of the Royal Canonry of Premonstratensians at Strahov have been digitized. The earliest of them is a collection of the works of St John Cassian, written in the monastery of Hradisko near Olomouc in the 1130s–40s (DA III 25). The collection DA IV 42 comes from the library of the monastery in Weissenau. The Bible DA IV 22 was made in the Czech lands. Salzburg seems to be the place of origin of the catalogue of the local bishops and archbishops (DA II 28\) created after 1615, which is complemented by their coats of arms.
+> Four manuscripts of the Royal Canonry of Premonstratensians at Strahov have been digitized. The earliest of them is a collection of the works of St John Cassian, written in the monastery of Hradisko near Olomouc in the 1130s–40s (DA III 25). The collection DA IV 42 comes from the library of the monastery in Weissenau. The Bible DA IV 22 was made in the Czech lands. Salzburg seems to be the place of origin of the catalogue of the local bishops and archbishops (DA II 28) created after 1615, which is complemented by their coats of arms.
 
 ### LMU University Library
 
- Cod ms 179 \- Pseudo-Alcuinus from 1050
+ Cod ms 179 - Pseudo-Alcuinus from 1050
 16 manuscripts from Germany, from the Ludwig Maximilians University Munich. 2 are medieval, the rest are from the 1600's until the 1800's.
 
 ### Biblioteca civica Cristoforo Sabbadino
@@ -100,5 +100,5 @@ One manuscript: from northern Italy (about 1410-1415) with 16 sheets. The websi
 
 ### Biblioteka Uniwersytecka w Toruniu
 
- Quaestiones super libros Sententiarum Petri Lombardi \- Abacuk
+ Quaestiones super libros Sententiarum Petri Lombardi - Abacuk
 Last, but not at all least! The University Library of Toruń, like most of the Polish repositories, uses the DjVu plugin to display manuscripts; a plugin that in at least 75% of the case will fail to load on your PC. If you have the patience to make it work, you will be rewarded with 19 medieval manuscripts!

@@ -32,7 +32,7 @@ Thanks to Erik’s lessons at the time of my Master, I knew exactly what had to 
 
 ## Some 500 photos and around a thousand manuscripts after...
 
-**There are two photos I am particularly fond of**: One is the initial P (Plinius) from VLF 1 f. 1r, and the second is the image of the watermark from BPL 304\.
+**There are two photos I am particularly fond of**: One is the initial P (Plinius) from VLF 1 f. 1r, and the second is the image of the watermark from BPL 304.
 The initial from Pliny I simply find pleasing to the eye: I enjoy the contrast between the white modern paper addition on the left, and the parchment on the right: It is the opening page of the manuscript, and the “P” is welcoming us to the book, taking all our focus that, at a later stage, will shift to other elements in the same page. I like to believe that this photo captures the moment when you open a manuscript you have never seen before, and you are captivated by unexpected decoration.
 ![Initial P from Leiden VLQ 38, f. 23r](assets/uploads/2014/10/07_11_VLQ-38_-23r_Decorating-the-Book.webp)
 

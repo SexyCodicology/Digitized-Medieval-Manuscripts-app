@@ -20,7 +20,7 @@ We have just added a few new libraries and updated some information (IIIF / Copy
 - Information concerning IIIF repositories (if IIIF is used or not in a specific repository) is now 59% complete. The remaining 41% of the entries is still "unknown".
 - We have added the missing e-Codices libraries to our database. All these have both their IIIF information and their Copyrights statements up to date:
 
-### **Staatsarchiv Basel-Stadt**
+## **Staatsarchiv Basel-Stadt**
 
 [https://digitizedmedievalmanuscripts.org/record/577](https://digitizedmedievalmanuscripts.org/biblioteca-ambrosiana-di-milano)
 
@@ -52,7 +52,7 @@ We have just added a few new libraries and updated some information (IIIF / Copy
 
 https://digitizedmedievalmanuscripts.org/record/584
 
-### **University of Pennsylvania, Rare Book \& Manuscript Library**
+### **University of Pennsylvania, Rare Book & Manuscript Library**
 
 https://digitizedmedievalmanuscripts.org/record/585
 

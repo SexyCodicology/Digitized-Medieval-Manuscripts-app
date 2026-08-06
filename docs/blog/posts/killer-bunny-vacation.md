@@ -16,7 +16,7 @@ It's Xmas time! Christmas songs and carols everywhere! In this newest instalment
 
 <!-- more -->
 
-### Rudolphus, the red-nose killer bunny
+## Rudolphus, the red-nose killer bunny
 
 ![Bodl. Douce 5 roll 208 H](assets/uploads/2014/12/bodl_Douce5_roll208H_frame1-f.webp)
 
@@ -55,7 +55,7 @@ So there you have it: as the marginalia shows us, the ninja killer bunnies don't
 Whereas some manuscripts have bunnies making music aplenty, we also found quite a nice collection of **other animals playing musical instruments;** as you have seen in this post, the bagpipes are a very popular instrument together with the harp, organ/organetto and horn. This does not only apply to the hares, but all sorts of animals. Beside the laughs, it could be really interesting to research the connections between the instrument displayed in these manuscripts and their counterparts in real medieval life!
 ![Royal 2 B VII, f. 192. Grotesques playing instruments](assets/uploads/2014/12/Royal-2-B-VII-f.-192-Grotesques-playing-instruments.webp)
 
-*Royal 2 B VII, f. 192\. Grotesques playing instruments*
+*Royal 2 B VII, f. 192. Grotesques playing instruments*
 
 ![Beinecke, Rothchild f. 45v, "horse" playing a bagpipe. ](assets/uploads/2014/12/Beinecke-Rothchild-f45v.webp)
 
@@ -67,7 +67,7 @@ Whereas some manuscripts have bunnies making music aplenty, we also found quite 
 
 ![Douce 5, f. 180v](assets/uploads/2014/12/Douce-5-f.180v-bunnies.webp)
 
-*Douce 5, f. 180v \- Jingle bells!*
+*Douce 5, f. 180v - Jingle bells!*
 
 ![Harley 6563, f. 41, Boar and organetto](assets/uploads/2014/12/Harley-6563-f.-41-Boar-organetto.webp)
 

@@ -13,11 +13,11 @@ slug: cassino-summer-school
 ---
 # A week in Paradise: the Cassino Summer School
 
-How does one describe an **amazing experience** that involves history, Italy, pizza and a ton of amazing medieval manuscripts coming from the most famous monastery in Southern Italy? Let's try starting from the beginning: From June the 29th until July the 3rd we had the privilege of attending the first Cassino Summer School, or better, the first **International Summer School in Cassino (Italy): Trends in Manuscript Studies \- Sources, Issues and Technologies**, organized by Liber, Libro e Ricerca, and it was great; we would like to share the experience with you readers.
+How does one describe an **amazing experience** that involves history, Italy, pizza and a ton of amazing medieval manuscripts coming from the most famous monastery in Southern Italy? Let's try starting from the beginning: From June the 29th until July the 3rd we had the privilege of attending the first Cassino Summer School, or better, the first **International Summer School in Cassino (Italy): Trends in Manuscript Studies - Sources, Issues and Technologies**, organized by Liber, Libro e Ricerca, and it was great; we would like to share the experience with you readers.
 
 <!-- more -->
 
-### Hotel
+## Hotel
 
 Let's start from the basics for anyone that might be interested in going to such a summer school: where did we sleep?
 We stayed at the [hotel "La Pace"](https://www.hotellapacecassino.it/). A perfectly fine hotel not too far from Cassino's town center, decorated with memorabilia from the battles of Cassino during the Second World War.

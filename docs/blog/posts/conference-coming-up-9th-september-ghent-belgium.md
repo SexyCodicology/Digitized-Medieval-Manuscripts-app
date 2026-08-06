@@ -14,7 +14,7 @@ Yep, we will be speaking again! If you are in Ghent, Belgium, on Saturday 9 Sept
 
 <!-- more -->
 
-### **Digital Dreams**
+## **Digital Dreams**
 
 **(**[**link**](https://www.amsab.be/over-ons/onderzoek/ialhi-2017-conference#programme)**)**
 **Information Technology, Social History Research and the Future of Archives, Museums and Libraries**
@@ -23,7 +23,7 @@ Hosted by Amsab-Institute of Social History
 The conference Digital Dreams is organized by:
 IALHI-International Association of Labour History Institutions, and Worklab-International Association of Labour Museums, with the support of ITH-International Conference of Labour and Social History, and ELHN-European Labour History Network.
 Here's what we'll be speaking about and when:
-**9.45AM – Session 5\. Tools \- Giulio Menna and Marjolein de Vos (Sexy Codicology, Leiden), Discoverability of Medieval Manuscripts Collections: The Impact of the Digitized Medieval Manuscripts App on Research**
+**9.45AM – Session 5. Tools - Giulio Menna and Marjolein de Vos (Sexy Codicology, Leiden), Discoverability of Medieval Manuscripts Collections: The Impact of the Digitized Medieval Manuscripts App on Research**
 
 ### "What?"
 

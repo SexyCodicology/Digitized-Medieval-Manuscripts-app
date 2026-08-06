@@ -34,7 +34,7 @@ We have been working a bit in the shadows lately, and we thought it might be int
 
 [![The Hours of Jeanne d'Evreux, Queen of France - Folio 55v, detail](assets/uploads/2017/07/detail.webp)](https://www.metmuseum.org/art/collection/search/470309)
 
-*The Hours of Jeanne d'Evreux, Queen of France \- Folio 55v, detail*
+*The Hours of Jeanne d'Evreux, Queen of France - Folio 55v, detail*
 
 - Also here: the aim was to **speed up the blog**, while keeping the website pretty. Here the results are not as good as we would like them to be… But still, improvement is improvement, we'll keep at it until we have a fast loading website.
 - **We are (slowly) implementing MLA citation style throughout the blog**. Citations are important, and we hope they will be useful to users that visit our blog. This is a long term project that will proceed slowly, step by step, for the old content. New content will always have the proper references.
@@ -45,5 +45,5 @@ We have been working a bit in the shadows lately, and we thought it might be int
 
 - We will be at a conference in Ghent later on this year (September). The theme of our presentation will be **"Discoverability of digitized medieval manuscripts"**. We'll have a post explaining what we will be speaking about exactly, so stay tuned!
 
-*Header image: The Belles Heures of Jean de France, duc de Berry \-* 
-*Folio 15r, Saint Catherine in Her Study \- The MET -https://www.metmuseum.org/art/collection/search/470306*
+*Header image: The Belles Heures of Jean de France, duc de Berry -*
+*Folio 15r, Saint Catherine in Her Study - The MET -https://www.metmuseum.org/art/collection/search/470306*

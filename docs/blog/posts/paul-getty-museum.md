@@ -12,9 +12,7 @@ slug: paul-getty-museum
 ---
 # The J. Paul Getty Museum
 
-**One of our favorite institutions** that shares digitized medieval manuscripts online is the J. Paul Getty Museum. The reasons for this are many and we will go through them in this post. But first we'll let some images talk:
-\[gallery type\="rectangular" link\="none" ids\="567,572,565,571,564,563,570,575,573,574,569,566,568,562"\]
-This is just a small fraction of all the Objects available on the website. There are at least 107 different digitized medieval manuscripts available and each one of them is stunning.
+**One of our favourite institutions** that shares digitized medieval manuscripts online is the J. Paul Getty Museum. The reasons are many, and we will explore them in this post. This is just a small fraction of all the objects available on the website. There are at least 107 digitized medieval manuscripts, and each one is stunning.
 
 <!-- more -->
 
@@ -32,7 +30,7 @@ Navigating through the available digital manuscripts is quite easy, although the
 - [Scripture](https://www.getty.edu/404.html?cat=2032980)
 - [Secular Books](https://www.getty.edu/404.html?cat=2032983)
 
-And then sorted chronologically (oldest to newest). This is not ideal but it works well, especially for the medieval enthusiast who wants to enjoy some awesome medieval miniatures. Researchers, however, might hope for those filter to be implemented soon.
+They are then sorted chronologically (oldest to newest). This is not ideal, but it works well for the medieval enthusiast who wants to enjoy some awesome medieval miniatures. Researchers, however, might hope for those filters to be implemented soon.
 
 ## Copyrights
 
@@ -40,7 +38,7 @@ Here you can see one of the ways we have used the images available: we made vide
 
 ## Image Quality
 
-The quality of the digitized manuscripts is amazing. The images you download our very high quality and in very high-resolution and this allows users to create beautiful content. The colors are balanced and show a good contrast. The sizes of the images varies greatly, but you will never find an image under 2000 px by 3000 px.
+The quality of the digitized manuscripts is amazing. The images you download are very high-resolution, which allows users to create beautiful content. The colours are balanced and show good contrast. The image sizes vary greatly, but you will never find one under 2,000 × 3,000 px.
 
 ## Final Thoughts
 

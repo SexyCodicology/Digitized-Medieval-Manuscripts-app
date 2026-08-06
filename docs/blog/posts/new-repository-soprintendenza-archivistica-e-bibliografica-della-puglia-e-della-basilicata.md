@@ -25,7 +25,7 @@ Now chose a period. We'll go for the Normans!
 ![](assets/uploads/2023/02/6a62226107928bcd2456440eeed70ecc.webp)
 Click on "List", and the list of digitized items appears!
 ![](assets/uploads/2023/02/93d3c81f4609aac9d76cdf37b8b30688.webp)
-Give a loot at A\_12! There's an amazing seal to go with it:
+Have a look at A_12! There's an amazing seal to go with it:
 ![](assets/uploads/2023/02/30ebd9013c0b680c825f3149ad082539.webp)
 Have fun exploring!
 

@@ -23,7 +23,7 @@ It’s spring, the sun is shining, and the DMMapp has more links than ever thank
 - [Durham University Library](https://www.durham.ac.uk/departments/library/)
 - [Chetham's Library](https://library.chethams.com/collections/archives-manuscripts/medieval-manuscripts/)
 
-We have also updated the link to the Biblioteca Teresiana which was reported as broken! This brings the total linked libraries in the DMMapp to 536\.
+We have also updated the link to the Biblioteca Teresiana which was reported as broken! This brings the total linked libraries in the DMMapp to 536.
 
 ## What can we find?
 
@@ -38,7 +38,7 @@ While the [Chetham's Library](https://library.chethams.com/collections/archives-
 I mean, look at this awesomeness:
 ![Chetham's MS Mun.A.4.99 f 2r - Volvelle with the position of the planets.](assets/uploads/2017/04/Chethams_A.4.99_015.webp)
 
-*Chetham's MS Mun.A.4.99 f 2r \- Volvelle with the position of the planets and the moon.*
+*Chetham's MS Mun.A.4.99 f 2r - Volvelle with the position of the planets and the moon.*
 
 If you want to know more about medieval volvelles, don't miss [this post from the Getty](https://blogs.getty.edu/iris/decoding-the-medieval-volvelle/)!
 

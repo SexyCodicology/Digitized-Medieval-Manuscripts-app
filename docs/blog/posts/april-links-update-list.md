@@ -15,7 +15,7 @@ Another month has passed! Here are the latest changes on the DMMapp data:
 
 <!-- more -->
 
-### **Universitätsbibliothek Augsburg**
+## **Universitätsbibliothek Augsburg**
 
 [https://digitizedmedievalmanuscripts.org/record/239](https://digitizedmedievalmanuscripts.org/universitatsbibliothek-augsburg)
 

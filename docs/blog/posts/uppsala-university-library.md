@@ -46,7 +46,7 @@ Adorned with intricate miniatures, including full-page illustrations of the Four
 
 
 
-It is written in [Carolingian minuscule](https://blog.digitizedmedievalmanuscripts.org/codicology/medieval-scripts/caroline-minuscule/) and has been remarkably well-preserved overall(([Emperor's Bible \- Wikipedia](https://en.wikipedia.org/wiki/Emperor%27s_Bible))).
+It is written in [Carolingian minuscule](https://blog.digitizedmedievalmanuscripts.org/codicology/medieval-scripts/caroline-minuscule/) and has been remarkably well-preserved overall ([Emperor's Bible - Wikipedia](https://en.wikipedia.org/wiki/Emperor%27s_Bible)).
 
 
 
@@ -54,7 +54,7 @@ It is written in [Carolingian minuscule](https://blog.digitizedmedievalmanuscrip
 
 
 
-Another highlight is the [Uppsala-Eddan](https://www.alvin-portal.org/alvin/imageViewer.jsf?dsId=ATTACHMENT-0055&pid=alvin-record:54179), also known as Snorre Sturlassons Edda, Den prosaiska Eddan, or Den yngre Eddan. It is a significant manuscript written in Old Norse, Icelandic, and Norwegian. It was written by Snorre Sturlasson, who lived approximately from 1179 to 1241\.
+Another highlight is the [Uppsala-Eddan](https://www.alvin-portal.org/alvin/imageViewer.jsf?dsId=ATTACHMENT-0055&pid=alvin-record:54179), also known as Snorre Sturlassons Edda, Den prosaiska Eddan, or Den yngre Eddan. It is a significant manuscript written in Old Norse, Icelandic, and Norwegian. It was written by Snorre Sturlasson, who lived approximately from 1179 to 1241.
 
 
 

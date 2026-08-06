@@ -8,7 +8,7 @@ authors:
 - giulio
 slug: master-of-the-brussels-initials
 ---
-# A Medieval Manuscript a Week: Master of the Brussels Initials - MS. 34
+# A Medieval Manuscript a Week: Master of the Brussels Initials – MS. 34
 
 The "A Medieval Manuscript a Week" series promotes digitized medieval manuscripts that are made available under Creative Commons Licenses, Public Domain or Open Content.
 
@@ -17,8 +17,7 @@ The "A Medieval Manuscript a Week" series promotes digitized medieval manuscript
 ## Master of the Brussels Initials
 
 This is a fantastic manuscript from the [Getty Museum](https://www.getty.edu/): Master of the Brussels Initials MS. 34, one of our favorite repository of digitized medieval manuscripts. It is present on the DMMmaps, and one of the digitized folios is also present [on one of our walls](https://twitter.com/SexyCodicology/status/441230360148320256/photo/1) and you can get one too! One leaf is also present in the "[Beautiful Manuscript Leaves](https://blog.digitizedmedievalmanuscripts.org/beautiful-illuminated-manuscript-leaves/calling-saints-peter-andrew/ "The Calling of Saints Peter and Andrew – MS. 34, F. 172A")" section of this blog. The images are available under the Open Content Program, which allows "all available digital images to which the Getty holds the rights or that are in the public domain to be used for any purpose." All the info on this page is extracted from the Getty Museum's pages about the [Master of the Brussels Initials MS. 34](https://www.getty.edu/art/collection/object/103RWN).
-\[gallery type\="rectangular" link\="none" ids\="1476,1475,1474,1473,1472,1471,1470" orderby\="rand"\]
-Italian, Bologna, 1389 \- 1404
+Italian, Bologna, 1389 - 1404
 Tempera colors, gold leaf, gold paint, and ink on parchment bound between wood boards covered with blind-stamped sheepskin
 13 x 9 7/16 in.
 MS. 34

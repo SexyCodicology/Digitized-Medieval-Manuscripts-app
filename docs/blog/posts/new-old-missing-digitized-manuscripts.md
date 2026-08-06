@@ -39,7 +39,7 @@ But wait! There's more!
 ## …now you don't!
 
 Repositories are like organisms: they evolve, they change, they improve, they move. Sometimes, unfortunately, they simply **disappear**. This month we noticed ten broken links in our database, and we went on to fix them.
-In five cases we had no problem: we found where the new links were and we restored the accessibility (301 Redirect, webmasters!) **In the remaining five cases we were unfortunately unable to find the new links to digitized manuscripts** and we were forced to remove the links from the DMMapp ((The change is documented on our [GitHub](https://github.com/SexyCodicology/DMMapp/commit/bfccbb74ac1c805b40c8976d9eb71942cc1e8a09)))
+In five cases we had no problem: we found where the new links were and we restored the accessibility (301 Redirect, webmasters!) **In the remaining five cases we were unfortunately unable to find the new links to digitized manuscripts** and we were forced to remove the links from the DMMapp  (The change is documented on our [GitHub](https://github.com/SexyCodicology/DMMapp/commit/bfccbb74ac1c805b40c8976d9eb71942cc1e8a09))
 These are the repositories we were unable to find any longer:
 • Uppsala Universitetsbibliotek
 • Greenslade Archives and Special Collections
@@ -50,7 +50,7 @@ These are the repositories we were unable to find any longer:
 
 *DCL MS B.II.9 St Jerome on the minor Old Testament prophets*
 
-We are especially concerned for the Plantin Moretus Museum in Antwerp. The website reads: "The library of approximately 25,000 old printed books and 638 manuscripts can be explored in Antwerp’s Anet library network." ((Stated on [their website](https://museumplantinmoretus.be/en/page/collection-online))) This usually means that access to the digitized books is restricted to the people who are within a limited network, while the rest of the world can't see the content. There is a highlight page where a single folio of three (out of 638!) manuscripts are shown. ((The other three folios are [here](https://museumplantinmoretus.be/en/content/manuscripts))) That's quite little.
+We are especially concerned for the Plantin Moretus Museum in Antwerp. The website reads: "The library of approximately 25,000 old printed books and 638 manuscripts can be explored in Antwerp’s Anet library network."  (Stated on [their website](https://museumplantinmoretus.be/en/page/collection-online)) This usually means that access to the digitized books is restricted to the people who are within a limited network, while the rest of the world can't see the content. There is a highlight page where a single folio of three (out of 638!) manuscripts are shown.  (The other three folios are [here](https://museumplantinmoretus.be/en/content/manuscripts)) That's quite little.
 We did find some manuscripts in their online catalogue with a link to the digitized item, which, unfortunately does not load.
 But we might be blind so, please, if you know where the digitized manuscripts from the repositories mentioned above can now be accessed, do let us know!
 The code update is visible as always on [GitHub](https://github.com/SexyCodicology/DMMapp/commit/bfccbb74ac1c805b40c8976d9eb71942cc1e8a09). You can follow this specific file to be notified every time we update the [DMMapp database](https://github.com/SexyCodicology/DMMapp/blob/master/js/data.json).

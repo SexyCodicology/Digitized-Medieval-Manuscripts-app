@@ -27,7 +27,7 @@ You can search by:
 
 Developed with love by the Sexy Codicology team!
 
-### "How can I get it?!"
+## "How can I get it?!"
 
 Chrome users can [click here](https://chrome.google.com/webstore/detail/dmmapp-plugin/lfddboglgfimpmokggiapioogkhgical) 
 Firefox users can click here 

@@ -11,17 +11,17 @@ slug: digital-collection-bamberg-state-library
 ---
 # The Bamberg State Library's Digital Collection
 
-De natura rerum \- Staatsbibliothek Bamberg Msc.Nat.1
+De natura rerum - Staatsbibliothek Bamberg Msc.Nat.1
 Today we are going to give a look at the Digital collection of Bamberg State Library. A fantastic collection of manuscripts, fully digitized, in high quality, and available for everyone to browse, explore, and study. Actually, we should be speaking of collections, plural, since two collections are present: The collection "Manuscripts of Henry II" is traced back to the emperor Henry II, who founded the bishopric of Bamberg in 1007; and [the new digital collection](https://digital.bib-bvb.de/collections/SBB/). Let's see!
-Bamberger Apokalypse \- 14r \- The first horseman, Conquest on the White Horse \- The text reads:  
-Then I saw when the Lamb broke one of the seven seals, and I heard one of the four living creatures saying as with a voice of thunder, “Come.” I looked, and behold, a white horse, and he who sat on it had a bow; and a crown was given to him, and he went out conquering and to conquer. \- Revelation 6:1-2˄
+Bamberger Apokalypse - 14r - The first horseman, Conquest on the White Horse - The text reads:
+Then I saw when the Lamb broke one of the seven seals, and I heard one of the four living creatures saying as with a voice of thunder, “Come.” I looked, and behold, a white horse, and he who sat on it had a bow; and a crown was given to him, and he went out conquering and to conquer. - Revelation 6:1-2˄
 
 <!-- more -->
 
 ## Manuscripts of Henry II
 
 The first collection derives from the many precious manuscripts Henry II and his predecessors had collected or commissioned. Manuscripts from various spiritual centers of the West were brought to Bamberg as a result. Completed since 2013,**this collection contains all this 165 manuscripts associated with Henry II**, which originated in or before his lifetime.
-Msc.Can. 13 \- Staatsbibliothek Bamberg; photo:  
+Msc.Can. 13 - Staatsbibliothek Bamberg; photo:
 Gerald Raab
 
 ## Treasures of the Bamberg State Library
@@ -31,14 +31,14 @@ In the ensuing period many books were written and illuminated in the town, notab
 
 ### The Bamberg Psalter
 
-9v \- The Baptism of Christ
-117r \- Judgement
-115v \- The Resurrection
-115r \- The Crucifixion
-63r \- Initial Q \- David and Goliath
-62v \- Judas' Kiss
-61v \- The entrance of Jesus in Jerusalem
-61r \- The Devil tempts Jesus
+9v - The Baptism of Christ
+117r - Judgement
+115v - The Resurrection
+115r - The Crucifixion
+63r - Initial Q - David and Goliath
+62v - Judas' Kiss
+61v - The entrance of Jesus in Jerusalem
+61r - The Devil tempts Jesus
 
 ## Final Words
 

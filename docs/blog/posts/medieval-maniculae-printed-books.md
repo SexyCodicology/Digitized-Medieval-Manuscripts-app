@@ -41,10 +41,10 @@ To me, **the presence of a manicula, the underlining and the printed letters is 
 
 ### The Elsevier Heritage Collection
 
-**The Elsevier Heritage Collection in Amsterdam is home to over 2000\+ fascinating books that were printed between 1580 and 1712\.** They are all preserved in museum quality, acclimatized display shelves.
+**The Elsevier Heritage Collection in Amsterdam is home to over 2000+ fascinating books that were printed between 1580 and 1712.** They are all preserved in museum quality, acclimatized display shelves.
 They recently started a [new Facebook page](https://www.facebook.com/ElsevierHeritageCollection) in which they share their treasures and interesting information. Worth a like!
 
 [Post](https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D460396630722307%26set%3Da.450911465004157.1073741829.437110996384204%26type%3D1) by [Elsevier Heritage Collection](https://www.facebook.com/ElsevierHeritageCollection).
 
 Bonus picture:
-Elzeviers’ French Bible (Amsterdam, 1669\)
+Elzeviers’ French Bible (Amsterdam, 1669)

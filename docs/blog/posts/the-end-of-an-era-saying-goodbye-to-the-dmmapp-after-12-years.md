@@ -10,7 +10,7 @@ slug: the-end-of-an-era-saying-goodbye-to-the-dmmapp-after-12-years
 ---
 # The End of an Era: Saying Goodbye to the DMMapp after 12+ Years
 
-### **It’s hard to say goodbye, but it’s time to pass the torch.**
+## **It’s hard to say goodbye, but it’s time to pass the torch.**
 
 <!-- more -->
 
@@ -60,7 +60,7 @@ To ensure the 12 years of data we’ve collected remains a value-add for the com
 
 
 
-- **Donations \& Patreon:** We are stopping all donation collection immediately. Our Patreon tiers will be deactivated, and the related pages will be shut down shortly.
+- **Donations & Patreon:** We are stopping all donation collection immediately. Our Patreon tiers will be deactivated, and the related pages will be shut down shortly.
 - **Application Updates:** We will implement visible notices across the platform to ensure every visitor knows exactly when the DMMapp website will no longer be accessible.
 - **Preparing for the "Fork":** Our focus has shifted to making the codebase 100% "fork-ready." We are refining the application so that any individual or institution with the passion to do so can re-launch it with minimal friction. You can follow our final progress on [GitHub](https://github.com/SexyCodicology/DMMapp-Digitized-Medieval-Manuscripts-app).
 - **Documentation Overhaul:** We are performing an extensive rewrite of our documentation. This "Handover Manual" will clarify installation and maintenance requirements for future maintainers.
@@ -83,7 +83,7 @@ We believe in the power of open access. Therefore, **all our code and the entire
 
 
 
-We are incredibly proud of what we achieved together over the last 12\+ years. The DMMapp may be closing its doors, but the digital medievalist community is stronger than ever.
+We are incredibly proud of what we achieved together over the last 12+ years. The DMMapp may be closing its doors, but the digital medievalist community is stronger than ever.
 
 
 
@@ -91,4 +91,4 @@ With gratitude,
 
 
 
-**Giulio \& Marjolein** *The DMMapp Team*
+**Giulio & Marjolein** *The DMMapp Team*

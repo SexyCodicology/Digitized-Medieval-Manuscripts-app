@@ -18,12 +18,12 @@ The article carefully explains how the three books contained in Oxford Bodley 2
 
 <!-- more -->
 
-*Bodley 264 \- Opening page, folio 1r*
+*Bodley 264 - Opening page, folio 1r*
 
 ## A Few Words About Bodley 264
 
 Oxford Bodley 264 is a beautiful composite illuminated manuscript containing three different works: *The Romance of Alexander* which wascompleted in 1338 and illuminated within in 1344, the other two works were added at a later time: *Alexander and Dindimus* and *Li Livres du Graunt Caam* were bound together around the turn of the same century.
-*The Romance of Alexander*, the first work contained in Bodley 264, is a collection of legends concerning Alexander the Great. Originating in 200 CE, the original versions were changed, adapted and build upon hundreds of times and were translated in many languages and at the beginning of the 12th century new French versions appeared on the scene, similar as the one in Bodley 264\.
+*The Romance of Alexander*, the first work contained in Bodley 264, is a collection of legends concerning Alexander the Great. Originating in 200 CE, the original versions were changed, adapted and build upon hundreds of times and were translated in many languages and at the beginning of the 12th century new French versions appeared on the scene, similar as the one in Bodley 264.
 Part two of this manuscript is a poem concerning the correspondence between Alexander and Dindimu, King of the Brahmans in the East. It is written in Middle English.
 Part three is *Li Livres du Graunt Caam* (The Book of the Grand Khan), part of *The Travels of Marco Polo*.
 [![Bodley 264 88v](assets/uploads/2014/07/88v_red.webp)](https://digital.bodleian.ox.ac.uk/objects/ae9f6cca-ae5c-4149-8fe4-95e6eca1f73c/)
