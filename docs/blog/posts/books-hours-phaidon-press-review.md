@@ -15,7 +15,7 @@ slug: books-hours-phaidon-press-review
 <!-- more -->
 
 In this very first book review by Sexy Codicology I will discuss *Books of Hours* published by Phaidon Press. This book was first published in 1996 and has had various reprints over the years. Even though the book might be eighteen years old (the nineties don’t feel that long ago, do they? ;)) the quality of the publication is good. I wouldn’t have guessed that this book would be more than a couple of years old.
-[![Books of Hours by Phaidon - Book Cover](assets/uploads/2014/01/61AJ8K40SHL.webp)](https://www.amazon.com/gp/product/0714834645/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0714834645&linkCode=as2&tag=giulmennphot-20)
+![Books of Hours by Phaidon - Book Cover](assets/uploads/2014/01/61AJ8K40SHL.webp)
 
 *The front cover of "Books of Hours" by Phaidon*
 
@@ -33,7 +33,7 @@ Rating: 3
 ## More on Books of Hours
 
 - On the Hours of the Duc de Berry see [our other blog post](https://blog.digitizedmedievalmanuscripts.org/free-online-books-metropolitan-museum-art/) for the free book on the subject by the Metropolitan Museum of Art
-- And see [our section on the book of hours](https://blog.digitizedmedievalmanuscripts.org/codicology/book-of-hours/ "Book of Hours")
+- And see [our section on the book of hours](../../codicology/book-of-hours.md)
 - Some other sources of information:
 - Private Devotion: Humility and Splendour from the Fitzwilliam Museum.
 - [The Prayer Book of Claude de France](https://www.themorgan.org/collection/Prayer-Book-of-Claude-de-France), a very cute and small book of hours from the Morgan Library and Museum.
