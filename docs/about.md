@@ -1,57 +1,84 @@
 ---
 description: >-
-  Learn about DMMapp's mission to centralise digitized medieval manuscript
-  collections, its history, technology stack, and design principles.
+  Learn how DMMapp helps people discover digitized medieval manuscript
+  collections, how the site is built, and how we write for public audiences.
 ---
 
 # About DMMapp
 
-## Mission
+## Our Mission
 
-DMMapp (Digitized Medieval Manuscripts Application) aims to democratize access to historical manuscripts by providing a centralized directory of digitized collections from libraries around the world.
+DMMapp (Digitized Medieval Manuscripts Application) helps people discover
+digitized medieval manuscript collections from libraries around the world. It
+brings links to those collections together in one searchable directory, making
+it easier to find resources for study, teaching, or personal interest.
 
 ## History
 
-This project was created to address the challenge of discovering digitized manuscript collections scattered across numerous institutional repositories worldwide. By aggregating information about these collections in one place, we help researchers save time and discover new resources.
+This project was created in response to a practical challenge: digitized
+manuscript collections are spread across many institutional repositories. By
+bringing information about those collections together in one place, DMMapp helps
+researchers save time and discover new resources.
 
-New to the subject matter itself? Our [Codicology](codicology/index.md) section is a growing primer on the study of manuscripts and the scripts they're written in.
+New to the subject? Our [Codicology](codicology/index.md) section is a growing
+introduction to the study of manuscripts and the scripts in which they are
+written.
 
-## Technology Stack
+## How the Site Is Built
 
-### Frontend Dashboard
-- **HTML5**: Semantic markup
-- **CSS3**: Custom, responsive grid and flexbox layout
-- **Vanilla JavaScript**: No frameworks, pure web standards
-- **Bootstrap Icons**: Icon set for the dashboard interface
+### Dashboard
+
+- **HTML5:** Provides meaningful page structure.
+- **CSS3:** Provides a custom, responsive grid and flexbox layout.
+- **Vanilla JavaScript:** Adds interactivity without a framework.
+- **Bootstrap Icons:** Supplies icons for the dashboard interface.
 
 ### Documentation
-- **MkDocs**: Static site generator
-- **Material for MkDocs**: Beautiful, responsive theme
+
+- **MkDocs:** Builds the static site.
+- **Material for MkDocs:** Provides the responsive documentation theme.
 
 ### Data Management
-- **JSON**: Flat-file database for simplicity and portability
-- **JSON Schema**: Validation to ensure data quality
 
-### Hosting & CI/CD
-- **GitHub Pages**: Free, reliable hosting
-- **GitHub Actions**: Automated build and deployment pipeline
+- **JSON:** Stores the directory data in a simple, portable file.
+- **JSON Schema:** Checks the data for consistency and quality.
+
+### Hosting and Deployment
+
+- **GitHub Pages:** Hosts the static site.
+- **GitHub Actions:** Automates site builds and deployment.
 
 ## Design Principles
 
-1. **Simplicity**: Keep the architecture simple and maintainable
-2. **Performance**: Fast loading times with minimal dependencies
-3. **Accessibility**: Ensure the platform is usable by everyone
-4. **Consistency**: Unified visual design across dashboard and documentation
-5. **Open Source**: Transparent development, community contributions welcome
+1. **Simplicity:** Keep the architecture simple and maintainable.
+2. **Performance:** Deliver fast loading times with minimal dependencies.
+3. **Accessibility:** Make the platform usable by everyone.
+4. **Consistency:** Maintain a unified visual design across the dashboard and
+   documentation.
+5. **Open Source:** Support transparent development and community
+   contributions.
 
 ## Visual Design
 
-The platform uses the Material Design system with the Indigo color palette to ensure:
+The platform uses Material Design with an indigo color palette to provide:
 
-- Professional appearance
-- Excellent readability
-- Consistent user experience between dashboard and documentation
-- Accessibility compliance
+- A professional appearance.
+- Clear, readable content.
+- A consistent experience across the dashboard and documentation.
+- Accessible design choices.
+
+## How We Write
+
+DMMapp writes for students, manuscript enthusiasts, and the general public. We
+use a welcoming, explanatory style that introduces specialized terms in plain
+language and favors clear headings, short paragraphs, and direct links to
+digitized resources.
+
+Our public-facing copy follows *The Chicago Manual of Style* (CMOS) and uses
+standard American English. We use serial commas, headline-style capitalization
+for headings, and spell out whole numbers below one hundred in running text. We
+preserve verified institution names, manuscript shelfmarks, links, captions,
+and attribution statements.
 
 ## Contact
 
