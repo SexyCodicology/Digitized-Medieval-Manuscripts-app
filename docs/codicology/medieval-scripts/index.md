@@ -6,56 +6,69 @@ description: >-
 
 # Medieval Scripts
 
-The medieval scripts described here are those listed in the [Art & Architecture Thesaurus](https://www.getty.edu/research/tools/vocabularies/aat/) (Getty Research Institute, accessed June 13, 2018). This list serves as a well-defined starting point and gives us solid foundations to further expand and describe these medieval scripts. The Art & Architecture Thesaurus follows this hierarchy:
+This page follows the medieval scripts listed in the [Art & Architecture
+Thesaurus](https://www.getty.edu/research/tools/vocabularies/aat/) (Getty
+Research Institute, accessed June 13, 2018). It provides a clear starting point
+for expanding and describing the scripts covered by DMMapp. The thesaurus uses
+the following hierarchy:
 
 - [Beneventan minuscule](beneventan-script.md)
 - [Caroline minuscule](caroline-minuscule.md)
 
-### Gothic scripts
+## Gothic Scripts
 
 - [Bastarda](gothic-littera-bastarda-littera-hybrida.md)
 - Gothic cursive
 - Textura (Gothic script)
 
-### Half uncial
+## Half Uncial
 
-### [Humanistic scripts](humanistic-script.md)
+## [Humanistic Scripts](humanistic-script.md)
 
 - Antiqua
 - Humanistic cursive
 
-### Insular scripts
+## Insular Scripts
 
 - Insular majuscule
 - Insular minuscule
 
-### Later Roman cursive
+## Later Roman Cursive
 
-### Merovingian scripts
+## Merovingian Scripts
 
 - Luxeuil script
 - Merovingian chancery script
 
-### Older Roman cursive
+## Older Roman Cursive
 
-### Protogothic
+## Protogothic
 
-### Rustic capitals
+## Rustic Capitals
 
-### Square capitals
+## Square Capitals
 
-### Uncial
+## Uncial
 
-### Visigothic minuscule
+## Visigothic Minuscule
 
 (AAT Hierarchy Display, Getty Research, accessed June 13, 2018.)
 
-This list, retrieved from the Art & Architecture Thesaurus Online, does not include "Minuscule" and "Majuscule", as they are defined respectively as *scripts some of whose letters have ascenders or descenders above or below a general base line and top line*, and *alphabetic scripts whose letters are confined between head and base lines with no ascenders or descenders* (Art & Architecture Thesaurus Full Record Display, Getty Research, accessed June 13, 2018). *Copperplate (script)* has also been removed from the list since it represents a style dominant in the 18th century (Dossena, Marina, and Ingrid Marijke Tieken-Boon van Ostade. *Studies in Late Modern English Correspondence: Methodology and Data*. Bern: Lang, 2008.) and falls outside of the scope of this "medieval scripts" list.
+The list does not include “minuscule” or “majuscule,” which the Art &
+Architecture Thesaurus defines as general types of script rather than historical
+families. Minuscule letters have ascenders or descenders beyond their general
+base and top lines; majuscule letters remain between head and base lines. It
+also omits *Copperplate (script)* because that style was dominant in the
+eighteenth century and falls outside the scope of a medieval-scripts list. (Art
+& Architecture Thesaurus Full Record Display, Getty Research, accessed June 13,
+2018; Marina Dossena and Ingrid Marijke Tieken-Boon van Ostade, *Studies in
+Late Modern English Correspondence: Methodology and Data*, Bern: Lang, 2008.)
 
-!!! info "A growing list"
-    Only a handful of scripts on this list have a page so far. If you'd like to see one of the others covered, [open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues).
+!!! info "A Growing List"
+    Only a handful of scripts on this list have a page so far. If you would
+    like to see another script covered, [open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues).
 
-### Additional Resources
+## Additional Resources
 
 - Medieval Writing, by Dr Dianne Tillotson
 - [Medieval writing systems](https://en.wikipedia.org/wiki/Category:Medieval_scripts) as listed by Wikipedia
