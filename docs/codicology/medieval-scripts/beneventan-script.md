@@ -6,52 +6,75 @@ description: >-
 
 # Beneventan Script
 
-## The Origin of the Name "Beneventan"
+## The Origin of the Name “Beneventan”
 
-The name "Beneventan" script derives from the fact that its major centers of writing were within the duchy of Benevento, in Southern Italy: Monte Cassino, Bari and, obviously, Benevento itself. The monastery of [Monte Cassino](../../libraries/biblioteca-statale-del-monumento-nazionale-di-montecassino-597.md) was extremely influential due to the fact that it was founded by St. Benedict, and through this influence it helped spread the Beneventan Script in Benedictine scriptoria as far as Dalmatia, contemporary Croatia. It's worth knowing that, before the studies by palaeographer Elias Avery Lowe, the script was known as Longobarda or Longobardistica. This nomenclature attributed the paternity of this script to the Lombards, but it was thanks to palaeographer Lowe that the script obtained the name with which it's known today: Beneventan.
+The name *Beneventan* comes from the script’s main centers of production in the
+duchy of Benevento in southern Italy: Monte Cassino, Bari, and Benevento itself.
+The monastery of [Monte Cassino](../../libraries/biblioteca-statale-del-monumento-nazionale-di-montecassino-597.md), founded by St. Benedict, was especially influential. Through Benedictine scriptoria, the script spread as far as Dalmatia, in present-day Croatia.
 
-(Fun fact: the great-grandson of Elias Avery Lowe is [Boris Johnson](https://en.wikipedia.org/wiki/Boris_Johnson)!)
+Before the work of paleographer Elias Avery Lowe, the script was known as
+*Longobarda* or *Longobardistica*. Those names associated it with the Lombards.
+Lowe established the name by which the script is known today: *Beneventan*.
+
+> **Did you know?** Elias Avery Lowe was the great-grandfather of
+> [Boris Johnson](https://en.wikipedia.org/wiki/Boris_Johnson).
 
 ![Beneventan Script sample from Monte Cassino](assets/2013/10/beneventan-script-monte-cassino.webp)
 *Beneventan Script sample from [Monte Cassino](../../libraries/biblioteca-statale-del-monumento-nazionale-di-montecassino-597.md).*
 
 ## (Very) Brief History of the Beneventan Script
 
-The history of the script is particularly long: its origin can be traced back to the middle of the 8th century. It was used until the 13th century in Southern Italy and Dalmatia. After that it was still in use until the 15th century in smaller communities. Over this length of time, the script didn't change significantly, adding an extra difficulty to the dating of manuscripts written in it.
+The script can be traced to the middle of the eighth century. It remained in use
+in southern Italy and Dalmatia until the thirteenth century and survived in
+smaller communities until the fifteenth century. Because it changed little over
+that long period, dating manuscripts written in Beneventan can be difficult.
 
 ### The Exultet Rolls
 
-Most of the surviving objects containing Beneventan script are liturgical material, and among these are the Exultet rolls. These were used in Latin liturgy on the eve of Easter, when the deacon, dressed in white, would sing the "Exultet" from it. The name derives from the incipit:
+Most surviving examples of Beneventan script are liturgical materials, including
+Exultet rolls. On the eve of Easter, a deacon dressed in white sang the
+“Exultet” from a roll. Its name comes from the incipit:
 
 > *exultet iam angelica turba caelorum…*
 
-Translatable into:
+In English:
 
 > the heavenly crowd of angels shout for joy...
 
 ![From the Bari Exultet Roll](assets/2013/10/bari-exultet-roll.webp)
 *From the Bari Exultet Roll. On the left you can see the Deacon unravelling the scroll from the altar. At the bottom, you can see the script, written upside down. Notice also the particular full stop at the end of the text.*
 
-The Exultet roll would also contain decorations and illustrations that appear drawn upside down compared to the text. This is because the roll would have been unfurled by the priest, down from the altar in front of the audience attending the mass. Whoever was celebrating the mass would be able to read the text that was meant to be sung, while people who were unable to understand Latin could look at the images appearing from the scroll as it was unfurled in front of them.
+An Exultet roll also includes decorations and illustrations that appear upside
+down in relation to the text. The priest unfurled the roll from the altar toward
+the congregation. This allowed the celebrant to read the text while people in
+the congregation could view the images as the roll was opened.
 
 ## Beneventan Palaeography
 
-Beneventan script is fairly easy to recognize, and the letters "a" and "t" are the easiest to identify once you know what they look like. They look quite similar to each other: the "a" resembles an "oc" when both letters are touching, and the "t" is very similar, but the top stroke in the "c" of the "oc" shape is flat. Other particular shapes of letters are the "e" and the "r". A sample of the alphabet of this script will help you understand it better than any description:
+Beneventan script is relatively easy to recognize once you know its letterforms.
+The letters “a” and “t” are especially distinctive. The “a” resembles a joined
+“oc,” while the similar “t” has a flat top stroke. The “e” and “r” also have
+characteristic forms. This alphabet sample is more useful than a description
+alone:
 
 ![Sample of Beneventan script from Monte Cassino, cod. Casin. 269, p. 352](assets/2013/07/beneventan-alphabet-cod-casin-269.webp)
 *Sample of Beneventan script from Monte Cassino — cod. Casin. 269, p. 352.*
 
-To these letterforms you also have to add the small galaxy of ligatures typical of this script: "et", "ex", "ri", etc., and the many non-standardized abbreviations. Also typical of the Beneventan script was the use of a standardized form of punctuation, such as the two points and comma that would indicate a contemporary full stop. All these details make the Beneventan script easy to identify, but fairly difficult to read, until you get used to it.
+Beneventan also uses many ligatures, such as “et,” “ex,” and “ri,” as well as
+nonstandard abbreviations. Its standardized punctuation includes a two-point
+mark and a comma that can serve as a modern full stop. Together, these features
+make the script recognizable but initially difficult to read.
 
 ## Further Reading
 
-There is much, much more to know about this type of script, and there's a wide selection of books from which you can venture deeper into its history:
+There is much more to learn about this script. These books offer a useful place
+to continue:
 
 - *The Scriptorium and Library at Monte Cassino, 1058–1105* (Cambridge Studies in Palaeography and Codicology) — the definitive study on Beneventan Script, 400+ folio pages covering every aspect of it. You might want to pick it up from your local library rather than buying it.
 - *Introduction to Manuscript Studies* — recommended if you want to know more about medieval manuscripts in general: production, decoration, and general information. It has a chapter on selected scripts, including the Beneventan Script.
 - *The Beneventan Script: A History of the South Italian Minuscule* — written almost a century ago, still extremely useful and interesting. This is the book that gave the name "Beneventan" to this script, previously known as Longobardistica.
 
-*Last edited: February 2017*
+*Last edited: February 2017.*
 
 Want to see Beneventan manuscripts yourself? [Monte Cassino's digitized collection](../../libraries/biblioteca-statale-del-monumento-nazionale-di-montecassino-597.md) is one of hundreds on the DMMapp.
 
