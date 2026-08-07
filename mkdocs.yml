@@ -59,6 +59,16 @@ markdown_extensions:
 nav:
   - Dashboard: index.md
   - About: about.md
+  - Codicology:
+      - Overview: codicology/index.md
+      - Book of Hours: codicology/book-of-hours.md
+      - Videos: codicology/videos.md
+      - Medieval Scripts:
+          - Overview: codicology/medieval-scripts/index.md
+          - Caroline Minuscule: codicology/medieval-scripts/caroline-minuscule.md
+          - Humanistic Script: codicology/medieval-scripts/humanistic-script.md
+          - Beneventan Script: codicology/medieval-scripts/beneventan-script.md
+          - Bastarda: codicology/medieval-scripts/gothic-littera-bastarda-littera-hybrida.md
   - Blog: blog/index.md
   - Documentation:
       - Overview: docs-home.md

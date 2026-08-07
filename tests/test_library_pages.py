@@ -300,7 +300,7 @@ def test_nav_does_not_list_the_generated_pages():
 
     assert config["hooks"] == ["hooks/library_pages.py"]
     assert hook.OUTPUT_DIR not in yaml.safe_dump(config["nav"])
-    assert len(config["nav"]) == 4
+    assert len(config["nav"]) == 5
 
 
 # ── End-to-end build ──────────────────────────────────────────────────────
