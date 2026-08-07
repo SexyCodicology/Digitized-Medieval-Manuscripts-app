@@ -59,6 +59,8 @@ markdown_extensions:
 nav:
   - Dashboard: index.md
   - About: about.md
+  - Support Us: support-us.md
+  - Store: store.md
   - Codicology:
       - Overview: codicology/index.md
       - Book of Hours: codicology/book-of-hours.md
