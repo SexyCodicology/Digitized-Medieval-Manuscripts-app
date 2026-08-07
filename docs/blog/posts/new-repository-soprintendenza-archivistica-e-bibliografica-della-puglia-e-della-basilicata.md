@@ -13,6 +13,9 @@ slug: new-repository-soprintendenza-archivistica-e-bibliografica-della-puglia-e-
 We have just added a link to the Soprintendenza Archivistica e Bibliografica della Puglia e della Basilicata to the DMMapp.
 The website is super-interesting: unlike the vast majority of the links in the DMMapp, this is full of charters!
 Accessing them is a bit complex and it involves quite some clicks, but the content is amazing.
+
+<!-- more -->
+
 The homepage looks like this:
 ![](assets/uploads/2023/02/0e377c3301efa5bff59d64b4b773b79d.webp)
 Choose one of the items you are interested in. We'll go for charters from ecclesiastical entities ("Fondi pergamenacei di enti ecclesiastici")
@@ -28,5 +31,3 @@ Click on "List", and the list of digitized items appears!
 Have a look at A_12! There's an amazing seal to go with it:
 ![](assets/uploads/2023/02/30ebd9013c0b680c825f3149ad082539.webp)
 Have fun exploring!
-
-<!-- more -->
