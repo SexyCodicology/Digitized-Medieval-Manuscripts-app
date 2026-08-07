@@ -46,7 +46,7 @@ Adorned with intricate miniatures, including full-page illustrations of the Four
 
 
 
-It is written in [Carolingian minuscule](https://blog.digitizedmedievalmanuscripts.org/codicology/medieval-scripts/caroline-minuscule/) and has been remarkably well-preserved overall ([Emperor's Bible - Wikipedia](https://en.wikipedia.org/wiki/Emperor%27s_Bible)).
+It is written in [Carolingian minuscule](../../codicology/medieval-scripts/caroline-minuscule.md) and has been remarkably well-preserved overall ([Emperor's Bible - Wikipedia](https://en.wikipedia.org/wiki/Emperor%27s_Bible)).
 
 
 

@@ -48,7 +48,7 @@ One of the biggest requests has also been implemented: **it is now possible to d
 
 
 
-In addition, **we have decided not to serve ads by Google and Amazon anymore**. Ads were present in [the blog](https://blog.digitizedmedievalmanuscripts.org/) and not on the DMMapp itself, but they contributed almost nothing to covering the hosting costs. Links to Patreon and our store on RedBubble are still present as they are essential to this project.
+In addition, **we have decided not to serve ads by Google and Amazon anymore**. Ads were present in [the blog](../index.md) and not on the DMMapp itself, but they contributed almost nothing to covering the hosting costs. Links to Patreon and our store on RedBubble are still present as they are essential to this project.
 
 
 

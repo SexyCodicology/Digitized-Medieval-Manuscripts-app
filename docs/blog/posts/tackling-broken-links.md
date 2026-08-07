@@ -10,7 +10,7 @@ slug: tackling-broken-links
 ---
 # Tackling Broken Links!
 
-Some time ago [we published a blog post](https://blog.digitizedmedievalmanuscripts.org/digitized-manuscripts-broken-links/) showing how **broken links to digitized repositories on the DMMapp were a problem**, causing them to become inaccessible to users.
+Some time ago [we published a blog post](digitized-manuscripts-broken-links.md) showing how **broken links to digitized repositories on the DMMapp were a problem**, causing them to become inaccessible to users.
 This was a major problem for us: Researchers count on the DMMapp to find and access digitized colletctions, and it is obviously a major blow to the project if they cannot achieve the one thing they came there to do. Also users that simply want to explore collections can easily get frustrated if they stumble upon broken links.
 
 <!-- more -->

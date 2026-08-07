@@ -17,7 +17,7 @@ The improvements are many, but the biggest, and most exciting, is that now every
 
 *Cambridge, Corpus Christi College, MS 053: The Peterborough Psalter and Bestiary. 12r.*
 
-The Library went even further than just giving open access to everyone: all manuscripts are following the IIIF framework (Want to know more about all the amazing features of IIIF? We wrote [a blogpost](https://blog.digitizedmedievalmanuscripts.org/iiif-international-image-interoperability-framework/) just for you!), and this means that they will make their content compatible with that of other institutions, such as the National Library of France, Bodleian Libraries, and e-codices (just to name a few), and make it possible to very easily compare two, or more, digitized objects from different institutions next to one another, in one viewer (see one example below) But also viewing manuscripts in great detail, or make annotations, are among the possibilities.
+The Library went even further than just giving open access to everyone: all manuscripts are following the IIIF framework (Want to know more about all the amazing features of IIIF? We wrote [a blogpost](iiif-international-image-interoperability-framework.md) just for you!), and this means that they will make their content compatible with that of other institutions, such as the National Library of France, Bodleian Libraries, and e-codices (just to name a few), and make it possible to very easily compare two, or more, digitized objects from different institutions next to one another, in one viewer (see one example below) But also viewing manuscripts in great detail, or make annotations, are among the possibilities.
 Here's a tidy list of the new features (from the library's website):
 
 - A new manuscript viewing experience

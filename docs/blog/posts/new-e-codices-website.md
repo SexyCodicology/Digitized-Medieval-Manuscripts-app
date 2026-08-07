@@ -10,7 +10,7 @@ slug: new-e-codices-website
 ---
 # A new e-codices experience!
 
-Yesterday we showed you how the [Utrecht Library is brilliantly promoting a manuscript](https://blog.digitizedmedievalmanuscripts.org/utrecht-psalter/) of great importance in the Netherlands. Today we are bringing your attention to how Switzerland is skillfully managing the digitization of all its collections on e-codices.
+Yesterday we showed you how the [Utrecht Library is brilliantly promoting a manuscript](utrecht-psalter.md) of great importance in the Netherlands. Today we are bringing your attention to how Switzerland is skillfully managing the digitization of all its collections on e-codices.
 You are probably aware of e-codices already:
 > e-codices offers free online access to medieval and early modern manuscripts from public and church-owned collections as well as from numerous private collections.
 

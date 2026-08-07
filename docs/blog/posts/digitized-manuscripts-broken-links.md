@@ -12,7 +12,7 @@ slug: digitized-manuscripts-broken-links
 ---
 # Disappearing Digitized Manuscripts: a very sad story of broken links
 
-Every year we go through the links in the [DMMapp](https://digitizedmedievalmanuscripts.org/), knowing that unavoidably we will encounter broken links: links that once worked and lead to [beautiful digitized manuscripts](https://blog.digitizedmedievalmanuscripts.org/beautiful-illuminated-manuscript-leaves/) and that now are simply gone.
+Every year we go through the links in the [DMMapp](https://digitizedmedievalmanuscripts.org/), knowing that unavoidably we will encounter broken links: links that once worked and lead to beautiful digitized manuscripts and that now are simply gone.
 *pouf* - no more.
 
 <!-- more -->

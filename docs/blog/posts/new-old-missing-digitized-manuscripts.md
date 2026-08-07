@@ -11,7 +11,7 @@ slug: new-old-missing-digitized-manuscripts
 ---
 # New, old, and missing digitized manuscripts
 
-As you might have read in our [previous post concerning the DMMapp 3.0](https://blog.digitizedmedievalmanuscripts.org/dmmapp3/), one of the best features is that now we can easily see which links in our database are broken, along with quickly adding what we receive via the missing library form.
+As you might have read in our [previous post concerning the DMMapp 3.0](dmmapp3.md), one of the best features is that now we can easily see which links in our database are broken, along with quickly adding what we receive via the missing library form.
 
 <!-- more -->
 

@@ -10,7 +10,7 @@ slug: killer-bunny-vacation
 ---
 # The Adventures of Medieval Killer Bunny: A Musical Vacation
 
-It's Xmas time! Christmas songs and carols everywhere! In this newest instalment of [The Adventures of Medieval Killer Bunny](https://blog.digitizedmedievalmanuscripts.org/medieval-killer-bunny/ "The Adventures of Medieval Bunny, Part I: The Killer Rabbit") we are going to look at what the medieval bunnies are planning for theholidays! Like everyone, also they sometimes need some relaxation and fun, and most importantly, a break from their killer jobs; and since we are sure you have heard "Jingle bells" and "Joy to the World" for the past month or so, it is only appropriate that in this post we will **meet the Musical Killer Bunnies.**
+It's Xmas time! Christmas songs and carols everywhere! In this newest instalment of [The Adventures of Medieval Killer Bunny](medieval-killer-bunny.md "The Adventures of Medieval Bunny, Part I: The Killer Rabbit") we are going to look at what the medieval bunnies are planning for theholidays! Like everyone, also they sometimes need some relaxation and fun, and most importantly, a break from their killer jobs; and since we are sure you have heard "Jingle bells" and "Joy to the World" for the past month or so, it is only appropriate that in this post we will **meet the Musical Killer Bunnies.**
 
 <!-- more -->
 

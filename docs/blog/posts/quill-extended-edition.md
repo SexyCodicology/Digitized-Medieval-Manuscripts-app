@@ -10,7 +10,7 @@ slug: quill-extended-edition
 ---
 # On "Quill" - Extended edition
 
-As you surely know, ["Quill" was recently launched](https://blog.digitizedmedievalmanuscripts.org/quill-medieval-manuscripts/ "Quill: a new website for medieval manuscript lovers!"). **Quill is a website a new website for medieval manuscript lovers** put together by Dr. Erik Kwakkel, who had the idea, took care of the texts and made sure it'd be a success, and I, who had the pleasure of taking care of the photos. Erik put together [a fantastic blog post about it](https://medievalbooks.nl/2014/10/17/meet-the-medieval-manuscript/ "Erik Kwakkel's post on the launch of Quill"), to which I contributed too. I ended up writing a bit too much for it, so it had to be reduced a bit in length in the end.
+As you surely know, ["Quill" was recently launched](quill-medieval-manuscripts.md "Quill: a new website for medieval manuscript lovers!"). **Quill is a website a new website for medieval manuscript lovers** put together by Dr. Erik Kwakkel, who had the idea, took care of the texts and made sure it'd be a success, and I, who had the pleasure of taking care of the photos. Erik put together [a fantastic blog post about it](https://medievalbooks.nl/2014/10/17/meet-the-medieval-manuscript/ "Erik Kwakkel's post on the launch of Quill"), to which I contributed too. I ended up writing a bit too much for it, so it had to be reduced a bit in length in the end.
 ![Quill Books before print](assets/uploads/2014/10/quill.webp)
 
 <!-- more -->

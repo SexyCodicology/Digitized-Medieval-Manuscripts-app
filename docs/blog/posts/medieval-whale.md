@@ -12,7 +12,7 @@ slug: medieval-whale
 
 ## Medieval Whaling. Arr!
 
-[![Whale representation from odleian Library, MS. Ashmole 1511, Folio 86v](assets/uploads/2013/12/medieval-whale.webp)](https://blog.digitizedmedievalmanuscripts.org/wp-content/uploads/2013/12/medieval-whale.jpg)
+![Whale representation from odleian Library, MS. Ashmole 1511, Folio 86v](assets/uploads/2013/12/medieval-whale.webp)
 
 <!-- more -->
 

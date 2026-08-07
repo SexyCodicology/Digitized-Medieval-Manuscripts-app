@@ -27,7 +27,7 @@ We have shared images from the Book of Kells on our Tumblr in the past, but what
 Personally, I had never thought about it: "When was the Madonna and Christ first depicted?" After a little investigation on Wikipedia, I discovered buonfresco's comment is correct, but only in part.
 **The miniature from the Book of Kells is the earliest surviving image of the Madonna and Child, in a Western illuminated manuscript**; not in general western art.
 Nonetheless, without this comment I wouldn't have known; and I also wouldn't have learned that on St Cuthbert's coffin, dating  698 CE, there is a similar representation of the Virgin.
-[![St. Cuthbert's Coffin, end: Virgin and Child detail](assets/uploads/2013/12/PREVIEW_IMAGE.webp)](https://blog.digitizedmedievalmanuscripts.org/wp-content/uploads/2013/12/PREVIEW_IMAGE.jpg)
+![St. Cuthbert's Coffin, end: Virgin and Child detail](assets/uploads/2013/12/PREVIEW_IMAGE.webp)
 
 *St. Cuthbert's Coffin: Virgin and Child detail*
 

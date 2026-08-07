@@ -24,7 +24,7 @@ Standard breakfast, excellent cappuccino and espressos, and clean. Our only com
 
 ### Hands on experience
 
-Although for many Cassino is a synonym of World War Two battles, as the hotel testifies, for us manuscript lovers it is synonym of [Beneventan Script](https://blog.digitizedmedievalmanuscripts.org/codicology/medieval-scripts/beneventan-script/) and beautiful books.
+Although for many Cassino is a synonym of World War Two battles, as the hotel testifies, for us manuscript lovers it is synonym of [Beneventan Script](../../codicology/medieval-scripts/beneventan-script.md) and beautiful books.
 And that's just what we got during the Cassino Summer School. **It is difficult not to emphasize how extraordinary the manuscripts we had the chance to view, touch, and admire were**. In front of us were the most extraordinary treasures of Montecassino. Not behind glass cases, not unturnable pages, not slides. The real, amazing deal.
 Nowhere else have we had such a display of precious manuscripts only a few centimeters away from our eyes, ready to be explored and studied. It is difficult to describe the emotions and feelings these books bring up.
 Not only were the manuscripts amazing, but also the locations where the viewing would take place. Imagine this: a warm, sunny summer day in Southern Italy, in a monastery full of history, with the sound of cicadas coming in from the windows overlooking the valley down below where you could spot wild boars. All of this while masterpieces a thousand years old lay on a long desk, with **passionate lecturers explaining them in every detail possible**.

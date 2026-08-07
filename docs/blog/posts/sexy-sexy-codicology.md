@@ -41,4 +41,4 @@ It's logical:
 It's basically how social media works ([Tumblr](https://sexycodicology.tumblr.com/) *in primis*): "Mr. X sees a cool image; blogs it because he thinks it's cool; someone else thinks the same and does the same."
 But what tools are out there really? There are many websites, indeed. But digital tools are lacking. The first thing that came to my map was to create a nice list of libraries and institutions that give access to their digitized illuminated manuscripts. But it wasn't enough: A list is boring, and it doesn't say much. "Let's create maps!" It would tell more: which countries are ahead in the digitization race, where are the most digitized manuscripts? Who is lagging behind?
 **So, we decided to contribute by creating these maps.** And that's Sexy.
-[Discover the maps](https://blog.digitizedmedievalmanuscripts.org/digitized-medieval-manuscripts-online/)
+[Discover the maps](../../index.md)

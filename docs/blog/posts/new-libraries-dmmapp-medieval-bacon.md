@@ -12,7 +12,7 @@ slug: new-libraries-dmmapp-medieval-bacon
 ---
 # New libraries in the DMMapp: Medieval Bacon Edition
 
-We have received another four [new links to digitized manuscripts](https://blog.digitizedmedievalmanuscripts.org/new-libraries-dmmapp/) and we have added them to the [DMMapp](https://digitizedmedievalmanuscripts.org/)! This time around, the resources come from Slovenia, the US, and France. Let’s give a look!
+We have received another four [new links to digitized manuscripts](new-libraries-dmmapp.md) and we have added them to the [DMMapp](https://digitizedmedievalmanuscripts.org/)! This time around, the resources come from Slovenia, the US, and France. Let’s give a look!
 
 <!-- more -->
 

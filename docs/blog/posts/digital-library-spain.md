@@ -10,7 +10,7 @@ slug: digital-library-spain
 ---
 # Digital Library of Spain and the Biblioteca Nacional de España
 
-Yesterday we wrote about [a beautiful manuscript on the Sexy Codicology blog](https://blog.digitizedmedievalmanuscripts.org/beatus-manuscripts/). Today, we give a look at the repository where we found that pearl: the Digital Library of Spain ([access it here](https://bdh.bne.es/bnesearch/AdvancedSearch.do?showAdvanced=true)).
+Yesterday we wrote about [a beautiful manuscript on the Sexy Codicology blog](beatus-manuscripts.md). Today, we give a look at the repository where we found that pearl: the Digital Library of Spain ([access it here](https://bdh.bne.es/bnesearch/AdvancedSearch.do?showAdvanced=true)).
 As understandable, **the Digital Library of Spain is the digital library of the *Biblioteca Nacional de España*.** It aims to give free access to thousands of digitized documents: books from the 15th to the 19th century, manuscripts, drawings, engravings, pamphlets, posters, photographs, maps, atlases, music scores, historic newspapers and magazines and audio recordings.
 It was created in 2008 and back then the Digital Library of Spain had around 10,000 works which were selected by experts in different subjects as a cross-section of the bibliographic and documentary heritage of the *Biblioteca Nacional de España*. **Today it comprises more than 134,000 works on all topics in all documentary forms, freely accessible from anywhere in the world.**
 

@@ -103,4 +103,4 @@ In any case: no content made by us will be hidden behind a paywall.
 
 
 
-Should you have any questions or feedback, the easiest way to contact us is via our [Contact Form](https://blog.digitizedmedievalmanuscripts.org/contact-us/).
+Should you have any questions or feedback, the easiest way to contact us is via the [Contact section](../../about.md#contact) of our About page.

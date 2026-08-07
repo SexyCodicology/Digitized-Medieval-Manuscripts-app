@@ -32,7 +32,7 @@ Rating: 3
 
 ## More on Books of Hours
 
-- On the Hours of the Duc de Berry see [our other blog post](https://blog.digitizedmedievalmanuscripts.org/free-online-books-metropolitan-museum-art/) for the free book on the subject by the Metropolitan Museum of Art
+- On the Hours of the Duc de Berry see [our other blog post](free-online-books-metropolitan-museum-art.md) for the free book on the subject by the Metropolitan Museum of Art
 - And see [our section on the book of hours](../../codicology/book-of-hours.md)
 - Some other sources of information:
 - Private Devotion: Humility and Splendour from the Fitzwilliam Museum.
