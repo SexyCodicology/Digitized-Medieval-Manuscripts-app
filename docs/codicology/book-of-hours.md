@@ -5,19 +5,23 @@ description: >-
   Vanderbilt Hours.
 ---
 
-# The Book of Hours - A Medieval Bestseller
+# The Book of Hours: A Medieval Bestseller
 
 ![Book of Hours of Jean de France, Duc de Berry](assets/uploads/2013/08/book-of-hours-belles-heures-cover.webp)
 
-No other type of manuscript has survived in such great numbers as the Book of Hours. By the thirteenth century it had become the most used prayerbook in western Europe. On this page, we're going to give some basic information about these beautiful illuminated manuscripts, and discover some amazing miniatures in the process.
+No other type of manuscript survives in such great numbers as the book of hours.
+By the thirteenth century, it had become the most widely used prayer book in
+western Europe. This page introduces these illuminated manuscripts and some of
+their remarkable miniatures.
 
-## The Origin of the name: "Book of Hours"
+## The Origin of the Name “Book of Hours”
 
 To understand why the Books of Hours are called this way, we have to look at the word "hour". It comes from the Greek word *ὅρα*, later *hora* in Latin, which indicated "a limited space of time", or, more specifically, the 3 seasons the ancient Greeks divided the year into. In the Middle Ages it slightly changed meaning and started to indicate the more or less exact space of time dedicated to praying or doing business. Ordinary people had the desire to follow the example of monastic orders, which had a routine of rituals and prayers observed every day. The Book of Hours had the aim of letting them do just that.
 
-## The Composition of a "Book of Hours"
+## The Composition of a Book of Hours
 
-The Books of Hours are not all alike, and that's part of the beauty of these manuscripts. There is quite some variety in which devotional texts were included in a Book of Hours, although some sections were common to all of them. Let's go through the most common ones.
+Books of hours are not all alike. The devotional texts they include vary, but
+some sections are common. Here are the most frequent ones.
 
 ![Detail from the Vanderbilt Hours, f. 74r](assets/uploads/2013/08/vanderbilt-hours-74r-detail.webp)
 *Detail from the [Vanderbilt Hours](https://collections.library.yale.edu/catalog/2001877), f. 74r*
@@ -28,7 +32,11 @@ With a list of the saints' days for each month, the Calendar is always at the be
 
 ### Sequences from the Gospels
 
-Usually beginning with an illumination of one of the four evangelists, the Sequences from the Gospels is a part often present in a Book of Hours, made of extracts from each of the Evangelists. The way they were portrayed is fairly standard: usually sitting at their desk, writing the Gospels, with their attribute (the angel, the bull, the eagle, the lion) next to them. Occasionally you may find Saint John on the Isle of Patmos, where he had a vision of the Apocalypse and wrote the Book of Revelation.
+Often introduced by an illumination of one of the four Evangelists, this section
+contains extracts from each Gospel. The Evangelists are commonly shown seated at
+their desks with their attributes: the angel, bull, eagle, and lion. Saint John
+may instead appear on the Isle of Patmos, where he received a vision of the
+Apocalypse and wrote the Book of Revelation.
 
 ### Prayers to the Virgin
 
@@ -44,7 +52,10 @@ Typical of French Books of Hours, the Prayers to the Virgin were usually introdu
 
 ### Hours of the Virgin
 
-The essential part of any Book of Hours. It is formed by a standard series of prayers along with psalms to be recited at each of the eight canonical hours of the day: *Matins, Lauds, Prime, Terce, Sext, None, Vespers and Compline*. Usually it's the most heavily decorated section of the manuscript, with each Hour decorated by a miniature representing an episode from the life of Mary.
+The Hours of the Virgin are central to a book of hours. They contain prayers and
+psalms for the eight canonical hours: *Matins, Lauds, Prime, Terce, Sext, None,
+Vespers,* and *Compline*. This is often the most richly decorated section, with
+miniatures representing episodes from Mary’s life.
 
 ### Hours of the Cross and Holy Spirit
 
@@ -52,11 +63,15 @@ Composed of a hymn, an antiphon and a prayer, these Hours are much shorter compa
 
 ### Penitential Psalms
 
-Another core part of the Book of Hours, and the section with the most varied miniatures. Usually David is represented, being the author of the Psalms after having committed all of the Seven Deadly Sins. The psalms are an outcry of sorrow for the committed sins.
+Another core section, the Penitential Psalms often has the most varied
+miniatures. David commonly appears as the author of the psalms, expressing
+sorrow for sin.
 
 ### Litany
 
-The third essential part of the Book of Hours. The Litany is a cry for help addressed to the Holy Trinity, the Virgin Mary, the Archangels Gabriel, Michael and Raphael, and the Saints. As you'd imagine, there's little room for decoration in this section of the manuscript.
+The Litany is a prayer for help addressed to the Holy Trinity, the Virgin Mary,
+the Archangels Gabriel, Michael, and Raphael, and the saints. It leaves little
+room for decoration.
 
 | | | |
 |---|---|---|
