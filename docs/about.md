@@ -14,6 +14,8 @@ DMMapp (Digitized Medieval Manuscripts Application) aims to democratize access t
 
 This project was created to address the challenge of discovering digitized manuscript collections scattered across numerous institutional repositories worldwide. By aggregating information about these collections in one place, we help researchers save time and discover new resources.
 
+New to the subject matter itself? Our [Codicology](codicology/index.md) section is a growing primer on the study of manuscripts and the scripts they're written in.
+
 ## Technology Stack
 
 ### Frontend Dashboard

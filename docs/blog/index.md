@@ -8,4 +8,4 @@ description: >-
 
 Uncovering the secrets of the past: discover the world of digitized medieval
 manuscripts. Updates on the DMMapp, new digitized collections, and the odd
-detour into codicology.
+detour into [codicology](../codicology/index.md).
