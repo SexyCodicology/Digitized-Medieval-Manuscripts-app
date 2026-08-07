@@ -33,6 +33,7 @@ theme:
     - navigation.instant
     - navigation.tracking
     - navigation.top
+    - navigation.indexes
     - search.suggest
     - search.highlight
     - search.share
@@ -41,6 +42,7 @@ theme:
 
 extra_css:
   - assets/dashboard.css
+  - assets/nav.css
 
 extra_javascript:
   - assets/dashboard.js
@@ -58,7 +60,18 @@ markdown_extensions:
 nav:
   - Dashboard: index.md
   - About: about.md
-  - Documentation:
+  - Codicology:
+      - Overview: codicology/index.md
+      - Book of Hours: codicology/book-of-hours.md
+      - Videos: codicology/videos.md
+      - Medieval Scripts:
+          - Overview: codicology/medieval-scripts/index.md
+          - Caroline Minuscule: codicology/medieval-scripts/caroline-minuscule.md
+          - Humanistic Script: codicology/medieval-scripts/humanistic-script.md
+          - Beneventan Script: codicology/medieval-scripts/beneventan-script.md
+          - Bastarda: codicology/medieval-scripts/gothic-littera-bastarda-littera-hybrida.md
+  - Blog: blog/index.md
+  - Docs:
       - Overview: docs-home.md
       - Getting Started: getting-started.md
       - Data Schema: schema.md
@@ -67,10 +80,46 @@ nav:
       - Link Health Check: workflow-link-checking.md
       - Contributing: contributing.md
       - Project Setup: setup.md
+  - Support Us:
+      - Overview: support-us.md
+      - Store: store.md
 
 plugins:
   - search
   - privacy
+  - social
+  - blog:
+      blog_dir: blog
+      post_url_format: "{slug}"
+      authors_file: blog/.authors.yml
+      authors_profiles: true
+      post_excerpt: required
+      # Curated vocabulary — replaces 72 mostly one-off WordPress tags
+      # (per-institution, per-country, per-manuscript labels used once each)
+      # that didn't aid discovery. Keeps a new post from silently
+      # reintroducing that sprawl.
+      categories_allowed:
+        - Digital Humanities
+        - Digitized Libraries
+        - DMMapp Updates
+        - Video
+        - Crowdsourcing
+        - Manuscript Curiosities
+        - Community & Events
+        - IIIF
+        - Broken Links
+  - rss:
+      match_path: "blog/posts/.*"
+      # Migrated posts all landed in one or two commits, so git log dates
+      # would show every post as "published today" — use the front matter
+      # dates the blog plugin already relies on instead.
+      use_git: false
+      date_from_meta:
+        as_creation: "date.created"
+        as_update: "date.updated"
+      categories:
+        - categories
+      image: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/assets/web-app-manifest-512x512.png
 
 # Generates one page per record in docs/assets/data.json at build time.
 # The pages are virtual, so they are never written into docs/ or committed,
@@ -83,3 +132,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app
+    - icon: fontawesome/solid/rss
+      link: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/feed_rss_updated.xml
+      name: Subscribe via RSS

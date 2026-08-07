@@ -68,6 +68,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-mkdocs-privacy-
 
+      - name: Cache social plugin cards
+        uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: .cache/plugin/social
+          key: ${{ runner.os }}-mkdocs-social-${{ hashFiles('mkdocs.yml', '**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-mkdocs-social-
+
       - name: Install Dependencies
         run: pip install -r requirements-dev.txt
 

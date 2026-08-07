@@ -14,6 +14,7 @@ Find what you need to get started, contribute, or develop.
 
 - [Getting started](getting-started.md) — Explore the dashboard and search for libraries
 - [Data schema](schema.md) — Understand how library data is structured
+- [What is Codicology?](codicology/index.md) — New to manuscript studies? Start with our codicology primer
 
 ## For contributors
 

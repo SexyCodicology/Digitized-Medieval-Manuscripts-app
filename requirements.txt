@@ -1,4 +1,7 @@
 # MkDocs Material Theme for Documentation
 # Used by GitHub Actions to build the documentation site
-mkdocs-material>=9.7.6
+# [imaging] pulls in Pillow + CairoSVG, needed by the social plugin to
+# render per-page share card images.
+mkdocs-material[imaging]>=9.7.6
+mkdocs-rss-plugin>=1.17
 

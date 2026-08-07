@@ -1,0 +1,25 @@
+/*
+ * docs/assets/nav.css
+ * Header nav — CTA styling for the Support Us tab
+ * ─────────────────────────────────────────────────────────────────────────
+ * Support Us is a call to action, not a content destination, so it gets a
+ * pill-button treatment instead of blending in with the other tabs — the
+ * same idea as Wikipedia's "Donate" link or GitHub's "Sponsor" button.
+ * Colors are Material's own tokens with fg/bg swapped, so it stays correct
+ * in both the light and dark palette without hardcoding a new hue.
+ */
+
+.md-tabs__link[href*="/support-us/"] {
+  background-color: var(--md-primary-bg-color);
+  color: var(--md-primary-fg-color);
+  border-radius: 2rem;
+  padding: 0.3rem 0.9rem;
+  margin: 0.5rem 0.2rem;
+  transition: opacity 0.15s;
+}
+
+.md-tabs__link[href*="/support-us/"]:hover,
+.md-tabs__item--active > .md-tabs__link[href*="/support-us/"] {
+  opacity: 0.75;
+  color: var(--md-primary-fg-color);
+}
