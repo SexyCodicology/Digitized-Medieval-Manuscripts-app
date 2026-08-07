@@ -59,8 +59,6 @@ markdown_extensions:
 nav:
   - Dashboard: index.md
   - About: about.md
-  - Support Us: support-us.md
-  - Store: store.md
   - Codicology:
       - Overview: codicology/index.md
       - Book of Hours: codicology/book-of-hours.md
@@ -72,7 +70,7 @@ nav:
           - Beneventan Script: codicology/medieval-scripts/beneventan-script.md
           - Bastarda: codicology/medieval-scripts/gothic-littera-bastarda-littera-hybrida.md
   - Blog: blog/index.md
-  - Documentation:
+  - Docs:
       - Overview: docs-home.md
       - Getting Started: getting-started.md
       - Data Schema: schema.md
@@ -81,6 +79,8 @@ nav:
       - Link Health Check: workflow-link-checking.md
       - Contributing: contributing.md
       - Project Setup: setup.md
+  - Support Us: support-us.md
+  - Store: store.md
 
 plugins:
   - search
