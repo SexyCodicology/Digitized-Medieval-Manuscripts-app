@@ -1,19 +1,22 @@
 ---
 description: >-
-  How the Humanistic script emerged as a reaction to Gothic script's
+  How Humanistic script emerged as a reaction to Gothic script’s
   illegibility, the Florentine scribes and scholars behind it, and its lasting
   influence on modern typography.
 ---
 
 # Humanistic Script
 
-## What were the reasons for the development of the Humanistic Script?
+## Why Did Humanistic Script Develop?
 
-The emergence of the "Humanistic Script" can be traced back to the predicaments faced by readers during the late 14th century, when they were confronted with manuscripts written in a convoluted and demanding style such as the [Gothic Script](gothic-littera-bastarda-littera-hybrida.md) and its derivatives.
+Humanistic script emerged in response to the difficulties readers faced with
+late-fourteenth-century manuscripts written in complex styles such as
+[Gothic script](gothic-littera-bastarda-littera-hybrida.md) and its derivatives.
 
-It is conceivable that an avid reader, situated in a poorly-lit chamber, eagerly awaiting the opportunity to explore a coveted manuscript, would have been disheartened by the arduous and challenging script, necessitating considerable effort and expertise to comprehend.
+In poor light, even an eager reader could find these scripts difficult to
+decipher. Reading them required considerable effort and expertise.
 
-For instance:
+For example:
 
 ![Gothic Script example](assets/2017/01/gothic-script-fenceposts-example.webp)
 *Source: Unknown. This is a modern rendition. More info [here](https://en.wikipedia.org/wiki/Minim_(palaeography)).*
@@ -22,7 +25,7 @@ The text reads:
 
 > *mimi numinum niuium minimi munium nimium uini muniminum imminui uiui minimum uolunt* (The snow gods' smallest mimes do not wish in any way in their lives for the great duty of the defenses of wine to be diminished.)
 
-Encountering such a perplexing manuscript may have left one feeling overwhelmed and frustrated, perhaps to the point of tossing it aside and succumbing to a fit of tears.
+For an untrained reader, a manuscript like this can be daunting.
 
 Such might have also been the sentiments of Petrarch and Coluccio Salutati, distinguished Italian scholars of the 14th century, as they manifested their desire for manuscripts to be written in a clear and legible script:
 
@@ -79,17 +82,17 @@ Cosimo de' Medici ordered from him copies of 200 manuscripts to furnish the Badi
 
 As mentioned before, the Roman Church was certainly a major contributor to the spread of the script, especially in Italy; but Vespasiano can be seen as the individual who helped the Humanistic script travel beyond the Alps and into the rest of the western world.
 
-## The Origin and Development of the Humanistic Script
+## The Origin and Development of Humanistic Script
 
 Now that we've met the key individuals who contributed to the development of the Humanistic script, it's time to look at the development of the script itself.
 
-### The Reaction Against the Gothic Script
+### The Reaction Against Gothic Script
 
 Palaeography experts Ullman, Davies, and Morison see in the Humanistic script a reaction to the "over-complicated and barbaric" Gothic script. Comparing the two types of handwriting, the reasons for this appear clear: overelaboration of letterforms, small size of the script, and abundant use of non-standardized abbreviations all rendered Gothic script in its various forms (*quadrata, fracta, praecissa,* and *rotunda*) undesirable to scholars on the Italian peninsula (although in the south of Italy the [Beneventan script](beneventan-script.md) was still written and used until the sixteenth century, though it had been in decline since the eleventh).
 
 The rejection of the Gothic Script led to a search for a more "user-friendly" script, and Italian Semi-Gothic began to develop (Clemens, R., and T. Graham. *Introduction to Manuscript Studies*. Cornell University Press, 2007, p. 172). This type of script was already influenced by the '*littera antica*', but it's in the later, fully-developed Humanistic Bookhand that its influence is most evident.
 
-### The Different Fate between Humanistic Script and Beneventan Script
+### Why Humanistic and Beneventan Scripts Had Different Fates
 
 ![Leiden UBL VLQ 1 - Beneventan script transitioning into Carolingian](assets/2017/01/leiden-ubl-vlq-1.webp)
 *A beautiful example of Beneventan script transitioning into Carolingian, [Universitaire Bibliotheken Leiden](../../libraries/universitaire-bibliotheken-leiden-364.md), VLQ 1.*
@@ -102,7 +105,7 @@ Moreover, in the same period, the kings of Aragon decided to create a new librar
 
 Soon the script would dominate in many other libraries, such as those in Urbino and Cesena, but also in Hungary, where King Matthias Corvinus would create one of Europe's greatest collections of secular books (Chisholm, H. "Matthias I, Hunyadi." In *Encyclopaedia Britannica*, 11th ed. Cambridge University Press, 1911).
 
-### Humanistic script for Humanistic Books
+### Humanistic Script for Humanistic Books
 
 But in which type of manuscript was the Humanistic script mainly used? We actually don't know. A clear and complete analysis of the typology in which this script was mainly adopted doesn't appear to be available yet. Martin Davies, an expert in Humanistic script, simply states that "Humanistic script was used for Humanistic texts" (Davies, M. "Humanism in Script and Print in the Fifteenth Century." In *The Cambridge Companion to Renaissance Humanism*, edited by J. Kraye. Cambridge University Press, 2006, p. 49), and this appears to be true: due to the humanists' interest in the Classics, many transcriptions of Latin and Greek were written mainly in Humanistic bookhand and have survived to our times.
 
@@ -129,7 +132,7 @@ What we can notice here are a series of important details. The most evident is t
 
 The capital "Q" in line eight is written in the same fashion. In line two of our Carolingian sample, the second word is "*psallere*". In Poggio's writing, the letter "s" is written in almost exactly the same way. Observe the word "*sotto*" in line one: even the small detail of the "ear" — that small stroke extending from the upper-left side of the Carolingian "s" — is copied. In line three of the Carolingian sample, the ampersand "&" looks extremely similar to Bracciolini's in line five.
 
-## The Majuscule in the Humanistic Script
+## Majuscules in Humanistic Script
 
 ![Vat. lat. 9152 f28v-29r, Poggio Bracciolini's "Sylloge"](assets/2017/01/vat-lat-9152-sylloge.webp)
 *Vat. lat. 9152 f28v-29r, Poggio Bracciolini's "Sylloge", [Biblioteca Apostolica Vaticana](../../libraries/biblioteca-apostolica-vaticana-574.md). Not digitized yet.*
@@ -142,7 +145,7 @@ Need proof? Our friend Poggio Bracciolini collected the inscriptions he found in
 
 This is why the "Q" used in our Carolingian example above is so similar to the same letter written in ancient Rome. As Poggio developed the Humanistic minuscule based on the Carolingian's, Carolingian scribes had developed their majuscules on the ancient Romans' (Meiss, M. "Towards a More Comprehensive Renaissance Paleography." *The Art Bulletin*, 42, 1960, p. 98). Bracciolini probably thought of this and went directly to the source to develop his own capital letters (Ullman, B. L. *The Origin and Development of Humanistic Script*. Rome: Edizioni di Storia e Letteratura, 1960, p. 56).
 
-## The Influence of the Humanistic Script on Modern Typography
+## Humanistic Script’s Influence on Modern Typography
 
 As you'd imagine, all the events regarding the Humanistic script that took place in Italy during the early Renaissance became very deeply influential when the first printing presses came to the abbey of Subiaco in Italy during the second half of the fifteenth century.
 
@@ -170,7 +173,7 @@ As an extra proof of the Humanistic script's influence on modern typography: thi
 
 When printing came to Italy, it led to the end of copying in Humanistic script. Some copyists, to avoid going completely out of business — such as Sinibaldi, an Italian scribe who declared that printing had reduced his workload so much he was barely able to afford clothes — decided to become proofreaders for the printers.
 
-## But wait, there's more!
+## Lasting Influence
 
 The success of the Humanistic script in the fourteenth and fifteenth centuries was due to multiple, closely-linked factors that subsequently led to the development of the script.
 
