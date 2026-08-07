@@ -42,6 +42,7 @@ theme:
 
 extra_css:
   - assets/dashboard.css
+  - assets/nav.css
 
 extra_javascript:
   - assets/dashboard.js
@@ -79,8 +80,9 @@ nav:
       - Link Health Check: workflow-link-checking.md
       - Contributing: contributing.md
       - Project Setup: setup.md
-  - Support Us: support-us.md
-  - Store: store.md
+  - Support Us:
+      - Overview: support-us.md
+      - Store: store.md
 
 plugins:
   - search
