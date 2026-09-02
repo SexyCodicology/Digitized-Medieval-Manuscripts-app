@@ -24,6 +24,7 @@ import json
 import re
 import unicodedata
 from collections import Counter
+from datetime import date
 from html import escape
 from pathlib import Path
 from typing import Any
@@ -47,6 +48,11 @@ SLUG_MAP_URI = "assets/library-slugs.json"
 
 # Virtual source file for the crawlable alphabetical library index.
 LIBRARY_INDEX_URI = "library-index.md"
+
+# Optional record dates used to show recently changed libraries on the homepage.
+RECENCY_FIELDS = ("added", "last_edited")
+RECENT_LIBRARY_LIMIT = 5
+ISO_DATE_PATTERN = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
 
 # Jinja global that overrides/home.html reads the pre-rendered directory from.
 TEMPLATE_GLOBAL = "dmm_directory"
@@ -85,6 +91,30 @@ def plain_text(value: Any) -> str:
     """
     text = re.sub(r'[<>"]', "", str(value))
     return re.sub(r"\s+", " ", text).strip()
+
+
+def parse_iso_date(value: Any) -> date | None:
+    """Return a calendar date only when its text has the declared ISO format."""
+    if not isinstance(value, str) or not ISO_DATE_PATTERN.fullmatch(value):
+        return None
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def validate_recency_dates(record: dict[str, Any], path: Path, position: int) -> None:
+    """Reject date metadata that could make the homepage recency list misleading."""
+    for field in RECENCY_FIELDS:
+        if field not in record:
+            continue
+        parsed = parse_iso_date(record[field])
+        if parsed is None:
+            raise PluginError(
+                f"{path}: record {position} has an invalid {field} date."
+            )
+        if parsed > date.today():
+            raise PluginError(f"{path}: record {position} has a future {field} date.")
 
 
 def slug_for(record: dict[str, Any]) -> str:
@@ -164,6 +194,7 @@ def load_records(docs_dir: str) -> list[dict[str, Any]]:
         ]
         if missing:
             raise PluginError(f"{path}: record {position} is missing {', '.join(missing)}.")
+        validate_recency_dates(record, path, position)
 
     return records
 
@@ -527,7 +558,54 @@ def build_directory(records: list[dict[str, Any]]) -> dict[str, Any]:
     """Return the rows and counts that overrides/home.html renders."""
     rows = "".join(render_row(record) for record in sorted(records, key=directory_sort_key))
     # Markup keeps the rows intact whether or not the theme autoescapes.
-    return {"rows": Markup(rows), "stats": summarise(records)}
+    return {
+        "rows": Markup(rows),
+        "stats": summarise(records),
+        "recent": build_recent_libraries(records),
+    }
+
+
+def latest_change(record: dict[str, Any]) -> tuple[date, str] | None:
+    """Return the newest usable record date and the label a reader should see."""
+    changes = [
+        (field, parsed)
+        for field in RECENCY_FIELDS
+        if (parsed := parse_iso_date(record.get(field))) is not None
+        and parsed <= date.today()
+    ]
+    if not changes:
+        return None
+    field, changed = max(changes, key=lambda entry: entry[1])
+    return changed, "Added" if field == "added" else "Updated"
+
+
+def render_recent_library(record: dict[str, Any], changed: date, label: str) -> str:
+    """Return one escaped entry for the server-rendered recent-libraries list."""
+    slug = escape(slug_for(record), quote=True)
+    return (
+        "<li>"
+        f'<a href="libraries/{slug}/">{escape(str(record["library"]))}</a> — '
+        f"{label} {changed.isoformat()}"
+        "</li>"
+    )
+
+
+def build_recent_libraries(records: list[dict[str, Any]]) -> Markup:
+    """Return the five newest explicitly dated records in stable display order."""
+    dated_records = [
+        (record, *change)
+        for record in records
+        if (change := latest_change(record)) is not None
+    ]
+    dated_records.sort(
+        key=lambda entry: (-entry[1].toordinal(), directory_sort_key(entry[0]))
+    )
+    return Markup(
+        "".join(
+            render_recent_library(record, changed, label)
+            for record, changed, label in dated_records[:RECENT_LIBRARY_LIMIT]
+        )
+    )
 
 
 def library_index_group(record: dict[str, Any]) -> str:

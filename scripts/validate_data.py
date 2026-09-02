@@ -40,6 +40,7 @@ DATA_PATH = REPO_ROOT / "docs" / "assets" / "data.json"
 # both ways during a transition) can be grandfathered narrowly instead of
 # silently loosening the rule for every record, present and future.
 KNOWN_AGGREGATOR_URL_EXCEPTIONS: dict[str, frozenset[int]] = {}
+RECENCY_FIELDS = ("added", "last_edited")
 
 
 def normalise_aggregator_name(name: str) -> str:
@@ -182,6 +183,31 @@ def check_link_status(records: list) -> list[str]:
     return errors
 
 
+def check_recency_dates(records: list) -> list[str]:
+    """Return one message per malformed or future homepage recency date."""
+    errors = []
+    today = date.today()
+    for index, record in enumerate(records):
+        if not isinstance(record, dict):
+            continue
+        record_id = record.get("id")
+        for field in RECENCY_FIELDS:
+            value = record.get(field)
+            if value is None:
+                continue
+            if not isinstance(value, str) or not is_iso_date(value):
+                errors.append(
+                    f"record {index} (id: {record_id}): {field} {value!r} "
+                    "is not an ISO 8601 date (YYYY-MM-DD)"
+                )
+            elif date.fromisoformat(value) > today:
+                errors.append(
+                    f"record {index} (id: {record_id}): {field} {value!r} "
+                    "must not be in the future"
+                )
+    return errors
+
+
 def is_iso_date(value: str) -> bool:
     """Return whether ``value`` is a real calendar date written as YYYY-MM-DD.
 
@@ -206,6 +232,7 @@ def validate(schema: dict, records: Any) -> list[str]:
         *check_duplicate_ids(records),
         *check_aggregator_uniqueness(records),
         *check_link_status(records),
+        *check_recency_dates(records),
     ]
 
 
