@@ -717,16 +717,41 @@ a.library-name:focus-visible {
   color: #ef9a9a;
 }
 
-.hero__random-btn {
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-top: 1rem;
+}
+
+.hero__random-btn {
+  margin: 0;
   font-family: inherit;
   cursor: pointer;
 }
 
 .hero__random-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: default;
   pointer-events: none;
+}
+
+.hero__actions .hero__index-link {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+  cursor: pointer;
+}
+
+.hero__actions .hero__index-link:hover {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color, #fff);
+  text-decoration: none;
 }
 
 /* ── 10. Sortable headers ─────────────────────────────────────────────────*/
