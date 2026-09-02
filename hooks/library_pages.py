@@ -45,6 +45,9 @@ OUTPUT_DIR = "libraries"
 # Where the id-to-slug map is published for other consumers of the built site.
 SLUG_MAP_URI = "assets/library-slugs.json"
 
+# Virtual source file for the crawlable alphabetical library index.
+LIBRARY_INDEX_URI = "library-index.md"
+
 # Jinja global that overrides/home.html reads the pre-rendered directory from.
 TEMPLATE_GLOBAL = "dmm_directory"
 
@@ -527,6 +530,59 @@ def build_directory(records: list[dict[str, Any]]) -> dict[str, Any]:
     return {"rows": Markup(rows), "stats": summarise(records)}
 
 
+def library_index_group(record: dict[str, Any]) -> str:
+    """Return the index heading for a record without inventing an alphabet.
+
+    Accented Latin names share their expected ASCII heading. Names beginning
+    with another script, a digit, or punctuation stay together under "Other"
+    rather than being silently omitted or assigned a misleading letter.
+    """
+    library = str(record["library"]).strip()
+    folded = (
+        unicodedata.normalize("NFKD", library).encode("ascii", "ignore").decode()
+    )
+    initial = folded[:1].upper()
+    return initial if initial.isascii() and initial.isalpha() else "Other"
+
+
+def build_library_index(records: list[dict[str, Any]]) -> str:
+    """Return the virtual Markdown page that links to every library page."""
+    groups: dict[str, list[dict[str, Any]]] = {}
+    for record in sorted(records, key=directory_sort_key):
+        groups.setdefault(library_index_group(record), []).append(record)
+
+    labels = sorted(groups, key=lambda label: (label == "Other", label))
+    jump_links = " ".join(
+        f'<a href="#{label.casefold()}">{label}</a>' for label in labels
+    )
+    sections = []
+    for label in labels:
+        entries = "\n".join(
+            "<li>"
+            f'<a href="libraries/{escape(slug_for(record), quote=True)}/">'
+            f'{escape(str(record["library"]))}</a> — '
+            f'{escape(str(record["city"]))}, {escape(str(record["nation"]))}'
+            "</li>"
+            for record in groups[label]
+        )
+        sections.append(f"## {label}\n\n<ul>\n{entries}\n</ul>")
+
+    section_markup = "\n\n".join(sections)
+
+    return (
+        "---\n"
+        "title: Library index\n"
+        "description: Browse every digitized medieval manuscript library in DMMapp.\n"
+        "social:\n"
+        "  cards: false\n"
+        "---\n\n"
+        "# Library index\n\n"
+        "Browse every library in DMMapp alphabetically.\n\n"
+        f'<nav aria-label="Browse libraries by name">{jump_links}</nav>\n\n'
+        f"{section_markup}\n"
+    )
+
+
 def on_files(files: Files, config: MkDocsConfig) -> Files:
     """Add one generated page per library record, plus the id-to-slug map."""
     records = load_records(config.docs_dir)
@@ -543,6 +599,14 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
                 inclusion=InclusionLevel.NOT_IN_NAV,
             )
         )
+
+    files.append(
+        File.generated(
+            config,
+            LIBRARY_INDEX_URI,
+            content=build_library_index(records),
+        )
+    )
 
     slug_map = {str(record["id"]): slug_for(record) for record in records}
     files.append(

@@ -89,19 +89,25 @@ same rows over for searching, sorting, and filtering.
                 medieval manuscripts. Search, filter, and discover collections with
                 IIIF support and open access licenses.
             </p>
-            {# Disabled until dashboard.js confirms assets/data.json has loaded, so
-               a visitor without JavaScript — or before the fetch resolves — sees an
-               inert control rather than a button that does nothing when pressed. #}
-            <button
-                    aria-label="Open a randomly chosen library from the directory"
-                    class="btn-visit hero__random-btn"
-                    disabled
-                    id="randomLibraryBtn"
-                    type="button"
-            >
-                <i aria-hidden="true" class="bi bi-shuffle"></i>
-                Explore a random library
-            </button>
+            <div aria-label="Library discovery options" class="hero__actions" role="group">
+                {# Disabled until dashboard.js confirms assets/data.json has loaded,
+                   so a visitor without JavaScript — or before the fetch resolves —
+                   sees an inert control rather than a button that does nothing. #}
+                <button
+                        aria-label="Open a randomly chosen library from the directory"
+                        class="btn-visit hero__random-btn"
+                        disabled
+                        id="randomLibraryBtn"
+                        type="button"
+                >
+                    <i aria-hidden="true" class="bi bi-shuffle"></i>
+                    Explore a random library
+                </button>
+                <a class="btn-visit hero__index-link" href="{{ 'library-index/' | url }}">
+                    <i aria-hidden="true" class="bi bi-list-ol"></i>
+                    Browse every library alphabetically
+                </a>
+            </div>
         </div>
 
         <div aria-label="Summary statistics" class="stats-grid" role="list">

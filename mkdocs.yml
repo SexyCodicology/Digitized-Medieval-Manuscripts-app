@@ -59,6 +59,7 @@ markdown_extensions:
 
 nav:
   - Dashboard: index.md
+  - Library Index: library-index.md
   - About: about.md
   - Codicology:
       - Overview: codicology/index.md
