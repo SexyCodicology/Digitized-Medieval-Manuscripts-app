@@ -567,6 +567,8 @@ def build_library_index(records: list[dict[str, Any]]) -> str:
         )
         sections.append(f"## {label}\n\n<ul>\n{entries}\n</ul>")
 
+    section_markup = "\n\n".join(sections)
+
     return (
         "---\n"
         "title: Library index\n"
@@ -577,7 +579,7 @@ def build_library_index(records: list[dict[str, Any]]) -> str:
         "# Library index\n\n"
         "Browse every library in DMMapp alphabetically.\n\n"
         f'<nav aria-label="Browse libraries by name">{jump_links}</nav>\n\n'
-        f"{'\n\n'.join(sections)}\n"
+        f"{section_markup}\n"
     )
 
 
