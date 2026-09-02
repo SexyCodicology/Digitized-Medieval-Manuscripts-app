@@ -11,6 +11,7 @@ import copy
 import importlib.util
 import json
 import sys
+from datetime import date, timedelta
 from pathlib import Path
 
 import pytest
@@ -436,3 +437,37 @@ def test_the_date_rule_holds_without_the_schema_format_checker(schema):
 )
 def test_is_iso_date(value, expected):
     assert validator.is_iso_date(value) is expected
+
+
+# ── Homepage recency dates ─────────────────────────────────────────────────
+
+
+def test_a_record_with_recency_dates_is_valid(schema):
+    record = {
+        **copy.deepcopy(VALID_RECORD),
+        "added": "2026-08-01",
+        "last_edited": "2026-08-02",
+    }
+
+    assert validator.validate(schema, [record]) == []
+
+
+@pytest.mark.parametrize("field", ["added", "last_edited"])
+def test_an_invalid_recency_date_fails(schema, field):
+    record = {**copy.deepcopy(VALID_RECORD), field: "2026-02-30"}
+
+    errors = validator.validate(schema, [record])
+
+    assert any(field in error and "ISO 8601" in error for error in errors)
+
+
+@pytest.mark.parametrize("field", ["added", "last_edited"])
+def test_a_future_recency_date_fails(schema, field):
+    record = {
+        **copy.deepcopy(VALID_RECORD),
+        field: (date.today() + timedelta(days=1)).isoformat(),
+    }
+
+    errors = validator.validate(schema, [record])
+
+    assert any(field in error and "future" in error for error in errors)

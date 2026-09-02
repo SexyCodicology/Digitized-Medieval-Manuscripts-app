@@ -276,6 +276,22 @@ The date the collection URL was last checked, as an ISO 8601 calendar date.
 current it is. A link confirmed broken years ago deserves less trust than one
 checked last week.
 
+### Homepage recency
+
+These optional dates let the homepage show recently added and materially updated
+library records. Leave them out when a record's date cannot be verified.
+
+#### Added
+
+The calendar date when the record first entered DMMapp. Write a real,
+non-future date as YYYY-MM-DD, for example 2026-08-02.
+
+#### Last edited
+
+The calendar date of the record's most recent material correction or update.
+Write a real, non-future date as YYYY-MM-DD, for example 2026-08-02. Do not use
+it for formatting-only changes.
+
 ## How we check the data
 
 All records are validated against our data structure standards before being added to the directory.

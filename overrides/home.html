@@ -147,6 +147,20 @@ same rows over for searching, sorting, and filtering.
         </div>
     </section>
 
+    {% if dmm_directory.recent %}
+    <section aria-labelledby="recent-libraries-heading" class="results">
+        <div class="results-header">
+            <div>
+                <h2 id="recent-libraries-heading">Recently added and updated</h2>
+                <p class="results-meta">The latest dated changes to the directory.</p>
+            </div>
+        </div>
+        <ul>
+            {{ dmm_directory.recent }}
+        </ul>
+    </section>
+    {% endif %}
+
     <section aria-labelledby="filters-heading" class="filters">
         <h2 class="visually-hidden" id="filters-heading">Search and Filter Libraries</h2>
 
