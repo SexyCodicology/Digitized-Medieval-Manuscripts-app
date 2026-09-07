@@ -47,7 +47,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 5,
@@ -109,7 +109,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 10,
@@ -326,7 +326,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 25,
@@ -507,7 +507,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 40,
@@ -829,7 +829,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 66,
@@ -855,7 +855,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 68,
@@ -3037,7 +3037,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 213,
@@ -3403,7 +3403,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 241,
@@ -3489,7 +3489,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 249,
@@ -3503,7 +3503,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 250,
@@ -3529,7 +3529,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 252,
@@ -3819,7 +3819,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 271,
@@ -4057,7 +4057,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-09-07"
     },
     {
         "id": 291,
@@ -4083,7 +4085,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 293,
@@ -4893,7 +4895,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 349,
@@ -5493,7 +5495,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 394,
@@ -5913,7 +5915,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 430,
@@ -7919,7 +7921,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 577,
@@ -8236,7 +8238,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-07"
     },
     {
         "id": 599,
