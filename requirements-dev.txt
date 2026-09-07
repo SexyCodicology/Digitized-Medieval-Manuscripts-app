@@ -3,7 +3,7 @@
 -r requirements.txt
 
 # Test runner for the build-time hooks in hooks/
-pytest>=8.0
+pytest>=9.1.1
 
 # Schema validation for docs/assets/data.json, used by scripts/validate_data.py
-jsonschema>=4.23,<5
+jsonschema>=4.26.0,<5
