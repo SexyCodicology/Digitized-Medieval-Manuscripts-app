@@ -47,7 +47,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 5,
@@ -109,7 +109,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 10,
@@ -326,7 +326,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 25,
@@ -507,7 +507,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 40,
@@ -767,7 +767,9 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "is_disabled": true,
+        "last_checked": "2026-09-14"
     },
     {
         "id": 61,
@@ -829,7 +831,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 66,
@@ -855,7 +857,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 68,
@@ -3037,7 +3039,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 213,
@@ -3403,7 +3405,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 241,
@@ -3489,7 +3491,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 249,
@@ -3503,7 +3505,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 250,
@@ -3529,7 +3531,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 252,
@@ -3819,7 +3821,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 271,
@@ -4083,7 +4085,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 293,
@@ -4893,7 +4895,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 349,
@@ -5493,7 +5495,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 394,
@@ -7919,7 +7921,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 577,
@@ -8236,7 +8238,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-14"
     },
     {
         "id": 599,
@@ -8911,7 +8913,9 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "is_disabled": true,
+        "last_checked": "2026-09-14"
     },
     {
         "id": 639,
