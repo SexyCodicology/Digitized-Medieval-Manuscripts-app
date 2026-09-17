@@ -103,7 +103,7 @@
         "city": "Sydney",
         "library": "University of Sydney",
         "quantity": "Few",
-        "website": "https://digital.library.sydney.edu.au/",
+        "website": "https://digital.library.sydney.edu.au/nodes/view/8299",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
@@ -3475,13 +3475,11 @@
         "city": "Fulda",
         "library": "Hochschul- und Landesbibliothek Fulda",
         "quantity": "Hundreds",
-        "website": "https://fuldig.hs-fulda.de/viewer/search/-/-/1/-/FACET_DC%3Ahandschriften.mittelalterlichehandschriften",
+        "website": "https://fuldig.hs-fulda.de/viewer/handschriften/",
         "copyright": "CC BY-NC-SA 4.0",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "aggregators": []
     },
     {
         "id": 249,
