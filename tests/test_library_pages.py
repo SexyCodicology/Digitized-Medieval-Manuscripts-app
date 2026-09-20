@@ -11,7 +11,9 @@ import json
 import re
 import subprocess
 import sys
+from html import unescape
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 import pytest
 import yaml
@@ -177,7 +179,119 @@ def test_unsafe_links_do_not_become_clickable():
     assert "No collection URL is recorded" in body
     # The project is still named, but not linked.
     assert "&lt;b&gt;Project&lt;/b&gt;" in body
-    assert "<a" not in body
+    # The report control does not depend on the unsafe collection URL.
+    assert body.count("<a") == 1
+    assert "btn-report-data-issue" in body
+
+
+# ── Per-record data issue reports ─────────────────────────────────────────
+
+
+def _report_data_issue_query(body: str) -> dict[str, list[str]]:
+    """Return the decoded query values from a generated report control."""
+    href = re.search(
+        r'<a class="btn-visit btn-report-data-issue" href="([^"]+)"', body
+    ).group(1)
+    return parse_qs(urlsplit(unescape(href)).query)
+
+
+def test_data_issue_form_has_the_prefilled_record_fields():
+    form = yaml.safe_load(
+        (REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "report-data-issue.yml").read_text(
+            encoding="utf-8"
+        )
+    )
+    fields = {field["id"]: field for field in form["body"]}
+
+    assert form["labels"] == ["data/xml"]
+    assert set(fields) >= {
+        "record_id",
+        "library_name",
+        "page_url",
+        "issue_type",
+        "current_value",
+        "correction",
+        "evidence_url",
+        "review_checklist",
+    }
+    assert "Match the record ID" in fields["review_checklist"]["attributes"]["value"]
+
+
+def test_report_control_prefills_the_public_record_identity():
+    record = {
+        **HOSTILE_RECORD,
+        "library": "Bodleian Library",
+        "website": "https://example.org",
+    }
+
+    body = _page_body(record)
+    query = _report_data_issue_query(body)
+
+    assert "Report a data issue" in body
+    assert query == {
+        "template": ["report-data-issue.yml"],
+        "record_id": ["9001"],
+        "library_name": ["Bodleian Library"],
+        "page_url": [
+            "https://sexycodicology.github.io/"
+            "Digitized-Medieval-Manuscripts-app/libraries/bodleian-library-9001/"
+        ],
+    }
+
+
+def test_report_control_preserves_a_zero_record_id():
+    body = _page_body({**HOSTILE_RECORD, "id": 0})
+
+    assert _report_data_issue_query(body)["record_id"] == ["0"]
+
+
+def test_report_control_encodes_special_characters_in_a_library_name():
+    record = {
+        **HOSTILE_RECORD,
+        "library": "Biblioth\u00e8que & #?= \u00c9tudes",
+    }
+
+    body = _page_body(record)
+    query = _report_data_issue_query(body)
+
+    assert "Biblioth%C3%A8que+%26+%23%3F%3D+%C3%89tudes" in body
+    assert query["library_name"] == ["Biblioth\u00e8que & #?= \u00c9tudes"]
+
+
+def test_report_control_keeps_hostile_values_inside_the_href_attribute():
+    body = _page_body(HOSTILE_RECORD)
+    control = re.search(
+        r'<a class="btn-visit btn-report-data-issue"[^>]+>', body
+    ).group(0)
+
+    assert '<a class="btn-visit btn-report-data-issue"' in body
+    assert "%3Cscript%3E" in control
+    assert "&lt;" not in control
+    assert " onclick=" not in control
+    assert _report_data_issue_query(body)["record_id"] == ["9001"]
+
+
+def test_report_control_survives_a_missing_collection_url():
+    body = _page_body({**HOSTILE_RECORD, "website": None})
+    query = _report_data_issue_query(body)
+
+    assert "No collection URL is recorded" in body
+    assert query["page_url"] == [
+        "https://sexycodicology.github.io/"
+        "Digitized-Medieval-Manuscripts-app/libraries/"
+        "etc-passwd-script-alert-xss-script-quoted-9001/"
+    ]
+    assert "None" not in body
+
+
+def test_report_control_uses_no_client_side_script_or_handler():
+    body = _page_body(HOSTILE_RECORD)
+    control = re.search(
+        r'<a class="btn-visit btn-report-data-issue"[^>]+>', body
+    ).group(0)
+
+    assert "<script" not in body
+    assert " on" not in control
 
 
 # ── Multiple memberships on a library page ────────────────────────────────

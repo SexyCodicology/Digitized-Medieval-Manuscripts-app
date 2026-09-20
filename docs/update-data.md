@@ -27,6 +27,15 @@ This guide explains how to add new libraries and edit existing information in th
 !!! info "About data governance"
     The docs/assets/data.json file is maintained by @Dioscorides. When you submit changes, they review your work to ensure quality standards. This keeps the library directory accurate and reliable for researchers worldwide.
 
+## Report a data issue
+
+If you spot an incorrect library name, collection link, licence, or other data
+problem while viewing a library page, select **Report a data issue**. The
+GitHub form includes the record ID, library name, and page URL automatically.
+Choose the kind of problem, describe the correction, and include a public
+source when one supports the change. Maintainers verify the report before they
+update the directory.
+
 ## 1. Find the data file
 
 1. Open your GitHub repository in your browser
