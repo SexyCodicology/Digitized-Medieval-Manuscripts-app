@@ -636,18 +636,27 @@ def render_row(record: dict[str, Any]) -> str:
     overrides/home.html), rather than a per-cell inline style. That is what
     lets the mobile breakpoint in dashboard.css re-target a cell — e.g. to
     turn the access column into a full-width tap area — without new markup.
+
+    The row and its cells also carry explicit ``role="row"``/``role="cell"``.
+    dashboard.css's mobile breakpoint changes this row's own ``display`` (to
+    lay it out as a flex card), and a table's implicit ARIA row/cell roles
+    are computed from an element's *rendered* display, not its tag — so
+    without the explicit role a screen reader would see an unstructured
+    sequence of text rather than a table row. See overrides/home.html for
+    the matching ``role="table"``/``"rowgroup"``/``"columnheader"`` on the
+    header, which needs the same treatment.
     """
     # slugify only ever emits [a-z0-9-], so the href cannot break its attribute.
     slug = escape(slug_for(record), quote=True)
     return (
-        f'<tr data-record-id="{record["id"]}">'
-        f'<td class="col-library"><a class="library-name" href="libraries/{slug}/">'
+        f'<tr data-record-id="{record["id"]}" role="row">'
+        f'<td class="col-library" role="cell"><a class="library-name" href="libraries/{slug}/">'
         f'{escape(str(record["library"]))}</a>{render_projects(record)}</td>'
-        f'<td class="col-location"><div class="location-nation">{escape(str(record["nation"]))}</div>'
+        f'<td class="col-location" role="cell"><div class="location-nation">{escape(str(record["nation"]))}</div>'
         '<div class="location-city"><i class="bi bi-dot" aria-hidden="true"></i>'
         f'{escape(str(record["city"]))}</div></td>'
-        f'<td class="col-features">{render_badges(record)}</td>'
-        f'<td class="col-access">{render_visit(record)}</td>'
+        f'<td class="col-features" role="cell">{render_badges(record)}</td>'
+        f'<td class="col-access" role="cell">{render_visit(record)}</td>'
         "</tr>"
     )
 

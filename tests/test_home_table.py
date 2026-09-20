@@ -24,7 +24,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DOCS_DIR = REPO_ROOT / "docs"
 
 # Matches the rows the hook emits, whichever record they describe.
-ROW_PATTERN = re.compile(r'<tr data-record-id="(-?\d+)">')
+ROW_PATTERN = re.compile(r'<tr data-record-id="(-?\d+)" role="row">')
 
 
 def _load_hook():
@@ -116,11 +116,21 @@ def test_each_cell_carries_its_column_class_and_no_inline_style():
     style would bypass that and can't be overridden at the breakpoint."""
     row = hook.render_row(SAFE_RECORD)
 
-    assert '<td class="col-library">' in row
-    assert '<td class="col-location">' in row
-    assert '<td class="col-features">' in row
-    assert '<td class="col-access">' in row
+    assert '<td class="col-library" role="cell">' in row
+    assert '<td class="col-location" role="cell">' in row
+    assert '<td class="col-features" role="cell">' in row
+    assert '<td class="col-access" role="cell">' in row
     assert "style=" not in row
+
+
+def test_the_row_and_every_cell_assert_an_explicit_table_role():
+    """dashboard.css changes this row's display at the mobile breakpoint, which
+    strips the *implicit* ARIA row/cell roles a real <tr>/<td> would otherwise
+    get — role="row"/"cell" reasserts the table structure regardless."""
+    row = hook.render_row(SAFE_RECORD)
+
+    assert 'role="row"' in row
+    assert row.count('role="cell"') == 4
 
 
 def test_badges_reflect_the_record_features():
@@ -320,7 +330,7 @@ def built_home(tmp_path_factory) -> str:
 
 
 def test_the_built_homepage_ships_the_rows(built_home):
-    body = built_home.split('<tbody id="tableBody">', 1)[1].split("</tbody>", 1)[0]
+    body = built_home.split('<tbody id="tableBody" role="rowgroup">', 1)[1].split("</tbody>", 1)[0]
 
     assert len(ROW_PATTERN.findall(body)) == 2
     assert "Bodleian Library" in body
@@ -368,7 +378,7 @@ def test_the_built_homepage_hides_the_loader_without_javascript(built_home):
 
 
 def test_the_hostile_record_injects_nothing_into_the_built_homepage(built_home):
-    body = built_home.split('<tbody id="tableBody">', 1)[1].split("</tbody>", 1)[0]
+    body = built_home.split('<tbody id="tableBody" role="rowgroup">', 1)[1].split("</tbody>", 1)[0]
 
     assert "<script" not in body
     assert "<img" not in body
