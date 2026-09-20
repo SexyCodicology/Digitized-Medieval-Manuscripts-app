@@ -200,7 +200,7 @@ It is not the address of an institution's viewer page. Add it only when
 
 **How to check:** Open the endpoint in the [IIIF Presentation API
 Validator](https://presentation-validator.iiif.io/) and then in the
-[Universal Viewer](https://universalviewer.io/uv.html?manifest=) to confirm
+[Universal Viewer](https://www.universalviewer.dev/uv.html#?manifest=) to confirm
 that it returns presentation JSON and can be displayed. The library detail
 page offers the same viewer action automatically when this field is present.
 
