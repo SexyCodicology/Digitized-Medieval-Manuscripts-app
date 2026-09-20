@@ -47,7 +47,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 5,
@@ -324,7 +324,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 25,
@@ -825,7 +825,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 66,
@@ -3395,7 +3395,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 241,
@@ -3493,7 +3493,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 250,
@@ -3519,7 +3519,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 252,
@@ -3809,7 +3809,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 271,
@@ -4073,7 +4073,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 293,
@@ -5481,7 +5481,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 394,
@@ -5900,8 +5900,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 430,
@@ -7195,7 +7194,9 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "is_disabled": true,
+        "last_checked": "2026-09-20"
     },
     {
         "id": 508,
@@ -7907,7 +7908,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 577,
