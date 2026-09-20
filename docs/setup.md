@@ -14,9 +14,10 @@ Before you start, install these tools:
 
 - **Python 3.7 or later** — Required to install and run MkDocs
 - **Git** — Required to clone the repository and manage code changes
+- **Node.js** — Only required if you want to run the dashboard's JavaScript test suite locally
 
 !!! tip "Check your installations"
-    Verify Python is installed by running `python --version` in your terminal. For Git, use `git --version`.
+    Verify Python is installed by running `python --version` in your terminal. For Git, use `git --version`. For Node.js, use `node --version`.
 
 ## Get the code
 
@@ -84,6 +85,41 @@ mkdocs build --clean
 ```
 
 This creates a `site` directory with the built dashboard and documentation. You typically don't need this for local development—it's used for deployment.
+
+## Run the automated checks
+
+The [deploy workflow](./workflow-validation.md) runs these same checks on
+every pull request, so running them locally first catches problems before you
+push.
+
+Install the extra development dependencies, which add `pytest` and
+`jsonschema` on top of `requirements.txt`:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+Validate `docs/assets/data.json` against `schema.json`:
+
+```bash
+python scripts/validate_data.py
+```
+
+Run the pytest suite covering the build hook (`hooks/library_pages.py`) and
+scripts:
+
+```bash
+pytest tests -q
+```
+
+Run the Node test suite covering the dashboard's client-side behavior
+(`docs/assets/dashboard.js`). This requires Node.js and installs `jsdom` as
+its only dependency:
+
+```bash
+npm ci
+npm test
+```
 
 ## Verify your setup
 

@@ -72,6 +72,35 @@ A library that belongs to several projects appears under each of their filters.
 
 Select **All Projects** to view the complete directory again.
 
+### Filter by licence
+
+Use the licence filter to view only libraries whose rights statement falls into
+a specific category, such as CC0 or All Rights Reserved:
+
+1. Click the **More filters** disclosure to reveal it
+2. Click the **Licences** dropdown
+3. Select a category from the list
+
+Select **All Licences** to view the complete directory again.
+
+### Show only working links
+
+Turn on the **Working link** toggle, next to the IIIF and Open toggles, to
+hide collections whose website was last confirmed broken. Turn it off to see
+every library again, including ones flagged with a broken-link badge.
+
+### Sort the results
+
+Select the **Library** or **Location** column heading to sort the directory
+alphabetically; select it again to reverse the order. Open **More filters**
+and select **Sort by quantity** to sort libraries by their approximate number
+of digitized manuscripts instead.
+
+### Clear every filter
+
+If a search turns up nothing, select **Clear Filters** in the empty-results
+message to reset the search box, every toggle, and every dropdown at once.
+
 !!! tip "Combine search and filter"
     Use these tools together. Filter by nation, then search for a city. This helps when multiple countries have cities with the same name.
 
@@ -114,6 +143,35 @@ Turn on the **Open** toggle to see libraries with an open license:
 3. The list shows only libraries with an open license
 
 Turn it off to see all libraries again.
+
+## Discover and share collections
+
+### Explore a random library
+
+Select **Explore a random library** in the header to open a randomly chosen
+collection from the full directory—ignoring any filters currently applied.
+It's a quick way to find a collection you weren't searching for.
+
+### Browse the alphabetical index
+
+Select **Browse every library alphabetically** to see every collection listed
+by name, without the dashboard's filters or JavaScript.
+
+### Check recently added or updated libraries
+
+When the directory has recent additions or corrections, the dashboard shows a
+**Recently added and updated** list above the search box, linking straight to
+each changed library's page.
+
+### Export or share your results
+
+Above and below the results table:
+
+- Select **CSV** or **JSON** to download the libraries currently shown, with
+  your search, filters, and sort applied
+- Select **Share** to copy a link to the current view—including your search
+  terms, filters, and sort order—so you can send someone else exactly what
+  you're looking at
 
 ## Tips for your research
 
