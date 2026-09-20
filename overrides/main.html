@@ -5,11 +5,12 @@ main.html — DMMapp global template override
 ────────────────────────────────────────────
 Applies to every page, including home.html (which extends this file).
 Adds the web manifest, Apple touch-icon, Open Graph/Twitter Card tags,
-and a BreadcrumbList JSON-LD block that Material's base template does
-not provide out of the box. The homepage's own WebSite JSON-LD block
-lives in home.html instead, since the homepage has no breadcrumb trail
-of its own. Keep this override minimal; page-specific behaviour
-belongs in the templates that extend it.
+a BreadcrumbList JSON-LD block that Material's base template does not
+provide out of the box, and a page's own JSON-LD block when hooks/
+library_pages.py has supplied one via page.meta.structured_data. The
+homepage's own WebSite JSON-LD block lives in home.html instead, since
+the homepage has no breadcrumb trail of its own. Keep this override
+minimal; page-specific behaviour belongs in the templates that extend it.
 #}
 
 {% import "partials/language.html" as lang with context %}
@@ -66,5 +67,9 @@ belongs in the templates that extend it.
       {% set _ = breadcrumb_list.itemListElement.append(list_item) %}
     {% endfor %}
     <script type="application/ld+json">{{ breadcrumb_list | tojson }}</script>
+  {% endif %}
+
+  {% if page.meta and page.meta.structured_data %}
+    <script type="application/ld+json">{{ page.meta.structured_data | tojson }}</script>
   {% endif %}
 {% endblock %}

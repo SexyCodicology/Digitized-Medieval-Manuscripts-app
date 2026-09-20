@@ -170,6 +170,11 @@ def safe_url(value: Any) -> str | None:
     return candidate
 
 
+def library_page_url(record: dict[str, Any]) -> str:
+    """Return the canonical public URL of one library's generated page."""
+    return f"{LIBRARY_PAGE_URL_PREFIX}{slug_for(record)}/"
+
+
 def report_data_issue_url(record: dict[str, Any]) -> str:
     """Return the fixed GitHub report URL with the public record identified.
 
@@ -177,7 +182,7 @@ def report_data_issue_url(record: dict[str, Any]) -> str:
     so contributed data cannot redirect a reader away from the repository.
     ``urlencode`` keeps every public value inside its intended query field.
     """
-    page_url = f"{LIBRARY_PAGE_URL_PREFIX}{slug_for(record)}/"
+    page_url = library_page_url(record)
     query = urlencode(
         {
             "template": REPORT_DATA_ISSUE_TEMPLATE,
@@ -297,6 +302,66 @@ def ensure_unique(values: list[str], records: list[dict[str, Any]]) -> list[str]
     ]
 
 
+def library_jsonld(record: dict[str, Any], description: str) -> dict[str, Any]:
+    """Return the schema.org ``Organization`` graph embedded in one library page.
+
+    ``@type`` is the generic ``Organization`` rather than ``Library``, because
+    the dataset also holds museums, archives, and research institutes that
+    "Library" (a schema.org ``LocalBusiness`` subtype) would misdescribe.
+
+    ``sameAs`` is reserved for a genuine "this page is a reference for the
+    same real-world thing" claim. A Wikidata entity page is exactly that for
+    the institution, so it sits on the top-level Organization. ``geonames_id``
+    identifies the institution's *location*, not the institution itself, so
+    its ``sameAs`` sits on a nested ``Place`` under ``location`` instead of
+    asserting the library and its city are the same entity. ISIL has no
+    single, reliably dereferenceable per-record URL across national
+    registries, so it is recorded as a named ``identifier`` (schema.org's
+    ``PropertyValue`` pattern) rather than forced into ``sameAs``, which
+    schema.org defines as a URL.
+    """
+    data: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": library_page_url(record),
+        "name": str(record["library"]),
+        "description": description,
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": str(record["city"]),
+            "addressCountry": str(record["nation"]),
+        },
+    }
+
+    website = safe_url(record.get("website"))
+    if website:
+        data["url"] = website
+
+    wikidata_qid = record.get("wikidata_qid")
+    if wikidata_qid:
+        wikidata_url = safe_url(
+            f"https://www.wikidata.org/wiki/{quote(str(wikidata_qid), safe='')}"
+        )
+        if wikidata_url:
+            data["sameAs"] = [wikidata_url]
+
+    isil = record.get("isil")
+    if isil:
+        data["identifier"] = [
+            {"@type": "PropertyValue", "propertyID": "ISIL", "value": str(isil)}
+        ]
+
+    geonames_id = record.get("geonames_id")
+    if geonames_id:
+        geonames_url = safe_url(
+            f"https://www.geonames.org/{quote(str(geonames_id), safe='')}"
+        )
+        if geonames_url:
+            data["location"] = {"@type": "Place", "sameAs": geonames_url}
+
+    return data
+
+
 def render_page(record: dict[str, Any], title: str, description: str) -> str:
     """Return the Markdown source of one library page.
 
@@ -306,7 +371,15 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
     meta = yaml.safe_dump(
         # Cards off: rendering one per record would mean thousands of social
         # card images for pages that are never shared individually.
-        {"title": title, "description": description, "social": {"cards": False}},
+        # structured_data is rendered into a JSON-LD <script> by main.html's
+        # extrahead block, via the tojson filter, which HTML/script-escapes
+        # it; values here are kept as-is rather than pre-escaped for display.
+        {
+            "title": title,
+            "description": description,
+            "social": {"cards": False},
+            "structured_data": library_jsonld(record, description),
+        },
         allow_unicode=True,
         default_flow_style=False,
         sort_keys=False,

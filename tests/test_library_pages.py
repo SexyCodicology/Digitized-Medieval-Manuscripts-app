@@ -362,6 +362,102 @@ def test_external_identifier_rows_are_omitted_when_fields_are_absent():
     assert ">None<" not in body
 
 
+# ── schema.org JSON-LD front matter ───────────────────────────────────────
+
+
+def _structured_data(record: dict) -> dict:
+    markdown = hook.render_page(record, "Title", "Description")
+    return _front_matter(markdown)["structured_data"]
+
+
+def test_structured_data_is_present_with_only_required_fields():
+    data = _structured_data({
+        "id": 12,
+        "library": "Bare Library",
+        "city": "Somewhere",
+        "nation": "Nowhere",
+    })
+
+    assert data["@context"] == "https://schema.org"
+    assert data["@type"] == "Organization"
+    assert data["@id"] == (
+        "https://sexycodicology.github.io/"
+        "Digitized-Medieval-Manuscripts-app/libraries/bare-library-12/"
+    )
+    assert data["name"] == "Bare Library"
+    assert data["address"] == {
+        "@type": "PostalAddress",
+        "addressLocality": "Somewhere",
+        "addressCountry": "Nowhere",
+    }
+    # Nothing to claim identity with, so none of these are invented.
+    assert "sameAs" not in data
+    assert "identifier" not in data
+    assert "location" not in data
+    assert "url" not in data
+
+
+def test_structured_data_uses_website_as_the_organization_url():
+    data = _structured_data({
+        **HOSTILE_RECORD, "library": "Example Library",
+        "website": "https://example.org/manuscripts",
+    })
+
+    assert data["url"] == "https://example.org/manuscripts"
+
+
+def test_structured_data_drops_an_unsafe_website():
+    data = _structured_data({**HOSTILE_RECORD, "website": "javascript:alert(1)"})
+
+    assert "url" not in data
+
+
+def test_structured_data_wikidata_is_the_only_top_level_sameas():
+    data = _structured_data({
+        **HOSTILE_RECORD,
+        "wikidata_qid": "Q1131283",
+        "geonames_id": 2640729,
+        "isil": "GB-OxBodl",
+    })
+
+    # Wikidata identifies the institution itself, so it is a same-thing claim
+    # about the Organization node.
+    assert data["sameAs"] == ["https://www.wikidata.org/wiki/Q1131283"]
+
+
+def test_structured_data_geonames_identifies_the_location_not_the_institution():
+    data = _structured_data({**HOSTILE_RECORD, "geonames_id": 2640729})
+
+    # geonames_id names the library's location, so its sameAs claim belongs
+    # to a nested Place, never to the Organization itself — claiming the
+    # library "is the same thing as" its city would be a category error.
+    assert "sameAs" not in data or "geonames.org" not in str(data.get("sameAs"))
+    assert data["location"] == {
+        "@type": "Place",
+        "sameAs": "https://www.geonames.org/2640729",
+    }
+
+
+def test_structured_data_isil_is_a_property_value_not_a_sameas():
+    data = _structured_data({**HOSTILE_RECORD, "isil": "GB-OxBodl"})
+
+    # ISIL is a bare code with no single dereferenceable per-record URL, so
+    # it is a named identifier, not a (URL-only) sameAs claim.
+    assert data["identifier"] == [
+        {"@type": "PropertyValue", "propertyID": "ISIL", "value": "GB-OxBodl"}
+    ]
+    assert "GB-OxBodl" not in [entry for entry in data.get("sameAs", [])]
+
+
+def test_structured_data_id_matches_the_report_data_issue_page_url():
+    record = {**HOSTILE_RECORD, "library": "Bodleian Library"}
+
+    data = _structured_data(record)
+    query = _report_data_issue_query(_page_body(record))
+
+    assert data["@id"] == query["page_url"][0]
+
+
 def test_rights_row_shows_verbatim_and_normalised_category():
     body = _page_body({
         **HOSTILE_RECORD,
@@ -700,6 +796,120 @@ def test_hostile_record_injects_nothing_into_the_built_page(built_site):
     assert "<img" not in article
     assert "javascript:" not in html
     assert "data:text/html" not in html
+
+
+# ── schema.org JSON-LD in the built page (real theme overrides) ───────────
+
+
+@pytest.fixture(scope="module")
+def built_site_with_overrides(tmp_path_factory) -> Path:
+    """Build a miniature site through real MkDocs, using the real overrides.
+
+    ``built_site`` above uses the stock Material theme, which never loads
+    ``overrides/main.html`` and so never renders the JSON-LD block that lives
+    there. This fixture uses ``custom_dir`` like the production build does,
+    so the structured-data output is checked end to end.
+    """
+    project = tmp_path_factory.mktemp("site-overrides")
+    docs = project / "docs"
+    (docs / "assets").mkdir(parents=True)
+
+    dataset = [
+        {
+            "id": 1,
+            "library": "Bodleian Library",
+            "city": "Oxford",
+            "nation": "United Kingdom",
+            "quantity": "Thousands",
+            "copyright": "Public Domain",
+            "website": "https://digital.bodleian.ox.ac.uk",
+            "iiif": True,
+            "is_free_cultural_works_license": True,
+            "aggregators": [],
+            "isil": "GB-OxBodl",
+            "wikidata_qid": "Q1131283",
+            "geonames_id": 2640729,
+        },
+        HOSTILE_RECORD,
+    ]
+    (docs / "assets" / "data.json").write_text(json.dumps(dataset), encoding="utf-8")
+    (docs / "index.md").write_text("# Directory\n", encoding="utf-8")
+    (project / "mkdocs.yml").write_text(
+        "site_name: Test\n"
+        "site_url: https://example.org/\n"
+        "docs_dir: docs\n"
+        f"theme:\n  name: material\n  custom_dir: {(REPO_ROOT / 'overrides').as_posix()}\n"
+        "nav:\n  - Home: index.md\n  - Library index: library-index.md\n"
+        f"hooks:\n  - {(REPO_ROOT / 'hooks' / 'library_pages.py').as_posix()}\n",
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, "-m", "mkdocs", "build", "--clean"],
+        cwd=project,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    return project / "site"
+
+
+def _ld_json_blocks(html: str) -> list[dict]:
+    return [
+        json.loads(match)
+        for match in re.findall(
+            r'<script type="application/ld\+json">(.*?)</script>', html, re.S
+        )
+    ]
+
+
+def test_the_built_library_page_ships_organization_jsonld(built_site_with_overrides):
+    html = (
+        built_site_with_overrides / "libraries" / "bodleian-library-1" / "index.html"
+    ).read_text(encoding="utf-8")
+
+    blocks = _ld_json_blocks(html)
+    organizations = [block for block in blocks if block.get("@type") == "Organization"]
+    assert len(organizations) == 1
+
+    data = organizations[0]
+    assert data["name"] == "Bodleian Library"
+    assert data["url"] == "https://digital.bodleian.ox.ac.uk"
+    assert data["address"] == {
+        "@type": "PostalAddress",
+        "addressLocality": "Oxford",
+        "addressCountry": "United Kingdom",
+    }
+    assert data["sameAs"] == ["https://www.wikidata.org/wiki/Q1131283"]
+    assert data["location"] == {
+        "@type": "Place",
+        "sameAs": "https://www.geonames.org/2640729",
+    }
+    assert data["identifier"] == [
+        {"@type": "PropertyValue", "propertyID": "ISIL", "value": "GB-OxBodl"}
+    ]
+
+
+def test_the_hostile_records_jsonld_stays_valid_json_and_inert(built_site_with_overrides):
+    html = (
+        built_site_with_overrides
+        / "libraries"
+        / "etc-passwd-script-alert-xss-script-quoted-9001"
+        / "index.html"
+    ).read_text(encoding="utf-8")
+
+    # json.loads succeeding on every block proves none of them was broken out
+    # of by the hostile library name (which contains a literal "</script>").
+    raw_blocks = re.findall(
+        r'<script type="application/ld\+json">(.*?)</script>', html, re.S
+    )
+    assert raw_blocks
+    for raw in raw_blocks:
+        assert "<script" not in raw.lower()
+
+    organizations = [block for block in _ld_json_blocks(html) if block.get("@type") == "Organization"]
+    assert len(organizations) == 1
+    assert "script" in organizations[0]["name"]  # the raw value survived, just inert
 
 
 def test_the_slug_map_matches_the_generated_pages(built_site):

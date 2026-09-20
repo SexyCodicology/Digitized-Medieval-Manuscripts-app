@@ -42,6 +42,7 @@ Each library gets its own crawlable page, generated at build time, with:
 - **Manuscript quantity**: Approximate number of digitized manuscripts (Few, Dozens, Hundreds, Thousands, Unknown)
 - **Aggregator memberships**: Every aggregating project the collection is discoverable through
 - **Optional identifiers**: ISIL, Wikidata QID, and GeoNames ID, when verified
+- **Machine-readable structured data**: A schema.org `Organization` JSON-LD block, with a Wikidata `sameAs` claim, a GeoNames-linked `location`, and an ISIL `PropertyValue` identifier when verified
 - **A pre-filled "Report a data issue" link**: Opens a GitHub issue form that already identifies the record
 
 ### Comprehensive documentation
