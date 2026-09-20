@@ -12,6 +12,7 @@ on:
       - 'mkdocs.yml'
       - 'schema.json'
       - 'scripts/**'
+      - 'research/identifier-evidence.csv'
       - 'requirements.txt'
       - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
@@ -24,6 +25,7 @@ on:
       - 'mkdocs.yml'
       - 'schema.json'
       - 'scripts/**'
+      - 'research/identifier-evidence.csv'
       - 'requirements.txt'
       - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
@@ -88,6 +90,9 @@ jobs:
 
       - name: Validate data.json
         run: python scripts/validate_data.py
+
+      - name: Validate identifier evidence
+        run: python scripts/validate_identifier_evidence.py
 
       - name: Test Build Hooks
         run: pytest tests -q

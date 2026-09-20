@@ -17,6 +17,12 @@ The system performs two levels of checking:
 
 Both checks happen automatically and provide instant feedback through GitHub.
 
+The identifier evidence check also confirms that every record has one research
+decision for each optional ISIL, Wikidata, and GeoNames field. It checks source
+URL format and agreement with `data.json`. It cannot establish that an external
+authority record describes the right library or place; maintainers review that
+match using the linked sources.
+
 ## When validation runs
 
 The system checks your data in two situations:
