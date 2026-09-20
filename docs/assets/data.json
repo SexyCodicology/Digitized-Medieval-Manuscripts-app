@@ -7185,7 +7185,7 @@
         "city": "Zürich",
         "library": "Braginsky Collection",
         "quantity": "Dozens",
-        "website": "https://www.e-codices.unifr.ch/en/list/bc/Shelfmark",
+        "website": "https://www.e-codices.unifr.ch/en/list/subproject/braginsky",
         "copyright": "CC BY-NC 4.0",
         "iiif": true,
         "is_free_cultural_works_license": false,
@@ -7194,9 +7194,7 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ],
-        "is_disabled": true,
-        "last_checked": "2026-09-20"
+        ]
     },
     {
         "id": 508,
