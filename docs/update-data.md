@@ -118,7 +118,7 @@ collection—not the institution's viewer page. Set it only when **iiif** is
 
 Before you submit it, open the endpoint in the [IIIF Presentation API
 Validator](https://presentation-validator.iiif.io/) and in the [Universal
-Viewer](https://universalviewer.io/uv.html?manifest=). Confirm that the
+Viewer](https://www.universalviewer.dev/uv.html#?manifest=). Confirm that the
 endpoint returns presentation JSON and that the viewer opens the expected
 manifest or collection. DMMapp uses Universal Viewer's public manifest URL
 for the **Open in IIIF viewer** detail-page action; it does not host a viewer

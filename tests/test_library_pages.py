@@ -382,9 +382,11 @@ def test_iiif_manifest_endpoint_renders_a_distinct_viewer_action():
     assert body.index("Visit the collection") < body.index("Open in IIIF viewer")
     viewer_url = urlsplit(unescape(action.group(1)))
     assert viewer_url.scheme == "https"
-    assert viewer_url.netloc == "universalviewer.io"
+    assert viewer_url.netloc == "www.universalviewer.dev"
     assert viewer_url.path == "/uv.html"
-    assert parse_qs(viewer_url.query) == {"manifest": [manifest]}
+    assert viewer_url.query == ""
+    assert viewer_url.fragment.startswith("?")
+    assert parse_qs(viewer_url.fragment[1:]) == {"manifest": [manifest]}
 
 
 def test_iiif_viewer_action_is_absent_without_an_endpoint():
