@@ -33,6 +33,22 @@ country code, but registered non-country prefixes are valid. The [ISIL
 technical guidance](https://biblstandard.dk/rfid/docs/clarification_28560-3.htm)
 describes those prefixes and the identifier length.
 
+## How these identifiers reach the page
+
+Each generated library page also embeds a schema.org `Organization` block
+built from these same three fields. `wikidata_qid` becomes a `sameAs` claim
+on the Organization itself, because it identifies the institution. `isil`
+becomes a named `identifier` (a `PropertyValue`), because it is a code, not a
+URL that a `sameAs` claim requires. `geonames_id` becomes a `sameAs` on a
+nested `Place` under `location` instead of on the Organization, because — as
+the table above already states — it identifies the listed city, not the
+institution; putting it on the Organization would wrongly assert that the
+library and its city are the same thing.
+
+A verified `wikidata_qid` therefore makes a public same-thing claim about the
+institution, not just a display link on the page. Give it the same scrutiny
+you give any other published identifier.
+
 ## Record the decision in the evidence ledger
 
 The CSV header is fixed. Do not rename, reorder, or omit columns.

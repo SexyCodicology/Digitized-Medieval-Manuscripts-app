@@ -56,6 +56,12 @@ the ledger agrees with `data.json`; a maintainer still checks whether a source
 describes the correct institution or place. See [Identifier
 research](identifier-research.md) for the required rows and review workflow.
 
+Each generated library page also publishes these three fields as schema.org
+JSON-LD — as a `sameAs`, a named `identifier`, or a nested `location`,
+depending on what the field identifies. See [how these identifiers reach the
+page](identifier-research.md#how-these-identifiers-reach-the-page) for the
+mapping.
+
 #### ISIL
 
 The International Standard Identifier for Libraries and Related Organizations,
