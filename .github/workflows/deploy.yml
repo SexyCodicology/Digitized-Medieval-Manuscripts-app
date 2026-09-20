@@ -121,6 +121,17 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/master'
     steps:
+      - name: Checkout release source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up Python for publication check
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
+
+      - name: Verify public linked-data URLs
+        run: python scripts/verify_public_lod.py "${{ steps.deployment.outputs.page_url }}"

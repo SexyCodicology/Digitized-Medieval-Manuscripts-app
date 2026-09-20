@@ -106,14 +106,19 @@ python scripts/verify_linked_data.py site
 Inspect the generated ID page, old alias, per-record JSON-LD, and bulk file
 before publishing. The verifier checks these outputs for every record, plus
 withdrawal notices for IDs no longer in the active dataset. After deployment,
-verify their public URLs directly; a successful local build does not prove
-GitHub Pages or source institutions are available.
+the Pages workflow also compares the public JSON dataset with the release and
+checks the bulk JSON-LD, sitemap, and a small sample of ID pages, JSON-LD files,
+and old aliases. This is a publication smoke check, not a guarantee that every
+public URL or linked source institution is available. A failed check does not
+automatically roll back a Pages deployment; investigate the reported URL and
+the deployment before promoting the release as usable.
 
 ## Evidence and review
 
 | Item | Evidence | Verified | Review owner | Next review or trigger |
 |---|---|---|---|---|
 | Build and identifier behaviour | `hooks/library_pages.py`, `hooks/linked_data.py`, `mkdocs.yml` | 2026-09-20, local build | DMMapp maintainers | On route or hosting changes |
+| Public release smoke check | `.github/workflows/deploy.yml`, `scripts/verify_public_lod.py`; not yet run after a deployment | 2026-09-20, repository inspection | DMMapp maintainers | On publication changes |
 | Dataset licence boundary | `LICENSE`, `README.md`, `schema.json` | 2026-09-20, repository inspection | DMMapp maintainers | On licence or data-model changes |
 | Public hosting and uptime | `mkdocs.yml`, `.github/workflows/deploy.yml`; no uptime commitment found | 2026-09-20, repository inspection | DMMapp maintainers | Confirm before claiming availability |
 
