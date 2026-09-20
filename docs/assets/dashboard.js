@@ -464,6 +464,30 @@ document$.subscribe(() => {
   // separate listener wiring.
 
   /**
+   * Single source of truth for which query-string param maps to which
+   * control, so readUrlState() and writeUrlState() can't drift out of sync
+   * (e.g. one side renaming a param, or gaining a filter the other forgets),
+   * and so readUrlState() can tell "recognised state is present" apart from
+   * an unrelated query string without hardcoding the same key list twice.
+   *
+   * The search box's param is "search", not the more obvious "q": MkDocs
+   * Material's own site search already reads/writes ?q= on this same site
+   * (see ws() in the built theme bundle) to open its search overlay on
+   * load — reusing that key would pop the site-wide search UI instead of
+   * (or as well as) filtering the dashboard.
+   */
+  const URL_FIELDS = [
+    { param: 'search', el: searchInput, type: 'text' },
+    { param: 'nation', el: nationSelect, type: 'select' },
+    { param: 'project', el: projectSelect, type: 'select' },
+    { param: 'quantity', el: quantitySelect, type: 'select' },
+    { param: 'licence', el: copyrightSelect, type: 'select' },
+    { param: 'iiif', el: iiifCheck, type: 'checkbox' },
+    { param: 'open', el: freeCheck, type: 'checkbox' },
+    { param: 'working', el: workingCheck, type: 'checkbox' },
+  ];
+
+  /**
    * Set a <select>'s value only if it names a real option, so a stale or
    * hand-edited query string can't leave the control on a blank selection
    * (an unmatched value assigned to .value silently deselects every option).
@@ -480,21 +504,26 @@ document$.subscribe(() => {
   /**
    * Read filter/sort state from the current URL's query string and apply it,
    * so a shared link reproduces the exact same view on first paint. A no-op
-   * when the URL carries no recognised parameters, so a plain visit renders
-   * exactly as it always has (and never writes a bare "?" back to the URL).
+   * when the URL carries none of URL_FIELDS' params or "sort", so a plain
+   * visit — or one that only carries unrelated params this dashboard doesn't
+   * own, e.g. a utm_* tracking param from a shared/marketing link — renders
+   * exactly as it always has, and never rewrites (or strips) the URL.
    */
   function readUrlState() {
     const params = new URLSearchParams(window.location.search);
-    if (params.toString() === '') return;
+    const hasRecognisedState = URL_FIELDS.some(f => params.has(f.param)) || params.has('sort');
+    if (!hasRecognisedState) return;
 
-    if (params.has('q')) searchInput.value = params.get('q');
-    setSelectIfValid(nationSelect, params.get('nation'));
-    setSelectIfValid(projectSelect, params.get('project'));
-    setSelectIfValid(quantitySelect, params.get('quantity'));
-    setSelectIfValid(copyrightSelect, params.get('licence'));
-    iiifCheck.checked = params.get('iiif') === '1';
-    freeCheck.checked = params.get('open') === '1';
-    if (workingCheck) workingCheck.checked = params.get('working') === '1';
+    URL_FIELDS.forEach(({ param, el, type }) => {
+      if (!el) return;
+      if (type === 'text') {
+        if (params.has(param)) el.value = params.get(param).trim();
+      } else if (type === 'select') {
+        setSelectIfValid(el, params.get(param));
+      } else if (type === 'checkbox') {
+        el.checked = params.get(param) === '1';
+      }
+    });
 
     const sortParam = params.get('sort');
     // Matched by comparing dataset.sort rather than interpolating sortParam
@@ -522,15 +551,19 @@ document$.subscribe(() => {
    */
   function writeUrlState() {
     const params = new URLSearchParams();
-    const term = searchInput.value.trim();
-    if (term) params.set('q', term);
-    if (nationSelect.value !== 'All') params.set('nation', nationSelect.value);
-    if (projectSelect.value !== 'All') params.set('project', projectSelect.value);
-    if (quantitySelect.value !== 'All') params.set('quantity', quantitySelect.value);
-    if (copyrightSelect.value !== 'All') params.set('licence', copyrightSelect.value);
-    if (iiifCheck.checked) params.set('iiif', '1');
-    if (freeCheck.checked) params.set('open', '1');
-    if (workingCheck?.checked) params.set('working', '1');
+
+    URL_FIELDS.forEach(({ param, el, type }) => {
+      if (!el) return;
+      if (type === 'text') {
+        const term = el.value.trim();
+        if (term) params.set(param, term);
+      } else if (type === 'select') {
+        if (el.value !== 'All') params.set(param, el.value);
+      } else if (type === 'checkbox') {
+        if (el.checked) params.set(param, '1');
+      }
+    });
+
     if (sortColumn) {
       params.set('sort', sortColumn);
       params.set('dir', sortDirection);
@@ -540,7 +573,12 @@ document$.subscribe(() => {
     const newUrl = window.location.pathname + (query ? `?${query}` : '') + window.location.hash;
 
     try {
-      window.history.replaceState(null, '', newUrl);
+      // Pass through the existing history.state rather than null: this site
+      // builds with MkDocs Material's navigation.instant, whose router
+      // stores the page's scroll offset in history.state for restoration on
+      // Back — replacing it with null would silently break scroll restore
+      // for a visitor who filters, navigates away, then comes back.
+      window.history.replaceState(window.history.state, '', newUrl);
     } catch {
       // A sandboxed embed (e.g. a srcdoc iframe without allow-same-origin)
       // can throw on history mutation; degrade to leaving the URL as-is

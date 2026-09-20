@@ -544,11 +544,6 @@
   box-shadow: var(--dash-shadow);
 }
 
-.quantity-sort-btn:disabled {
-  opacity: 0.5;
-  cursor: default;
-  pointer-events: none;
-}
 
 /* ── 8. Results table ─────────────────────────────────────────────────────*/
 .results {
@@ -922,7 +917,10 @@ a.library-name:focus-visible {
   margin-top: 0.5rem;
 }
 
-.results-meta {
+/* .share-status (below, near the export controls it sits beside) shares
+   this look rather than repeating it under its own selector. */
+.results-meta,
+.share-status {
   font-size: 0.8rem;
   color: var(--dash-muted);
 }
@@ -940,18 +938,18 @@ a.library-name:focus-visible {
   font-size: 0.8rem;
 }
 
-.export-group__btn:disabled {
+/* .quantity-sort-btn shares this disabled treatment rather than repeating
+   it under its own selector. */
+.export-group__btn:disabled,
+.quantity-sort-btn:disabled {
   opacity: 0.5;
   cursor: default;
   pointer-events: none;
 }
 
 /* Empty until announceShareStatus() (dashboard.js) fills it in, so it takes
-   no visual space on the default view. */
-.share-status {
-  font-size: 0.8rem;
-  color: var(--dash-muted);
-}
+   no visual space on the default view (see .results-meta above for its
+   font-size/color). */
 
 /* ── 13. Utility: visually-hidden ─────────────────────────────────────────*/
 .visually-hidden {

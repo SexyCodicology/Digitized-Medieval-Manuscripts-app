@@ -1299,7 +1299,11 @@ test('URL state: search, a select filter, and a toggle are each written via repl
   assert.equal(history.replaceState.length, 3, 'one replaceState call per filter/search/toggle change');
 
   const lastUrl = new URL(history.replaceState.at(-1)[2], window.location.href);
-  assert.equal(lastUrl.searchParams.get('q'), 'alpha');
+  // "search", not "q": MkDocs Material's own site search already owns ?q=
+  // on this site (see the URL_FIELDS comment in dashboard.js) — asserting
+  // "search" here is what pins that choice against a future regression.
+  assert.equal(lastUrl.searchParams.has('q'), false, 'must never reuse MkDocs Material\'s own ?q= site-search param');
+  assert.equal(lastUrl.searchParams.get('search'), 'alpha');
   assert.equal(lastUrl.searchParams.get('nation'), 'Nation A');
   assert.equal(lastUrl.searchParams.get('iiif'), '1');
   assert.equal(lastUrl.searchParams.has('open'), false, 'an inactive toggle must not appear in the URL');
@@ -1446,4 +1450,72 @@ test('URL state: clearFilters removes filter params from the URL but leaves an a
   params = new URL(window.location.href).searchParams;
   assert.equal(params.has('nation'), false, 'clearFilters must remove the nation param');
   assert.equal(params.get('sort'), 'quantity', 'clearFilters intentionally leaves sort order untouched');
+});
+
+test('URL state: a query string carrying only unrecognised params (e.g. tracking params) is left untouched on load', async () => {
+  const data = [makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' })];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+    // A visitor arriving via a shared/marketing link may carry params this
+    // dashboard doesn't own at all. readUrlState() must not treat "the
+    // query string is non-empty" as "there is dashboard state to apply and
+    // rewrite the URL around" — that would silently strip these on load.
+    url: 'https://example.invalid/?utm_source=newsletter&utm_campaign=fall',
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  assert.equal(
+    window.location.search,
+    '?utm_source=newsletter&utm_campaign=fall',
+    'params this dashboard does not recognise must survive untouched, not be replaced away',
+  );
+  assert.deepEqual(visibleIds(window), ['1'], 'and the default, unfiltered view must render normally');
+});
+
+test('URL state: writing the URL preserves the existing history.state instead of nulling it out', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' }),
+    makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  // MkDocs Material's navigation.instant router stores the page's scroll
+  // offset here for restore-on-Back; a filter/sort change must not erase it.
+  window.history.replaceState({ offset: { y: 640 } }, '');
+
+  const nationSelect = window.document.getElementById('nationSelect');
+  nationSelect.value = 'Nation A';
+  nationSelect.dispatchEvent(new window.Event('change'));
+
+  assert.deepEqual(window.history.state, { offset: { y: 640 } });
+});
+
+test('URL state: a recognised search param is trimmed on read, matching what gets written back', async () => {
+  const data = [makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' })];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+    url: 'https://example.invalid/?search=%20alpha%20',
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  assert.equal(
+    window.document.getElementById('searchInput').value,
+    'alpha',
+    'the search box must not visibly show the padding a shared link happened to carry',
+  );
 });
