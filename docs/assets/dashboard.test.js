@@ -568,7 +568,7 @@ test('filters-active badge: hidden with none active, counts only the four collap
   assert.equal(badge.textContent, '0');
 });
 
-const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,iiif_manifest_or_collection_url,is_free_cultural_works_license,aggregators,is_disabled,last_checked,isil,wikidata_qid,geonames_id';
+const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,iiif_collection_url,iiif_example_manifest_url,iiif_example_manifest_label,is_free_cultural_works_license,aggregators,is_disabled,last_checked,isil,wikidata_qid,geonames_id';
 
 function makeRecord(overrides) {
   return Object.assign({
@@ -638,7 +638,9 @@ test('export: CSV and JSON reflect the currently filtered records, not the full 
     makeRecord({
       id: 1, library: 'Alpha Library', nation: 'Nation A',
       isil: 'GB-OxBodl', wikidata_qid: 'Q1131283', geonames_id: 2640729,
-      iiif_manifest_or_collection_url: 'https://example.org/iiif/alpha/manifest',
+      iiif_collection_url: 'https://example.org/iiif/alpha/collection',
+      iiif_example_manifest_url: 'https://example.org/iiif/alpha/manifest',
+      iiif_example_manifest_label: 'Alpha manuscript',
     }),
     makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B' }),
   ];
@@ -672,18 +674,27 @@ test('export: CSV and JSON reflect the currently filtered records, not the full 
   assert.equal(csvLines.length, 2, 'header row plus exactly one data row for the filtered record');
   assert.equal(csvLines[0], EXPORT_CSV_HEADER);
   assert.ok(csvLines[1].includes('Alpha Library'));
+  assert.ok(csvLines[1].includes('https://example.org/iiif/alpha/collection'));
   assert.ok(csvLines[1].includes('https://example.org/iiif/alpha/manifest'));
+  assert.ok(csvLines[1].includes('Alpha manuscript'));
   assert.ok(!csvDownload.content.includes('Beta Library'), 'the filtered-out record must not appear in the export');
   assert.deepEqual(csvLines[1].split(',').slice(-3), ['GB-OxBodl', 'Q1131283', '2640729']);
 
   assert.deepEqual(JSON.parse(jsonDownload.content), [data[0]]);
   assert.equal(
-    JSON.parse(jsonDownload.content)[0].iiif_manifest_or_collection_url,
+    JSON.parse(jsonDownload.content)[0].iiif_example_manifest_url,
     'https://example.org/iiif/alpha/manifest',
   );
   assert.deepEqual(
-    Object.keys(JSON.parse(jsonDownload.content)[0]).slice(-4),
-    ['isil', 'wikidata_qid', 'geonames_id', 'iiif_manifest_or_collection_url'],
+    Object.keys(JSON.parse(jsonDownload.content)[0]).slice(-6),
+    [
+      'isil',
+      'wikidata_qid',
+      'geonames_id',
+      'iiif_collection_url',
+      'iiif_example_manifest_url',
+      'iiif_example_manifest_label',
+    ],
   );
 });
 

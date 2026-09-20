@@ -399,7 +399,7 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
             f'rel="noopener noreferrer" target="_blank">Visit the collection</a></p>'
         )
 
-    iiif_viewer = iiif_viewer_action(record)
+    iiif_viewer = iiif_viewer_actions(record)
 
     report_url = escape(report_data_issue_url(record), quote=True)
     report = (
@@ -532,19 +532,43 @@ def checked_on(record: dict[str, Any]) -> str:
     return escape(value.strip())
 
 
-def iiif_viewer_action(record: dict[str, Any]) -> str:
-    """Return the safe Universal Viewer action for a IIIF endpoint, if set."""
-    manifest = safe_url(record.get("iiif_manifest_or_collection_url"))
-    if not manifest:
+def safe_text(value: Any) -> str:
+    """Return escaped, non-empty reader-facing text, or an empty string."""
+    if not isinstance(value, str) or not value.strip():
         return ""
-    viewer_url = f"{UNIVERSAL_VIEWER_URL}#?{urlencode({'manifest': manifest})}"
-    return (
-        f'<p><a class="btn-visit btn-iiif-viewer" '
-        f'href="{escape(viewer_url, quote=True)}" '
-        'rel="noopener noreferrer" target="_blank">'
-        '<i class="bi bi-images" aria-hidden="true"></i>'
-        "Open in IIIF viewer</a></p>"
-    )
+    return escape(value.strip())
+
+
+def iiif_viewer_actions(record: dict[str, Any]) -> str:
+    """Return safe, explicitly scoped Universal Viewer actions for a record."""
+    collection = safe_url(record.get("iiif_collection_url"))
+    example_manifest = safe_url(record.get("iiif_example_manifest_url"))
+    example_label = safe_text(record.get("iiif_example_manifest_label"))
+    actions = []
+
+    if collection:
+        viewer_url = f"{UNIVERSAL_VIEWER_URL}#?{urlencode({'manifest': collection})}"
+        actions.append(
+            f'<p><a class="btn-visit btn-iiif-viewer btn-iiif-collection" '
+            f'href="{escape(viewer_url, quote=True)}" '
+            'rel="noopener noreferrer" target="_blank">'
+            '<i class="bi bi-images" aria-hidden="true"></i>'
+            "Browse IIIF collection</a></p>"
+        )
+
+    if example_manifest and example_label:
+        viewer_url = (
+            f"{UNIVERSAL_VIEWER_URL}#?{urlencode({'manifest': example_manifest})}"
+        )
+        actions.append(
+            f'<p><a class="btn-visit btn-iiif-viewer btn-iiif-example" '
+            f'href="{escape(viewer_url, quote=True)}" '
+            'rel="noopener noreferrer" target="_blank">'
+            '<i class="bi bi-images" aria-hidden="true"></i>'
+            f"Open example manuscript in IIIF: {example_label}</a></p>"
+        )
+
+    return "".join(actions)
 
 
 def render_projects(record: dict[str, Any]) -> str:

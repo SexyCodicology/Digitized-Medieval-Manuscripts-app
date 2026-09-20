@@ -80,28 +80,78 @@ def test_a_normal_record_passes(schema):
     assert validator.validate(schema, [VALID_RECORD]) == []
 
 
-def test_a_iiif_manifest_endpoint_on_an_iiif_record_passes(schema):
+def test_explicit_iiif_collection_and_example_fields_pass(schema):
     record = {
         **copy.deepcopy(VALID_RECORD),
-        "iiif_manifest_or_collection_url": "https://example.org/iiif/manifest.json",
+        "iiif_collection_url": "https://example.org/iiif/collection.json",
+        "iiif_example_manifest_url": "https://example.org/iiif/manifest.json",
+        "iiif_example_manifest_label": "Example manuscript",
     }
 
     assert validator.validate(schema, [record]) == []
 
 
-def test_a_iiif_manifest_endpoint_on_a_non_iiif_record_fails(schema):
+@pytest.mark.parametrize(
+    "field, value",
+    [
+        ("iiif_collection_url", "https://example.org/iiif/collection.json"),
+        ("iiif_example_manifest_url", "https://example.org/iiif/manifest.json"),
+        ("iiif_example_manifest_label", "Example manuscript"),
+    ],
+)
+def test_iiif_metadata_on_a_non_iiif_record_fails(schema, field, value):
     record = {
         **copy.deepcopy(VALID_RECORD),
         "iiif": False,
-        "iiif_manifest_or_collection_url": "https://example.org/iiif/manifest.json",
+        field: value,
+    }
+    if field == "iiif_example_manifest_url":
+        record["iiif_example_manifest_label"] = "Example manuscript"
+
+    errors = validator.validate(schema, [record])
+
+    assert any(
+        f"{field} is set but iiif must be true" in error
+        for error in errors
+    )
+
+
+def test_an_example_manifest_requires_a_label(schema):
+    record = {
+        **copy.deepcopy(VALID_RECORD),
+        "iiif_example_manifest_url": "https://example.org/iiif/manifest.json",
     }
 
     errors = validator.validate(schema, [record])
 
     assert any(
-        "iiif_manifest_or_collection_url is set but iiif must be true" in error
+        "iiif_example_manifest_url requires iiif_example_manifest_label" in error
         for error in errors
     )
+
+
+def test_an_example_label_requires_a_manifest(schema):
+    record = {
+        **copy.deepcopy(VALID_RECORD),
+        "iiif_example_manifest_label": "Example manuscript",
+    }
+
+    errors = validator.validate(schema, [record])
+
+    assert any(
+        "iiif_example_manifest_label is set but "
+        "iiif_example_manifest_url is missing" in error
+        for error in errors
+    )
+
+
+def test_the_replaced_ambiguous_iiif_field_is_rejected(schema):
+    record = {
+        **copy.deepcopy(VALID_RECORD),
+        "iiif_manifest_or_collection_url": "https://example.org/iiif/manifest.json",
+    }
+
+    assert validator.validate(schema, [record])
 
 
 def test_a_valid_project_record_passes(schema):

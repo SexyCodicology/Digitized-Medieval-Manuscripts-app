@@ -183,23 +183,38 @@ def check_link_status(records: list) -> list[str]:
     return errors
 
 
-def check_iiif_manifest_urls(records: list) -> list[str]:
-    """Return errors for manifest endpoints on non-IIIF records.
-
-    JSON Schema validates the endpoint shape, but the endpoint only makes
-    sense for a collection which has explicitly declared IIIF support.
-    """
+def check_iiif_links(records: list) -> list[str]:
+    """Return consistency errors for explicit IIIF collection and example links."""
     errors = []
     for index, record in enumerate(records):
         if not isinstance(record, dict):
             continue
-        if (
-            record.get("iiif_manifest_or_collection_url") is not None
-            and record.get("iiif") is not True
+        record_id = record.get("id")
+        for field in (
+            "iiif_collection_url",
+            "iiif_example_manifest_url",
+            "iiif_example_manifest_label",
+        ):
+            if record.get(field) is not None and record.get("iiif") is not True:
+                errors.append(
+                    f"record {index} (id: {record_id}): {field} is set but "
+                    "iiif must be true"
+                )
+
+        example_manifest = record.get("iiif_example_manifest_url")
+        example_label = record.get("iiif_example_manifest_label")
+        if example_manifest is not None and (
+            not isinstance(example_label, str) or not example_label.strip()
         ):
             errors.append(
-                f"record {index} (id: {record.get('id')}): "
-                "iiif_manifest_or_collection_url is set but iiif must be true"
+                f"record {index} (id: {record_id}): "
+                "iiif_example_manifest_url requires iiif_example_manifest_label"
+            )
+        if example_label is not None and example_manifest is None:
+            errors.append(
+                f"record {index} (id: {record_id}): "
+                "iiif_example_manifest_label is set but "
+                "iiif_example_manifest_url is missing"
             )
     return errors
 
@@ -253,7 +268,7 @@ def validate(schema: dict, records: Any) -> list[str]:
         *check_duplicate_ids(records),
         *check_aggregator_uniqueness(records),
         *check_link_status(records),
-        *check_iiif_manifest_urls(records),
+        *check_iiif_links(records),
         *check_recency_dates(records),
     ]
 

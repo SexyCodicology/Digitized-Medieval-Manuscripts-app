@@ -189,23 +189,38 @@ Whether the collection supports a standardized image format that allows research
 
 **Why it matters:** Collections with this format support offer researchers more flexibility and powerful research tools.
 
-#### IIIF manifest or collection URL
+#### IIIF collection URL
 
-The optional `iiif_manifest_or_collection_url` field is the direct HTTP(S)
-endpoint for a IIIF Presentation API v2 or v3 manifest, or a IIIF collection.
-It is not the address of an institution's viewer page. Add it only when
-`iiif` is `true`.
+The optional `iiif_collection_url` field is the direct HTTP(S) endpoint for a
+IIIF Presentation API v2 or v3 collection. Use it only when the collection's
+scope matches the listed medieval manuscript collection. It is not the address
+of an institution's viewer page. Add it only when `iiif` is `true`.
 
-**Example:** `"https://example.org/iiif/manuscript-123/manifest"`
+**Example:** `"https://example.org/iiif/medieval-manuscripts/collection"`
 
-**How to check:** Open the endpoint in the [IIIF Presentation API
+#### IIIF example manifest
+
+Use `iiif_example_manifest_url` for a direct HTTP(S) IIIF Presentation API v2
+or v3 manifest for one representative manuscript. It requires
+`iiif_example_manifest_label`, which names that manuscript for readers.
+
+**Example:**
+
+```json
+"iiif_example_manifest_url": "https://example.org/iiif/manuscript-123/manifest",
+"iiif_example_manifest_label": "Manuscript 123"
+```
+
+**How to check:** Open each endpoint in the [IIIF Presentation API
 Validator](https://presentation-validator.iiif.io/) and then in the
-[Universal Viewer](https://www.universalviewer.dev/uv.html#?manifest=) to confirm
-that it returns presentation JSON and can be displayed. The library detail
-page offers the same viewer action automatically when this field is present.
+[Universal Viewer](https://www.universalviewer.dev/uv.html#?manifest=). Confirm
+that it returns presentation JSON and displays the expected collection or
+manuscript. The library detail page labels collection browsing separately from
+a named example manuscript and lists the collection action first when both are
+available.
 
-**Why it matters:** A manifest preserves the object structure and metadata a
-researcher needs to compare manuscript openings in an IIIF-compatible viewer.
+**Why it matters:** Explicit scope tells readers whether they are browsing the
+listed collection or opening one representative manuscript.
 
 #### License type (Free Cultural Works)
 

@@ -27,7 +27,8 @@ const QUANTITY_ORDER = ['Few', 'Dozens', 'Hundreds', 'Thousands', 'Unknown'];
 // zero-record export still produces a correct header row.
 const EXPORT_FIELDS = [
   'id', 'library', 'nation', 'city', 'website', 'copyright', 'quantity',
-  'iiif', 'iiif_manifest_or_collection_url', 'is_free_cultural_works_license', 'aggregators',
+  'iiif', 'iiif_collection_url', 'iiif_example_manifest_url', 'iiif_example_manifest_label',
+  'is_free_cultural_works_license', 'aggregators',
   'is_disabled', 'last_checked', 'isil', 'wikidata_qid', 'geonames_id',
 ];
 
