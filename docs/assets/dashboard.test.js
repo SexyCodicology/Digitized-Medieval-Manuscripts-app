@@ -568,7 +568,7 @@ test('filters-active badge: hidden with none active, counts only the four collap
   assert.equal(badge.textContent, '0');
 });
 
-const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,is_free_cultural_works_license,aggregators,is_disabled,last_checked';
+const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,is_free_cultural_works_license,aggregators,is_disabled,last_checked,isil,wikidata_qid,geonames_id';
 
 function makeRecord(overrides) {
   return Object.assign({
@@ -635,7 +635,10 @@ test('duplicated controls: the top and bottom export buttons and showing-count s
 
 test('export: CSV and JSON reflect the currently filtered records, not the full dataset', async () => {
   const data = [
-    makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' }),
+    makeRecord({
+      id: 1, library: 'Alpha Library', nation: 'Nation A',
+      isil: 'GB-OxBodl', wikidata_qid: 'Q1131283', geonames_id: 2640729,
+    }),
     makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B' }),
   ];
 
@@ -669,8 +672,34 @@ test('export: CSV and JSON reflect the currently filtered records, not the full 
   assert.equal(csvLines[0], EXPORT_CSV_HEADER);
   assert.ok(csvLines[1].includes('Alpha Library'));
   assert.ok(!csvDownload.content.includes('Beta Library'), 'the filtered-out record must not appear in the export');
+  assert.deepEqual(csvLines[1].split(',').slice(-3), ['GB-OxBodl', 'Q1131283', '2640729']);
 
   assert.deepEqual(JSON.parse(jsonDownload.content), [data[0]]);
+  assert.deepEqual(
+    Object.keys(JSON.parse(jsonDownload.content)[0]).slice(-3),
+    ['isil', 'wikidata_qid', 'geonames_id'],
+  );
+});
+
+test('export: absent optional identifiers do not create blank rows or undefined values', async () => {
+  const data = [makeRecord()];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const downloads = stubDownloads(window);
+  window.document.getElementById('exportCsvBtn').click();
+  window.document.getElementById('exportJsonBtn').click();
+
+  const csvLines = downloads[0].content.split('\r\n');
+  assert.equal(csvLines.length, 2, 'one header and one record row are exported');
+  assert.equal(csvLines[1].includes('undefined'), false);
+  assert.equal(downloads[1].content.includes('undefined'), false);
+  assert.equal(Object.hasOwn(JSON.parse(downloads[1].content)[0], 'isil'), false);
 });
 
 test('export CSV: commas, quotes, and newlines are quoted so the row still parses correctly', async () => {

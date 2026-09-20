@@ -88,6 +88,39 @@ def test_a_record_with_several_memberships_passes(schema):
     assert validator.validate(schema, [VALID_MULTI_PROJECT_RECORD]) == []
 
 
+# ── Optional external identifiers ─────────────────────────────────────────
+
+
+def test_a_record_with_valid_external_identifiers_passes(schema):
+    record = {
+        **copy.deepcopy(VALID_RECORD),
+        "isil": "GB-OxBodl",
+        "wikidata_qid": "Q1131283",
+        "geonames_id": 2640729,
+    }
+
+    assert validator.validate(schema, [record]) == []
+
+
+@pytest.mark.parametrize(
+    "field, value",
+    [
+        ("isil", "gb-OxBodl"),
+        ("isil", "GBOxBodl"),
+        ("wikidata_qid", "1131283"),
+        ("wikidata_qid", "Q0"),
+        ("geonames_id", 0),
+        ("geonames_id", -1),
+    ],
+)
+def test_malformed_external_identifiers_fail(schema, field, value):
+    record = {**copy.deepcopy(VALID_RECORD), field: value}
+
+    errors = validator.validate(schema, [record])
+
+    assert any(field in error for error in errors)
+
+
 # ── Malformed input ───────────────────────────────────────────────────────
 
 

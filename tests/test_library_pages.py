@@ -333,6 +333,35 @@ def test_an_unlinkable_membership_is_still_named_alongside_a_linked_one():
     assert 'href="https://biblissima.example.org"' in body
 
 
+# ── Optional external identifiers on a library page ───────────────────────
+
+
+def test_external_identifier_rows_render_with_their_canonical_links():
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "isil": "GB-OxBodl",
+        "wikidata_qid": "Q1131283",
+        "geonames_id": 2640729,
+    })
+
+    assert "<dt>ISIL</dt><dd>GB-OxBodl</dd>" in body
+    assert "<dt>Wikidata</dt>" in body
+    assert 'href="https://www.wikidata.org/wiki/Q1131283"' in body
+    assert "<dt>GeoNames</dt>" in body
+    assert 'href="https://www.geonames.org/2640729"' in body
+    assert body.count('rel="noopener noreferrer" target="_blank"') >= 2
+
+
+def test_external_identifier_rows_are_omitted_when_fields_are_absent():
+    body = _page_body(HOSTILE_RECORD)
+
+    assert "<dt>ISIL</dt>" not in body
+    assert "<dt>Wikidata</dt>" not in body
+    assert "<dt>GeoNames</dt>" not in body
+    assert "undefined" not in body
+    assert ">None<" not in body
+
+
 # ── Collisions ────────────────────────────────────────────────────────────
 
 
