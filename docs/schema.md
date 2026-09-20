@@ -22,7 +22,8 @@ Every library record must include the following information:
 - Library name
 - Country and city
 - Website address
-- Copyright or license information
+- Verbatim copyright or licence information
+- Normalised licence category
 - Approximate number of manuscripts
 - Technical format support (IIIF)
 - License type (Free Cultural Works or other)
@@ -149,6 +150,27 @@ A description of the rights and restrictions that apply to the digitized manuscr
 - If unclear, enter `"Unknown"`
 
 **Why it matters:** Researchers need to understand what they can do with the materials before using them in their work.
+
+#### Licence category
+
+A controlled category that groups equivalent rights statements in the dashboard
+filter. Keep **copyright** as the exact wording supplied by the institution,
+then choose one of these values for **licence_category**:
+
+- `CC0`
+- `CC-BY`
+- `CC-BY-NC`
+- `CC-BY-NC-SA`
+- `CC-BY-NC-ND`
+- `All Rights Reserved`
+- `Mixed/Item-specific`
+- `Unknown`
+
+Use `Mixed/Item-specific` when different items in a collection have different
+rights. CC BY-SA belongs in the broader `CC-BY` category because DMMapp does
+not maintain a separate CC BY-SA filter. Use `Unknown` only when the
+institution's rights statement is genuinely unknown; it does not replace the
+verbatim `copyright` value.
 
 ### Collection characteristics
 

@@ -324,9 +324,18 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
     if broken:
         badges.insert(0, '<span class="badge badge--broken">Broken link</span>')
 
+    copyright = escape(str(record.get("copyright") or "Unknown"))
+    licence_category = safe_text(record.get("licence_category"))
+    rights = copyright
+    if licence_category:
+        rights += (
+            '<br><span class="badge badge--standard">'
+            f"Licence category: {licence_category}</span>"
+        )
+
     facts = [
         ("Digitised manuscripts", escape(str(record.get("quantity") or "Unknown"))),
-        ("Rights", escape(str(record.get("copyright") or "Unknown"))),
+        ("Rights", rights),
         ("IIIF support", "Yes" if record.get("iiif") else "No"),
         ("Open licence", "Yes" if record.get("is_free_cultural_works_license") else "No"),
     ]

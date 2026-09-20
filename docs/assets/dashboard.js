@@ -22,11 +22,19 @@
 // meaning ("how much is digitised") does not sort alphabetically.
 const QUANTITY_ORDER = ['Few', 'Dozens', 'Hundreds', 'Thousands', 'Unknown'];
 
+// Rights categories express a spectrum from the most reusable material to
+// restricted, mixed, and unknown rights. They are deliberately not sorted by
+// label, so researchers can scan comparable licences together.
+const LICENCE_CATEGORY_ORDER = [
+  'CC0', 'CC-BY', 'CC-BY-NC', 'CC-BY-NC-SA', 'CC-BY-NC-ND',
+  'All Rights Reserved', 'Mixed/Item-specific', 'Unknown',
+];
+
 // Fixed column order for CSV/JSON export, matching schema.json's field
 // list. Fixed rather than derived from the current result set, so a
 // zero-record export still produces a correct header row.
 const EXPORT_FIELDS = [
-  'id', 'library', 'nation', 'city', 'website', 'copyright', 'quantity',
+  'id', 'library', 'nation', 'city', 'website', 'copyright', 'licence_category', 'quantity',
   'iiif', 'iiif_collection_url', 'iiif_example_manifest_url', 'iiif_example_manifest_label',
   'is_free_cultural_works_license', 'aggregators',
   'is_disabled', 'last_checked', 'isil', 'wikidata_qid', 'geonames_id',
@@ -321,10 +329,15 @@ document$.subscribe(() => {
   }
 
   function populateCopyrightFilter() {
-    const values = [...new Set(allData.map(d => d.copyright).filter(Boolean))].sort();
-    values.forEach(copyright => {
+    const present = new Set(allData.map(d => d.licence_category).filter(Boolean));
+    const known = LICENCE_CATEGORY_ORDER.filter(category => present.has(category));
+    const unrecognised = [...present]
+      .filter(category => !LICENCE_CATEGORY_ORDER.includes(category))
+      .sort();
+
+    [...known, ...unrecognised].forEach(category => {
       const opt = document.createElement('option');
-      opt.value = opt.textContent = copyright;
+      opt.value = opt.textContent = category;
       copyrightSelect.appendChild(opt);
     });
   }
@@ -370,7 +383,7 @@ document$.subscribe(() => {
       // appears under each of their filters.
       const matchProject   = project   === 'All' || names.includes(project);
       const matchQuantity  = quantity  === 'All' || d.quantity === quantity;
-      const matchCopyright = copyright === 'All' || d.copyright === copyright;
+      const matchCopyright = copyright === 'All' || d.licence_category === copyright;
       const matchIIIF      = !wantIIIF || d.iiif === true;
       const matchFree      = !wantFree || d.is_free_cultural_works_license === true;
       // Only an explicit true counts as broken, matching link_is_broken()

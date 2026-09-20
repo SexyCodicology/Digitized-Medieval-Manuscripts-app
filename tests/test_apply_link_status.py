@@ -71,6 +71,7 @@ def record(record_id: int, website: str, **extra) -> dict:
         "quantity": "Few",
         "website": website,
         "copyright": "Unknown",
+        "licence_category": "Unknown",
         "iiif": False,
         "is_free_cultural_works_license": False,
         "aggregators": [],

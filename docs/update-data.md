@@ -64,7 +64,8 @@ Every library entry must include:
 - **nation**: Country name (e.g., "United Kingdom")
 - **city**: City name (e.g., "Oxford")
 - **website**: Working URL to the digitized collection (must start with `http://` or `https://`)
-- **copyright**: Copyright or license information (e.g., `"CC BY 4.0"`)
+- **copyright**: The institution's verbatim copyright or licence information (e.g., `"CC BY 4.0"`)
+- **licence_category**: The normalised filter category (e.g., `"CC-BY"`)
 - **quantity**: Manuscript count (`"Few"`, `"Dozens"`, `"Hundreds"`, `"Thousands"`, or `"Unknown"`)
 - **iiif**: Standardized image format support (`true` or `false`)
 - **is_free_cultural_works_license**: Free license status (`true` or `false`)
@@ -85,6 +86,16 @@ for the same library:
 
 Use the aggregator's home page for **url**, spell the **name** the way other
 records spell it, and don't list the same aggregator twice on one library.
+
+### Choose a licence category
+
+Keep **copyright** exactly as the institution states it. Choose the matching
+**licence_category** from `CC0`, `CC-BY`, `CC-BY-NC`, `CC-BY-NC-SA`,
+`CC-BY-NC-ND`, `All Rights Reserved`, `Mixed/Item-specific`, or `Unknown`.
+Use `Mixed/Item-specific` when one collection uses several rights statements.
+Use `Unknown` only if the institution's verbatim rights statement is unknown.
+Place CC BY-SA in `CC-BY`, because the dashboard does not use a separate
+CC BY-SA category.
 
 ### Link status fields
 
@@ -175,6 +186,7 @@ Locate the last library entry in the file:
     "city": "Oxford",
     "website": "https://digital.bodleian.ox.ac.uk",
     "copyright": "CC BY-NC 4.0",
+    "licence_category": "CC-BY-NC",
     "quantity": "Hundreds",
     "iiif": true,
     "is_free_cultural_works_license": false,
@@ -194,7 +206,7 @@ Click any value and change it. Examples:
 
 - Update website: `"website": "https://new-collection-link.org"`
 - Correct city name: `"city": "Berlin"`
-- Update copyright: `"copyright": "CC0 1.0"`
+- Update copyright: `"copyright": "CC0 1.0"` and `"licence_category": "CC0"`
 - Update quantity: `"quantity": "Thousands"`
 
 !!! danger "Avoid these mistakes"
@@ -252,7 +264,7 @@ A green checkmark (✓) indicates all checks passed.
 !!! warning "If validation fails"
     GitHub displays errors describing what's wrong. Common issues:
     
-    - **Missing required field**: Add id, library, nation, city, website, copyright, quantity, iiif, is_free_cultural_works_license, and aggregators
+    - **Missing required field**: Add id, library, nation, city, website, copyright, licence_category, quantity, iiif, is_free_cultural_works_license, and aggregators
     - **Invalid URL format**: Website must start with http:// or https://
     - **JSON syntax error**: Check for missing commas between fields
     - **Invalid quantity value**: Use "Few", "Dozens", "Hundreds", "Thousands", or "Unknown"
@@ -307,7 +319,7 @@ GitHub displays error messages indicating what's wrong:
 |-----------------------------|-----------------------------------------------------------------|
 | `Invalid JSON`              | Check each field—every field before the last needs a comma      |
 | `Invalid URI format`        | Ensure URL starts with `http://` or `https://`                  |
-| `Missing required property` | Add id, library, nation, city, website, copyright, quantity, iiif, is_free_cultural_works_license, and aggregators to every entry |
+| `Missing required property` | Add id, library, nation, city, website, copyright, licence_category, quantity, iiif, is_free_cultural_works_license, and aggregators to every entry |
 | `Invalid enum value`        | Use only "Few", "Dozens", "Hundreds", "Thousands", or "Unknown" |
 
 ### Follow up on pending reviews

@@ -6,7 +6,7 @@
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["id", "library", "nation", "city", "website", "copyright", "quantity", "iiif", "is_free_cultural_works_license", "aggregators"],
+    "required": ["id", "library", "nation", "city", "website", "copyright", "licence_category", "quantity", "iiif", "is_free_cultural_works_license", "aggregators"],
     "properties": {
       "id": {
         "type": "integer",
@@ -49,7 +49,12 @@
       },
       "copyright": {
         "type": "string",
-        "description": "Copyright or license information"
+        "description": "Verbatim copyright or licence information as stated by the institution"
+      },
+      "licence_category": {
+        "type": "string",
+        "enum": ["CC0", "CC-BY", "CC-BY-NC", "CC-BY-NC-SA", "CC-BY-NC-ND", "All Rights Reserved", "Mixed/Item-specific", "Unknown"],
+        "description": "Normalised rights category used for filtering; copyright retains the institution's verbatim wording"
       },
       "quantity": {
         "type": "string",

@@ -362,6 +362,17 @@ def test_external_identifier_rows_are_omitted_when_fields_are_absent():
     assert ">None<" not in body
 
 
+def test_rights_row_shows_verbatim_and_normalised_category():
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "copyright": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
+        "licence_category": "CC-BY-NC",
+    })
+
+    assert "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)" in body
+    assert 'class="badge badge--standard">Licence category: CC-BY-NC</span>' in body
+
+
 # ── IIIF viewer action on a library page ──────────────────────────────────
 
 
