@@ -735,7 +735,7 @@ def build_library_index(records: list[dict[str, Any]]) -> str:
     for label in labels:
         entries = "\n".join(
             "<li>"
-            f'<a href="libraries/{escape(slug_for(record), quote=True)}/">'
+            f'<a href="../libraries/{escape(slug_for(record), quote=True)}/">'
             f'{escape(str(record["library"]))}</a> — '
             f'{escape(str(record["city"]))}, {escape(str(record["nation"]))}'
             "</li>"
