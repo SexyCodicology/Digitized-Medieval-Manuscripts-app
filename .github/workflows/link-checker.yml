@@ -55,7 +55,7 @@ jobs:
             automated-issue
 
       - name: Setup Python
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.11'
           cache: 'pip'
@@ -67,13 +67,14 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements-dev.txt
 
-      # Marks a record broken only for a response that proves the collection
-      # has gone (404 or 410). Most of a real report is timeouts and 403/429/
-      # 5xx, none of which tells the difference between a dead collection and
-      # a slow or bot-averse server. The script exits non-zero if the report
-      # cannot be parsed, so a format change fails the job rather than
-      # quietly proposing that every link is healthy.
-      - name: Propose broken-link status changes
+      # Records the check date for every collection URL that responds. It
+      # marks a record broken only for a response that proves the collection
+      # has gone (404 or 410). Timeouts and 403/429/5xx do not confirm either
+      # a working or a dead collection, so their dates stay unchanged. The
+      # script exits non-zero if the report cannot be parsed, so a format
+      # change fails the job rather than quietly proposing that every link is
+      # healthy.
+      - name: Propose link-status changes
         run: |
           python scripts/apply_link_status.py \
             --report ./lychee-report.md \
@@ -84,18 +85,19 @@ jobs:
         run: python scripts/validate_data.py
 
       - name: Open a Pull Request with the proposed changes
-        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           branch: automated/link-status
           delete-branch: true
-          title: 'fix(data): update broken-link status from the weekly link check'
-          commit-message: 'fix(data): update broken-link status from the weekly link check'
+          title: 'fix(data): update link status from weekly check'
+          commit-message: 'fix(data): update link status from weekly check'
           labels: |
             maintenance
             automated-issue
           body: |
             Proposed `is_disabled` and `last_checked` changes from the weekly
-            link check.
+            link check. Each confirmed working collection receives the current
+            check date, which is displayed on its individual page.
 
             Only a 404 or 410 marks a collection broken. Timeouts and
             403/429/5xx responses are left alone, because they describe the

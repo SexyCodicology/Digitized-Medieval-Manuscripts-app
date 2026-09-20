@@ -28,7 +28,7 @@ from datetime import date
 from html import escape
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlsplit
+from urllib.parse import urlencode, urlsplit
 
 import yaml
 from jinja2 import Environment
@@ -59,6 +59,15 @@ TEMPLATE_GLOBAL = "dmm_directory"
 
 # Only these URL schemes may become a clickable link on a generated page.
 SAFE_SCHEMES = frozenset({"http", "https"})
+
+# The correction route must stay independent from values in the public dataset.
+REPOSITORY_ISSUES_URL = (
+    "https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues/new"
+)
+REPORT_DATA_ISSUE_TEMPLATE = "report-data-issue.yml"
+LIBRARY_PAGE_URL_PREFIX = (
+    "https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/libraries/"
+)
 
 # Text fields every record must provide before a page can be generated for it.
 # The id is checked separately, because it is an integer and 0 is valid.
@@ -155,6 +164,25 @@ def safe_url(value: Any) -> str | None:
     if parts.scheme.lower() not in SAFE_SCHEMES or not parts.netloc:
         return None
     return candidate
+
+
+def report_data_issue_url(record: dict[str, Any]) -> str:
+    """Return the fixed GitHub report URL with the public record identified.
+
+    The form URL is built from application constants rather than the dataset,
+    so contributed data cannot redirect a reader away from the repository.
+    ``urlencode`` keeps every public value inside its intended query field.
+    """
+    page_url = f"{LIBRARY_PAGE_URL_PREFIX}{slug_for(record)}/"
+    query = urlencode(
+        {
+            "template": REPORT_DATA_ISSUE_TEMPLATE,
+            "record_id": str(record.get("id", "")),
+            "library_name": str(record.get("library") or ""),
+            "page_url": page_url,
+        }
+    )
+    return f"{REPOSITORY_ISSUES_URL}?{query}"
 
 
 def link_host(value: Any) -> str | None:
@@ -333,17 +361,30 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
             f'rel="noopener noreferrer" target="_blank">Visit the collection</a></p>'
         )
 
-    # role="status" rather than "alert": the warning is part of the page a
+    report_url = escape(report_data_issue_url(record), quote=True)
+    report = (
+        f'<p><a class="btn-visit btn-report-data-issue" href="{report_url}" '
+        'rel="noopener noreferrer" target="_blank">Report a data issue</a></p>'
+    )
+
+    # role="status" rather than "alert": link health is part of the page a
     # reader has just opened, not an interruption of something they were doing.
     notice = ""
+    checked = checked_on(record)
     if broken:
-        checked = checked_on(record)
         when = f" on {checked}" if checked else ""
         notice = (
             '<p class="library-page__broken" role="status">'
             '<i class="bi bi-exclamation-triangle" aria-hidden="true"></i> '
             f"This collection's link was confirmed broken{when}. "
             "It might have moved, or the collection might no longer be online."
+            "</p>\n\n"
+        )
+    elif checked:
+        notice = (
+            '<p class="library-page__checked" role="status">'
+            '<i class="bi bi-check-circle" aria-hidden="true"></i> '
+            f"This collection's link was last confirmed working on {checked}."
             "</p>\n\n"
         )
 
@@ -356,6 +397,7 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         f"{notice}"
         f'<dl class="library-page__facts">{rows}</dl>\n\n'
         f"{visit}\n\n"
+        f"{report}\n\n"
         "[Back to the library directory](../index.md)\n"
     )
 

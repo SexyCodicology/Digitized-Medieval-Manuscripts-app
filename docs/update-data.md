@@ -27,6 +27,15 @@ This guide explains how to add new libraries and edit existing information in th
 !!! info "About data governance"
     The docs/assets/data.json file is maintained by @Dioscorides. When you submit changes, they review your work to ensure quality standards. This keeps the library directory accurate and reliable for researchers worldwide.
 
+## Report a data issue
+
+If you spot an incorrect library name, collection link, licence, or other data
+problem while viewing a library page, select **Report a data issue**. The
+GitHub form includes the record ID, library name, and page URL automatically.
+Choose the kind of problem, describe the correction, and include a public
+source when one supports the change. Maintainers verify the report before they
+update the directory.
+
 ## 1. Find the data file
 
 1. Open your GitHub repository in your browser
@@ -83,9 +92,10 @@ Two optional fields record whether a collection URL still works:
 
 - **is_disabled**: Set it to `true` only when the link has been confirmed
   dead. Leave the field out otherwise.
-- **last_checked**: The date the link was checked, written as `YYYY-MM-DD`.
-  Required when **is_disabled** is `true`, so the warning a reader sees can be
-  dated.
+- **last_checked**: The date the link was last assessed, written as
+  `YYYY-MM-DD`. For a working link, its individual page shows this as the date
+  it was last confirmed working. Required when **is_disabled** is `true`, so
+  the warning a reader sees can be dated.
 
 The weekly link check normally sets these for you and opens a pull request
 with its proposal, so you rarely need to write them by hand. See

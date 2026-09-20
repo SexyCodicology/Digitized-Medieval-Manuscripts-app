@@ -9,7 +9,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 2,
@@ -21,7 +22,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 3,
@@ -33,7 +35,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 4,
@@ -47,7 +50,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 5,
@@ -59,7 +62,8 @@
         "copyright": "Public Domain",
         "iiif": false,
         "is_free_cultural_works_license": true,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 6,
@@ -95,7 +99,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 9,
@@ -119,7 +124,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 11,
@@ -131,7 +137,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 12,
@@ -143,7 +150,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 13,
@@ -155,7 +163,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 14,
@@ -172,7 +181,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 15,
@@ -189,7 +199,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 16,
@@ -206,7 +217,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 17,
@@ -223,7 +235,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 18,
@@ -235,7 +248,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 19,
@@ -252,7 +266,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 20,
@@ -269,7 +284,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 21,
@@ -286,7 +302,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 22,
@@ -298,7 +315,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 23,
@@ -310,7 +328,8 @@
         "copyright": "Public Domain",
         "iiif": false,
         "is_free_cultural_works_license": true,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 24,
@@ -324,7 +343,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 25,
@@ -336,7 +355,8 @@
         "copyright": "Public Domain",
         "iiif": true,
         "is_free_cultural_works_license": true,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 26,
@@ -353,7 +373,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 27,
@@ -370,7 +391,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 28,
@@ -387,7 +409,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 29,
@@ -404,7 +427,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 30,
@@ -421,7 +445,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 31,
@@ -438,7 +463,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 32,
@@ -455,7 +481,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 35,
@@ -467,7 +494,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 37,
@@ -479,7 +507,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 38,
@@ -491,7 +520,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 39,
@@ -503,7 +533,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 40,
@@ -539,7 +570,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 43,
@@ -556,7 +588,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 44,
@@ -573,7 +606,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 45,
@@ -590,7 +624,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 46,
@@ -607,7 +642,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 47,
@@ -619,7 +655,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 48,
@@ -631,7 +668,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 49,
@@ -643,7 +681,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 50,
@@ -655,7 +694,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 51,
@@ -667,7 +707,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 52,
@@ -679,7 +720,8 @@
         "copyright": "All Rights Reserved, some images: Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 53,
@@ -691,7 +733,8 @@
         "copyright": "CC BY-NC 4.0",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 54,
@@ -703,7 +746,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 55,
@@ -715,7 +759,8 @@
         "copyright": "CC BY-NC-SA 4.0",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 56,
@@ -739,7 +784,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 59,
@@ -763,7 +809,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 61,
@@ -799,7 +846,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 64,
@@ -811,7 +859,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 65,
@@ -825,7 +874,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 66,
@@ -837,7 +886,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 67,
@@ -849,7 +899,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 68,
@@ -861,7 +912,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 69,
@@ -885,7 +937,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 71,
@@ -897,7 +950,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 72,
@@ -909,7 +963,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 73,
@@ -921,7 +976,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 74,
@@ -933,7 +989,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 75,
@@ -945,7 +1002,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 76,
@@ -957,7 +1015,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 77,
@@ -969,7 +1028,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 78,
@@ -986,7 +1046,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 79,
@@ -1003,7 +1064,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 80,
@@ -1020,7 +1082,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 81,
@@ -1037,7 +1100,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 82,
@@ -1049,7 +1113,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 83,
@@ -1066,7 +1131,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 84,
@@ -1083,7 +1149,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 85,
@@ -1100,7 +1167,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 86,
@@ -1117,7 +1185,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 87,
@@ -1134,7 +1203,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 88,
@@ -1151,7 +1221,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 89,
@@ -1168,7 +1239,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 90,
@@ -1185,7 +1257,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 91,
@@ -1202,7 +1275,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 92,
@@ -1219,7 +1293,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 93,
@@ -1236,7 +1311,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 94,
@@ -1253,7 +1329,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 95,
@@ -1270,7 +1347,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 96,
@@ -1287,7 +1365,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 97,
@@ -1304,7 +1383,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 99,
@@ -1321,7 +1401,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 100,
@@ -1338,7 +1419,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 101,
@@ -1355,7 +1437,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 102,
@@ -1372,7 +1455,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 103,
@@ -1389,7 +1473,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 104,
@@ -1406,7 +1491,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 105,
@@ -1423,7 +1509,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 106,
@@ -1440,7 +1527,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 107,
@@ -1457,7 +1545,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 108,
@@ -1474,7 +1563,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 109,
@@ -1491,7 +1581,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 110,
@@ -1508,7 +1599,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 111,
@@ -1525,7 +1617,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 113,
@@ -1542,7 +1635,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 114,
@@ -1559,7 +1653,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 115,
@@ -1576,7 +1671,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 116,
@@ -1593,7 +1689,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 117,
@@ -1610,7 +1707,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 118,
@@ -1627,7 +1725,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 119,
@@ -1644,7 +1743,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 120,
@@ -1661,7 +1761,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 121,
@@ -1678,7 +1779,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 122,
@@ -1695,7 +1797,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 123,
@@ -1712,7 +1815,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 124,
@@ -1729,7 +1833,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 125,
@@ -1746,7 +1851,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 126,
@@ -1758,7 +1864,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 127,
@@ -1775,7 +1882,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 128,
@@ -1792,7 +1900,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 129,
@@ -1809,7 +1918,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 130,
@@ -1826,7 +1936,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 131,
@@ -1843,7 +1954,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 132,
@@ -1860,7 +1972,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 133,
@@ -1877,7 +1990,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 134,
@@ -1894,7 +2008,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 135,
@@ -1911,7 +2026,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 136,
@@ -1928,7 +2044,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 137,
@@ -1945,7 +2062,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 138,
@@ -1962,7 +2080,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 139,
@@ -1979,7 +2098,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 140,
@@ -1996,7 +2116,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 141,
@@ -2013,7 +2134,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 142,
@@ -2030,7 +2152,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 143,
@@ -2047,7 +2170,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 144,
@@ -2064,7 +2188,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 145,
@@ -2081,7 +2206,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 146,
@@ -2098,7 +2224,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 147,
@@ -2115,7 +2242,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 148,
@@ -2132,7 +2260,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 149,
@@ -2149,7 +2278,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 150,
@@ -2166,7 +2296,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 151,
@@ -2183,7 +2314,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 152,
@@ -2200,7 +2332,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 153,
@@ -2217,7 +2350,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 154,
@@ -2234,7 +2368,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 155,
@@ -2251,7 +2386,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 156,
@@ -2268,7 +2404,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 157,
@@ -2285,7 +2422,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 158,
@@ -2302,7 +2440,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 159,
@@ -2319,7 +2458,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 160,
@@ -2336,7 +2476,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 161,
@@ -2353,7 +2494,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 162,
@@ -2370,7 +2512,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 163,
@@ -2387,7 +2530,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 164,
@@ -2404,7 +2548,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 165,
@@ -2421,7 +2566,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 166,
@@ -2438,7 +2584,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 167,
@@ -2455,7 +2602,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 168,
@@ -2472,7 +2620,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 169,
@@ -2489,7 +2638,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 170,
@@ -2506,7 +2656,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 171,
@@ -2523,7 +2674,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 172,
@@ -2540,7 +2692,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 173,
@@ -2557,7 +2710,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 174,
@@ -2574,7 +2728,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 175,
@@ -2591,7 +2746,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 176,
@@ -2608,7 +2764,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 177,
@@ -2625,7 +2782,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 178,
@@ -2642,7 +2800,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 179,
@@ -2659,7 +2818,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 180,
@@ -2676,7 +2836,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 181,
@@ -2693,7 +2854,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 182,
@@ -2710,7 +2872,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 183,
@@ -2727,7 +2890,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 184,
@@ -2751,7 +2915,8 @@
         "copyright": "Unknown",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 186,
@@ -2775,7 +2940,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 188,
@@ -2792,7 +2958,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 192,
@@ -2804,7 +2971,8 @@
         "copyright": "Public Domain Mark 1.0",
         "iiif": false,
         "is_free_cultural_works_license": true,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 193,
@@ -2816,7 +2984,8 @@
         "copyright": "Non-commercial reuse with attribution",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 194,
@@ -2833,7 +3002,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 197,
@@ -2850,7 +3020,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 199,
@@ -2874,7 +3045,8 @@
         "copyright": "CC BY-NC",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 202,
@@ -2891,7 +3063,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 203,
@@ -2908,7 +3081,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 204,
@@ -2920,7 +3094,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 205,
@@ -2937,7 +3112,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 206,
@@ -2949,7 +3125,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 207,
@@ -2966,7 +3143,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 208,
@@ -2983,7 +3161,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 209,
@@ -3000,7 +3179,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 210,
@@ -3017,7 +3197,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 211,
@@ -3029,7 +3210,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 213,
@@ -3046,7 +3228,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 214,
@@ -3058,7 +3241,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 215,
@@ -3075,7 +3259,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 216,
@@ -3092,7 +3277,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 217,
@@ -3109,7 +3295,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 218,
@@ -3133,7 +3320,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 221,
@@ -3145,7 +3333,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 222,
@@ -3162,7 +3351,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 223,
@@ -3179,7 +3369,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 224,
@@ -3208,7 +3399,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 226,
@@ -3220,7 +3412,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 227,
@@ -3232,7 +3425,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 228,
@@ -3268,7 +3462,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 231,
@@ -3297,7 +3492,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 233,
@@ -3309,7 +3505,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 234,
@@ -3321,7 +3518,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 235,
@@ -3333,7 +3531,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 236,
@@ -3345,7 +3544,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 237,
@@ -3357,7 +3557,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 238,
@@ -3369,7 +3570,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 239,
@@ -3381,7 +3583,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 240,
@@ -3395,7 +3598,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 241,
@@ -3407,7 +3610,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 242,
@@ -3419,7 +3623,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 244,
@@ -3431,7 +3636,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 245,
@@ -3443,7 +3649,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 246,
@@ -3455,7 +3662,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 247,
@@ -3467,7 +3675,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 248,
@@ -3479,7 +3688,8 @@
         "copyright": "CC BY-NC-SA 4.0",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 249,
@@ -3493,7 +3703,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 250,
@@ -3505,7 +3715,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 251,
@@ -3519,7 +3730,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 252,
@@ -3531,7 +3742,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 253,
@@ -3543,7 +3755,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 254,
@@ -3555,7 +3768,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 255,
@@ -3567,7 +3781,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 256,
@@ -3579,7 +3794,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 257,
@@ -3596,7 +3812,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 258,
@@ -3613,7 +3830,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 259,
@@ -3630,7 +3848,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 260,
@@ -3647,7 +3866,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 261,
@@ -3664,7 +3884,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 262,
@@ -3681,7 +3902,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 263,
@@ -3698,7 +3920,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 264,
@@ -3715,7 +3938,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 265,
@@ -3732,7 +3956,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 266,
@@ -3749,7 +3974,8 @@
                 "name": "Bayerische Staatsbibliothek Digitale Sammlungen (MDZ)",
                 "url": "https://www.digitale-sammlungen.de/en/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 267,
@@ -3766,7 +3992,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 268,
@@ -3783,7 +4010,8 @@
                 "name": "Handschriftenportal",
                 "url": "https://handschriftenportal.de/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 269,
@@ -3795,7 +4023,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 270,
@@ -3809,7 +4038,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 271,
@@ -3821,7 +4050,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 272,
@@ -3833,7 +4063,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 273,
@@ -3845,7 +4076,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 274,
@@ -3857,7 +4089,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 275,
@@ -3874,7 +4107,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 276,
@@ -3886,7 +4120,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 277,
@@ -3898,7 +4133,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 278,
@@ -3910,7 +4146,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 279,
@@ -3922,7 +4159,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 280,
@@ -3934,7 +4172,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 281,
@@ -3946,7 +4185,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 283,
@@ -3963,7 +4203,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 284,
@@ -3975,7 +4216,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 285,
@@ -3987,7 +4229,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 286,
@@ -3999,7 +4242,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 287,
@@ -4011,7 +4255,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 288,
@@ -4023,7 +4268,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 289,
@@ -4035,7 +4281,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 290,
@@ -4047,7 +4294,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 291,
@@ -4059,7 +4307,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 292,
@@ -4073,7 +4322,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 293,
@@ -4085,7 +4334,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 294,
@@ -4097,7 +4347,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 295,
@@ -4114,7 +4365,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 296,
@@ -4131,7 +4383,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 297,
@@ -4148,7 +4401,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 298,
@@ -4165,7 +4419,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 299,
@@ -4182,7 +4437,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 300,
@@ -4199,7 +4455,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 301,
@@ -4216,7 +4473,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 302,
@@ -4233,7 +4491,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 303,
@@ -4250,7 +4509,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 304,
@@ -4267,7 +4527,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 305,
@@ -4284,7 +4545,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 306,
@@ -4301,7 +4563,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 307,
@@ -4318,7 +4581,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 308,
@@ -4335,7 +4599,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 309,
@@ -4352,7 +4617,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 310,
@@ -4369,7 +4635,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 311,
@@ -4386,7 +4653,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 312,
@@ -4398,7 +4666,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 313,
@@ -4415,7 +4684,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 314,
@@ -4427,7 +4697,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 315,
@@ -4439,7 +4710,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 316,
@@ -4451,7 +4723,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 317,
@@ -4468,7 +4741,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 318,
@@ -4485,7 +4759,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 319,
@@ -4502,7 +4777,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 320,
@@ -4519,7 +4795,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 321,
@@ -4536,7 +4813,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 322,
@@ -4553,7 +4831,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 323,
@@ -4570,7 +4849,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 324,
@@ -4587,7 +4867,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 325,
@@ -4604,7 +4885,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 326,
@@ -4621,7 +4903,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 327,
@@ -4638,7 +4921,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 329,
@@ -4655,7 +4939,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 330,
@@ -4672,7 +4957,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 332,
@@ -4684,7 +4970,8 @@
         "copyright": "Unknown",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 333,
@@ -4708,7 +4995,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 335,
@@ -4720,7 +5008,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 336,
@@ -4732,7 +5021,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 337,
@@ -4744,7 +5034,8 @@
         "copyright": "All Rights Reserved",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 338,
@@ -4761,7 +5052,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 339,
@@ -4773,7 +5065,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 340,
@@ -4785,7 +5078,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 341,
@@ -4797,7 +5091,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 342,
@@ -4857,7 +5152,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 347,
@@ -4869,7 +5165,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 348,
@@ -4881,7 +5178,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 349,
@@ -4893,7 +5191,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 350,
@@ -4905,7 +5204,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 351,
@@ -4917,7 +5217,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 352,
@@ -4929,7 +5230,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 354,
@@ -4941,7 +5243,8 @@
         "copyright": "CC BY-NC-SA 4.0",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 355,
@@ -4965,7 +5268,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 357,
@@ -4982,7 +5286,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 358,
@@ -4999,7 +5304,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 359,
@@ -5011,7 +5317,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 360,
@@ -5035,7 +5342,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 362,
@@ -5047,7 +5355,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 363,
@@ -5059,7 +5368,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 364,
@@ -5071,7 +5381,8 @@
         "copyright": "Attribution 4.0 International (CC BY 4.0)",
         "iiif": true,
         "is_free_cultural_works_license": true,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 365,
@@ -5083,7 +5394,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 366,
@@ -5095,7 +5407,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 367,
@@ -5107,7 +5420,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 368,
@@ -5119,7 +5433,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 369,
@@ -5131,7 +5446,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 370,
@@ -5155,7 +5471,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 372,
@@ -5167,7 +5484,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 373,
@@ -5179,7 +5497,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 374,
@@ -5196,7 +5515,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 375,
@@ -5208,7 +5528,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 376,
@@ -5225,7 +5546,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 377,
@@ -5266,7 +5588,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 380,
@@ -5283,7 +5606,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 381,
@@ -5300,7 +5624,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 382,
@@ -5312,7 +5637,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 383,
@@ -5341,7 +5667,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 385,
@@ -5358,7 +5685,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 386,
@@ -5370,7 +5698,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 387,
@@ -5387,7 +5716,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 388,
@@ -5404,7 +5734,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 389,
@@ -5421,7 +5752,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 390,
@@ -5438,7 +5770,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 391,
@@ -5450,7 +5783,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 392,
@@ -5467,7 +5801,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 393,
@@ -5481,7 +5816,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 394,
@@ -5493,7 +5828,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 395,
@@ -5510,7 +5846,8 @@
                 "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
                 "url": "https://www.mmdc.nl"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 396,
@@ -5522,7 +5859,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 397,
@@ -5546,7 +5884,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 399,
@@ -5558,7 +5897,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 400,
@@ -5570,7 +5910,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 401,
@@ -5582,7 +5923,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 402,
@@ -5594,7 +5936,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 403,
@@ -5606,7 +5949,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 404,
@@ -5618,7 +5962,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 405,
@@ -5630,7 +5975,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 406,
@@ -5642,7 +5988,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 407,
@@ -5654,7 +6001,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 408,
@@ -5666,7 +6014,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 409,
@@ -5683,7 +6032,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 411,
@@ -5707,7 +6057,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 413,
@@ -5719,7 +6070,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 414,
@@ -5731,7 +6083,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 415,
@@ -5743,7 +6096,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 416,
@@ -5767,7 +6121,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 418,
@@ -5779,7 +6134,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 419,
@@ -5791,7 +6147,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 420,
@@ -5803,7 +6160,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 421,
@@ -5827,7 +6185,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 423,
@@ -5839,7 +6198,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 424,
@@ -5875,7 +6235,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 427,
@@ -5887,7 +6248,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 428,
@@ -5900,8 +6262,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 430,
@@ -5913,7 +6274,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 431,
@@ -5925,7 +6287,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 432,
@@ -5942,7 +6305,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 433,
@@ -5959,7 +6323,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 434,
@@ -5976,7 +6341,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 435,
@@ -5993,7 +6359,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 436,
@@ -6010,7 +6377,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 437,
@@ -6027,7 +6395,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 438,
@@ -6044,7 +6413,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 439,
@@ -6061,7 +6431,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 440,
@@ -6078,7 +6449,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 441,
@@ -6095,7 +6467,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 442,
@@ -6112,7 +6485,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 443,
@@ -6129,7 +6503,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 444,
@@ -6146,7 +6521,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 445,
@@ -6163,7 +6539,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 446,
@@ -6180,7 +6557,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 447,
@@ -6197,7 +6575,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 448,
@@ -6214,7 +6593,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 449,
@@ -6231,7 +6611,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 450,
@@ -6248,7 +6629,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 451,
@@ -6265,7 +6647,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 452,
@@ -6282,7 +6665,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 453,
@@ -6299,7 +6683,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 454,
@@ -6316,7 +6701,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 455,
@@ -6333,7 +6719,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 456,
@@ -6350,7 +6737,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 457,
@@ -6367,7 +6755,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 458,
@@ -6384,7 +6773,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 459,
@@ -6401,7 +6791,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 460,
@@ -6418,7 +6809,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 461,
@@ -6435,7 +6827,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 462,
@@ -6452,7 +6845,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 463,
@@ -6469,7 +6863,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 464,
@@ -6486,7 +6881,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 465,
@@ -6503,7 +6899,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 466,
@@ -6520,7 +6917,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 467,
@@ -6537,7 +6935,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 468,
@@ -6554,7 +6953,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 469,
@@ -6571,7 +6971,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 470,
@@ -6588,7 +6989,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 472,
@@ -6605,7 +7007,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 473,
@@ -6622,7 +7025,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 474,
@@ -6634,7 +7038,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 475,
@@ -6651,7 +7056,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 476,
@@ -6668,7 +7074,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 477,
@@ -6685,7 +7092,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 478,
@@ -6702,7 +7110,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 479,
@@ -6719,7 +7128,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 480,
@@ -6736,7 +7146,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 481,
@@ -6753,7 +7164,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 482,
@@ -6770,7 +7182,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 483,
@@ -6787,7 +7200,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 484,
@@ -6804,7 +7218,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 485,
@@ -6821,7 +7236,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 486,
@@ -6838,7 +7254,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 487,
@@ -6855,7 +7272,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 488,
@@ -6872,7 +7290,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 489,
@@ -6889,7 +7308,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 490,
@@ -6906,7 +7326,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 491,
@@ -6923,7 +7344,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 492,
@@ -6940,7 +7362,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 493,
@@ -6957,7 +7380,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 494,
@@ -6974,7 +7398,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 495,
@@ -6991,7 +7416,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 496,
@@ -7008,7 +7434,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 497,
@@ -7025,7 +7452,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 498,
@@ -7042,7 +7470,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 499,
@@ -7059,7 +7488,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 500,
@@ -7076,7 +7506,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 501,
@@ -7093,7 +7524,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 502,
@@ -7110,7 +7542,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 503,
@@ -7127,7 +7560,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 504,
@@ -7144,7 +7578,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 505,
@@ -7161,7 +7596,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 506,
@@ -7178,7 +7614,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 507,
@@ -7186,7 +7623,7 @@
         "city": "Zürich",
         "library": "Braginsky Collection",
         "quantity": "Dozens",
-        "website": "https://www.e-codices.unifr.ch/en/list/bc/Shelfmark",
+        "website": "https://www.e-codices.unifr.ch/en/list/subproject/braginsky",
         "copyright": "CC BY-NC 4.0",
         "iiif": true,
         "is_free_cultural_works_license": false,
@@ -7195,7 +7632,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 508,
@@ -7212,7 +7650,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 509,
@@ -7253,7 +7692,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 512,
@@ -7274,7 +7714,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 513,
@@ -7291,7 +7732,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 515,
@@ -7308,7 +7750,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 516,
@@ -7320,7 +7763,8 @@
         "copyright": "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 517,
@@ -7349,7 +7793,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 519,
@@ -7395,7 +7840,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 526,
@@ -7543,7 +7989,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 540,
@@ -7560,7 +8007,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 542,
@@ -7577,7 +8025,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 544,
@@ -7594,7 +8043,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 545,
@@ -7611,7 +8061,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 546,
@@ -7628,7 +8079,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 547,
@@ -7645,7 +8097,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 553,
@@ -7662,7 +8115,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 556,
@@ -7679,7 +8133,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 558,
@@ -7691,7 +8146,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 560,
@@ -7703,7 +8159,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 561,
@@ -7715,7 +8172,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 562,
@@ -7751,7 +8209,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 565,
@@ -7780,7 +8239,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 567,
@@ -7792,7 +8252,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 568,
@@ -7804,7 +8265,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 569,
@@ -7816,7 +8278,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 570,
@@ -7828,7 +8291,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 571,
@@ -7857,7 +8321,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 573,
@@ -7893,7 +8358,8 @@
         "copyright": "Public Domain",
         "iiif": true,
         "is_free_cultural_works_license": true,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 576,
@@ -7907,7 +8373,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "last_checked": "2026-09-20"
     },
     {
         "id": 577,
@@ -7919,7 +8385,8 @@
         "copyright": "All Rights Reserved",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 578,
@@ -7936,7 +8403,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 579,
@@ -7948,7 +8416,8 @@
         "copyright": "All Rights Reserved",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 580,
@@ -7960,7 +8429,8 @@
         "copyright": "CC BY 4.0",
         "iiif": false,
         "is_free_cultural_works_license": true,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 581,
@@ -7972,7 +8442,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 582,
@@ -7996,7 +8467,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 584,
@@ -8017,7 +8489,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 585,
@@ -8034,7 +8507,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 587,
@@ -8051,7 +8525,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 588,
@@ -8068,7 +8543,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 589,
@@ -8080,7 +8556,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 590,
@@ -8097,7 +8574,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 591,
@@ -8114,7 +8592,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 592,
@@ -8131,7 +8610,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 593,
@@ -8143,7 +8623,8 @@
         "copyright": "Public Domain",
         "iiif": false,
         "is_free_cultural_works_license": true,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 594,
@@ -8160,7 +8641,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 595,
@@ -8181,7 +8663,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 596,
@@ -8198,7 +8681,8 @@
                 "name": "ARCA - Bibliothèque numérique de l’IRHT",
                 "url": "https://arca.irht.cnrs.fr/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 597,
@@ -8210,7 +8694,8 @@
         "copyright": "Unknown",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 598,
@@ -8222,7 +8707,8 @@
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": []
+        "aggregators": [],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 599,
@@ -8239,7 +8725,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 600,
@@ -8256,7 +8743,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 601,
@@ -8273,7 +8761,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 602,
@@ -8290,7 +8779,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 603,
@@ -8307,7 +8797,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 604,
@@ -8324,7 +8815,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 605,
@@ -8341,7 +8833,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 606,
@@ -8358,7 +8851,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 607,
@@ -8375,7 +8869,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 608,
@@ -8392,7 +8887,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 609,
@@ -8409,7 +8905,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 610,
@@ -8426,7 +8923,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 611,
@@ -8443,7 +8941,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 612,
@@ -8460,7 +8959,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 613,
@@ -8477,7 +8977,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 614,
@@ -8494,7 +8995,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 615,
@@ -8511,7 +9013,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 616,
@@ -8528,7 +9031,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 617,
@@ -8545,7 +9049,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 618,
@@ -8562,7 +9067,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 619,
@@ -8583,7 +9089,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 620,
@@ -8600,7 +9107,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 621,
@@ -8617,7 +9125,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 622,
@@ -8634,7 +9143,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 623,
@@ -8651,7 +9161,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 624,
@@ -8668,7 +9179,8 @@
                 "name": "e-Codices",
                 "url": "https://www.e-codices.unifr.ch"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 625,
@@ -8685,7 +9197,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 626,
@@ -8702,7 +9215,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 627,
@@ -8719,7 +9233,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 628,
@@ -8740,7 +9255,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 629,
@@ -8757,7 +9273,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 630,
@@ -8774,7 +9291,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 631,
@@ -8795,7 +9313,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 632,
@@ -8812,7 +9331,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 633,
@@ -8829,7 +9349,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 635,
@@ -8846,7 +9367,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 636,
@@ -8863,7 +9385,8 @@
                 "name": "BiblioPhilly",
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 637,
@@ -8880,7 +9403,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 638,
@@ -8897,7 +9421,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 639,
@@ -8914,7 +9439,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 640,
@@ -8931,7 +9457,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 641,
@@ -8948,7 +9475,8 @@
                 "name": "Herzog August Bibliothek Wolfenbüttel Handschriftendatenbank",
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 642,
@@ -8965,7 +9493,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 643,
@@ -8982,7 +9511,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 644,
@@ -8999,7 +9529,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 645,
@@ -9016,7 +9547,8 @@
                 "name": "Erfgoedparels",
                 "url": "https://erfgoedparels.be/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 646,
@@ -9033,7 +9565,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 647,
@@ -9050,7 +9583,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 649,
@@ -9067,7 +9601,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 650,
@@ -9084,7 +9619,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 652,
@@ -9220,7 +9756,8 @@
                 "name": "Digital Scriptorium",
                 "url": "https://search.digital-scriptorium.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 661,
@@ -9305,7 +9842,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 667,
@@ -9322,7 +9860,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 668,
@@ -9339,7 +9878,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 669,
@@ -9356,7 +9896,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 670,
@@ -9373,7 +9914,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 671,
@@ -9390,7 +9932,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 672,
@@ -9407,7 +9950,8 @@
                 "name": "Irish Script on Screen",
                 "url": "https://www.isos.dias.ie/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 673,
@@ -9424,7 +9968,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 674,
@@ -9441,7 +9986,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 675,
@@ -9458,7 +10004,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 676,
@@ -9475,7 +10022,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 677,
@@ -9492,7 +10040,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 678,
@@ -9509,7 +10058,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 679,
@@ -9526,7 +10076,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 680,
@@ -9543,7 +10094,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 681,
@@ -9560,7 +10112,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 682,
@@ -9577,7 +10130,8 @@
                 "name": "Internet Culturale",
                 "url": "https://www.internetculturale.it/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 683,
@@ -9594,7 +10148,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 684,
@@ -9611,7 +10166,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 685,
@@ -9628,7 +10184,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 686,
@@ -9645,7 +10202,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 687,
@@ -9662,7 +10220,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 688,
@@ -9679,7 +10238,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 689,
@@ -9696,7 +10256,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 690,
@@ -9713,7 +10274,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 691,
@@ -9730,7 +10292,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 692,
@@ -9747,7 +10310,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 693,
@@ -9764,7 +10328,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 694,
@@ -9781,7 +10346,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 695,
@@ -9798,7 +10364,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 696,
@@ -9815,7 +10382,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 697,
@@ -9832,7 +10400,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 698,
@@ -9849,7 +10418,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 699,
@@ -9866,7 +10436,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 700,
@@ -9883,7 +10454,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 701,
@@ -9900,7 +10472,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 702,
@@ -9917,7 +10490,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 703,
@@ -9934,7 +10508,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 704,
@@ -9951,7 +10526,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 705,
@@ -9968,7 +10544,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 706,
@@ -9985,7 +10562,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 707,
@@ -10002,7 +10580,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 708,
@@ -10019,7 +10598,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 709,
@@ -10036,7 +10616,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 710,
@@ -10053,7 +10634,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 711,
@@ -10070,7 +10652,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 712,
@@ -10087,7 +10670,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 713,
@@ -10104,7 +10688,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 714,
@@ -10121,7 +10706,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 715,
@@ -10138,7 +10724,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 716,
@@ -10155,7 +10742,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 717,
@@ -10172,7 +10760,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 718,
@@ -10189,7 +10778,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 719,
@@ -10206,7 +10796,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 720,
@@ -10223,7 +10814,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 721,
@@ -10240,7 +10832,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 722,
@@ -10257,7 +10850,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 723,
@@ -10274,7 +10868,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 724,
@@ -10291,7 +10886,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 725,
@@ -10308,7 +10904,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 726,
@@ -10325,7 +10922,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 727,
@@ -10342,7 +10940,8 @@
                 "name": "Manuscriptorium",
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 728,
@@ -10359,7 +10958,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 729,
@@ -10376,7 +10976,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 730,
@@ -10393,7 +10994,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 731,
@@ -10410,7 +11012,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 732,
@@ -10427,7 +11030,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 733,
@@ -10444,7 +11048,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 734,
@@ -10461,7 +11066,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 735,
@@ -10478,7 +11084,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 736,
@@ -10495,7 +11102,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 737,
@@ -10512,7 +11120,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 738,
@@ -10529,7 +11138,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 739,
@@ -10546,7 +11156,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 740,
@@ -10563,7 +11174,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 741,
@@ -10580,7 +11192,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 742,
@@ -10631,7 +11244,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 745,
@@ -10665,7 +11279,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 747,
@@ -10682,7 +11297,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 748,
@@ -10699,7 +11315,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 749,
@@ -10733,7 +11350,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 751,
@@ -10767,7 +11385,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 753,
@@ -10801,7 +11420,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 755,
@@ -10920,7 +11540,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 762,
@@ -11056,7 +11677,8 @@
                 "name": "manuscripta.at - Mittelalterliche Handschriften in Österreich",
                 "url": "https://manuscripta.at/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 770,
@@ -11107,7 +11729,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 773,
@@ -11124,7 +11747,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 774,
@@ -11141,7 +11765,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 775,
@@ -11158,7 +11783,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 776,
@@ -11175,7 +11801,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 777,
@@ -11192,7 +11819,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 778,
@@ -11209,7 +11837,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 779,
@@ -11226,7 +11855,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 780,
@@ -11243,7 +11873,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 781,
@@ -11260,7 +11891,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 782,
@@ -11277,7 +11909,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 783,
@@ -11294,7 +11927,8 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     },
     {
         "id": 784,
@@ -11311,6 +11945,7 @@
                 "name": "Alvin",
                 "url": "https://www.alvin-portal.org/"
             }
-        ]
+        ],
+        "last_checked": "2026-09-20"
     }
 ]

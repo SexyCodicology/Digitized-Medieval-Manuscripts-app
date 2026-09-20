@@ -1,4 +1,4 @@
-"""Turn a lychee link-check report into proposed is_disabled/last_checked edits.
+"""Turn a lychee link-check report into proposed link-status edits.
 
 .github/workflows/link-checker.yml runs this after the weekly check and opens
 a pull request with whatever it changes, so a human confirms every status
@@ -80,13 +80,17 @@ def plan_changes(
     records: list[dict[str, Any]],
     by_url: dict[str, set[str]],
     today: str,
-) -> tuple[list[str], list[str]]:
-    """Apply the status to ``records`` in place; return (disabled, restored) notes.
+) -> tuple[list[str], list[str], list[str]]:
+    """Apply the status to ``records`` in place.
 
     Only a record's own ``website`` is considered. An aggregator URL failing
     says the aggregator is down, not that this library's collection is gone.
+
+    A collection URL absent from Lychee's problem list is confirmed working by
+    the same evidence already used to restore a previously broken record. Its
+    date is refreshed so a reader can see how recent that confirmation is.
     """
-    disabled, restored = [], []
+    disabled, restored, confirmed = [], [], []
 
     for record in records:
         website = record.get("website")
@@ -107,14 +111,22 @@ def plan_changes(
             # Still dead: refresh the date so the warning shown to a reader
             # reflects the most recent confirmation rather than the first.
             record["last_checked"] = today
-        elif was_disabled and statuses is None:
+        elif statuses is None:
             # Absent from the report's problem list means it responded, so the
-            # collection is reachable again.
-            record.pop("is_disabled", None)
-            record["last_checked"] = today
-            restored.append(f"  id {record.get('id')}: {record.get('library')}")
+            # collection is reachable. This is deliberately not extended to a
+            # 403, timeout, or 5xx: those statuses are present in by_url and
+            # remain inconclusive.
+            if record.get("last_checked") != today:
+                record["last_checked"] = today
+                confirmed.append(
+                    f"  id {record.get('id')}: {record.get('library')}"
+                )
 
-    return disabled, restored
+            if was_disabled:
+                record.pop("is_disabled", None)
+                restored.append(f"  id {record.get('id')}: {record.get('library')}")
+
+    return disabled, restored, confirmed
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -141,7 +153,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     records = json.loads(args.data.read_text(encoding="utf-8"))
-    disabled, restored = plan_changes(records, by_url, args.today)
+    disabled, restored, confirmed = plan_changes(records, by_url, args.today)
 
     inconclusive = sum(
         1 for statuses in by_url.values() if not statuses & DEAD_STATUSES
@@ -153,12 +165,13 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Reachable again: {len(restored)}")
     for line in restored:
         print(line)
+    print(f"Confirmed working: {len(confirmed)}")
     print(
         f"Left alone as inconclusive: {inconclusive} "
         "(timeouts, 403, 429, and 5xx say nothing about the collection)"
     )
 
-    if disabled or restored:
+    if disabled or restored or confirmed:
         args.data.write_text(
             json.dumps(records, indent=4, ensure_ascii=False) + "\n", encoding="utf-8"
         )

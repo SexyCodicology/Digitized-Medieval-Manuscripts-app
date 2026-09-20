@@ -78,6 +78,8 @@ weekly link check". Nothing reaches the public site until you merge it.
   are the only responses that show the collection is no longer at that
   address.
 - **Clears the mark** when a URL that was previously broken responds again.
+- **Records the date** whenever a collection URL responds successfully. Its
+  individual page then shows when the link was last confirmed working.
 - **Refreshes the date** on a collection that is still broken.
 
 **What it deliberately leaves alone**: timeouts and 403, 429, and 5xx
@@ -92,12 +94,13 @@ value rather than a broken-link warning.
 
 ### What a reader sees
 
-A collection marked broken carries a "Broken link" badge in the directory and
-a dated notice on its own page. Its outbound link stays clickable but is
-labelled as broken rather than presented as a working collection, so nothing
-is hidden from someone checking whether the site has come back. Readers can
-also switch on the **Working link** filter on the homepage to leave those
-collections out of the list.
+A working collection page states when its URL was last confirmed working. A
+collection marked broken carries a "Broken link" badge in the directory and a
+dated notice on its own page. Its outbound link stays clickable but is labelled
+as broken rather than presented as a working collection, so nothing is hidden
+from someone checking whether the site has come back. Readers can also switch
+on the **Working link** filter on the homepage to leave those collections out
+of the list.
 
 ## How to handle broken links
 

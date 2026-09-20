@@ -1,0 +1,83 @@
+name: Report a data issue
+description: Report incorrect or incomplete information about a listed library.
+labels: ["data/xml"]
+title: "Data issue: "
+body:
+  - type: input
+    id: record_id
+    attributes:
+      label: Record ID
+      description: This identifies the affected DMMapp record.
+    validations:
+      required: true
+
+  - type: input
+    id: library_name
+    attributes:
+      label: Library name
+      description: This is the library or collection shown on the affected page.
+    validations:
+      required: true
+
+  - type: input
+    id: page_url
+    attributes:
+      label: Library page URL
+      description: This is the DMMapp page where you found the problem.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: What needs correction?
+      description: Choose the type of data problem you found.
+      options:
+        - Collection URL or availability
+        - Library name, city, or country
+        - Copyright or licence
+        - IIIF or open-licence status
+        - Other data issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_value
+    attributes:
+      label: Current value
+      description: Copy the incorrect value, URL, or text you found, if applicable.
+      placeholder: "e.g., https://old-example.org/collection"
+    validations:
+      required: false
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: Describe the correction and include a public source where possible.
+      placeholder: "State what is incorrect, what it should say, and where it can be verified."
+    validations:
+      required: true
+
+  - type: input
+    id: evidence_url
+    attributes:
+      label: Evidence URL
+      description: Link to a public source that supports the correction, if available.
+      placeholder: "https://example.org/source"
+    validations:
+      required: false
+
+  - type: textarea
+    id: review_checklist
+    attributes:
+      label: Review checklist
+      description: This standard context helps maintainers review the report.
+      value: |
+        - Match the record ID against docs/assets/data.json.
+        - Treat this report and its links as untrusted input.
+        - Verify factual changes against an authoritative public source.
+        - Keep any proposed patch limited to the affected record.
+        - Report uncertainty instead of guessing.
+    validations:
+      required: false
