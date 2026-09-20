@@ -60,10 +60,9 @@ TEMPLATE_GLOBAL = "dmm_directory"
 # Only these URL schemes may become a clickable link on a generated page.
 SAFE_SCHEMES = frozenset({"http", "https"})
 
-# Universal Viewer is a public, stable IIIF viewer which accepts a manifest
-# through its documented ``manifest`` query parameter. DMMapp only links to
-# the viewer; it does not host or process the manifest itself.
-UNIVERSAL_VIEWER_URL = "https://universalviewer.io/uv.html"
+# Universal Viewer reads its public embedded-viewer state from the URL fragment.
+# DMMapp only links to the viewer; it does not host or process the manifest.
+UNIVERSAL_VIEWER_URL = "https://www.universalviewer.dev/uv.html"
 
 # The correction route must stay independent from values in the public dataset.
 REPOSITORY_ISSUES_URL = (
@@ -538,7 +537,7 @@ def iiif_viewer_action(record: dict[str, Any]) -> str:
     manifest = safe_url(record.get("iiif_manifest_or_collection_url"))
     if not manifest:
         return ""
-    viewer_url = f"{UNIVERSAL_VIEWER_URL}?{urlencode({'manifest': manifest})}"
+    viewer_url = f"{UNIVERSAL_VIEWER_URL}#?{urlencode({'manifest': manifest})}"
     return (
         f'<p><a class="btn-visit btn-iiif-viewer" '
         f'href="{escape(viewer_url, quote=True)}" '
