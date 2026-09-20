@@ -749,3 +749,153 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 266,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 266,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 266,geonames_id,2870233,verified,https://sws.geonames.org/2870233/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+267,isil,DE-12,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-12.jsonld,,2026-09-20,Issuing registry names the same institution in Munich.
+267,wikidata_qid,Q256507,verified,https://www.wikidata.org/wiki/Q256507,https://isil.staatsbibliothek-berlin.de/api/org/DE-12.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
+267,geonames_id,2867714,verified,https://sws.geonames.org/2867714/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+268,isil,DE-2186,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-2186.jsonld,,2026-09-20,Issuing registry names the same institution in Stralsund.
+268,wikidata_qid,Q966013,verified,https://www.wikidata.org/wiki/Q966013,https://isil.staatsbibliothek-berlin.de/api/org/DE-2186.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
+268,geonames_id,2826287,verified,https://sws.geonames.org/2826287/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+269,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+269,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+269,geonames_id,2867714,verified,https://sws.geonames.org/2867714/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+270,isil,DE-28,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-28.jsonld,,2026-09-20,Issuing registry names the same institution in Rostock.
+270,wikidata_qid,Q1504057,verified,https://www.wikidata.org/wiki/Q1504057,https://isil.staatsbibliothek-berlin.de/api/org/DE-28.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
+270,geonames_id,2844588,verified,https://sws.geonames.org/2844588/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+271,isil,DE-MUS-710014,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-MUS-710014.jsonld,,2026-09-20,Issuing registry names the same institution in Berlin.
+271,wikidata_qid,Q700216,verified,https://www.wikidata.org/wiki/Q700216,https://isil.staatsbibliothek-berlin.de/api/org/DE-MUS-710014.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
+271,geonames_id,2950159,verified,https://sws.geonames.org/2950159/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+272,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+272,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+272,geonames_id,2952984,verified,https://sws.geonames.org/2952984/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+273,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+273,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+273,geonames_id,2867714,verified,https://sws.geonames.org/2867714/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+274,isil,DE-128,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-128.jsonld,,2026-09-20,Issuing registry names the same institution in Aschaffenburg.
+274,wikidata_qid,Q1622950,verified,https://www.wikidata.org/wiki/Q1622950,https://isil.staatsbibliothek-berlin.de/api/org/DE-128.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
+274,geonames_id,2955272,verified,https://sws.geonames.org/2955272/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+275,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+275,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+275,geonames_id,2950159,verified,https://sws.geonames.org/2950159/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+276,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+276,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+276,geonames_id,2874225,verified,https://sws.geonames.org/2874225/about.rdf,https://www.wikidata.org/wiki/Q1720,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+277,isil,DE-1876,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-1876.jsonld,,2026-09-20,Issuing registry names the same institution in Erfurt.
+277,wikidata_qid,Q2496246,verified,https://www.wikidata.org/wiki/Q2496246,https://isil.staatsbibliothek-berlin.de/api/org/DE-1876.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
+277,geonames_id,2929670,verified,https://sws.geonames.org/2929670/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+278,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+278,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+278,geonames_id,,unresolved,,,2026-09-20,7 same-name place candidates; no unique location crosswalk.
+279,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+279,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+279,geonames_id,2874225,verified,https://sws.geonames.org/2874225/about.rdf,https://www.wikidata.org/wiki/Q1720,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+280,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+280,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+280,geonames_id,2866070,verified,https://sws.geonames.org/2866070/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+281,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+281,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+281,geonames_id,,unresolved,,,2026-09-20,2 same-name place candidates; no unique location crosswalk.
+283,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+283,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+283,geonames_id,2891122,verified,https://sws.geonames.org/2891122/about.rdf,https://www.wikidata.org/wiki/Q1707,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+284,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+284,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+284,geonames_id,2861650,verified,https://sws.geonames.org/2861650/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+285,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+285,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+285,geonames_id,2861650,verified,https://sws.geonames.org/2861650/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+286,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+286,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+286,geonames_id,,unresolved,,,2026-09-20,No matching populated place found in the GeoNames country extract.
+287,isil,DE-37,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-37.jsonld,,2026-09-20,Issuing registry names the same institution in Augsburg.
+287,wikidata_qid,Q2324633,verified,https://www.wikidata.org/wiki/Q2324633,https://isil.staatsbibliothek-berlin.de/api/org/DE-37.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
+287,geonames_id,2954172,verified,https://sws.geonames.org/2954172/about.rdf,https://www.wikidata.org/wiki/Q2749,2026-09-20,Exact city item and coordinates confirm the GeoNames populated place.
+288,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+288,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+288,geonames_id,2849483,verified,https://sws.geonames.org/2849483/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+289,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+289,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+289,geonames_id,2954172,verified,https://sws.geonames.org/2954172/about.rdf,https://www.wikidata.org/wiki/Q2749,2026-09-20,Exact city item and coordinates confirm the GeoNames populated place.
+290,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+290,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+290,geonames_id,2911298,verified,https://sws.geonames.org/2911298/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+291,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+291,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+291,geonames_id,2875877,verified,https://sws.geonames.org/2875877/about.rdf,https://www.wikidata.org/wiki/Q524939,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+292,isil,DE-180,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-180.jsonld,,2026-09-20,Issuing registry names the same institution in Mannheim.
+292,wikidata_qid,Q2496322,verified,https://www.wikidata.org/wiki/Q2496322,https://www.bib.uni-mannheim.de/,2026-09-20,Exact institution item; country and city agree; official website matches.
+292,geonames_id,2873891,verified,https://sws.geonames.org/2873891/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+293,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+293,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+293,geonames_id,2834282,verified,https://sws.geonames.org/2834282/about.rdf,https://www.wikidata.org/wiki/Q32293124,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+294,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+294,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+294,geonames_id,,unresolved,,,2026-09-20,15 same-name place candidates; no unique location crosswalk.
+295,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+295,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+295,geonames_id,2953456,verified,https://sws.geonames.org/2953456/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+296,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+296,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+296,geonames_id,2937959,verified,https://sws.geonames.org/2937959/about.rdf,https://www.wikidata.org/wiki/Q487070,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+297,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+297,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+297,geonames_id,2935022,verified,https://sws.geonames.org/2935022/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+298,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+298,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+298,geonames_id,2918632,verified,https://sws.geonames.org/2918632/about.rdf,https://www.wikidata.org/wiki/Q3033,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+299,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+299,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+299,geonames_id,2911665,verified,https://sws.geonames.org/2911665/about.rdf,https://www.wikidata.org/wiki/Q7072,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+300,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+300,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+300,geonames_id,2911665,verified,https://sws.geonames.org/2911665/about.rdf,https://www.wikidata.org/wiki/Q7072,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+301,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+301,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+301,geonames_id,2911584,verified,https://sws.geonames.org/2911584/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+302,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+302,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+302,geonames_id,2911298,verified,https://sws.geonames.org/2911298/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+303,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+303,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+303,geonames_id,2911271,verified,https://sws.geonames.org/2911271/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+304,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+304,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+304,geonames_id,2910831,verified,https://sws.geonames.org/2910831/about.rdf,https://www.wikidata.org/wiki/Q1715,2026-09-20,Exact city item and coordinates confirm the GeoNames populated place.
+305,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+305,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+305,geonames_id,2906676,verified,https://sws.geonames.org/2906676/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+306,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+306,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+306,geonames_id,2906676,verified,https://sws.geonames.org/2906676/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+307,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+307,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+307,geonames_id,2904789,verified,https://sws.geonames.org/2904789/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+308,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+308,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+308,geonames_id,2885237,verified,https://sws.geonames.org/2885237/about.rdf,https://www.wikidata.org/wiki/Q49277802,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+309,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+309,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+309,geonames_id,2875115,verified,https://sws.geonames.org/2875115/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+310,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+310,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+310,geonames_id,2851465,verified,https://sws.geonames.org/2851465/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+311,isil,DE-1811-WO,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-1811-WO.jsonld,,2026-09-20,Issuing registry names the same institution in Wolfenbüttel.
+311,wikidata_qid,Q2324767,verified,https://www.wikidata.org/wiki/Q2324767,https://isil.staatsbibliothek-berlin.de/api/org/DE-1811-WO.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
+311,geonames_id,2806914,verified,https://sws.geonames.org/2806914/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+312,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+312,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+312,geonames_id,2855745,verified,https://sws.geonames.org/2855745/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+313,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+313,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+313,geonames_id,2875601,verified,https://sws.geonames.org/2875601/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+314,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+314,wikidata_qid,Q1063819,verified,https://www.wikidata.org/wiki/Q1063819,http://www.oszk.hu,2026-09-20,Exact institution item; country and city agree; official website matches.
+314,geonames_id,3054643,verified,https://sws.geonames.org/3054643/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+315,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+315,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+315,geonames_id,3054643,verified,https://sws.geonames.org/3054643/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+316,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+316,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+316,geonames_id,3413829,verified,https://sws.geonames.org/3413829/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+317,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+317,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+317,geonames_id,2964574,verified,https://sws.geonames.org/2964574/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
