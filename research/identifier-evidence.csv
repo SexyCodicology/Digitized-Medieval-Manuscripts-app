@@ -1499,3 +1499,153 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 528,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 528,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 528,geonames_id,5128581,verified,https://sws.geonames.org/5128581/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+529,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+529,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+529,geonames_id,5128581,verified,https://sws.geonames.org/5128581/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+530,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+530,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+530,geonames_id,5101717,verified,https://sws.geonames.org/5101717/about.rdf,https://www.wikidata.org/wiki/Q138338,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+533,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+533,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+533,geonames_id,5054551,verified,https://sws.geonames.org/5054551/about.rdf,https://www.wikidata.org/wiki/Q3469209,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+534,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+534,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+534,geonames_id,5391959,verified,https://sws.geonames.org/5391959/about.rdf,https://www.wikidata.org/wiki/Q62,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+536,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+536,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+536,geonames_id,5341704,verified,https://sws.geonames.org/5341704/about.rdf,https://www.wikidata.org/wiki/Q668546,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+538,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+538,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+538,geonames_id,5128581,verified,https://sws.geonames.org/5128581/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+540,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+540,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+540,geonames_id,5128581,verified,https://sws.geonames.org/5128581/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+542,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+542,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+542,geonames_id,5128581,verified,https://sws.geonames.org/5128581/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+544,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+544,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+544,geonames_id,5387877,verified,https://sws.geonames.org/5387877/about.rdf,https://www.wikidata.org/wiki/Q49243,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+545,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+545,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+545,geonames_id,,unresolved,,,2026-09-20,4 same-name place candidates; no unique location crosswalk.
+546,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+546,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+546,geonames_id,5128581,verified,https://sws.geonames.org/5128581/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+547,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+547,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+547,geonames_id,,unresolved,,,2026-09-20,61 same-name place candidates; no unique location crosswalk.
+553,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+553,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+553,geonames_id,,unresolved,,,2026-09-20,39 same-name place candidates; no unique location crosswalk.
+556,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+556,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+556,geonames_id,5128581,verified,https://sws.geonames.org/5128581/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+558,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+558,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+558,geonames_id,5155438,verified,https://sws.geonames.org/5155438/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+560,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+560,wikidata_qid,Q731126,verified,https://www.wikidata.org/wiki/Q731126,http://www.getty.edu/museum/,2026-09-20,Exact institution item; country and city agree; official website matches.
+560,geonames_id,5368361,verified,https://sws.geonames.org/5368361/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+561,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+561,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+561,geonames_id,4862034,verified,https://sws.geonames.org/4862034/about.rdf,https://www.wikidata.org/wiki/Q487977,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+562,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+562,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+562,geonames_id,4560349,verified,https://sws.geonames.org/4560349/about.rdf,https://www.wikidata.org/wiki/Q1345,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+563,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+563,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+563,geonames_id,,unresolved,,,2026-09-20,64 same-name place candidates; no unique location crosswalk.
+564,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+564,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+564,geonames_id,4997787,verified,https://sws.geonames.org/4997787/about.rdf,https://www.wikidata.org/wiki/Q167155,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+565,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+565,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+565,geonames_id,,unresolved,,,2026-09-20,23 same-name place candidates; no unique location crosswalk.
+566,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+566,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+566,geonames_id,4407066,verified,https://sws.geonames.org/4407066/about.rdf,https://www.wikidata.org/wiki/Q38022,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+567,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+567,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
+567,geonames_id,4719457,verified,https://sws.geonames.org/4719457/about.rdf,https://www.wikidata.org/wiki/Q51689,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+568,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+568,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+568,geonames_id,4887398,verified,https://sws.geonames.org/4887398/about.rdf,https://www.wikidata.org/wiki/Q1297,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+569,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+569,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+569,geonames_id,,unresolved,,,2026-09-20,40 same-name place candidates; no unique location crosswalk.
+570,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+570,wikidata_qid,Q7895173,verified,https://www.wikidata.org/wiki/Q7895173,http://library.ucla.edu/,2026-09-20,Exact institution item; country and city agree; official website matches.
+570,geonames_id,5368361,verified,https://sws.geonames.org/5368361/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+571,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+571,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+571,geonames_id,4887398,verified,https://sws.geonames.org/4887398/about.rdf,https://www.wikidata.org/wiki/Q1297,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+572,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+572,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+572,geonames_id,5392400,verified,https://sws.geonames.org/5392400/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+573,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+573,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+573,geonames_id,,unresolved,,,2026-09-20,41 same-name place candidates; no unique location crosswalk.
+574,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+574,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+574,geonames_id,6691831,verified,https://sws.geonames.org/6691831/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+575,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+575,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+575,geonames_id,2657782,verified,https://sws.geonames.org/2657782/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+576,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+576,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+576,geonames_id,3182351,verified,https://sws.geonames.org/3182351/about.rdf,https://www.wikidata.org/wiki/Q3519,2026-09-20,Exact city item and coordinates confirm the GeoNames populated place.
+577,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+577,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+577,geonames_id,3173435,verified,https://sws.geonames.org/3173435/about.rdf,https://www.wikidata.org/wiki/Q490,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+578,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+578,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+578,geonames_id,3164603,verified,https://sws.geonames.org/3164603/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+579,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+579,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+579,geonames_id,3169070,verified,https://sws.geonames.org/3169070/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+580,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+580,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+580,geonames_id,3469058,verified,https://sws.geonames.org/3469058/about.rdf,https://www.wikidata.org/wiki/Q2844,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+581,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+581,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+581,geonames_id,3060972,verified,https://sws.geonames.org/3060972/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+582,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+582,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+582,geonames_id,3081368,verified,https://sws.geonames.org/3081368/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+583,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+583,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+583,geonames_id,524901,verified,https://sws.geonames.org/524901/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+584,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+584,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+584,geonames_id,,unresolved,,,2026-09-20,9 same-name place candidates; no unique location crosswalk.
+585,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+585,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+585,geonames_id,,unresolved,,,2026-09-20,32 same-name place candidates; no unique location crosswalk.
+587,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+587,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+587,geonames_id,4561628,verified,https://sws.geonames.org/4561628/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+588,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+588,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+588,geonames_id,4560349,verified,https://sws.geonames.org/4560349/about.rdf,https://www.wikidata.org/wiki/Q1345,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+589,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+589,wikidata_qid,Q54685096,verified,https://www.wikidata.org/wiki/Q54685096,http://www.ceskearchivy.cz/statni-okresni-archivy/strakonice,2026-09-20,Exact institution item; country and city agree; official website matches.
+589,geonames_id,3065067,verified,https://sws.geonames.org/3065067/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+590,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+590,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+590,geonames_id,2666199,verified,https://sws.geonames.org/2666199/about.rdf,https://www.wikidata.org/wiki/Q25286,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+591,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+591,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
+591,geonames_id,3169070,verified,https://sws.geonames.org/3169070/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+592,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+592,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+592,geonames_id,,unresolved,,,2026-09-20,11 same-name place candidates; no unique location crosswalk.
+593,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+593,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+593,geonames_id,2907488,verified,https://sws.geonames.org/2907488/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+594,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+594,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+594,geonames_id,3029030,verified,https://sws.geonames.org/3029030/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+595,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
+595,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
+595,geonames_id,4560349,verified,https://sws.geonames.org/4560349/about.rdf,https://www.wikidata.org/wiki/Q1345,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.

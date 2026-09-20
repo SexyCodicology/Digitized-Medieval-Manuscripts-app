@@ -8994,7 +8994,8 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5128581
     },
     {
         "id": 530,
@@ -9012,7 +9013,8 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5101717
     },
     {
         "id": 533,
@@ -9030,7 +9032,8 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5054551
     },
     {
         "id": 534,
@@ -9048,7 +9051,8 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5391959
     },
     {
         "id": 536,
@@ -9066,7 +9070,8 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5341704
     },
     {
         "id": 538,
@@ -9085,7 +9090,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5128581
     },
     {
         "id": 540,
@@ -9104,7 +9110,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5128581
     },
     {
         "id": 542,
@@ -9123,7 +9130,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5128581
     },
     {
         "id": 544,
@@ -9142,7 +9150,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5387877
     },
     {
         "id": 545,
@@ -9180,7 +9189,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5128581
     },
     {
         "id": 547,
@@ -9237,7 +9247,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5128581
     },
     {
         "id": 558,
@@ -9251,7 +9262,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5155438
     },
     {
         "id": 560,
@@ -9265,7 +9277,9 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "wikidata_qid": "Q731126",
+        "geonames_id": 5368361
     },
     {
         "id": 561,
@@ -9279,7 +9293,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 4862034
     },
     {
         "id": 562,
@@ -9292,7 +9307,8 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 4560349
     },
     {
         "id": 563,
@@ -9319,7 +9335,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 4997787
     },
     {
         "id": 565,
@@ -9351,7 +9368,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 4407066
     },
     {
         "id": 567,
@@ -9365,7 +9383,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 4719457
     },
     {
         "id": 568,
@@ -9379,7 +9398,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 4887398
     },
     {
         "id": 569,
@@ -9407,7 +9427,9 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "wikidata_qid": "Q7895173",
+        "geonames_id": 5368361
     },
     {
         "id": 571,
@@ -9420,7 +9442,8 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 4887398
     },
     {
         "id": 572,
@@ -9439,7 +9462,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 5392400
     },
     {
         "id": 573,
@@ -9465,7 +9489,8 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 6691831
     },
     {
         "id": 575,
@@ -9479,7 +9504,8 @@
         "is_free_cultural_works_license": true,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "CC0"
+        "licence_category": "CC0",
+        "geonames_id": 2657782
     },
     {
         "id": 576,
@@ -9494,7 +9520,8 @@
         "aggregators": [],
         "is_disabled": true,
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 3182351
     },
     {
         "id": 577,
@@ -9508,7 +9535,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "All Rights Reserved"
+        "licence_category": "All Rights Reserved",
+        "geonames_id": 3173435
     },
     {
         "id": 578,
@@ -9527,7 +9555,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "All Rights Reserved"
+        "licence_category": "All Rights Reserved",
+        "geonames_id": 3164603
     },
     {
         "id": 579,
@@ -9541,7 +9570,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "All Rights Reserved"
+        "licence_category": "All Rights Reserved",
+        "geonames_id": 3169070
     },
     {
         "id": 580,
@@ -9555,7 +9585,8 @@
         "is_free_cultural_works_license": true,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "CC-BY"
+        "licence_category": "CC-BY",
+        "geonames_id": 3469058
     },
     {
         "id": 581,
@@ -9569,7 +9600,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 3060972
     },
     {
         "id": 582,
@@ -9582,7 +9614,8 @@
         "iiif": false,
         "is_free_cultural_works_license": true,
         "aggregators": [],
-        "licence_category": "CC0"
+        "licence_category": "CC0",
+        "geonames_id": 3081368
     },
     {
         "id": 583,
@@ -9596,7 +9629,8 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 524901
     },
     {
         "id": 584,
@@ -9657,7 +9691,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "CC0"
+        "licence_category": "CC0",
+        "geonames_id": 4561628
     },
     {
         "id": 588,
@@ -9676,7 +9711,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "CC0"
+        "licence_category": "CC0",
+        "geonames_id": 4560349
     },
     {
         "id": 589,
@@ -9690,7 +9726,9 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "wikidata_qid": "Q54685096",
+        "geonames_id": 3065067
     },
     {
         "id": 590,
@@ -9709,7 +9747,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 2666199
     },
     {
         "id": 591,
@@ -9728,7 +9767,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 3169070
     },
     {
         "id": 592,
@@ -9761,7 +9801,8 @@
         "is_free_cultural_works_license": true,
         "aggregators": [],
         "last_checked": "2026-09-20",
-        "licence_category": "CC0"
+        "licence_category": "CC0",
+        "geonames_id": 2907488
     },
     {
         "id": 594,
@@ -9780,7 +9821,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "Unknown"
+        "licence_category": "Unknown",
+        "geonames_id": 3029030
     },
     {
         "id": 595,
@@ -9803,7 +9845,8 @@
             }
         ],
         "last_checked": "2026-09-20",
-        "licence_category": "CC-BY"
+        "licence_category": "CC-BY",
+        "geonames_id": 4560349
     },
     {
         "id": 596,
