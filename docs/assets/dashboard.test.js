@@ -315,16 +315,18 @@ test('random library: repeated activations can select different records', async 
   assert.deepEqual(navigations, ['libraries/alpha-library-1/', 'libraries/beta-library-2/']);
 });
 
-test('quantity and copyright filters: options follow the declared order and narrow the results', async () => {
+test('quantity and licence filters: options group equivalent rights and narrow results', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
-    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Thousands', copyright: 'CC BY-NC 4.0' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0', licence_category: 'CC0' },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Thousands', copyright: 'CC BY-NC 4.0', licence_category: 'CC-BY-NC' },
+    { id: 3, library: 'Gamma Library', nation: 'Nation C', city: 'City C', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Thousands', copyright: 'Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)', licence_category: 'CC-BY-NC' },
   ];
 
   const dom = loadDashboard({
     rowsHtml: `
       <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
       <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+      <tr data-record-id="3"><td>Gamma Library</td><td>Nation C</td><td></td><td></td></tr>
     `,
     fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
   });
@@ -338,8 +340,8 @@ test('quantity and copyright filters: options follow the declared order and narr
   // QUANTITY_ORDER, not alphabetical: 'Few' before 'Thousands' even though
   // alphabetising would put 'Thousands' first.
   assert.deepEqual([...quantitySelect.options].map(o => o.value), ['All', 'Few', 'Thousands']);
-  // Copyright has no declared order, so it is alphabetised like nation/project.
-  assert.deepEqual([...copyrightSelect.options].map(o => o.value), ['All', 'CC BY-NC 4.0', 'Public Domain Mark 1.0']);
+  // Related verbatim strings collapse into the controlled category order.
+  assert.deepEqual([...copyrightSelect.options].map(o => o.value), ['All', 'CC0', 'CC-BY-NC']);
 
   quantitySelect.value = 'Few';
   quantitySelect.dispatchEvent(new window.Event('change'));
@@ -350,17 +352,24 @@ test('quantity and copyright filters: options follow the declared order and narr
 
   quantitySelect.value = 'All';
   quantitySelect.dispatchEvent(new window.Event('change'));
-  copyrightSelect.value = 'CC BY-NC 4.0';
+  copyrightSelect.value = 'CC-BY-NC';
   copyrightSelect.dispatchEvent(new window.Event('change'));
 
   rows = [...window.document.querySelectorAll('#tableBody tr')];
-  assert.deepEqual(rows.map(r => r.dataset.recordId), ['2']);
+  assert.deepEqual(rows.map(r => r.dataset.recordId), ['2', '3']);
+
+  const searchInput = window.document.getElementById('searchInput');
+  searchInput.value = 'Attribution-NonCommercial 4.0';
+  searchInput.dispatchEvent(new window.Event('input'));
+
+  rows = [...window.document.querySelectorAll('#tableBody tr')];
+  assert.deepEqual(rows.map(r => r.dataset.recordId), ['3']);
 });
 
-test('quantity filter: a value outside the known enum is appended, and an empty copyright does not throw', async () => {
+test('quantity filter: a value outside the known enum is appended, and an empty licence category does not throw', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
-    { id: 2, library: 'Zeta Library', nation: 'Nation Z', city: 'City Z', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Millions', copyright: '' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0', licence_category: 'CC0' },
+    { id: 2, library: 'Zeta Library', nation: 'Nation Z', city: 'City Z', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Millions', copyright: '', licence_category: '' },
   ];
 
   const dom = loadDashboard({
@@ -382,13 +391,13 @@ test('quantity filter: a value outside the known enum is appended, and an empty 
   );
 
   const rows = [...window.document.querySelectorAll('#tableBody tr')];
-  assert.equal(rows.length, 2, 'a record with an empty copyright must still be shown unfiltered');
+  assert.equal(rows.length, 2, 'a record with an empty licence category must still be shown unfiltered');
 });
 
-test('copyright filter: a value containing markup becomes a plain option label, never injected markup', async () => {
-  const maliciousCopyright = '<img src=x onerror="window.__pwned = true"> "quoted"';
+test('licence filter: a malformed value becomes a plain option label, never injected markup', async () => {
+  const maliciousCategory = '<img src=x onerror="window.__pwned = true"> "quoted"';
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: maliciousCopyright },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'CC0 1.0', licence_category: maliciousCategory },
   ];
 
   const dom = loadDashboard({
@@ -403,10 +412,10 @@ test('copyright filter: a value containing markup becomes a plain option label, 
   const option = [...copyrightSelect.options].find(o => o.value !== 'All');
 
   assert.equal(copyrightSelect.querySelector('img'), null, 'no element must be injected into the select');
-  assert.equal(option.textContent, maliciousCopyright, 'the raw value must still be usable as an option label');
+  assert.equal(option.textContent, maliciousCategory, 'the malformed value must still be usable as an option label');
   assert.equal(window.__pwned, undefined);
 
-  copyrightSelect.value = maliciousCopyright;
+  copyrightSelect.value = maliciousCategory;
   copyrightSelect.dispatchEvent(new window.Event('change'));
 
   const rows = [...window.document.querySelectorAll('#tableBody tr')];
@@ -431,10 +440,10 @@ test('load failure: the quantity and copyright filters stay seeded with only the
   );
 });
 
-test('quantity and copyright filters compose with search, nation, project, and the toggles', async () => {
+test('quantity and licence filters compose with search, nation, project, and the toggles', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, aggregators: [{ name: 'Project X', url: 'https://project-x.invalid/' }], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
-    { id: 2, library: 'Alpha Annex', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, aggregators: [{ name: 'Project X', url: 'https://project-x.invalid/' }], quantity: 'Thousands', copyright: 'Public Domain Mark 1.0' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, aggregators: [{ name: 'Project X', url: 'https://project-x.invalid/' }], quantity: 'Few', copyright: 'Public Domain Mark 1.0', licence_category: 'CC0' },
+    { id: 2, library: 'Alpha Annex', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: true, aggregators: [{ name: 'Project X', url: 'https://project-x.invalid/' }], quantity: 'Thousands', copyright: 'Public Domain Mark 1.0', licence_category: 'CC0' },
   ];
 
   const dom = loadDashboard({
@@ -462,7 +471,7 @@ test('quantity and copyright filters compose with search, nation, project, and t
   nationSelect.dispatchEvent(new window.Event('change'));
   projectSelect.value = 'Project X';
   projectSelect.dispatchEvent(new window.Event('change'));
-  copyrightSelect.value = 'Public Domain Mark 1.0';
+  copyrightSelect.value = 'CC0';
   copyrightSelect.dispatchEvent(new window.Event('change'));
   iiifCheck.checked = true;
   iiifCheck.dispatchEvent(new window.Event('change'));
@@ -488,10 +497,10 @@ test('quantity and copyright filters compose with search, nation, project, and t
   assert.equal(window.document.getElementById('emptyState').hidden, false);
 });
 
-test('clearFilters resets the quantity and copyright filters along with the rest', async () => {
+test('clearFilters resets the quantity and licence filters along with the rest', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
-    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Thousands', copyright: 'CC BY-NC 4.0' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0', licence_category: 'CC0' },
+    { id: 2, library: 'Beta Library', nation: 'Nation B', city: 'City B', iiif: false, is_free_cultural_works_license: false, aggregators: [], quantity: 'Thousands', copyright: 'CC BY-NC 4.0', licence_category: 'CC-BY-NC' },
   ];
 
   const dom = loadDashboard({
@@ -510,7 +519,7 @@ test('clearFilters resets the quantity and copyright filters along with the rest
 
   quantitySelect.value = 'Few';
   quantitySelect.dispatchEvent(new window.Event('change'));
-  copyrightSelect.value = 'Public Domain Mark 1.0';
+  copyrightSelect.value = 'CC0';
   copyrightSelect.dispatchEvent(new window.Event('change'));
 
   assert.equal([...window.document.querySelectorAll('#tableBody tr')].length, 1);
@@ -524,7 +533,7 @@ test('clearFilters resets the quantity and copyright filters along with the rest
 
 test('filters-active badge: hidden with none active, counts only the four collapsed selects, and resets on clearFilters', async () => {
   const data = [
-    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0' },
+    { id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A', iiif: true, is_free_cultural_works_license: false, aggregators: [], quantity: 'Few', copyright: 'Public Domain Mark 1.0', licence_category: 'CC0' },
   ];
 
   const dom = loadDashboard({
@@ -568,12 +577,12 @@ test('filters-active badge: hidden with none active, counts only the four collap
   assert.equal(badge.textContent, '0');
 });
 
-const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,quantity,iiif,iiif_collection_url,iiif_example_manifest_url,iiif_example_manifest_label,is_free_cultural_works_license,aggregators,is_disabled,last_checked,isil,wikidata_qid,geonames_id';
+const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,licence_category,quantity,iiif,iiif_collection_url,iiif_example_manifest_url,iiif_example_manifest_label,is_free_cultural_works_license,aggregators,is_disabled,last_checked,isil,wikidata_qid,geonames_id';
 
 function makeRecord(overrides) {
   return Object.assign({
     id: 1, library: 'Alpha Library', nation: 'Nation A', city: 'City A',
-    website: 'https://alpha.example', copyright: 'CC0 1.0', quantity: 'Few',
+    website: 'https://alpha.example', copyright: 'CC0 1.0', licence_category: 'CC0', quantity: 'Few',
     iiif: true, is_free_cultural_works_license: true, aggregators: [],
   }, overrides);
 }

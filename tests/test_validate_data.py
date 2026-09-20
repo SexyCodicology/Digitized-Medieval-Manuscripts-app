@@ -38,6 +38,7 @@ VALID_RECORD = {
     "city": "Oxford",
     "website": "https://digital.bodleian.ox.ac.uk",
     "copyright": "Public Domain",
+    "licence_category": "CC0",
     "quantity": "Thousands",
     "iiif": True,
     "is_free_cultural_works_license": True,
@@ -205,6 +206,40 @@ def test_missing_required_field_fails(schema):
     errors = validator.validate(schema, [record])
 
     assert any("copyright" in error for error in errors)
+
+
+def test_a_record_without_a_licence_category_fails(schema):
+    record = copy.deepcopy(VALID_RECORD)
+    del record["licence_category"]
+
+    errors = validator.validate(schema, [record])
+
+    assert any("licence_category" in error for error in errors)
+
+
+def test_an_invalid_licence_category_fails(schema):
+    record = {**copy.deepcopy(VALID_RECORD), "licence_category": "CC-BY-SA"}
+
+    errors = validator.validate(schema, [record])
+
+    assert any("licence_category" in error for error in errors)
+
+
+def test_every_current_rights_statement_has_an_explicit_mapping():
+    spec = importlib.util.spec_from_file_location(
+        "backfill_licence_category",
+        REPO_ROOT / "scripts" / "backfill_licence_category.py",
+    )
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    records = validator.load_json(REPO_ROOT / "docs" / "assets" / "data.json")
+
+    copyright_values = {record["copyright"] for record in records}
+
+    assert set(module.COPYRIGHT_TO_LICENCE_CATEGORY) == copyright_values
+    assert set(module.COPYRIGHT_TO_LICENCE_CATEGORY.values()) <= module.LICENCE_CATEGORIES
+    assert all(record["licence_category"] == module.COPYRIGHT_TO_LICENCE_CATEGORY[record["copyright"]] for record in records)
 
 
 def test_unexpected_property_fails(schema):
