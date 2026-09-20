@@ -53,7 +53,8 @@ them out when you cannot verify an identifier.
 The `research/identifier-evidence.csv` ledger records a source or an unresolved
 reason for each of the three fields on every record. Its check confirms that
 the ledger agrees with `data.json`; a maintainer still checks whether a source
-describes the correct institution or place.
+describes the correct institution or place. See [Identifier
+research](identifier-research.md) for the required rows and review workflow.
 
 #### ISIL
 

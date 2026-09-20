@@ -177,6 +177,9 @@ also needs a corroborating institution or registry URL. If you propose a
 correction through GitHub's editor and cannot edit the research file, ask a
 maintainer to complete those rows in your pull request before merging it.
 
+Follow the [Identifier research](identifier-research.md) guide for the exact
+ledger columns, source criteria, examples, and checks.
+
 ### Homepage recency fields
 
 Two optional fields let the homepage show when a record was added or materially

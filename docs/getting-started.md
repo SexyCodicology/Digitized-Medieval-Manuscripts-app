@@ -27,6 +27,11 @@ Scroll through the directory to explore libraries. Each entry shows:
 - Link to the digitized collection
 - Available features (like IIIF support)
 
+Library detail pages can also show verified ISIL, Wikidata, and GeoNames
+identifiers. These help you match the listed institution or location with other
+catalogues. An absent identifier means DMMapp has not confirmed one; it does not
+mean that no identifier exists.
+
 ### Read library details
 
 Select the **Visit** link next to a library to open their collection website in a new tab. You'll find manuscripts, catalogs, and research tools.
@@ -186,6 +191,7 @@ Ready to contribute? Here's how to help expand the directory:
 
 - [Update the data](update-data.md) — Add new libraries or correct existing information
 - [View the data schema](schema.md) — Understand how library data is structured
+- [Research identifiers](identifier-research.md) — Verify ISIL, Wikidata, and GeoNames data
 - [About the project](about.md) — Learn about DMMapp's mission and history
 
 Happy researching! 📚

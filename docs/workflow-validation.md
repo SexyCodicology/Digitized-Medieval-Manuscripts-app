@@ -17,11 +17,26 @@ The system performs two levels of checking:
 
 Both checks happen automatically and provide instant feedback through GitHub.
 
-The identifier evidence check also confirms that every record has one research
-decision for each optional ISIL, Wikidata, and GeoNames field. It checks source
-URL format and agreement with `data.json`. It cannot establish that an external
-authority record describes the right library or place; maintainers review that
-match using the linked sources.
+### Identifier evidence check
+
+The identifier evidence check reads `research/identifier-evidence.csv` and
+compares it with `docs/assets/data.json`. It requires exactly one `isil`,
+`wikidata_qid`, and `geonames_id` decision for every record.
+
+For a `verified` decision, it checks that the value is present and identical in
+`data.json`, that the direct source is an absolute HTTP(S) URL, and that the date
+is a real `YYYY-MM-DD` date that is not in the future. Wikidata decisions also
+need a public corroborating institution or registry URL.
+
+For an `unresolved` decision, it checks that no identifier or source URL was
+added to `data.json` and that the ledger explains why. It also rejects missing
+or duplicate rows, unknown record IDs, unknown fields, malformed CSV rows, and
+invalid status values.
+
+This is a consistency check. It cannot establish that an external authority
+record describes the right institution or place. Reviewers must assess that
+match using the linked sources. See [Identifier
+research](identifier-research.md) for the research and review workflow.
 
 ## When validation runs
 
