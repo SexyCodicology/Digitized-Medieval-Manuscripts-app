@@ -263,7 +263,10 @@ already knows is dead, and can filter those collections out of the directory.
 
 #### Last checked
 
-The date the collection URL was last checked, as an ISO 8601 calendar date.
+The date the collection URL was last assessed, as an ISO 8601 calendar date.
+For working links, the individual collection page shows it as the date the URL
+was last confirmed working. For a broken link, it dates the broken-link
+warning instead.
 
 **Requirements:**
 - Write it as `YYYY-MM-DD`, for example `2026-08-02`
@@ -272,9 +275,9 @@ The date the collection URL was last checked, as an ISO 8601 calendar date.
 
 **Example:** `"2026-08-02"`
 
-**Why it matters:** A warning without a date tells a reader nothing about how
-current it is. A link confirmed broken years ago deserves less trust than one
-checked last week.
+**Why it matters:** Readers can judge how current a working-link confirmation
+or broken-link warning is. A link confirmed broken years ago deserves less
+trust than one checked last week.
 
 ### Homepage recency
 

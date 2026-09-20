@@ -717,6 +717,25 @@ a.library-name:focus-visible {
   color: #ef9a9a;
 }
 
+/* Readers can judge how current a working-link confirmation is without
+   confusing it with the stronger, amber/red broken-link warning. */
+.library-page__checked {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #2e7d32;
+  border-radius: var(--dash-radius);
+  background: #e8f5e9;
+  color: #1b5e20;
+  font-size: 0.9rem;
+}
+
+[data-md-color-scheme="slate"] .library-page__checked {
+  background: rgba(76, 175, 80, .12);
+  color: #a5d6a7;
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
