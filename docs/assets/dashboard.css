@@ -962,9 +962,101 @@ a.library-name:focus-visible {
     min-width: 0;
     width: 100%;
   }
+}
 
-  /* Hide Features column on very small screens to avoid overflow */
-  .col-features { display: none; }
+/* ≤ 640 px: the directory table becomes a stack of cards.
+   Below this width the desktop column widths (col-library min-width 220px,
+   col-location min-width 130px, .table-scroll { overflow-x: auto }) push
+   Location and Access off-screen with no visible scroll affordance — a
+   visitor never discovers they're there. Each <tr> becomes a flex row
+   instead: the library name stays full-width on top, Location and the
+   feature badges share a line when they fit, and Visit becomes a
+   full-width tap target. Only the CSS display type changes; the underlying
+   <table> markup (and its sort/empty-state/JS behaviour) is untouched, so
+   screen-reader users whose browser keeps table semantics regardless of
+   CSS still get a correctly structured table.
+
+   Flexbox rather than a fixed grid column: a rigid two-column split
+   (location | badges) squeezed the location column below the width of a
+   single unbroken nation name (e.g. "Switzerland") on a narrow phone.
+   .md-typeset's global overflow-wrap: break-word then let the browser
+   slice the word mid-letter instead of wrapping the badges to their own
+   line. Flex-wrap fixes both: location keeps its natural, unbroken width
+   (word-break is reset to normal below) and the badges drop to the next
+   line whenever there isn't room beside it. */
+@media (max-width: 640px) {
+  #dashboard-root #libraryTable,
+  #dashboard-root #libraryTable tbody {
+    display: block;
+    width: 100%;
+  }
+
+  /* Column headers have no home in a card layout; hide them the same way
+     overrides/home.html hides purely-structural labels elsewhere
+     (see .visually-hidden), rather than display:none, so they remain in
+     the accessibility tree for anyone whose browser still exposes them. */
+  #dashboard-root #libraryTable thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  #dashboard-root #libraryTable tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.75rem;
+    row-gap: 0.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--dash-card-border);
+  }
+
+  #dashboard-root #libraryTable tbody td {
+    display: block;
+    padding: 0;
+    border: none;
+    width: auto;
+    min-width: 0;
+  }
+
+  #dashboard-root #libraryTable tbody td.col-library {
+    flex: 1 1 100%;
+  }
+
+  #dashboard-root #libraryTable tbody td.col-location {
+    flex: 0 1 auto;
+    /* Never break a nation/city name mid-word to fit — wrap the badges
+       to the next line instead (see the flex-wrap note above). */
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  #dashboard-root #libraryTable tbody td.col-features {
+    flex: 0 1 auto;
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  #dashboard-root #libraryTable tbody td.col-access {
+    flex: 1 1 100%;
+    text-align: left;
+  }
+
+  /* The tap target itself, not just its cell, spans the card. */
+  #dashboard-root #libraryTable tbody td.col-access .btn-visit {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ── 15. Accessibility ────────────────────────────────────────────────────*/

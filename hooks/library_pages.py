@@ -630,18 +630,24 @@ def render_visit(record: dict[str, Any]) -> str:
 
 
 def render_row(record: dict[str, Any]) -> str:
-    """Return one directory row. Every dataset value is escaped on the way in."""
+    """Return one directory row. Every dataset value is escaped on the way in.
+
+    Each cell carries the same ``col-*`` class as its header (see
+    overrides/home.html), rather than a per-cell inline style. That is what
+    lets the mobile breakpoint in dashboard.css re-target a cell — e.g. to
+    turn the access column into a full-width tap area — without new markup.
+    """
     # slugify only ever emits [a-z0-9-], so the href cannot break its attribute.
     slug = escape(slug_for(record), quote=True)
     return (
         f'<tr data-record-id="{record["id"]}">'
-        f'<td><a class="library-name" href="libraries/{slug}/">'
+        f'<td class="col-library"><a class="library-name" href="libraries/{slug}/">'
         f'{escape(str(record["library"]))}</a>{render_projects(record)}</td>'
-        f'<td><div class="location-nation">{escape(str(record["nation"]))}</div>'
+        f'<td class="col-location"><div class="location-nation">{escape(str(record["nation"]))}</div>'
         '<div class="location-city"><i class="bi bi-dot" aria-hidden="true"></i>'
         f'{escape(str(record["city"]))}</div></td>'
-        f"<td>{render_badges(record)}</td>"
-        f'<td style="text-align:right">{render_visit(record)}</td>'
+        f'<td class="col-features">{render_badges(record)}</td>'
+        f'<td class="col-access">{render_visit(record)}</td>'
         "</tr>"
     )
 

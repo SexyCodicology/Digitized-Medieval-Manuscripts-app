@@ -109,6 +109,20 @@ def test_a_row_links_the_library_to_its_generated_page():
     assert '<a href="https://polonsky.example.org"' in row
 
 
+def test_each_cell_carries_its_column_class_and_no_inline_style():
+    """dashboard.css's ≤640px card layout re-targets cells by these classes
+    (col-library/col-location/col-features/col-access), matching the classes
+    overrides/home.html already puts on the header cells. A per-cell inline
+    style would bypass that and can't be overridden at the breakpoint."""
+    row = hook.render_row(SAFE_RECORD)
+
+    assert '<td class="col-library">' in row
+    assert '<td class="col-location">' in row
+    assert '<td class="col-features">' in row
+    assert '<td class="col-access">' in row
+    assert "style=" not in row
+
+
 def test_badges_reflect_the_record_features():
     plain = {**SAFE_RECORD, "iiif": False, "is_free_cultural_works_license": False}
 
