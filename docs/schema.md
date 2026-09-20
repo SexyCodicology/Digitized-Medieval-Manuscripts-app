@@ -42,6 +42,33 @@ A unique number that identifies this library in our database. IDs are assigned s
 
 **Why it matters:** This number prevents duplicate entries and ensures accurate record tracking.
 
+### Optional institutional identifiers
+
+These optional fields link a library record to established authority files and
+geographic catalogues. They help people match the same institution across
+DMMapp, library registries, linked-data services, and other catalogues. Leave
+them out when you cannot verify an identifier.
+
+#### ISIL
+
+The International Standard Identifier for Libraries, written as a country code
+and local code separated by a hyphen.
+
+**Example:** `"GB-OxBodl"`
+
+#### Wikidata QID
+
+The library's Wikidata item identifier. It begins with an uppercase `Q` and is
+followed by a positive number.
+
+**Example:** `"Q1131283"`
+
+#### GeoNames ID
+
+The positive numeric GeoNames identifier for the library's location.
+
+**Example:** `2640729`
+
 #### Library name
 
 The official name of the institution that holds the manuscript collection.

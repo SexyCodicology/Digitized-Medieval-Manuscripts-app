@@ -103,6 +103,23 @@ with its proposal, so you rarely need to write them by hand. See
 check does and does not conclude. If a collection has moved rather than
 closed, update **website** instead of marking it broken.
 
+### Optional institutional identifiers
+
+You can add the following optional fields when you can verify them from their
+authoritative source. Do not guess an identifier, and leave the field out when
+you cannot find a reliable match.
+
+- **isil**: The library's International Standard Identifier for Libraries,
+  written as `<CountryCode>-<LocalCode>`, for example `"GB-OxBodl"`. Find it
+  through an [ISIL registry search](https://biblstandard.dk/isil/).
+- **wikidata_qid**: The library's Wikidata item ID, such as `"Q1131283"`.
+  Find it through [Wikidata item search](https://www.wikidata.org/w/index.php?search=).
+- **geonames_id**: The positive numeric GeoNames ID for the library's
+  location, such as `2640729`. Find it through [GeoNames search](https://www.geonames.org/).
+
+These fields are not required for new or existing records. They appear on the
+library detail page and are included in dashboard exports when present.
+
 ### Homepage recency fields
 
 Two optional fields let the homepage show when a record was added or materially

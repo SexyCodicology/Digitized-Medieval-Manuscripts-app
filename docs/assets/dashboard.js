@@ -28,7 +28,7 @@ const QUANTITY_ORDER = ['Few', 'Dozens', 'Hundreds', 'Thousands', 'Unknown'];
 const EXPORT_FIELDS = [
   'id', 'library', 'nation', 'city', 'website', 'copyright', 'quantity',
   'iiif', 'is_free_cultural_works_license', 'aggregators',
-  'is_disabled', 'last_checked',
+  'is_disabled', 'last_checked', 'isil', 'wikidata_qid', 'geonames_id',
 ];
 
 // Separates the aggregator memberships of one library inside the single

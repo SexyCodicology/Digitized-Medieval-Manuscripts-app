@@ -28,7 +28,7 @@ from datetime import date
 from html import escape
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlencode, urlsplit
+from urllib.parse import quote, urlencode, urlsplit
 
 import yaml
 from jinja2 import Environment
@@ -326,6 +326,40 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         ("IIIF support", "Yes" if record.get("iiif") else "No"),
         ("Open licence", "Yes" if record.get("is_free_cultural_works_license") else "No"),
     ]
+
+    isil = record.get("isil")
+    if isil:
+        facts.append(("ISIL", escape(str(isil))))
+
+    wikidata_qid = record.get("wikidata_qid")
+    if wikidata_qid:
+        wikidata_url = safe_url(
+            f"https://www.wikidata.org/wiki/{quote(str(wikidata_qid), safe='')}"
+        )
+        if wikidata_url:
+            facts.append(
+                (
+                    "Wikidata",
+                    f'<a href="{escape(wikidata_url, quote=True)}" '
+                    'rel="noopener noreferrer" target="_blank">'
+                    f"{escape(str(wikidata_qid))}</a>",
+                )
+            )
+
+    geonames_id = record.get("geonames_id")
+    if geonames_id:
+        geonames_url = safe_url(
+            f"https://www.geonames.org/{quote(str(geonames_id), safe='')}"
+        )
+        if geonames_url:
+            facts.append(
+                (
+                    "GeoNames",
+                    f'<a href="{escape(geonames_url, quote=True)}" '
+                    'rel="noopener noreferrer" target="_blank">'
+                    f"{escape(str(geonames_id))}</a>",
+                )
+            )
 
     # One "Part of" row listing every membership, so a collection findable
     # through several aggregators names all of them.
