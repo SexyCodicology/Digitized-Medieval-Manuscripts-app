@@ -28,7 +28,10 @@ function baseHtml(rowsHtml) {
       <div class="table-scroll">
         <table>
           <thead>
-            <tr><th class="sortable" data-sort="library" tabindex="0"></th></tr>
+            <tr>
+              <th aria-sort="none" class="sortable" data-sort="library" role="columnheader" tabindex="0"></th>
+              <th aria-sort="none" class="sortable" data-sort="nation" role="columnheader" tabindex="0"></th>
+            </tr>
           </thead>
           <tbody id="tableBody">${rowsHtml}</tbody>
         </table>
@@ -39,6 +42,7 @@ function baseHtml(rowsHtml) {
       <select id="projectSelect"><option value="All">All</option></select>
       <select id="quantitySelect"><option value="All">All</option></select>
       <select id="copyrightSelect"><option value="All">All</option></select>
+      <button aria-label="Sort libraries by manuscript quantity" class="sortable" data-sort="quantity" disabled id="quantitySortBtn" type="button"></button>
       <span hidden id="filtersActiveBadge">0</span>
       <input id="iiifCheck" type="checkbox">
       <input id="freeCheck" type="checkbox">
@@ -47,8 +51,12 @@ function baseHtml(rowsHtml) {
       <button disabled id="randomLibraryBtn"></button>
       <button data-export="csv" disabled id="exportCsvBtnTop"></button>
       <button data-export="json" disabled id="exportJsonBtnTop"></button>
+      <button data-share disabled id="shareViewBtnTop"></button>
+      <span aria-live="polite" class="js-share-status" id="shareStatusTop" role="status"></span>
       <button data-export="csv" disabled id="exportCsvBtn"></button>
       <button data-export="json" disabled id="exportJsonBtn"></button>
+      <button data-share disabled id="shareViewBtn"></button>
+      <span aria-live="polite" class="js-share-status" id="shareStatus" role="status"></span>
       <span id="statTotal"></span>
       <span id="statNations"></span>
       <span id="statIIIF"></span>
@@ -62,10 +70,12 @@ function baseHtml(rowsHtml) {
 // Loads the real dashboard.js into a fresh jsdom window. `runScripts:
 // "outside-only"` keeps any <script> in the fixture HTML from running
 // automatically; window.eval() is then used to run the real file ourselves.
-function loadDashboard({ rowsHtml = '', fetchImpl }) {
+// `url` defaults to a bare origin but can carry a query string, so tests can
+// exercise readUrlState()'s "shared link" path from the very first paint.
+function loadDashboard({ rowsHtml = '', fetchImpl, url = 'https://example.invalid/' }) {
   const dom = new JSDOM(baseHtml(rowsHtml), {
     runScripts: 'outside-only',
-    url: 'https://example.invalid/',
+    url,
     virtualConsole,
   });
   const { window } = dom;
@@ -73,6 +83,19 @@ function loadDashboard({ rowsHtml = '', fetchImpl }) {
   window.fetch = fetchImpl;
   window.eval(SCRIPT_SOURCE);
   return dom;
+}
+
+// Captures history.replaceState/pushState calls instead of letting jsdom's
+// real History implementation run, so a test can assert both on the exact
+// URL a write produced and on the fact that pushState was never called —
+// asserting the latter against jsdom's live location isn't possible, since
+// only a call count distinguishes "never called" from "called with no-op
+// effect".
+function stubHistory(window) {
+  const calls = { replaceState: [], pushState: [] };
+  window.history.replaceState = (...args) => { calls.replaceState.push(args); };
+  window.history.pushState = (...args) => { calls.pushState.push(args); };
+  return calls;
 }
 
 // One microtask-queue drain is enough: Node fully empties the microtask
@@ -1060,4 +1083,367 @@ test('export: link status columns carry through to CSV and JSON', async () => {
   const parsed = JSON.parse(downloads[1].content);
   assert.equal(parsed[1].is_disabled, true);
   assert.equal(parsed[1].last_checked, '2026-08-02');
+});
+
+// ── Quantity sort control ─────────────────────────────────────────────────
+
+test('quantity sort control: orders by QUANTITY_ORDER, not alphabetically, and toggles on a second activation', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', quantity: 'Thousands' }),
+    makeRecord({ id: 2, library: 'Beta Library', quantity: 'Few' }),
+    makeRecord({ id: 3, library: 'Gamma Library', quantity: 'Dozens' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="3"><td>Gamma Library</td><td>Nation A</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const quantitySortBtn = window.document.getElementById('quantitySortBtn');
+
+  quantitySortBtn.click();
+  // Alphabetically this would be Dozens, Few, Thousands; QUANTITY_ORDER puts
+  // Few before Dozens before Thousands instead.
+  assert.deepEqual(visibleIds(window), ['2', '3', '1']);
+  assert.equal(quantitySortBtn.classList.contains('active'), true);
+  assert.equal(quantitySortBtn.dataset.sortDirection, 'asc');
+
+  quantitySortBtn.click();
+  assert.deepEqual(visibleIds(window), ['1', '3', '2'], 'a second activation reverses to most-first');
+  assert.equal(quantitySortBtn.dataset.sortDirection, 'desc');
+});
+
+test('quantity sort control: a value outside QUANTITY_ORDER ranks after every known value in both directions', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', quantity: 'Few' }),
+    makeRecord({ id: 2, library: 'Beta Library', quantity: 'Millions' }),
+    makeRecord({ id: 3, library: 'Gamma Library', quantity: 'Unknown' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="3"><td>Gamma Library</td><td>Nation A</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const quantitySortBtn = window.document.getElementById('quantitySortBtn');
+
+  quantitySortBtn.click();
+  assert.deepEqual(visibleIds(window), ['1', '3', '2'], 'Few, then Unknown (both known), then the drifted value last');
+
+  quantitySortBtn.click();
+  assert.deepEqual(visibleIds(window), ['2', '3', '1'], 'the drifted value stays last even reversed, per every known value outranking it');
+});
+
+test('sorting by library still works after the quantity-sort refactor, and switching columns resets the old header', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Beta Library', nation: 'Nation A' }),
+    makeRecord({ id: 2, library: 'Alpha Library', nation: 'Nation B' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Beta Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Alpha Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const libraryHeader = window.document.querySelector('[data-sort="library"]');
+  const quantitySortBtn = window.document.getElementById('quantitySortBtn');
+
+  libraryHeader.click();
+  assert.deepEqual(visibleIds(window), ['2', '1']);
+  assert.equal(libraryHeader.getAttribute('aria-sort'), 'ascending');
+
+  quantitySortBtn.click();
+  assert.equal(libraryHeader.classList.contains('active'), false, 'switching to quantity must deactivate the old header');
+  assert.equal(libraryHeader.getAttribute('aria-sort'), 'none', 'aria-sort resets on a real columnheader');
+});
+
+// ── Share this view ───────────────────────────────────────────────────────
+
+test('share: copies the current URL to the clipboard and announces success on both instances', async () => {
+  const data = [makeRecord()];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const copied = [];
+  window.navigator.clipboard = { writeText: (text) => { copied.push(text); return Promise.resolve(); } };
+
+  window.document.getElementById('shareViewBtn').click();
+  await flushMicrotasks();
+
+  assert.deepEqual(copied, [window.location.href]);
+  assert.equal(window.document.getElementById('shareStatus').textContent, 'Link copied to clipboard.');
+  assert.equal(
+    window.document.getElementById('shareStatusTop').textContent,
+    'Link copied to clipboard.',
+    'both instances of the status region must update together, like the export controls',
+  );
+});
+
+test('share: the top button copies too, proving both instances are wired through the same handler', async () => {
+  const data = [makeRecord()];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const copied = [];
+  window.navigator.clipboard = { writeText: (text) => { copied.push(text); return Promise.resolve(); } };
+
+  window.document.getElementById('shareViewBtnTop').click();
+  await flushMicrotasks();
+
+  assert.deepEqual(copied, [window.location.href]);
+});
+
+test('share: falls back to a failure message when the Clipboard API is unavailable', async () => {
+  const data = [makeRecord()];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  // jsdom does not implement the Clipboard API by default; deleting it
+  // explicitly makes the test's intent clear regardless of jsdom version.
+  delete window.navigator.clipboard;
+
+  window.document.getElementById('shareViewBtn').click();
+  await flushMicrotasks();
+
+  assert.equal(
+    window.document.getElementById('shareStatus').textContent,
+    "Couldn't copy the link — copy it from the address bar instead.",
+  );
+});
+
+test('share: a rejected clipboard write also announces the failure message', async () => {
+  const data = [makeRecord()];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  window.navigator.clipboard = { writeText: () => Promise.reject(new Error('denied')) };
+
+  window.document.getElementById('shareViewBtn').click();
+  await flushMicrotasks();
+
+  assert.equal(
+    window.document.getElementById('shareStatus').textContent,
+    "Couldn't copy the link — copy it from the address bar instead.",
+  );
+});
+
+// ── URL state sync ────────────────────────────────────────────────────────
+
+test('URL state: search, a select filter, and a toggle are each written via replaceState, never pushState', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' }),
+    makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const history = stubHistory(window);
+
+  window.document.getElementById('searchInput').value = 'alpha';
+  window.document.getElementById('searchInput').dispatchEvent(new window.Event('input'));
+
+  const nationSelect = window.document.getElementById('nationSelect');
+  nationSelect.value = 'Nation A';
+  nationSelect.dispatchEvent(new window.Event('change'));
+
+  const iiifCheck = window.document.getElementById('iiifCheck');
+  iiifCheck.checked = true;
+  iiifCheck.dispatchEvent(new window.Event('change'));
+
+  assert.equal(history.pushState.length, 0, 'a filter change must never add a back/forward history entry');
+  assert.equal(history.replaceState.length, 3, 'one replaceState call per filter/search/toggle change');
+
+  const lastUrl = new URL(history.replaceState.at(-1)[2], window.location.href);
+  assert.equal(lastUrl.searchParams.get('q'), 'alpha');
+  assert.equal(lastUrl.searchParams.get('nation'), 'Nation A');
+  assert.equal(lastUrl.searchParams.get('iiif'), '1');
+  assert.equal(lastUrl.searchParams.has('open'), false, 'an inactive toggle must not appear in the URL');
+  assert.equal(lastUrl.searchParams.has('sort'), false, 'no sort is active, so sort/dir must be absent');
+});
+
+test('URL state: sorting writes sort and dir params, using "licence" for the licence-category filter', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', licence_category: 'CC0' }),
+    makeRecord({ id: 2, library: 'Beta Library', licence_category: 'CC0' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation A</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const copyrightSelect = window.document.getElementById('copyrightSelect');
+  copyrightSelect.value = 'CC0';
+  copyrightSelect.dispatchEvent(new window.Event('change'));
+
+  window.document.getElementById('quantitySortBtn').click();
+
+  let params = new URL(window.location.href).searchParams;
+  assert.equal(params.get('licence'), 'CC0');
+  assert.equal(params.get('sort'), 'quantity');
+  assert.equal(params.get('dir'), 'asc');
+
+  window.document.getElementById('quantitySortBtn').click();
+  params = new URL(window.location.href).searchParams;
+  assert.equal(params.get('dir'), 'desc');
+});
+
+test('URL state: a plain visit with no query string does not rewrite the URL on load', async () => {
+  const data = [makeRecord()];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  assert.equal(window.location.search, '', 'a default view must not gain a query string on load');
+});
+
+test('URL state: a shared link with a filter and a sort param reproduces the same view on first paint', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A', quantity: 'Thousands' }),
+    makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation A', quantity: 'Few' }),
+    makeRecord({ id: 3, library: 'Gamma Library', nation: 'Nation B', quantity: 'Dozens' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="3"><td>Gamma Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+    url: 'https://example.invalid/?nation=Nation+A&sort=quantity&dir=desc',
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+
+  assert.equal(window.document.getElementById('nationSelect').value, 'Nation A');
+  // Nation A only, and Thousands (desc) before Few.
+  assert.deepEqual(visibleIds(window), ['1', '2']);
+
+  const quantitySortBtn = window.document.getElementById('quantitySortBtn');
+  assert.equal(quantitySortBtn.classList.contains('active'), true);
+  assert.equal(quantitySortBtn.dataset.sortDirection, 'desc');
+});
+
+test('URL state: an unrecognised sort column in the query string is ignored, and the recognised filter still applies', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' }),
+    makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+    url: 'https://example.invalid/?nation=Nation+A&sort=not-a-real-column',
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  assert.deepEqual(visibleIds(window), ['1']);
+});
+
+test('URL state: an invalid filter value in the query string is ignored rather than blanking the select', async () => {
+  const data = [makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A' })];
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+    url: 'https://example.invalid/?nation=Nowhereland',
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+  assert.equal(window.document.getElementById('nationSelect').value, 'All');
+  assert.deepEqual(visibleIds(window), ['1']);
+});
+
+test('URL state: clearFilters removes filter params from the URL but leaves an active sort untouched', async () => {
+  const data = [
+    makeRecord({ id: 1, library: 'Alpha Library', nation: 'Nation A', quantity: 'Few' }),
+    makeRecord({ id: 2, library: 'Beta Library', nation: 'Nation B', quantity: 'Thousands' }),
+  ];
+  const dom = loadDashboard({
+    rowsHtml: `
+      <tr data-record-id="1"><td>Alpha Library</td><td>Nation A</td><td></td><td></td></tr>
+      <tr data-record-id="2"><td>Beta Library</td><td>Nation B</td><td></td><td></td></tr>
+    `,
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve(data) }),
+  });
+
+  await flushMicrotasks();
+
+  const { window } = dom;
+
+  window.document.getElementById('quantitySortBtn').click();
+  const nationSelect = window.document.getElementById('nationSelect');
+  nationSelect.value = 'Nation A';
+  nationSelect.dispatchEvent(new window.Event('change'));
+
+  let params = new URL(window.location.href).searchParams;
+  assert.equal(params.get('nation'), 'Nation A');
+  assert.equal(params.get('sort'), 'quantity');
+
+  window.document.getElementById('clearFilters').click();
+
+  params = new URL(window.location.href).searchParams;
+  assert.equal(params.has('nation'), false, 'clearFilters must remove the nation param');
+  assert.equal(params.get('sort'), 'quantity', 'clearFilters intentionally leaves sort order untouched');
 });

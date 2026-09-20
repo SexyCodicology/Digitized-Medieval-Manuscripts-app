@@ -83,6 +83,14 @@ document$.subscribe(() => {
   const iiifCheck     = /** @type {HTMLInputElement} */ (document.getElementById('iiifCheck'));
   const freeCheck     = /** @type {HTMLInputElement} */ (document.getElementById('freeCheck'));
   const workingCheck  = /** @type {HTMLInputElement} */ (document.getElementById('workingCheck'));
+  // Lives beside quantitySelect rather than as a table column: quantity has
+  // no visible cell in col-features today (see render_badges() in
+  // hooks/library_pages.py), and that column is already crowded by the
+  // IIIF/Open/Standard Access/Broken-link badges plus the mobile card
+  // layout. It still participates in the same .sortable wiring as the
+  // Library/Location headers (initializeSorting() below selects by class,
+  // not tag), it just isn't a <th> — see applySort()'s role check.
+  const quantitySortBtn = /** @type {HTMLButtonElement} */ (document.getElementById('quantitySortBtn'));
   const clearFiltersBtn = document.getElementById('clearFilters');
   const randomLibraryBtn = /** @type {HTMLButtonElement} */ (document.getElementById('randomLibraryBtn'));
   const filtersActiveBadge = document.getElementById('filtersActiveBadge');
@@ -92,6 +100,8 @@ document$.subscribe(() => {
   // hardcoded id lets both instances stay wired through one code path.
   const exportCsvBtns  = document.querySelectorAll('[data-export="csv"]');
   const exportJsonBtns = document.querySelectorAll('[data-export="json"]');
+  const shareBtns      = document.querySelectorAll('[data-share]');
+  const shareStatusEls = document.querySelectorAll('.js-share-status');
 
   // Stats spans
   const statTotal    = document.getElementById('statTotal');
@@ -180,8 +190,14 @@ document$.subscribe(() => {
     // The dataset is only trustworthy once it has loaded, so the random-pick
     // and export controls are enabled here rather than at page load.
     if (randomLibraryBtn) randomLibraryBtn.disabled = false;
+    if (quantitySortBtn) quantitySortBtn.disabled = false;
     exportCsvBtns.forEach(btn => { btn.disabled = false; });
     exportJsonBtns.forEach(btn => { btn.disabled = false; });
+    shareBtns.forEach(btn => { btn.disabled = false; });
+    // Controls are populated and enabled by this point, so a shared link's
+    // filters/sort can be validated against real option values and applied
+    // for the first paint — see readUrlState().
+    readUrlState();
   }
 
   // ── Sorting ───────────────────────────────────────────────────────────
@@ -199,39 +215,78 @@ document$.subscribe(() => {
     });
   }
 
+  // aria-sort is only meaningful on a real columnheader (Library/Location);
+  // quantitySortBtn is a toolbar button standing in for a column that has no
+  // visible cell, so its sorted state is announced through its aria-label
+  // instead. Kept in one place so applySort() and its reset pass agree on it.
+  const QUANTITY_SORT_LABEL = 'Sort libraries by manuscript quantity';
+
   /**
    * @param {string} column
    * @param {HTMLElement} headerEl
    */
   function handleSort(column, headerEl) {
     // Toggle direction on same column, reset to 'asc' for a new column
-    sortDirection = (sortColumn === column && sortDirection === 'asc') ? 'desc' : 'asc';
-    sortColumn = column;
+    const direction = (sortColumn === column && sortDirection === 'asc') ? 'desc' : 'asc';
+    applySort(column, direction, headerEl);
+  }
 
-    // Reset all header states
-    document.querySelectorAll('.sortable').forEach(th => {
-      th.classList.remove('active');
-      th.removeAttribute('data-sort-direction');
-      th.setAttribute('aria-sort', 'none');
+  /**
+   * Sort allData by column/direction and reflect that in the given control's
+   * (and only that control's) active/direction state, then re-render.
+   *
+   * Split out from handleSort() so readUrlState() can apply an exact
+   * column+direction from the URL without going through handleSort()'s
+   * same-column-toggles logic, which is only correct for a live click.
+   * @param {string} column
+   * @param {'asc'|'desc'} direction
+   * @param {HTMLElement} headerEl
+   */
+  function applySort(column, direction, headerEl) {
+    sortColumn = column;
+    sortDirection = direction;
+
+    // Reset all header/control states
+    document.querySelectorAll('.sortable').forEach(el => {
+      el.classList.remove('active');
+      el.removeAttribute('data-sort-direction');
+      if (el.getAttribute('role') === 'columnheader') el.setAttribute('aria-sort', 'none');
+      if (el === quantitySortBtn) el.setAttribute('aria-label', QUANTITY_SORT_LABEL);
     });
 
-    // Activate the clicked header
+    // Activate the clicked control
     headerEl.classList.add('active');
-    headerEl.dataset.sortDirection = sortDirection;
-    headerEl.setAttribute(
-      'aria-sort',
-      sortDirection === 'asc' ? 'ascending' : 'descending',
-    );
+    headerEl.dataset.sortDirection = direction;
+    if (headerEl.getAttribute('role') === 'columnheader') {
+      headerEl.setAttribute('aria-sort', direction === 'asc' ? 'ascending' : 'descending');
+    }
+    if (headerEl === quantitySortBtn) {
+      headerEl.setAttribute(
+        'aria-label',
+        `${QUANTITY_SORT_LABEL} (currently sorted ${direction === 'asc' ? 'fewest first' : 'most first'})`,
+      );
+    }
 
-    // Sort in place
+    // Sort in place. Quantity uses QUANTITY_ORDER's index rather than string
+    // comparison, since the enum's meaning doesn't sort alphabetically (see
+    // QUANTITY_ORDER above); a value absent from it ranks after every known
+    // value, same as populateQuantityFilter() appending it last.
     allData.sort((a, b) => {
-      let va = a[column] ?? '';
-      let vb = b[column] ?? '';
-      if (typeof va === 'string') va = va.toLowerCase();
-      if (typeof vb === 'string') vb = vb.toLowerCase();
-      if (va < vb) return sortDirection === 'asc' ? -1 : 1;
-      if (va > vb) return sortDirection === 'asc' ?  1 : -1;
-      return 0;
+      let cmp;
+      if (column === 'quantity') {
+        const rank = value => {
+          const idx = QUANTITY_ORDER.indexOf(value);
+          return idx === -1 ? QUANTITY_ORDER.length : idx;
+        };
+        cmp = rank(a.quantity) - rank(b.quantity);
+      } else {
+        let va = a[column] ?? '';
+        let vb = b[column] ?? '';
+        if (typeof va === 'string') va = va.toLowerCase();
+        if (typeof vb === 'string') vb = vb.toLowerCase();
+        cmp = va < vb ? -1 : va > vb ? 1 : 0;
+      }
+      return direction === 'asc' ? cmp : -cmp;
     });
 
     filterData(); // re-apply current filters on the sorted data
@@ -398,6 +453,99 @@ document$.subscribe(() => {
     currentFiltered = filtered;
     renderTable(filtered);
     updateStats(filtered);
+    writeUrlState();
+  }
+
+  // ── URL state sync ───────────────────────────────────────────────────
+  // Bookmarking/sharing a filtered+sorted view needs it reproducible from
+  // the URL alone. filterData() is the one choke point every filter, toggle,
+  // and sort change already passes through (handleSort()/applySort() end
+  // with it too), so hooking the write there covers every change with no
+  // separate listener wiring.
+
+  /**
+   * Set a <select>'s value only if it names a real option, so a stale or
+   * hand-edited query string can't leave the control on a blank selection
+   * (an unmatched value assigned to .value silently deselects every option).
+   * @param {HTMLSelectElement} select
+   * @param {string|null} value
+   */
+  function setSelectIfValid(select, value) {
+    if (!value) return;
+    if ([...select.options].some(opt => opt.value === value)) {
+      select.value = value;
+    }
+  }
+
+  /**
+   * Read filter/sort state from the current URL's query string and apply it,
+   * so a shared link reproduces the exact same view on first paint. A no-op
+   * when the URL carries no recognised parameters, so a plain visit renders
+   * exactly as it always has (and never writes a bare "?" back to the URL).
+   */
+  function readUrlState() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.toString() === '') return;
+
+    if (params.has('q')) searchInput.value = params.get('q');
+    setSelectIfValid(nationSelect, params.get('nation'));
+    setSelectIfValid(projectSelect, params.get('project'));
+    setSelectIfValid(quantitySelect, params.get('quantity'));
+    setSelectIfValid(copyrightSelect, params.get('licence'));
+    iiifCheck.checked = params.get('iiif') === '1';
+    freeCheck.checked = params.get('open') === '1';
+    if (workingCheck) workingCheck.checked = params.get('working') === '1';
+
+    const sortParam = params.get('sort');
+    // Matched by comparing dataset.sort rather than interpolating sortParam
+    // into a selector string: an unsanitised query-string value used that
+    // way could throw (or worse) on a crafted "]/* ... */" style payload.
+    const headerEl = sortParam
+      ? [...document.querySelectorAll('.sortable')].find(el => el.dataset.sort === sortParam)
+      : null;
+
+    if (headerEl) {
+      applySort(sortParam, params.get('dir') === 'desc' ? 'desc' : 'asc', headerEl);
+    } else {
+      // applySort() would otherwise have applied the filters as its last
+      // step; without a recognised sort target, filterData() still must run
+      // once to reflect the filters read above.
+      filterData();
+    }
+  }
+
+  /**
+   * Mirror the current filter/sort state into the URL via replaceState —
+   * never pushState, so every keystroke and click doesn't add a back/forward
+   * history entry. Only non-default state is written, so the URL for the
+   * default view stays a bare path rather than a wall of "=All" params.
+   */
+  function writeUrlState() {
+    const params = new URLSearchParams();
+    const term = searchInput.value.trim();
+    if (term) params.set('q', term);
+    if (nationSelect.value !== 'All') params.set('nation', nationSelect.value);
+    if (projectSelect.value !== 'All') params.set('project', projectSelect.value);
+    if (quantitySelect.value !== 'All') params.set('quantity', quantitySelect.value);
+    if (copyrightSelect.value !== 'All') params.set('licence', copyrightSelect.value);
+    if (iiifCheck.checked) params.set('iiif', '1');
+    if (freeCheck.checked) params.set('open', '1');
+    if (workingCheck?.checked) params.set('working', '1');
+    if (sortColumn) {
+      params.set('sort', sortColumn);
+      params.set('dir', sortDirection);
+    }
+
+    const query = params.toString();
+    const newUrl = window.location.pathname + (query ? `?${query}` : '') + window.location.hash;
+
+    try {
+      window.history.replaceState(null, '', newUrl);
+    } catch {
+      // A sandboxed embed (e.g. a srcdoc iframe without allow-same-origin)
+      // can throw on history mutation; degrade to leaving the URL as-is
+      // rather than breaking the page over a non-essential enhancement.
+    }
   }
 
   // ── Export ────────────────────────────────────────────────────────────
@@ -488,6 +636,39 @@ document$.subscribe(() => {
   exportJsonBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       downloadFile(JSON.stringify(currentFiltered, null, 2), 'dmm-libraries.json', 'application/json');
+    });
+  });
+
+  // ── Share this view ──────────────────────────────────────────────────
+  // window.location.href is already current at click time: writeUrlState()
+  // runs synchronously inside every filter/sort change, not on a delay, so
+  // there is no state to flush first.
+  const SHARE_SUCCESS_MESSAGE = 'Link copied to clipboard.';
+  const SHARE_FAILURE_MESSAGE = "Couldn't copy the link — copy it from the address bar instead.";
+  let shareStatusTimeoutId = /** @type {ReturnType<typeof setTimeout>|null} */ (null);
+
+  /**
+   * @param {string} message
+   */
+  function announceShareStatus(message) {
+    shareStatusEls.forEach(el => { el.textContent = message; });
+    // Restarting the timer on every click means a second share before the
+    // first message clears doesn't leave a stale one stuck on screen.
+    if (shareStatusTimeoutId) clearTimeout(shareStatusTimeoutId);
+    shareStatusTimeoutId = setTimeout(() => {
+      shareStatusEls.forEach(el => { el.textContent = ''; });
+    }, 4000);
+  }
+
+  shareBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!navigator.clipboard?.writeText) {
+        announceShareStatus(SHARE_FAILURE_MESSAGE);
+        return;
+      }
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => announceShareStatus(SHARE_SUCCESS_MESSAGE))
+        .catch(() => announceShareStatus(SHARE_FAILURE_MESSAGE));
     });
   });
 
