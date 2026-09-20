@@ -50,10 +50,20 @@ geographic catalogues. They help people match the same institution across
 DMMapp, library registries, linked-data services, and other catalogues. Leave
 them out when you cannot verify an identifier.
 
+The `research/identifier-evidence.csv` ledger records a source or an unresolved
+reason for each of the three fields on every record. Its check confirms that
+the ledger agrees with `data.json`; a maintainer still checks whether a source
+describes the correct institution or place. See [Identifier
+research](identifier-research.md) for the required rows and review workflow.
+
 #### ISIL
 
-The International Standard Identifier for Libraries, written as a country code
-and local code separated by a hyphen.
+The International Standard Identifier for Libraries and Related Organizations,
+written as a registered agency prefix and local code separated by a hyphen.
+The prefix is usually a two-letter country code, but registered non-national
+prefixes also exist. Confirm the exact holding institution or unit in the
+issuing registry before adding its code; a parent institution may have a
+different ISIL.
 
 **Example:** `"GB-OxBodl"`
 
@@ -67,6 +77,9 @@ followed by a positive number.
 #### GeoNames ID
 
 The positive numeric GeoNames identifier for the library's location.
+Match the listed city and country, including the administrative area when
+names are ambiguous. [GeoNames](https://www.geonames.org/) data is available
+under CC BY 4.0; credit GeoNames when reusing its place data.
 
 **Example:** `2640729`
 

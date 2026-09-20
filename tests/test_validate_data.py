@@ -177,11 +177,21 @@ def test_a_record_with_valid_external_identifiers_passes(schema):
     assert validator.validate(schema, [record]) == []
 
 
+def test_a_registered_non_country_isil_prefix_passes(schema):
+    record = {**copy.deepcopy(VALID_RECORD), "isil": "O-FITHE"}
+
+    assert validator.validate(schema, [record]) == []
+
+
 @pytest.mark.parametrize(
     "field, value",
     [
         ("isil", "gb-OxBodl"),
         ("isil", "GBOxBodl"),
+        ("isil", "ABCDE-123"),
+        ("isil", "GB-12345678901234"),
+        ("isil", "GB-Ox.Bodl"),
+        ("isil", "GB-Ox_Bodl"),
         ("wikidata_qid", "1131283"),
         ("wikidata_qid", "Q0"),
         ("geonames_id", 0),

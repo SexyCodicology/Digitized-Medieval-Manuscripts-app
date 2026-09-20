@@ -15,8 +15,9 @@
       },
       "isil": {
         "type": "string",
-        "pattern": "^[A-Z]{2}-[A-Za-z0-9][A-Za-z0-9._-]*$",
-        "description": "Optional International Standard Identifier for Libraries in CountryCode-LocalCode form, for example GB-OxBodl."
+        "maxLength": 16,
+        "pattern": "^[A-Z]{1,4}-[A-Za-z0-9][A-Za-z0-9:/-]*$",
+        "description": "Optional International Standard Identifier for Libraries and Related Organizations in registered agency-prefix and local-code form, for example GB-OxBodl or O-FITHE."
       },
       "wikidata_qid": {
         "type": "string",

@@ -47,6 +47,7 @@ Each library gets its own crawlable page, generated at build time, with:
 ### Comprehensive documentation
 - Getting started guide for browsing, searching, and filtering the dashboard
 - Data structure guide covering every field, including optional identifiers and IIIF endpoints
+- Identifier research guide covering source criteria, evidence rows, review, and GeoNames attribution
 - Guides to the automated data validation and weekly link-checking workflows
 - About the project, contributing guidelines, and local development setup
 - A codicology primer for readers new to manuscript studies
@@ -92,10 +93,15 @@ Digitized-Medieval-Manuscripts-app/
 │                                    # page per library from data.json
 ├── scripts/
 │   ├── validate_data.py            # Validates data.json against schema.json
+│   ├── validate_identifier_evidence.py
+│   │                                # Checks the identifier evidence ledger
 │   ├── apply_link_status.py        # Turns the weekly link-check report into
 │                                    # is_disabled/last_checked proposals
 │   └── backfill_licence_category.py
 ├── tests/                          # pytest suite for hooks/ and scripts/
+│
+├── research/
+│   └── identifier-evidence.csv     # Source or unresolved decision per record and identifier
 │
 ├── overrides/
 │   ├── home.html                   # Dashboard template (extends Material's main.html)
@@ -109,6 +115,7 @@ Digitized-Medieval-Manuscripts-app/
 │   ├── docs-home.md                # Documentation landing page
 │   ├── schema.md                   # Data structure guide
 │   ├── update-data.md              # How to add or edit library entries
+│   ├── identifier-research.md       # Evidence and review for authority identifiers
 │   ├── workflow-validation.md      # How automated data validation works
 │   ├── workflow-link-checking.md   # How the weekly link check works
 │   ├── contributing.md             # How to contribute data or code
@@ -153,7 +160,8 @@ they never exist as committed Markdown files.
 
 ### Data and validation
 - **Data format**: A single JSON array (`docs/assets/data.json`), validated against `schema.json`
-- **Data validation**: `scripts/validate_data.py` checks JSON syntax, required fields, data types, URL formats, and aggregator name/URL consistency
+- **Data validation**: `scripts/validate_data.py` checks JSON syntax, required fields, data types, URL formats, identifier syntax, and aggregator name/URL consistency
+- **Identifier evidence**: `research/identifier-evidence.csv` records one verified or unresolved ISIL, Wikidata, and GeoNames decision for every record; `scripts/validate_identifier_evidence.py` checks that it agrees with the catalogue
 - **Automated testing**: `pytest` covers the build hook and scripts; a Node test suite (`docs/assets/dashboard.test.js`) covers the dashboard's client-side behavior
 - **Link health**: A weekly [lychee](https://github.com/lycheeverse/lychee)-based check flags unreachable collection URLs and proposes dated status updates by pull request
 - **GitHub Actions**: Automatic validation, testing, building, and deployment on every change
@@ -190,7 +198,9 @@ set by the weekly link check), and `added`/`last_edited` (homepage recency
 dates).
 
 See [schema.json](./schema.json) for the complete definition and
-[docs/schema.md](./docs/schema.md) for a field-by-field guide.
+[docs/schema.md](./docs/schema.md) for a field-by-field guide. Read
+[docs/identifier-research.md](./docs/identifier-research.md) before adding or
+reviewing an authority identifier.
 
 ## Contributing
 

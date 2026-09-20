@@ -151,15 +151,34 @@ authoritative source. Do not guess an identifier, and leave the field out when
 you cannot find a reliable match.
 
 - **isil**: The library's International Standard Identifier for Libraries,
-  written as `<CountryCode>-<LocalCode>`, for example `"GB-OxBodl"`. Find it
-  through an [ISIL registry search](https://biblstandard.dk/isil/).
+  written as `<AgencyPrefix>-<LocalCode>`, for example `"GB-OxBodl"`. A
+  registered non-national prefix is also valid. Confirm the exact library or
+  unit through its issuing registry; do not use a parent institution's code
+  for a separately identified library. Start with the [ISIL agency
+  list](https://biblstandard.dk/isil/).
 - **wikidata_qid**: The library's Wikidata item ID, such as `"Q1131283"`.
   Find it through [Wikidata item search](https://www.wikidata.org/w/index.php?search=).
+  Confirm that the item describes the listed institution, rather than a
+  similarly named collection, parent organisation, or branch.
 - **geonames_id**: The positive numeric GeoNames ID for the library's
   location, such as `2640729`. Find it through [GeoNames search](https://www.geonames.org/).
+  Match the listed city and country; check the administrative area if several
+  places share the name. Credit GeoNames when reusing its CC BY 4.0 place data.
 
 These fields are not required for new or existing records. They appear on the
 library detail page and are included in dashboard exports when present.
+
+For every library record, the tracked `research/identifier-evidence.csv` file
+records one decision for each of these three fields. If you add a record, add
+three rows to that file. Use `verified` with a direct public source URL for a
+confirmed value, or `unresolved` with a short reason when you cannot confirm
+one. Enter the date you checked the source as `YYYY-MM-DD`. A Wikidata value
+also needs a corroborating institution or registry URL. If you propose a
+correction through GitHub's editor and cannot edit the research file, ask a
+maintainer to complete those rows in your pull request before merging it.
+
+Follow the [Identifier research](identifier-research.md) guide for the exact
+ledger columns, source criteria, examples, and checks.
 
 ### Homepage recency fields
 
