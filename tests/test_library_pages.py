@@ -13,7 +13,7 @@ import subprocess
 import sys
 from html import unescape
 from pathlib import Path
-from urllib.parse import parse_qs, urlsplit
+from urllib.parse import parse_qs, urljoin, urlsplit
 
 import pytest
 import yaml
@@ -555,9 +555,18 @@ def test_library_index_lists_every_record_and_reaches_the_sitemap(built_site):
     index = (built_site / "library-index" / "index.html").read_text(encoding="utf-8")
     sitemap = (built_site / "sitemap.xml").read_text(encoding="utf-8")
 
-    links = re.findall(r'<li><a href="libraries/([^/]+)/">', index)
+    hrefs = re.findall(r'<li><a href="([^\"]+)">', index)
 
-    assert links == ["bodleian-library-1", "etc-passwd-script-alert-xss-script-quoted-9001"]
+    assert hrefs == [
+        "../libraries/bodleian-library-1/",
+        "../libraries/etc-passwd-script-alert-xss-script-quoted-9001/",
+    ]
+    assert [
+        urljoin("https://example.org/DMMapp/library-index/", href) for href in hrefs
+    ] == [
+        "https://example.org/DMMapp/libraries/bodleian-library-1/",
+        "https://example.org/DMMapp/libraries/etc-passwd-script-alert-xss-script-quoted-9001/",
+    ]
     assert "https://example.org/library-index/" in sitemap
 
 
