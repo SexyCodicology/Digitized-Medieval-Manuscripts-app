@@ -103,13 +103,11 @@
         "city": "Sydney",
         "library": "University of Sydney",
         "quantity": "Few",
-        "website": "https://www.library.sydney.edu.au/libraries/rare/7digmat",
+        "website": "https://digital.library.sydney.edu.au/nodes/view/8299",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "aggregators": []
     },
     {
         "id": 10,
@@ -501,13 +499,11 @@
         "city": "Victoria",
         "library": "University of Victoria",
         "quantity": "Unknown",
-        "website": "https://www.uvic.ca/library/featured/collections/manuscripts/index.php",
+        "website": "https://vault.library.uvic.ca/collections/a0254019-d0c1-4b14-bf8b-4c296e27e159",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "aggregators": []
     },
     {
         "id": 40,
@@ -763,7 +759,7 @@
         "city": "Leeds",
         "library": "Leeds University Library",
         "quantity": "Unknown",
-        "website": "http://library.leeds.ac.uk/special-collections-explore/?query=&displayMedia=list&objectType=&searchColumn=archiveKeyWord&collectionGroup=Medieval%2BManuscripts&archiveLevel=&archiveEarliest=&archiveLatest=&sortBy=Relevance&browseQuery=Search&searchMode=adva",
+        "website": "https://explore.library.leeds.ac.uk/special-collections-explore/372680",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
@@ -849,13 +845,11 @@
         "city": "London",
         "library": "University College London,  Medieval Manuscript Fragments Imaging Project",
         "quantity": "Unknown",
-        "website": "http://digital-collections.ucl.ac.uk/R/BR66NI23HY1JYFI7SE8UB9TLAJ7VJ95DHCAYPTTMXP9H2P4CGX-02542?func=collections&collection_id=3479&local_base=MSFRAG",
+        "website": "https://www.ucl.ac.uk/library/collections/ucl-digital-collections/special-collections-digital-collections",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "aggregators": []
     },
     {
         "id": 68,
@@ -3031,13 +3025,11 @@
         "city": "Paris",
         "library": "Gallica - Bibliotheque Nationale de France",
         "quantity": "Thousands",
-        "website": "https://gallica.bnf.fr/selections/fr/html/manuscrits/manuscrits",
+        "website": "https://gallica.bnf.fr/selections/fr/html/manuscrits",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "aggregators": []
     },
     {
         "id": 213,
@@ -3483,13 +3475,11 @@
         "city": "Fulda",
         "library": "Hochschul- und Landesbibliothek Fulda",
         "quantity": "Hundreds",
-        "website": "https://fuldig.hs-fulda.de/viewer/search/-/-/1/-/FACET_DC%3Ahandschriften.mittelalterlichehandschriften",
+        "website": "https://fuldig.hs-fulda.de/viewer/handschriften/",
         "copyright": "CC BY-NC-SA 4.0",
         "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "aggregators": []
     },
     {
         "id": 249,
@@ -4887,13 +4877,11 @@
         "city": "Bologna",
         "library": "Biblioteca dell'Archiginnasio",
         "quantity": "Few",
-        "website": "http://badigit.comune.bologna.it/books/ludolfo/index.html",
+        "website": "https://www.archiginnasio.it/biblioteca-digitale-archiginnasio/arbor-archiginnasio-di-bologna-online-resources/ludolfo-a-121",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "aggregators": []
     },
     {
         "id": 349,
@@ -8230,13 +8218,11 @@
         "city": "Cesena",
         "library": "Biblioteca Malatestiana",
         "quantity": "Unknown",
-        "website": "https://catalogoaperto.malatestiana.it/ricerca",
+        "website": "http://catalogoaperto.malatestiana.it/",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
-        "last_checked": "2026-08-05"
+        "aggregators": []
     },
     {
         "id": 599,
@@ -8902,7 +8888,7 @@
         "city": "Göttingen",
         "library": "Niedersächsische Staats- und Universitätsbibliothek Göttingen",
         "quantity": "Dozens",
-        "website": "https://gdz.sub.uni-goettingen.de/collection/DDB_NEUSTART_KULTUR?filter%5B0%5D%5Bdc%5D=handschriften",
+        "website": "https://gdz.sub.uni-goettingen.de/collection/handschriften",
         "copyright": "Public Domain Mark 1.0",
         "iiif": true,
         "is_free_cultural_works_license": true,
