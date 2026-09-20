@@ -253,6 +253,27 @@ same rows over for searching, sorting, and filtering.
                     <option value="All">All Quantities</option>
                 </select>
 
+                {# There is no visible quantity column to host a sortable header (see
+                   col-features/col-access in overrides/home.html's <thead> below and
+                   render_badges() in hooks/library_pages.py) — and col-features is
+                   already crowded after the mobile-card-layout ticket. This button
+                   carries the same .sortable wiring/markup pattern as the Library and
+                   Location headers instead — see initializeSorting()/applySort() in
+                   dashboard.js — placed beside the filter it sorts by. #}
+                <button
+                        aria-label="Sort libraries by manuscript quantity"
+                        class="quantity-sort-btn sortable"
+                        data-sort="quantity"
+                        disabled
+                        id="quantitySortBtn"
+                        type="button"
+                >
+                    <i aria-hidden="true" class="bi bi-sort-numeric-down sort-icon sort-icon--neutral"></i>
+                    <i aria-hidden="true" class="bi bi-sort-numeric-down sort-icon sort-icon--asc"></i>
+                    <i aria-hidden="true" class="bi bi-sort-numeric-up-alt sort-icon sort-icon--desc"></i>
+                    <span>Sort by quantity</span>
+                </button>
+
                 <label class="visually-hidden" for="copyrightSelect">Filter by copyright</label>
                 <select aria-label="Filter by copyright or licence" class="filter-select" id="copyrightSelect">
                     <option value="All">All Licences</option>
@@ -273,7 +294,7 @@ same rows over for searching, sorting, and filtering.
                 <span class="js-showing-count" id="showingCountTop">{{ dmm_directory.stats.libraries }}</span> libraries showing
             </p>
 
-            <div aria-label="Export the currently visible libraries" class="export-group" role="group">
+            <div aria-label="Export or share the currently visible libraries" class="export-group" role="group">
                 <button class="btn-clear export-group__btn" data-export="csv" disabled id="exportCsvBtnTop" type="button">
                     <i aria-hidden="true" class="bi bi-filetype-csv"></i>
                     CSV
@@ -282,6 +303,16 @@ same rows over for searching, sorting, and filtering.
                     <i aria-hidden="true" class="bi bi-filetype-json"></i>
                     JSON
                 </button>
+                <button class="btn-clear export-group__btn" data-share disabled id="shareViewBtnTop" type="button">
+                    <i aria-hidden="true" class="bi bi-share"></i>
+                    Share
+                </button>
+                {# Confirms the copy for sighted users next to the button that
+                   triggered it, and announces it to screen readers via aria-live —
+                   the page's other aria-live regions (.results-meta above) are
+                   already committed to the "N libraries showing" count, so this
+                   reuses the pattern rather than the element. #}
+                <span aria-live="polite" class="share-status js-share-status" id="shareStatusTop" role="status"></span>
             </div>
         </div>
 
@@ -346,7 +377,7 @@ same rows over for searching, sorting, and filtering.
 
             {# Disabled until dashboard.js has data to export, following the
                same progressive-enhancement pattern as #randomLibraryBtn. #}
-            <div aria-label="Export the currently visible libraries" class="export-group" role="group">
+            <div aria-label="Export or share the currently visible libraries" class="export-group" role="group">
                 <button class="btn-clear export-group__btn" data-export="csv" disabled id="exportCsvBtn" type="button">
                     <i aria-hidden="true" class="bi bi-filetype-csv"></i>
                     CSV
@@ -355,6 +386,11 @@ same rows over for searching, sorting, and filtering.
                     <i aria-hidden="true" class="bi bi-filetype-json"></i>
                     JSON
                 </button>
+                <button class="btn-clear export-group__btn" data-share disabled id="shareViewBtn" type="button">
+                    <i aria-hidden="true" class="bi bi-share"></i>
+                    Share
+                </button>
+                <span aria-live="polite" class="share-status js-share-status" id="shareStatus" role="status"></span>
             </div>
         </div>
     </section>

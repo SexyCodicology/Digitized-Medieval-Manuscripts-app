@@ -524,6 +524,27 @@
   box-shadow: 0 0 0 3px rgba(63, 81, 181, .15);
 }
 
+/* Quantity sort control: not a table header (see the comment beside it in
+   overrides/home.html), so it needs its own chrome. .sortable's hover/active/
+   focus-visible colour swap and the shared .sort-icon rules (§10 below) still
+   apply generically — they aren't scoped to `th` — so only base layout and
+   idle-state appearance are defined here. */
+.quantity-sort-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.625rem 0.875rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--md-default-fg-color);
+  background: var(--dash-input-bg);
+  border: 1px solid var(--dash-input-border);
+  border-radius: var(--dash-radius);
+  box-shadow: var(--dash-shadow);
+}
+
+
 /* ── 8. Results table ─────────────────────────────────────────────────────*/
 .results {
   margin-bottom: 3rem;
@@ -896,7 +917,10 @@ a.library-name:focus-visible {
   margin-top: 0.5rem;
 }
 
-.results-meta {
+/* .share-status (below, near the export controls it sits beside) shares
+   this look rather than repeating it under its own selector. */
+.results-meta,
+.share-status {
   font-size: 0.8rem;
   color: var(--dash-muted);
 }
@@ -914,11 +938,18 @@ a.library-name:focus-visible {
   font-size: 0.8rem;
 }
 
-.export-group__btn:disabled {
+/* .quantity-sort-btn shares this disabled treatment rather than repeating
+   it under its own selector. */
+.export-group__btn:disabled,
+.quantity-sort-btn:disabled {
   opacity: 0.5;
   cursor: default;
   pointer-events: none;
 }
+
+/* Empty until announceShareStatus() (dashboard.js) fills it in, so it takes
+   no visual space on the default view (see .results-meta above for its
+   font-size/color). */
 
 /* ── 13. Utility: visually-hidden ─────────────────────────────────────────*/
 .visually-hidden {
