@@ -362,6 +362,49 @@ def test_external_identifier_rows_are_omitted_when_fields_are_absent():
     assert ">None<" not in body
 
 
+# ── IIIF viewer action on a library page ──────────────────────────────────
+
+
+def test_iiif_manifest_endpoint_renders_a_distinct_viewer_action():
+    manifest = "https://example.org/iiif/manifest.json?item=12&locale=en"
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "website": "https://example.org/collection",
+        "iiif_manifest_or_collection_url": manifest,
+    })
+
+    action = re.search(
+        r'<a class="btn-visit btn-iiif-viewer"\s+href="([^"]+)"', body
+    )
+
+    assert action is not None
+    assert "Visit the collection" in body
+    assert body.index("Visit the collection") < body.index("Open in IIIF viewer")
+    viewer_url = urlsplit(unescape(action.group(1)))
+    assert viewer_url.scheme == "https"
+    assert viewer_url.netloc == "universalviewer.io"
+    assert viewer_url.path == "/uv.html"
+    assert parse_qs(viewer_url.query) == {"manifest": [manifest]}
+
+
+def test_iiif_viewer_action_is_absent_without_an_endpoint():
+    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org/collection"})
+
+    assert "Open in IIIF viewer" not in body
+    assert "btn-iiif-viewer" not in body
+
+
+def test_an_unsafe_iiif_endpoint_does_not_render_a_viewer_action():
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "website": "https://example.org/collection",
+        "iiif_manifest_or_collection_url": "javascript:alert(1)",
+    })
+
+    assert "Open in IIIF viewer" not in body
+    assert "javascript:" not in body
+
+
 # ── Collisions ────────────────────────────────────────────────────────────
 
 

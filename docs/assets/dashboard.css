@@ -699,6 +699,34 @@ a.library-name:focus-visible {
   border-color: rgba(244, 67, 54, .5);
 }
 
+/* The IIIF viewer opens the structured manifest in a different service, so
+   distinguish that secondary action from the institution's own collection. */
+.library-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.library-page__actions p {
+  margin: 0;
+}
+
+.btn-iiif-viewer {
+  color: #5e35b1;
+  border-color: #5e35b1;
+}
+
+.btn-iiif-viewer:hover {
+  background: #5e35b1;
+  border-color: #5e35b1;
+  color: #fff;
+}
+
+[data-md-color-scheme="slate"] .btn-iiif-viewer {
+  color: #d1c4e9;
+  border-color: #b39ddb;
+}
+
 /* Broken-link notice on a generated library page */
 .library-page__broken {
   display: flex;

@@ -60,6 +60,12 @@
         "type": "boolean",
         "description": "Whether the collection supports IIIF (International Image Interoperability Framework)"
       },
+      "iiif_manifest_or_collection_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https?://",
+        "description": "Optional IIIF Presentation API manifest or collection JSON endpoint. Only meaningful when iiif is true; do not use a viewer URL."
+      },
       "is_free_cultural_works_license": {
         "type": "boolean",
         "description": "Whether the collection uses a Creative Commons free cultural works license"
