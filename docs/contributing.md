@@ -1,14 +1,19 @@
 ---
 description: >-
   Guidelines for contributing to DMMapp, including how to add library
-  entries, follow the data schema, and pass automated validation.
+  entries, follow the data schema, pass automated validation, and
+  contribute to the dashboard's code.
 ---
 
 # Contributing Guide
 
-Thank you for your interest in contributing to the DMMapp Library Directory! This guide will help you add new libraries or improve existing entries.
+Thank you for your interest in contributing to DMMapp! This guide covers both
+ways to contribute: adding or correcting library entries, and improving the
+dashboard's code.
 
-## How to Contribute
+## Contribute library data
+
+This section will help you add new libraries or improve existing entries.
 
 ### Adding a New Library
 
@@ -30,6 +35,7 @@ Each library entry must include the following fields:
     "city": "City Name",
     "website": "https://example.com",
     "copyright": "CC BY 4.0",
+    "licence_category": "CC-BY",
     "quantity": "Thousands",
     "iiif": true,
     "is_free_cultural_works_license": false,
@@ -49,6 +55,7 @@ For the full field-by-field definitions, requirements, and the manuscript-count 
     "city": "Paris",
     "website": "https://gallica.bnf.fr/",
     "copyright": "CC0 1.0",
+    "licence_category": "CC0",
     "quantity": "Thousands",
     "iiif": true,
     "is_free_cultural_works_license": true,
@@ -56,7 +63,7 @@ For the full field-by-field definitions, requirements, and the manuscript-count 
 }
 ```
 
-## Validation
+### Validation
 
 Your contribution will be automatically validated against our schema when you submit a pull request. The validation checks:
 
@@ -64,11 +71,11 @@ Your contribution will be automatically validated against our schema when you su
 2. **Required Fields**: All mandatory fields are present
 3. **Data Types**: Values match expected types (string, boolean, etc.)
 4. **URL Format**: The `website` field contains a valid URL
-5. **Enum Values**: The `quantity` field uses one of the allowed values
+5. **Enum Values**: The `quantity` and `licence_category` fields use one of the allowed values
 
-## Guidelines
+### Guidelines
 
-### Quality Standards
+#### Quality Standards
 
 - **Accuracy**: Ensure all information is correct and up-to-date
 - **Completeness**: Fill in all required fields
@@ -76,12 +83,57 @@ Your contribution will be automatically validated against our schema when you su
 - **IIIF Status**: Verify IIIF support before marking as `true`
 - **License**: Check the library's terms of use for license information
 
-### Best Practices
+#### Best Practices
 
 1. **Website URLs**: Use the most direct link to the digitized manuscript collection
 2. **Library Names**: Use the official name as it appears on the library's website
 3. **Location**: Use standardized country and city names (English spelling)
 4. **Quantity Estimation**: Choose the category that best matches the collection size — see the [Data Schema](schema.md#approximate-number-of-manuscripts) page for the exact category boundaries
+
+## Contribute code
+
+Improving the dashboard, the build process, or the documentation itself
+follows the usual GitHub workflow: fork, branch, and open a pull request.
+
+### Project layout
+
+- `hooks/library_pages.py` — the MkDocs build hook that generates the
+  homepage directory table, the alphabetical library index, and one page per
+  library from `docs/assets/data.json`
+- `docs/assets/dashboard.js` / `dashboard.css` — the dashboard's client-side
+  search, filtering, sorting, export, and share behavior
+- `scripts/` — `validate_data.py` (schema validation), `apply_link_status.py`
+  (turns the weekly link check into data proposals), and
+  `backfill_licence_category.py`
+- `tests/` — the pytest suite covering `hooks/` and `scripts/`
+- `docs/assets/dashboard.test.js` — the Node test suite covering
+  `dashboard.js`
+
+See [Project setup](setup.md) for installing dependencies and running the
+site locally.
+
+### Run the checks before you open a pull request
+
+These are the same checks the [deploy workflow](workflow-validation.md) runs
+on every pull request:
+
+```bash
+pip install -r requirements-dev.txt
+python scripts/validate_data.py
+pytest tests -q
+npm ci
+npm test
+mkdocs build --clean
+```
+
+### Guidelines
+
+- Keep changes focused—separate unrelated fixes into their own pull requests
+- Add or update tests in `tests/` or `docs/assets/dashboard.test.js` for any
+  behavior change
+- Update the relevant page under `docs/` when your change affects what a
+  reader or contributor sees
+- Describe what changed and why in your pull request description
 
 ## Questions?
 

@@ -20,30 +20,36 @@ Use DMMapp (Digitized Medieval Manuscripts Application) to discover and access d
 ## Features
 
 ### Interactive dashboard
-- **Real-time search**: Filter libraries instantly by name or city
+- **Real-time search**: Filter libraries instantly by name, city, nation, project, or copyright text
 - **Advanced filters**:
-  - Filter by nation or country
+  - Filter by nation or aggregating project (e.g. Europeana)
   - Filter by standardized image format support (lets you access images the same way across different libraries)
-  - Filter by open license (find freely reusable materials)
-- **Live statistics**:
-  - Total libraries in the database
-  - Number of participating nations
-  - Collections with standardized image format support
+  - Filter by open license or normalized licence category (CC0, CC BY, All Rights Reserved, etc.)
+  - Filter to only collections whose link isn't known to be broken
+- **Sorting**: Sort alphabetically by library or location, or by approximate manuscript quantity
+- **Export and share**: Download the current results as CSV or JSON, or copy a shareable link that preserves your search, filters, and sort order
+- **Discovery tools**: Jump to a randomly chosen library, or browse every entry in a crawlable alphabetical index
+- **Recently added and updated**: A homepage list surfaces the latest dated additions and corrections
+- **Live statistics**: Total libraries, participating nations, IIIF-enabled collections, and linked aggregator projects
 - **Responsive design**: Works on desktop, tablet, and mobile devices
 
 ### Detailed library information
-Each library entry includes:
+Each library gets its own crawlable page, generated at build time, with:
 - **Library name and location**: Official institution name, city, and country
-- **Website link**: Direct access to the digitized collection
-- **Standardized image format support**: Badge indicating compatibility (lets you view and compare manuscripts consistently across libraries)
-- **Open license**: Badge for freely reusable collections
-- **Manuscript quantity**: Approximate number of digitized manuscripts (Few, Dozens, Hundreds, Thousands)
+- **Website link**: Direct access to the digitized collection, including a dated "last confirmed working" or "broken link" notice
+- **Standardized image format support**: Badge and, when available, direct links to browse the IIIF collection or open an example manifest
+- **Open license**: Badge for freely reusable collections, alongside the institution's verbatim copyright statement
+- **Manuscript quantity**: Approximate number of digitized manuscripts (Few, Dozens, Hundreds, Thousands, Unknown)
+- **Aggregator memberships**: Every aggregating project the collection is discoverable through
+- **Optional identifiers**: ISIL, Wikidata QID, and GeoNames ID, when verified
+- **A pre-filled "Report a data issue" link**: Opens a GitHub issue form that already identifies the record
 
 ### Comprehensive documentation
-- Getting started guide
-- About the project and technology stack
-- Contributing guidelines
-- Information about standardized image formats
+- Getting started guide for browsing, searching, and filtering the dashboard
+- Data structure guide covering every field, including optional identifiers and IIIF endpoints
+- Guides to the automated data validation and weekly link-checking workflows
+- About the project, contributing guidelines, and local development setup
+- A codicology primer for readers new to manuscript studies
 
 ## Quick start
 
@@ -74,29 +80,63 @@ Open `http://localhost:8000` in your browser to see the full dashboard.
 
 ```
 Digitized-Medieval-Manuscripts-app/
-├── mkdocs.yml              # Documentation and dashboard build settings
-├── requirements.txt        # Python dependencies for MkDocs
-├── schema.json             # Data format definition
+├── mkdocs.yml                     # Documentation and dashboard build settings
+├── schema.json                    # Data format definition (JSON Schema)
+├── requirements.txt                # Python dependencies to build the site
+├── requirements-dev.txt            # Adds pytest and jsonschema for local/CI testing
+├── package.json                    # Node test tooling for docs/assets/dashboard.js
+│
+├── hooks/
+│   └── library_pages.py            # MkDocs build hook: generates the homepage
+│                                    # table, the alphabetical index, and one
+│                                    # page per library from data.json
+├── scripts/
+│   ├── validate_data.py            # Validates data.json against schema.json
+│   ├── apply_link_status.py        # Turns the weekly link-check report into
+│                                    # is_disabled/last_checked proposals
+│   └── backfill_licence_category.py
+├── tests/                          # pytest suite for hooks/ and scripts/
+│
 ├── overrides/
-│   └── home.html           # Dashboard template (extends Material's main.html)
+│   ├── home.html                   # Dashboard template (extends Material's main.html)
+│   ├── main.html                   # Site-wide template overrides
+│   └── partials/
 │
-├── docs/                   # Documentation and dashboard source
-│   ├── index.md            # Dashboard home page (uses the home.html template)
-│   ├── about.md            # About the project
-│   ├── getting-started.md  # How to use the dashboard
-│   ├── schema.md            # Data structure guide
-│   ├── update-data.md       # How to add or edit library entries
-│   ├── contributing.md      # How to contribute code or docs
-│   ├── setup.md             # Local development setup
+├── docs/                           # Documentation and dashboard source
+│   ├── index.md                    # Dashboard home page (uses the home.html template)
+│   ├── about.md                    # About the project
+│   ├── getting-started.md          # How to use the dashboard
+│   ├── docs-home.md                # Documentation landing page
+│   ├── schema.md                   # Data structure guide
+│   ├── update-data.md              # How to add or edit library entries
+│   ├── workflow-validation.md      # How automated data validation works
+│   ├── workflow-link-checking.md   # How the weekly link check works
+│   ├── contributing.md             # How to contribute data or code
+│   ├── setup.md                    # Local development setup
+│   ├── support-us.md / store.md    # Patreon and merchandise
+│   ├── codicology/                 # Manuscript-studies primer (not app-specific)
+│   ├── blog/                       # Project news and updates
 │   └── assets/
-│       ├── dashboard.js     # Dashboard interactivity
-│       ├── dashboard.css    # Dashboard styling
-│       └── data.json        # Library database
+│       ├── dashboard.js            # Dashboard interactivity
+│       ├── dashboard.test.js       # Node test suite for dashboard.js
+│       ├── dashboard.css           # Dashboard styling
+│       └── data.json               # Library database
 │
-├── README.md               # This file
-├── CONTRIBUTING.md         # Contribution guide
-└── LICENSE                 # CC0 1.0 Universal license
+├── .github/workflows/
+│   ├── deploy.yml                  # Validates, tests, builds, and deploys to Pages
+│   ├── validate.yml                # Runs scripts/validate_data.py on data changes
+│   └── link-checker.yml            # Weekly link health check, files issues and PRs
+│
+├── README.md                       # This file
+├── CONTRIBUTING.md                 # Contribution guide
+└── LICENSE                         # CC0 1.0 Universal license
 ```
+
+Two pieces of the site are generated rather than written by hand:
+`library-index.md` (a crawlable alphabetical index of every library) and one
+page per library under `libraries/<slug>/`. Both come from
+`hooks/library_pages.py` reading `docs/assets/data.json` at build time, so
+they never exist as committed Markdown files.
 
 ## Technology stack
 
@@ -112,9 +152,11 @@ Digitized-Medieval-Manuscripts-app/
 - **Material for MkDocs**: Responsive theme
 
 ### Data and validation
-- **Data format**: Simple, portable database (uses a text-based format for easy editing)
-- **Data validation**: Automated checks to ensure data quality
-- **GitHub Actions**: Automatic testing and deployment
+- **Data format**: A single JSON array (`docs/assets/data.json`), validated against `schema.json`
+- **Data validation**: `scripts/validate_data.py` checks JSON syntax, required fields, data types, URL formats, and aggregator name/URL consistency
+- **Automated testing**: `pytest` covers the build hook and scripts; a Node test suite (`docs/assets/dashboard.test.js`) covers the dashboard's client-side behavior
+- **Link health**: A weekly [lychee](https://github.com/lycheeverse/lychee)-based check flags unreachable collection URLs and proposes dated status updates by pull request
+- **GitHub Actions**: Automatic validation, testing, building, and deployment on every change
 
 ### Hosting and deployment
 - **GitHub Pages**: Free, reliable hosting
@@ -122,7 +164,7 @@ Digitized-Medieval-Manuscripts-app/
 
 ## Data schema
 
-Each library entry in [docs/assets/data.json](./docs/assets/data.json) follows this structure:
+Each library entry in [docs/assets/data.json](./docs/assets/data.json) requires:
 
 ```json
 {
@@ -131,7 +173,8 @@ Each library entry in [docs/assets/data.json](./docs/assets/data.json) follows t
   "nation": "Country name",
   "city": "City name",
   "website": "URL to digitized collection",
-  "copyright": "Copyright or license information",
+  "copyright": "Verbatim copyright or licence information",
+  "licence_category": "CC0 | CC-BY | CC-BY-NC | CC-BY-NC-SA | CC-BY-NC-ND | All Rights Reserved | Mixed/Item-specific | Unknown",
   "quantity": "Few | Dozens | Hundreds | Thousands | Unknown",
   "iiif": "Supports standardized image format",
   "is_free_cultural_works_license": "Has open license",
@@ -139,7 +182,15 @@ Each library entry in [docs/assets/data.json](./docs/assets/data.json) follows t
 }
 ```
 
-See [schema.json](./schema.json) for the complete definition.
+Several fields are optional and add extra detail when it can be verified:
+`isil`, `wikidata_qid`, and `geonames_id` (authority-file identifiers),
+`iiif_collection_url` and `iiif_example_manifest_url`/`iiif_example_manifest_label`
+(direct IIIF endpoints), `is_disabled` and `last_checked` (link status, normally
+set by the weekly link check), and `added`/`last_edited` (homepage recency
+dates).
+
+See [schema.json](./schema.json) for the complete definition and
+[docs/schema.md](./docs/schema.md) for a field-by-field guide.
 
 ## Contributing
 

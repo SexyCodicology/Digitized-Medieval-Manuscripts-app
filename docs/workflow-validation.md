@@ -64,8 +64,9 @@ The second check ensures all your data follows the required structure and contai
 The system verifies:
 
 1. **All required fields are present, and no unrecognised fields are included**
-   - Every library record must include exactly: ID, name, country, city, website, copyright information, manuscript count, format support, license type, and aggregator memberships
-   - Extra fields that aren't part of this list are rejected, so a typo in a field name is caught rather than silently ignored
+   - Every library record must include: ID, name, country, city, website, copyright information, licence category, manuscript count, format support, license type, and aggregator memberships
+   - A record may also include optional fields—ISIL, Wikidata QID, GeoNames ID, IIIF endpoints, link status, and added/last-edited dates—see the [Data Structure Guide](./schema.md) for the full list
+   - Any field name outside that full list is rejected, so a typo in a field name is caught rather than silently ignored
 
 2. **Data types are correct**
    - Text fields contain text (not numbers)
@@ -89,6 +90,7 @@ The system verifies:
 
 6. **Categories use correct values**
    - Manuscript counts must be: "Few", "Dozens", "Hundreds", "Thousands", or "Unknown"
+   - Licence categories must be one of the values listed in the [Data Structure Guide](./schema.md#licence-category)
    - No other values are accepted
 
 !!! failure "Example: Multiple violations"
@@ -200,7 +202,7 @@ When validation fails, GitHub shows you exactly what needs to be fixed.
 }
 ```
 
-Missing: country, city, website, copyright information, manuscript count, format support, license type, and aggregator memberships.
+Missing: country, city, website, copyright information, licence category, manuscript count, format support, license type, and aggregator memberships.
 
 **How to fix**: Review the [Data Structure Guide](./schema.md) and add all required fields to your record.
 
@@ -330,7 +332,7 @@ genuinely moved, update every record that names it in the same change.
 
 **Error message**: `Additional properties are not allowed`
 
-**What went wrong**: Your record includes a field name that isn't part of the twelve recognised fields (for example, a typo such as `webiste` instead of `website`).
+**What went wrong**: Your record includes a field name that isn't one of the recognised fields (for example, a typo such as `webiste` instead of `website`).
 
 **How to fix**: Check the field name against the [Data Structure Guide](./schema.md) and correct or remove it.
 

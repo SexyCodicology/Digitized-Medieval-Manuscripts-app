@@ -69,8 +69,8 @@ When we find broken links, we automatically create a GitHub Issue with details a
 ### The dataset is updated by pull request, never automatically
 
 After filing the issue, the check proposes changes to `docs/assets/data.json`
-and opens a pull request titled "fix(data): update broken-link status from the
-weekly link check". Nothing reaches the public site until you merge it.
+and opens a pull request titled "fix(data): update link status from weekly
+check". Nothing reaches the public site until you merge it.
 
 **What the check proposes**:
 
@@ -175,30 +175,23 @@ Occasionally, the link checker reports errors for links that actually work. This
 
 ### How to skip false positives
 
-If you verify a link works but the checker keeps reporting it as broken, you can exclude it from future checks.
+DMMapp doesn't yet have a way to exclude specific URLs from the weekly
+check—there's no ignore file wired into
+[`.github/workflows/link-checker.yml`](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/blob/master/.github/workflows/link-checker.yml).
+If a link you've verified keeps getting flagged:
 
-**edit the `.lycheeignore` file** in the root of the DMMapp repository:
-
-```text
-# Websites that block automated checkers
-https://library-that-blocks-bots.com
-
-# Geographic restrictions
-https://region-locked-library.gov
-
-# Authentication required
-https://members-only-archive.org
-```
-
-**Here's how it works**:
-
-- Add one URL per line
-- Use `#` for comments to explain why each link is excluded
-- We skip these URLs in future checks
+- **Don't merge the incorrect part of the automated pull request.** The check
+  only proposes changes to `docs/assets/data.json`—you can edit or drop the
+  lines for a URL you've confirmed still works before merging.
+- **Ask for the checker to be updated.** Skipping a URL going forward would
+  require a code change to `link-checker.yml`, for example adding lychee's
+  `--exclude` option for that address.
+  [Open an issue](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues)
+  to request it.
 
 !!! warning "Use this sparingly"
 
-    Only exclude links you've manually verified are working. Don't use this to hide genuinely broken links—fix them instead.
+    Only treat a link as a false positive after verifying it works. Don't use this to hide genuinely broken links—fix them instead.
 
 ## Prevent broken links
 
