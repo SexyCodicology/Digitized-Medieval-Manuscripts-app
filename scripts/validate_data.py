@@ -183,6 +183,27 @@ def check_link_status(records: list) -> list[str]:
     return errors
 
 
+def check_iiif_manifest_urls(records: list) -> list[str]:
+    """Return errors for manifest endpoints on non-IIIF records.
+
+    JSON Schema validates the endpoint shape, but the endpoint only makes
+    sense for a collection which has explicitly declared IIIF support.
+    """
+    errors = []
+    for index, record in enumerate(records):
+        if not isinstance(record, dict):
+            continue
+        if (
+            record.get("iiif_manifest_or_collection_url") is not None
+            and record.get("iiif") is not True
+        ):
+            errors.append(
+                f"record {index} (id: {record.get('id')}): "
+                "iiif_manifest_or_collection_url is set but iiif must be true"
+            )
+    return errors
+
+
 def check_recency_dates(records: list) -> list[str]:
     """Return one message per malformed or future homepage recency date."""
     errors = []
@@ -232,6 +253,7 @@ def validate(schema: dict, records: Any) -> list[str]:
         *check_duplicate_ids(records),
         *check_aggregator_uniqueness(records),
         *check_link_status(records),
+        *check_iiif_manifest_urls(records),
         *check_recency_dates(records),
     ]
 

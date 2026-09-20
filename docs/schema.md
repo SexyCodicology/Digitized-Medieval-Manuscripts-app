@@ -189,6 +189,24 @@ Whether the collection supports a standardized image format that allows research
 
 **Why it matters:** Collections with this format support offer researchers more flexibility and powerful research tools.
 
+#### IIIF manifest or collection URL
+
+The optional `iiif_manifest_or_collection_url` field is the direct HTTP(S)
+endpoint for a IIIF Presentation API v2 or v3 manifest, or a IIIF collection.
+It is not the address of an institution's viewer page. Add it only when
+`iiif` is `true`.
+
+**Example:** `"https://example.org/iiif/manuscript-123/manifest"`
+
+**How to check:** Open the endpoint in the [IIIF Presentation API
+Validator](https://presentation-validator.iiif.io/) and then in the
+[Universal Viewer](https://universalviewer.io/uv.html?manifest=) to confirm
+that it returns presentation JSON and can be displayed. The library detail
+page offers the same viewer action automatically when this field is present.
+
+**Why it matters:** A manifest preserves the object structure and metadata a
+researcher needs to compare manuscript openings in an IIIF-compatible viewer.
+
 #### License type (Free Cultural Works)
 
 Whether the collection uses a very permissive open license that allows maximum reuse.

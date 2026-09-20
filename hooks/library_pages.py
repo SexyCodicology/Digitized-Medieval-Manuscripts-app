@@ -60,6 +60,11 @@ TEMPLATE_GLOBAL = "dmm_directory"
 # Only these URL schemes may become a clickable link on a generated page.
 SAFE_SCHEMES = frozenset({"http", "https"})
 
+# Universal Viewer is a public, stable IIIF viewer which accepts a manifest
+# through its documented ``manifest`` query parameter. DMMapp only links to
+# the viewer; it does not host or process the manifest itself.
+UNIVERSAL_VIEWER_URL = "https://universalviewer.io/uv.html"
+
 # The correction route must stay independent from values in the public dataset.
 REPOSITORY_ISSUES_URL = (
     "https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues/new"
@@ -395,6 +400,8 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
             f'rel="noopener noreferrer" target="_blank">Visit the collection</a></p>'
         )
 
+    iiif_viewer = iiif_viewer_action(record)
+
     report_url = escape(report_data_issue_url(record), quote=True)
     report = (
         f'<p><a class="btn-visit btn-report-data-issue" href="{report_url}" '
@@ -430,7 +437,7 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         f'<p class="library-page__badges">{"".join(badges)}</p>\n\n'
         f"{notice}"
         f'<dl class="library-page__facts">{rows}</dl>\n\n'
-        f"{visit}\n\n"
+        f'<div class="library-page__actions">{visit}{iiif_viewer}</div>\n\n'
         f"{report}\n\n"
         "[Back to the library directory](../index.md)\n"
     )
@@ -524,6 +531,21 @@ def checked_on(record: dict[str, Any]) -> str:
     if not isinstance(value, str) or not value.strip():
         return ""
     return escape(value.strip())
+
+
+def iiif_viewer_action(record: dict[str, Any]) -> str:
+    """Return the safe Universal Viewer action for a IIIF endpoint, if set."""
+    manifest = safe_url(record.get("iiif_manifest_or_collection_url"))
+    if not manifest:
+        return ""
+    viewer_url = f"{UNIVERSAL_VIEWER_URL}?{urlencode({'manifest': manifest})}"
+    return (
+        f'<p><a class="btn-visit btn-iiif-viewer" '
+        f'href="{escape(viewer_url, quote=True)}" '
+        'rel="noopener noreferrer" target="_blank">'
+        '<i class="bi bi-images" aria-hidden="true"></i>'
+        "Open in IIIF viewer</a></p>"
+    )
 
 
 def render_projects(record: dict[str, Any]) -> str:

@@ -80,6 +80,30 @@ def test_a_normal_record_passes(schema):
     assert validator.validate(schema, [VALID_RECORD]) == []
 
 
+def test_a_iiif_manifest_endpoint_on_an_iiif_record_passes(schema):
+    record = {
+        **copy.deepcopy(VALID_RECORD),
+        "iiif_manifest_or_collection_url": "https://example.org/iiif/manifest.json",
+    }
+
+    assert validator.validate(schema, [record]) == []
+
+
+def test_a_iiif_manifest_endpoint_on_a_non_iiif_record_fails(schema):
+    record = {
+        **copy.deepcopy(VALID_RECORD),
+        "iiif": False,
+        "iiif_manifest_or_collection_url": "https://example.org/iiif/manifest.json",
+    }
+
+    errors = validator.validate(schema, [record])
+
+    assert any(
+        "iiif_manifest_or_collection_url is set but iiif must be true" in error
+        for error in errors
+    )
+
+
 def test_a_valid_project_record_passes(schema):
     assert validator.validate(schema, [VALID_PROJECT_RECORD]) == []
 
