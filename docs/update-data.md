@@ -92,9 +92,10 @@ Two optional fields record whether a collection URL still works:
 
 - **is_disabled**: Set it to `true` only when the link has been confirmed
   dead. Leave the field out otherwise.
-- **last_checked**: The date the link was checked, written as `YYYY-MM-DD`.
-  Required when **is_disabled** is `true`, so the warning a reader sees can be
-  dated.
+- **last_checked**: The date the link was last assessed, written as
+  `YYYY-MM-DD`. For a working link, its individual page shows this as the date
+  it was last confirmed working. Required when **is_disabled** is `true`, so
+  the warning a reader sees can be dated.
 
 The weekly link check normally sets these for you and opens a pull request
 with its proposal, so you rarely need to write them by hand. See

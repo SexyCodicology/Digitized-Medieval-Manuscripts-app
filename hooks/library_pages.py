@@ -367,17 +367,24 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         'rel="noopener noreferrer" target="_blank">Report a data issue</a></p>'
     )
 
-    # role="status" rather than "alert": the warning is part of the page a
+    # role="status" rather than "alert": link health is part of the page a
     # reader has just opened, not an interruption of something they were doing.
     notice = ""
+    checked = checked_on(record)
     if broken:
-        checked = checked_on(record)
         when = f" on {checked}" if checked else ""
         notice = (
             '<p class="library-page__broken" role="status">'
             '<i class="bi bi-exclamation-triangle" aria-hidden="true"></i> '
             f"This collection's link was confirmed broken{when}. "
             "It might have moved, or the collection might no longer be online."
+            "</p>\n\n"
+        )
+    elif checked:
+        notice = (
+            '<p class="library-page__checked" role="status">'
+            '<i class="bi bi-check-circle" aria-hidden="true"></i> '
+            f"This collection's link was last confirmed working on {checked}."
             "</p>\n\n"
         )
 

@@ -10,7 +10,6 @@ No test reaches the network or invokes lychee.
 
 from __future__ import annotations
 
-import copy
 import importlib.util
 import json
 from pathlib import Path
@@ -131,12 +130,12 @@ def test_a_conclusively_dead_link_is_marked_broken(url):
     records = [record(1, url)]
     by_url, _ = script.parse_report(REPORT)
 
-    disabled, restored = script.plan_changes(records, by_url, "2026-08-02")
+    disabled, restored, confirmed = script.plan_changes(records, by_url, "2026-08-02")
 
     assert records[0]["is_disabled"] is True
     assert records[0]["last_checked"] == "2026-08-02"
     assert len(disabled) == 1
-    assert restored == []
+    assert (restored, confirmed) == ([], [])
 
 
 @pytest.mark.parametrize(
@@ -153,21 +152,22 @@ def test_an_inconclusive_failure_never_marks_a_record_broken(url):
     records = [record(1, url)]
     by_url, _ = script.parse_report(REPORT)
 
-    disabled, restored = script.plan_changes(records, by_url, "2026-08-02")
+    disabled, restored, confirmed = script.plan_changes(records, by_url, "2026-08-02")
 
     assert "is_disabled" not in records[0]
     assert "last_checked" not in records[0]
-    assert (disabled, restored) == ([], [])
+    assert (disabled, restored, confirmed) == ([], [], [])
 
 
-def test_a_healthy_link_is_left_untouched():
+def test_a_healthy_link_is_stamped_as_confirmed_working():
     records = [record(1, "https://fine.example.org/manuscripts")]
-    before = copy.deepcopy(records)
     by_url, _ = script.parse_report(REPORT)
 
-    script.plan_changes(records, by_url, "2026-08-02")
+    disabled, restored, confirmed = script.plan_changes(records, by_url, "2026-08-02")
 
-    assert records == before
+    assert records[0]["last_checked"] == "2026-08-02"
+    assert (disabled, restored) == ([], [])
+    assert confirmed == ["  id 1: Library 1"]
 
 
 def test_a_link_that_works_again_is_restored():
@@ -177,11 +177,12 @@ def test_a_link_that_works_again_is_restored():
     ]
     by_url, _ = script.parse_report(REPORT)
 
-    disabled, restored = script.plan_changes(records, by_url, "2026-08-02")
+    disabled, restored, confirmed = script.plan_changes(records, by_url, "2026-08-02")
 
     assert "is_disabled" not in records[0]
     assert records[0]["last_checked"] == "2026-08-02"
     assert len(restored) == 1
+    assert len(confirmed) == 1
 
 
 def test_a_still_dead_link_only_has_its_date_refreshed():
@@ -191,12 +192,12 @@ def test_a_still_dead_link_only_has_its_date_refreshed():
     ]
     by_url, _ = script.parse_report(REPORT)
 
-    disabled, restored = script.plan_changes(records, by_url, "2026-08-02")
+    disabled, restored, confirmed = script.plan_changes(records, by_url, "2026-08-02")
 
     assert records[0]["is_disabled"] is True
     assert records[0]["last_checked"] == "2026-08-02"
     # Not re-reported: it was already known broken.
-    assert (disabled, restored) == ([], [])
+    assert (disabled, restored, confirmed) == ([], [], [])
 
 
 def test_an_inconclusive_failure_does_not_restore_a_broken_record():
@@ -207,11 +208,11 @@ def test_an_inconclusive_failure_does_not_restore_a_broken_record():
     ]
     by_url, _ = script.parse_report(REPORT)
 
-    disabled, restored = script.plan_changes(records, by_url, "2026-08-02")
+    disabled, restored, confirmed = script.plan_changes(records, by_url, "2026-08-02")
 
     assert records[0]["is_disabled"] is True
     assert records[0]["last_checked"] == "2026-01-01", "no evidence, so no update"
-    assert (disabled, restored) == ([], [])
+    assert (disabled, restored, confirmed) == ([], [], [])
 
 
 def test_a_dead_aggregator_url_does_not_disable_the_library():
@@ -225,6 +226,7 @@ def test_a_dead_aggregator_url_does_not_disable_the_library():
     script.plan_changes(records, by_url, "2026-08-02")
 
     assert "is_disabled" not in records[0]
+    assert records[0]["last_checked"] == "2026-08-02"
 
 
 def test_a_record_with_a_non_string_website_is_skipped():
@@ -257,6 +259,15 @@ def test_main_writes_the_proposed_change(tmp_path):
 
     assert code == 0
     assert written[0]["is_disabled"] is True
+    assert written[0]["last_checked"] == "2026-08-02"
+
+
+def test_main_writes_a_confirmed_working_date(tmp_path):
+    code, written = _run(
+        tmp_path, REPORT, [record(1, "https://fine.example.org/manuscripts")]
+    )
+
+    assert code == 0
     assert written[0]["last_checked"] == "2026-08-02"
 
 

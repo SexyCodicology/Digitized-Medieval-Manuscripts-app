@@ -601,9 +601,26 @@ def test_a_page_without_the_field_has_no_notice():
     assert "broken" not in body.lower()
 
 
+def test_a_working_link_page_carries_a_dated_confirmation():
+    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org",
+                       "last_checked": "2026-08-02"})
+
+    assert 'class="library-page__checked"' in body
+    assert "last confirmed working on 2026-08-02" in body
+    assert "library-page__broken" not in body
+
+
 def test_a_hostile_last_checked_is_escaped_on_the_page():
     body = _page_body({**HOSTILE_RECORD, "website": "https://example.org",
                        "is_disabled": True,
+                       "last_checked": '<img src=x onerror=alert(1)>'})
+
+    assert "<img" not in body
+    assert "&lt;img src=x onerror=alert(1)&gt;" in body
+
+
+def test_a_hostile_working_last_checked_is_escaped_on_the_page():
+    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org",
                        "last_checked": '<img src=x onerror=alert(1)>'})
 
     assert "<img" not in body
