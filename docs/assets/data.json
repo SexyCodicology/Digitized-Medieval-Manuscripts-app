@@ -3986,6 +3986,7 @@
         "website": "https://handschriftenportal.de/search?q=Bayerische%20Staatsbibliothek&hl=true",
         "copyright": "Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
         "iiif": true,
+        "iiif_manifest_or_collection_url": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00096095/manifest",
         "is_free_cultural_works_license": false,
         "aggregators": [
             {
