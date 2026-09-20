@@ -101,7 +101,7 @@ def test_rows_are_ordered_by_library_name(records, directory):
 def test_a_row_links_the_library_to_its_generated_page():
     row = hook.render_row(SAFE_RECORD)
 
-    assert f'<a class="library-name" href="libraries/{hook.slug_for(SAFE_RECORD)}/">' in row
+    assert f'<a class="library-name" href="libraries/{hook.id_slug(SAFE_RECORD)}/">' in row
     assert ">Bodleian Library</a>" in row
     assert '<div class="location-nation">United Kingdom</div>' in row
     assert "Oxford</div>" in row
@@ -308,6 +308,13 @@ def built_home(tmp_path_factory) -> str:
         ),
         encoding="utf-8",
     )
+    (docs / "assets" / "library-aliases.json").write_text(
+        json.dumps({
+            "1": [hook.slug_for(SAFE_RECORD)],
+            "9001": [hook.slug_for(HOSTILE_RECORD)],
+        }),
+        encoding="utf-8",
+    )
     (docs / "index.md").write_text("---\ntemplate: home.html\n---\n", encoding="utf-8")
     (project / "mkdocs.yml").write_text(
         "site_name: Test\n"
@@ -315,7 +322,9 @@ def built_home(tmp_path_factory) -> str:
         "docs_dir: docs\n"
         f"theme:\n  name: material\n  custom_dir: {(REPO_ROOT / 'overrides').as_posix()}\n"
         "nav:\n  - Home: index.md\n"
-        f"hooks:\n  - {(REPO_ROOT / 'hooks' / 'library_pages.py').as_posix()}\n",
+        "hooks:\n"
+        f"  - {(REPO_ROOT / 'hooks' / 'library_pages.py').as_posix()}\n"
+        f"  - {(REPO_ROOT / 'hooks' / 'linked_data.py').as_posix()}\n",
         encoding="utf-8",
     )
 
@@ -334,7 +343,7 @@ def test_the_built_homepage_ships_the_rows(built_home):
 
     assert len(ROW_PATTERN.findall(body)) == 2
     assert "Bodleian Library" in body
-    assert 'href="libraries/bodleian-library-1/"' in body
+    assert 'href="libraries/id-1/"' in body
 
 
 def test_the_built_homepage_ships_the_counts(built_home):
@@ -356,7 +365,7 @@ def test_the_built_homepage_ships_recent_libraries_without_javascript(built_home
     section = built_home.split('id="recent-libraries-heading"', 1)[1].split("</section>", 1)[0]
 
     assert "Recently added and updated" in section
-    assert 'href="libraries/bodleian-library-1/"' in section
+    assert 'href="libraries/id-1/"' in section
     assert "Updated 2026-08-02" in section
     assert "<script" not in section
 

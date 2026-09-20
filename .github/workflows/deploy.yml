@@ -101,6 +101,9 @@ jobs:
       - name: Build MkDocs Site
         run: mkdocs build --clean
 
+      - name: Verify linked-data publication
+        run: python scripts/verify_linked_data.py site
+
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
 

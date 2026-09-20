@@ -71,6 +71,13 @@ Every library entry must include:
 - **is_free_cultural_works_license**: Free license status (`true` or `false`)
 - **aggregators**: The aggregating projects the library is discoverable through, as a list. Use `[]` when there are none.
 
+Each ID has a stable public page. For a new entry, add its name-derived slug
+to [`library-aliases.json`](assets/library-aliases.json) under the new ID. If
+you change a library name, append the new slug under the existing ID and keep
+every older slug. This preserves links shared before the correction. The
+[linked-data guide](linked-data.md) explains the identifier policy. If you are
+unsure of the correct slug, ask a maintainer to prepare this part of the change.
+
 ### Aggregator entries
 
 Each entry in **aggregators** needs a **name** and a **url**. List one entry per

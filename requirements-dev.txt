@@ -7,3 +7,6 @@ pytest>=9.1.1
 
 # Schema validation for docs/assets/data.json, used by scripts/validate_data.py
 jsonschema>=4.26.0,<5
+
+# Parse the published JSON-LD as RDF in build-hook tests.
+rdflib>=7,<8

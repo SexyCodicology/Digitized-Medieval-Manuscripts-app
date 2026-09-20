@@ -76,6 +76,8 @@ The system verifies:
 3. **IDs are unique**
    - Every record's ID must be a positive whole number
    - No two records may share the same ID
+   - The alias registry must contain the current slug for every ID and must
+     not assign one historical slug to two records
 
 4. **Websites are valid**
    - Website addresses follow proper format: `https://example.com`

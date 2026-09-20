@@ -2,7 +2,7 @@
 
 MkDocs calls this hook (registered under ``hooks:`` in ``mkdocs.yml``) twice.
 During ``on_files`` it reads ``docs/assets/data.json`` and adds one virtual page
-per record at ``libraries/<slug>/``, so every library has its own crawlable URL,
+per record at ``libraries/id-<id>/``, so every library has its own stable URL,
 its own ``<title>``, and its own meta description. During ``on_env`` it renders
 the homepage directory table from the same dataset and hands it to
 ``overrides/home.html``, so the rows and the summary counts are in the HTML
@@ -43,8 +43,10 @@ DATA_PATH = ("assets", "data.json")
 # Directory that generated pages live under, relative to the docs directory.
 OUTPUT_DIR = "libraries"
 
-# Where the id-to-slug map is published for other consumers of the built site.
+# Where the historical id-to-slug map is published for existing consumers.
 SLUG_MAP_URI = "assets/library-slugs.json"
+ALIAS_REGISTRY_URI = ("assets", "library-aliases.json")
+ALIAS_PATTERN = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
 
 # Virtual source file for the crawlable alphabetical library index.
 LIBRARY_INDEX_URI = "library-index.md"
@@ -131,16 +133,20 @@ def validate_recency_dates(record: dict[str, Any], path: Path, position: int) ->
 
 
 def slug_for(record: dict[str, Any]) -> str:
-    """Return the slug of a validated record."""
+    """Return the historical, name-derived slug of a validated record."""
     return slugify(str(record["library"]), record["id"])
 
 
-def slugify(library: str, record_id: int) -> str:
-    """Return a stable, collision-free slug for a library record.
+def id_slug(record: dict[str, Any]) -> str:
+    """Return the stable page slug, which never depends on an editable name."""
+    return f"id-{record['id']}"
 
-    The record id is always appended. Twenty library names in the dataset are
-    duplicated, so the name alone does not identify a record, and keeping the
-    id in the slug means a URL survives a later edit to the library name.
+
+def slugify(library: str, record_id: int) -> str:
+    """Return the name-derived legacy slug for a library record.
+
+    The record id avoids collisions among same-named entries, but a name edit
+    changes this slug. Use ``id_slug`` for canonical links instead.
     """
     folded = unicodedata.normalize("NFKD", library)
     ascii_only = folded.encode("ascii", "ignore").decode("ascii")
@@ -177,7 +183,7 @@ def report_data_issue_url(record: dict[str, Any]) -> str:
     so contributed data cannot redirect a reader away from the repository.
     ``urlencode`` keeps every public value inside its intended query field.
     """
-    page_url = f"{LIBRARY_PAGE_URL_PREFIX}{slug_for(record)}/"
+    page_url = f"{LIBRARY_PAGE_URL_PREFIX}{id_slug(record)}/"
     query = urlencode(
         {
             "template": REPORT_DATA_ISSUE_TEMPLATE,
@@ -306,7 +312,12 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
     meta = yaml.safe_dump(
         # Cards off: rendering one per record would mean thousands of social
         # card images for pages that are never shared individually.
-        {"title": title, "description": description, "social": {"cards": False}},
+        {
+            "title": title,
+            "description": description,
+            "social": {"cards": False},
+            "dmm_record_id": record["id"],
+        },
         allow_unicode=True,
         default_flow_style=False,
         sort_keys=False,
@@ -452,8 +463,8 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
 
 
 def build_pages(records: list[dict[str, Any]]) -> dict[str, str]:
-    """Return a mapping of ``libraries/<slug>.md`` to its Markdown source."""
-    slugs = [slug_for(record) for record in records]
+    """Return stable ID-page Markdown for every directory record."""
+    slugs = [id_slug(record) for record in records]
     duplicates = [slug for slug, count in Counter(slugs).items() if count > 1]
     if duplicates:
         raise PluginError(f"Duplicate library slugs generated: {', '.join(sorted(duplicates))}.")
@@ -465,6 +476,79 @@ def build_pages(records: list[dict[str, Any]]) -> dict[str, str]:
         f"{OUTPUT_DIR}/{slug}.md": render_page(record, title, description)
         for slug, record, title, description in zip(slugs, records, titles, descriptions)
     }
+
+
+def load_alias_registry(docs_dir: str) -> dict[str, list[str]]:
+    """Load the retained public slugs, including entries later withdrawn."""
+    path = Path(docs_dir).joinpath(*ALIAS_REGISTRY_URI)
+    try:
+        aliases = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise PluginError(f"Cannot read library alias registry at {path}: {error}") from error
+    if not isinstance(aliases, dict):
+        raise PluginError(f"{path} must contain a mapping of IDs to slug lists")
+    for record_id, slugs in aliases.items():
+        if not re.fullmatch(r"(?:0|[1-9][0-9]*)", record_id):
+            raise PluginError(f"{path} has invalid record ID {record_id!r}")
+        if not isinstance(slugs, list) or not slugs or any(
+            not isinstance(slug, str) or not ALIAS_PATTERN.fullmatch(slug)
+            for slug in slugs
+        ):
+            raise PluginError(f"{path} has invalid slugs for record {record_id}")
+        if len(slugs) != len(set(slugs)):
+            raise PluginError(f"{path} repeats an alias for record {record_id}")
+    return aliases
+
+
+def render_retired_page(record_id: str) -> str:
+    """Keep an ID dereferenceable if its directory entry is withdrawn."""
+    return (
+        "---\n"
+        f"title: Retired directory record {record_id}\n"
+        "description: This DMMapp directory entry is no longer active.\n"
+        "social:\n  cards: false\n"
+        f"dmm_record_id: {record_id}\n"
+        "---\n\n"
+        f"# Retired directory record {record_id}\n\n"
+        "DMMapp no longer lists this access point. The record address remains "
+        "available so existing citations do not silently resolve to a different entry.\n\n"
+        "[Browse the current directory](../../index.md)\n"
+    )
+
+
+def build_alias_pages(
+    records: list[dict[str, Any]], site_url: str, registry: dict[str, list[str]]
+) -> dict[str, str]:
+    """Keep every registered name-based URL as a canonical-ID signpost."""
+    aliases: dict[str, str] = {}
+    by_id = {str(record["id"]): record for record in records}
+    stable_slugs = {f"id-{record_id}" for record_id in registry}
+    for record_id, slugs in registry.items():
+        record = by_id.get(record_id)
+        if record and slug_for(record) not in slugs:
+            raise PluginError(f"Record {record_id} is missing its current slug in alias registry")
+        title = plain_text(record["library"]) if record else f"Retired record {record_id}"
+        target = f"{site_url.rstrip('/')}/{OUTPUT_DIR}/id-{record_id}/"
+        meta = yaml.safe_dump(
+            {
+                "title": title,
+                "description": "This directory entry has a stable address.",
+                "social": {"cards": False},
+                "dmm_alias_target": target,
+            },
+            allow_unicode=True,
+            sort_keys=False,
+        )
+        for old_slug in slugs:
+            if old_slug in stable_slugs or old_slug in aliases:
+                raise PluginError(f"Library alias collides with another page: {old_slug}")
+            aliases[old_slug] = (
+                f"---\n{meta}---\n\n"
+                "# This directory entry has moved\n\n"
+                f'<p>Continue to <a href="../id-{record_id}/">'
+                f"{escape(title)}</a>.</p>\n"
+            )
+    return {f"{OUTPUT_DIR}/{slug}.md": content for slug, content in aliases.items()}
 
 
 # ── Homepage directory table ──────────────────────────────────────────────
@@ -655,8 +739,7 @@ def render_row(record: dict[str, Any]) -> str:
     the matching ``role="table"``/``"rowgroup"``/``"columnheader"`` on the
     header, which needs the same treatment.
     """
-    # slugify only ever emits [a-z0-9-], so the href cannot break its attribute.
-    slug = escape(slug_for(record), quote=True)
+    slug = id_slug(record)
     return (
         f'<tr data-record-id="{record["id"]}" role="row">'
         f'<td class="col-library" role="cell"><a class="library-name" href="libraries/{slug}/">'
@@ -726,7 +809,7 @@ def latest_change(record: dict[str, Any]) -> tuple[date, str] | None:
 
 def render_recent_library(record: dict[str, Any], changed: date, label: str) -> str:
     """Return one escaped entry for the server-rendered recent-libraries list."""
-    slug = escape(slug_for(record), quote=True)
+    slug = id_slug(record)
     return (
         "<li>"
         f'<a href="libraries/{slug}/">{escape(str(record["library"]))}</a> — '
@@ -782,7 +865,7 @@ def build_library_index(records: list[dict[str, Any]]) -> str:
     for label in labels:
         entries = "\n".join(
             "<li>"
-            f'<a href="../libraries/{escape(slug_for(record), quote=True)}/">'
+            f'<a href="../libraries/{id_slug(record)}/">'
             f'{escape(str(record["library"]))}</a> — '
             f'{escape(str(record["city"]))}, {escape(str(record["nation"]))}'
             "</li>"
@@ -807,8 +890,12 @@ def build_library_index(records: list[dict[str, Any]]) -> str:
 
 
 def on_files(files: Files, config: MkDocsConfig) -> Files:
-    """Add one generated page per library record, plus the id-to-slug map."""
+    """Add stable record pages and compatibility pages for old URLs."""
     records = load_records(config.docs_dir)
+    registry = load_alias_registry(config.docs_dir)
+    missing_ids = {str(record["id"]) for record in records} - registry.keys()
+    if missing_ids:
+        raise PluginError(f"Alias registry has no entry for IDs: {', '.join(sorted(missing_ids))}")
 
     for src_uri, markdown in build_pages(records).items():
         files.append(
@@ -816,9 +903,29 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
                 config,
                 src_uri,
                 content=markdown,
-                # Keeps 584 entries out of the navigation sidebar, and out of
+                # Keeps hundreds of entries out of the navigation sidebar, and out of
                 # the "not included in nav" build warning, while still leaving
                 # them in sitemap.xml and in the site search index.
+                inclusion=InclusionLevel.NOT_IN_NAV,
+            )
+        )
+
+    for record_id in registry.keys() - {str(record["id"]) for record in records}:
+        files.append(
+            File.generated(
+                config,
+                f"{OUTPUT_DIR}/id-{record_id}.md",
+                content=render_retired_page(record_id),
+                inclusion=InclusionLevel.NOT_IN_NAV,
+            )
+        )
+
+    for src_uri, markdown in build_alias_pages(records, config.site_url, registry).items():
+        files.append(
+            File.generated(
+                config,
+                src_uri,
+                content=markdown,
                 inclusion=InclusionLevel.NOT_IN_NAV,
             )
         )
@@ -841,6 +948,13 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
     )
 
     return files
+
+
+def on_page_context(context: dict[str, Any], page: Any, config: MkDocsConfig, nav: Any) -> None:
+    """Give compatibility pages the stable target as their canonical URL."""
+    target = page.meta.get("dmm_alias_target") if page.meta else None
+    if target:
+        page.canonical_url = target
 
 
 def on_env(env: Environment, config: MkDocsConfig, files: Files) -> None:

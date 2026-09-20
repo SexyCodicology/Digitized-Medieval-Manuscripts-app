@@ -42,6 +42,7 @@ Each library gets its own crawlable page, generated at build time, with:
 - **Manuscript quantity**: Approximate number of digitized manuscripts (Few, Dozens, Hundreds, Thousands, Unknown)
 - **Aggregator memberships**: Every aggregating project the collection is discoverable through
 - **Optional identifiers**: ISIL, Wikidata QID, and GeoNames ID, when verified
+- **Stable record address**: An ID-only URL that survives a library-name correction
 - **A pre-filled "Report a data issue" link**: Opens a GitHub issue form that already identifies the record
 
 ### Comprehensive documentation
@@ -50,6 +51,7 @@ Each library gets its own crawlable page, generated at build time, with:
 - Guides to the automated data validation and weekly link-checking workflows
 - About the project, contributing guidelines, and local development setup
 - A codicology primer for readers new to manuscript studies
+- [Linked-data guidance](./docs/linked-data.md) for citing record IDs and reusing the static JSON-LD exports
 
 ## Quick start
 
@@ -87,9 +89,10 @@ Digitized-Medieval-Manuscripts-app/
 ├── package.json                    # Node test tooling for docs/assets/dashboard.js
 │
 ├── hooks/
-│   └── library_pages.py            # MkDocs build hook: generates the homepage
+│   ├── library_pages.py            # MkDocs build hook: generates the homepage
 │                                    # table, the alphabetical index, and one
 │                                    # page per library from data.json
+│   └── linked_data.py              # Generates per-record and bulk JSON-LD
 ├── scripts/
 │   ├── validate_data.py            # Validates data.json against schema.json
 │   ├── apply_link_status.py        # Turns the weekly link-check report into
@@ -111,6 +114,7 @@ Digitized-Medieval-Manuscripts-app/
 │   ├── update-data.md              # How to add or edit library entries
 │   ├── workflow-validation.md      # How automated data validation works
 │   ├── workflow-link-checking.md   # How the weekly link check works
+│   ├── linked-data.md              # Persistent IDs, JSON-LD, and rights policy
 │   ├── contributing.md             # How to contribute data or code
 │   ├── setup.md                    # Local development setup
 │   ├── support-us.md / store.md    # Patreon and merchandise
@@ -120,6 +124,7 @@ Digitized-Medieval-Manuscripts-app/
 │       ├── dashboard.js            # Dashboard interactivity
 │       ├── dashboard.test.js       # Node test suite for dashboard.js
 │       ├── dashboard.css           # Dashboard styling
+│       ├── library-aliases.json     # Historical name-based URL registry
 │       └── data.json               # Library database
 │
 ├── .github/workflows/
@@ -134,9 +139,10 @@ Digitized-Medieval-Manuscripts-app/
 
 Two pieces of the site are generated rather than written by hand:
 `library-index.md` (a crawlable alphabetical index of every library) and one
-page per library under `libraries/<slug>/`. Both come from
-`hooks/library_pages.py` reading `docs/assets/data.json` at build time, so
-they never exist as committed Markdown files.
+page per library under `libraries/id-<id>/`. Historical name-based URLs remain
+as compatibility pages. The build also publishes per-record and bulk JSON-LD.
+These files come from the build hooks reading `docs/assets/data.json`, so they
+are not committed as generated pages or exports.
 
 ## Technology stack
 

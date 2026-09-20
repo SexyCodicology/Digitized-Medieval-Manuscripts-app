@@ -43,6 +43,11 @@ A unique number that identifies this library in our database. IDs are assigned s
 
 **Why it matters:** This number prevents duplicate entries and ensures accurate record tracking.
 
+The public page uses `/libraries/id-<id>/` so a name correction does not change
+the record's address. Never reuse a retired ID. See [Linked data and persistent
+identifiers](linked-data.md) for the difference between a DMMapp record and a
+source institution.
+
 ### Optional institutional identifiers
 
 These optional fields link a library record to established authority files and

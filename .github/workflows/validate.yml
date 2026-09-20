@@ -12,8 +12,10 @@ on:
   pull_request:
     paths:
       - 'docs/assets/data.json'
+      - 'docs/assets/library-aliases.json'
       - 'schema.json'
       - 'scripts/validate_data.py'
+      - 'hooks/library_pages.py'
   workflow_dispatch:
 
 permissions:
@@ -26,6 +28,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -39,3 +43,7 @@ jobs:
 
       - name: Validate data.json
         run: python scripts/validate_data.py
+
+      - name: Preserve published identifiers
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_identifier_history.py "${{ github.event.pull_request.base.sha }}"
