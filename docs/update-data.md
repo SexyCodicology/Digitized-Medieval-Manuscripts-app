@@ -103,26 +103,35 @@ with its proposal, so you rarely need to write them by hand. See
 check does and does not conclude. If a collection has moved rather than
 closed, update **website** instead of marking it broken.
 
-### IIIF manifest or collection endpoint
+### IIIF collection and example-manuscript endpoints
 
-When a collection supports IIIF, you can add the optional
-**iiif_manifest_or_collection_url** field. It must be a direct `http://` or
-`https://` IIIF Presentation API v2/v3 JSON endpoint for a manifest or
-collection—not the institution's viewer page. Set it only when **iiif** is
-`true`.
+When a collection supports IIIF, you can add either or both optional endpoint
+types below. Each must be a direct `http://` or `https://` IIIF Presentation
+API v2/v3 JSON endpoint—not the institution's viewer page. Set them only when
+**iiif** is `true`.
+
+- **iiif_collection_url**: a IIIF collection whose scope matches the listed
+  medieval manuscript collection.
+- **iiif_example_manifest_url**: a direct manifest for one representative
+  manuscript. It requires **iiif_example_manifest_label**, the readable name
+  of that manuscript.
 
 ```json
 "iiif": true,
-"iiif_manifest_or_collection_url": "https://example.org/iiif/manuscript-123/manifest"
+"iiif_collection_url": "https://example.org/iiif/medieval-manuscripts/collection",
+"iiif_example_manifest_url": "https://example.org/iiif/manuscript-123/manifest",
+"iiif_example_manifest_label": "Manuscript 123"
 ```
 
-Before you submit it, open the endpoint in the [IIIF Presentation API
-Validator](https://presentation-validator.iiif.io/) and in the [Universal
-Viewer](https://www.universalviewer.dev/uv.html#?manifest=). Confirm that the
-endpoint returns presentation JSON and that the viewer opens the expected
-manifest or collection. DMMapp uses Universal Viewer's public manifest URL
-for the **Open in IIIF viewer** detail-page action; it does not host a viewer
-or alter the endpoint.
+Do not use an institution-wide IIIF collection when it includes material far
+outside the listed medieval manuscripts. In that case, record a named example
+manifest instead. Before you submit an endpoint, open it in the [IIIF
+Presentation API Validator](https://presentation-validator.iiif.io/) and in
+the [Universal Viewer](https://www.universalviewer.dev/uv.html#?manifest=).
+Confirm that the endpoint returns presentation JSON and displays the expected
+collection or manuscript. DMMapp labels the resulting detail-page actions as
+**Browse IIIF collection** and **Open example manuscript in IIIF: [label]**;
+it lists the collection action first when both are present.
 
 ### Optional institutional identifiers
 

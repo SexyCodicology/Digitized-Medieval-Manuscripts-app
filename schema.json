@@ -60,11 +60,22 @@
         "type": "boolean",
         "description": "Whether the collection supports IIIF (International Image Interoperability Framework)"
       },
-      "iiif_manifest_or_collection_url": {
+      "iiif_collection_url": {
         "type": "string",
         "format": "uri",
         "pattern": "^https?://",
-        "description": "Optional IIIF Presentation API manifest or collection JSON endpoint. Only meaningful when iiif is true; do not use a viewer URL."
+        "description": "Optional IIIF Presentation API collection JSON endpoint. Use only when its scope matches the listed medieval manuscript collection; do not use a viewer URL. Only meaningful when iiif is true."
+      },
+      "iiif_example_manifest_url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https?://",
+        "description": "Optional direct IIIF Presentation API manifest JSON endpoint for a representative manuscript. Requires iiif_example_manifest_label; do not use a viewer URL. Only meaningful when iiif is true."
+      },
+      "iiif_example_manifest_label": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Required descriptive label when iiif_example_manifest_url is set. Name the representative manuscript so readers understand it is an example."
       },
       "is_free_cultural_works_license": {
         "type": "boolean",

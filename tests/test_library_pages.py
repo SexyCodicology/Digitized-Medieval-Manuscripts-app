@@ -365,21 +365,47 @@ def test_external_identifier_rows_are_omitted_when_fields_are_absent():
 # ── IIIF viewer action on a library page ──────────────────────────────────
 
 
-def test_iiif_manifest_endpoint_renders_a_distinct_viewer_action():
-    manifest = "https://example.org/iiif/manifest.json?item=12&locale=en"
+def test_iiif_collection_endpoint_renders_a_distinct_viewer_action():
+    collection = "https://example.org/iiif/collection.json?locale=en"
     body = _page_body({
         **HOSTILE_RECORD,
         "website": "https://example.org/collection",
-        "iiif_manifest_or_collection_url": manifest,
+        "iiif_collection_url": collection,
     })
 
     action = re.search(
-        r'<a class="btn-visit btn-iiif-viewer"\s+href="([^"]+)"', body
+        r'<a class="btn-visit btn-iiif-viewer btn-iiif-collection"\s+href="([^"]+)"',
+        body,
     )
 
     assert action is not None
     assert "Visit the collection" in body
-    assert body.index("Visit the collection") < body.index("Open in IIIF viewer")
+    assert body.index("Visit the collection") < body.index("Browse IIIF collection")
+    viewer_url = urlsplit(unescape(action.group(1)))
+    assert viewer_url.scheme == "https"
+    assert viewer_url.netloc == "www.universalviewer.dev"
+    assert viewer_url.path == "/uv.html"
+    assert viewer_url.query == ""
+    assert viewer_url.fragment.startswith("?")
+    assert parse_qs(viewer_url.fragment[1:]) == {"manifest": [collection]}
+
+
+def test_named_example_manifest_renders_a_distinct_viewer_action():
+    manifest = "https://example.org/iiif/manifest.json?item=12&locale=en"
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "website": "https://example.org/collection",
+        "iiif_example_manifest_url": manifest,
+        "iiif_example_manifest_label": "Example manuscript",
+    })
+
+    action = re.search(
+        r'<a class="btn-visit btn-iiif-viewer btn-iiif-example"\s+href="([^"]+)"',
+        body,
+    )
+
+    assert action is not None
+    assert "Open example manuscript in IIIF: Example manuscript" in body
     viewer_url = urlsplit(unescape(action.group(1)))
     assert viewer_url.scheme == "https"
     assert viewer_url.netloc == "www.universalviewer.dev"
@@ -389,22 +415,48 @@ def test_iiif_manifest_endpoint_renders_a_distinct_viewer_action():
     assert parse_qs(viewer_url.fragment[1:]) == {"manifest": [manifest]}
 
 
-def test_iiif_viewer_action_is_absent_without_an_endpoint():
-    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org/collection"})
-
-    assert "Open in IIIF viewer" not in body
-    assert "btn-iiif-viewer" not in body
-
-
-def test_an_unsafe_iiif_endpoint_does_not_render_a_viewer_action():
+def test_iiif_collection_action_precedes_a_named_example_manifest():
     body = _page_body({
         **HOSTILE_RECORD,
         "website": "https://example.org/collection",
-        "iiif_manifest_or_collection_url": "javascript:alert(1)",
+        "iiif_collection_url": "https://example.org/iiif/collection.json",
+        "iiif_example_manifest_url": "https://example.org/iiif/manifest.json",
+        "iiif_example_manifest_label": "Example manuscript",
     })
 
-    assert "Open in IIIF viewer" not in body
+    assert body.index("Visit the collection") < body.index("Browse IIIF collection")
+    assert body.index("Browse IIIF collection") < body.index(
+        "Open example manuscript in IIIF: Example manuscript"
+    )
+
+
+def test_iiif_viewer_actions_are_absent_without_an_endpoint():
+    body = _page_body({**HOSTILE_RECORD, "website": "https://example.org/collection"})
+
+    assert "Browse IIIF collection" not in body
+    assert "Open example manuscript in IIIF" not in body
+    assert "btn-iiif-viewer" not in body
+
+
+def test_unsafe_or_unnamed_iiif_endpoints_do_not_render_viewer_actions():
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "website": "https://example.org/collection",
+        "iiif_collection_url": "javascript:alert(1)",
+        "iiif_example_manifest_url": "javascript:alert(2)",
+        "iiif_example_manifest_label": "Example manuscript",
+    })
+
+    assert "Browse IIIF collection" not in body
+    assert "Open example manuscript in IIIF" not in body
     assert "javascript:" not in body
+
+    unnamed_example = _page_body({
+        **HOSTILE_RECORD,
+        "iiif_example_manifest_url": "https://example.org/iiif/manifest.json",
+    })
+
+    assert "Open example manuscript in IIIF" not in unnamed_example
 
 
 # ── Collisions ────────────────────────────────────────────────────────────
