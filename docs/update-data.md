@@ -93,6 +93,19 @@ with its proposal, so you rarely need to write them by hand. See
 check does and does not conclude. If a collection has moved rather than
 closed, update **website** instead of marking it broken.
 
+### Homepage recency fields
+
+Two optional fields let the homepage show when a record was added or materially
+updated:
+
+- **added**: The date the record first entered DMMapp, written as YYYY-MM-DD.
+- **last_edited**: The date of its most recent material correction or update,
+  written as YYYY-MM-DD.
+
+Use only a real, verifiable date that is not in the future. Leave either field
+out when you cannot verify it. The reviewer confirms these dates as part of the
+pull-request workflow.
+
 ### Add a new library
 
 Locate the last library entry in the file:

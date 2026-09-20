@@ -21,6 +21,15 @@ body:
       required: true
 
   - type: input
+    id: added
+    attributes:
+      label: Date added to DMMapp
+      description: Optional. If known, use the verifiable YYYY-MM-DD date this record should first appear as new.
+      placeholder: "e.g., 2026-08-02"
+    validations:
+      required: false
+
+  - type: input
     id: country
     attributes:
       label: Country

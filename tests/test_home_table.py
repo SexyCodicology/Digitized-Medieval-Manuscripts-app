@@ -276,7 +276,13 @@ def built_home(tmp_path_factory) -> str:
     (docs / "assets").mkdir(parents=True)
 
     (docs / "assets" / "data.json").write_text(
-        json.dumps([SAFE_RECORD, HOSTILE_RECORD]), encoding="utf-8"
+        json.dumps(
+            [
+                {**SAFE_RECORD, "added": "2026-08-01"},
+                {**HOSTILE_RECORD, "last_edited": "2026-08-02"},
+            ]
+        ),
+        encoding="utf-8",
     )
     (docs / "index.md").write_text("---\ntemplate: home.html\n---\n", encoding="utf-8")
     (project / "mkdocs.yml").write_text(
@@ -320,6 +326,26 @@ def test_the_built_homepage_ships_the_counts(built_home):
         "statProjects": "2",
     }
     assert re.search(r'id="showingCount">(.*?)<', built_home).group(1) == "2"
+
+
+def test_the_built_homepage_ships_recent_libraries_without_javascript(built_home):
+    section = built_home.split('id="recent-libraries-heading"', 1)[1].split("</section>", 1)[0]
+
+    assert "Recently added and updated" in section
+    assert 'href="libraries/bodleian-library-1/"' in section
+    assert "Updated 2026-08-02" in section
+    assert "<script" not in section
+
+
+def test_undated_or_future_records_do_not_appear_in_the_recent_list():
+    recent = hook.build_recent_libraries(
+        [
+            SAFE_RECORD,
+            {**SAFE_RECORD, "id": 2, "library": "Future Library", "added": "2099-01-01"},
+        ]
+    )
+
+    assert recent == ""
 
 
 def test_the_built_homepage_hides_the_loader_without_javascript(built_home):

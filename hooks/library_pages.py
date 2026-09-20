@@ -24,6 +24,7 @@ import json
 import re
 import unicodedata
 from collections import Counter
+from datetime import date
 from html import escape
 from pathlib import Path
 from typing import Any
@@ -44,6 +45,14 @@ OUTPUT_DIR = "libraries"
 
 # Where the id-to-slug map is published for other consumers of the built site.
 SLUG_MAP_URI = "assets/library-slugs.json"
+
+# Virtual source file for the crawlable alphabetical library index.
+LIBRARY_INDEX_URI = "library-index.md"
+
+# Optional record dates used to show recently changed libraries on the homepage.
+RECENCY_FIELDS = ("added", "last_edited")
+RECENT_LIBRARY_LIMIT = 5
+ISO_DATE_PATTERN = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
 
 # Jinja global that overrides/home.html reads the pre-rendered directory from.
 TEMPLATE_GLOBAL = "dmm_directory"
@@ -82,6 +91,30 @@ def plain_text(value: Any) -> str:
     """
     text = re.sub(r'[<>"]', "", str(value))
     return re.sub(r"\s+", " ", text).strip()
+
+
+def parse_iso_date(value: Any) -> date | None:
+    """Return a calendar date only when its text has the declared ISO format."""
+    if not isinstance(value, str) or not ISO_DATE_PATTERN.fullmatch(value):
+        return None
+    try:
+        return date.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def validate_recency_dates(record: dict[str, Any], path: Path, position: int) -> None:
+    """Reject date metadata that could make the homepage recency list misleading."""
+    for field in RECENCY_FIELDS:
+        if field not in record:
+            continue
+        parsed = parse_iso_date(record[field])
+        if parsed is None:
+            raise PluginError(
+                f"{path}: record {position} has an invalid {field} date."
+            )
+        if parsed > date.today():
+            raise PluginError(f"{path}: record {position} has a future {field} date.")
 
 
 def slug_for(record: dict[str, Any]) -> str:
@@ -161,6 +194,7 @@ def load_records(docs_dir: str) -> list[dict[str, Any]]:
         ]
         if missing:
             raise PluginError(f"{path}: record {position} is missing {', '.join(missing)}.")
+        validate_recency_dates(record, path, position)
 
     return records
 
@@ -524,7 +558,107 @@ def build_directory(records: list[dict[str, Any]]) -> dict[str, Any]:
     """Return the rows and counts that overrides/home.html renders."""
     rows = "".join(render_row(record) for record in sorted(records, key=directory_sort_key))
     # Markup keeps the rows intact whether or not the theme autoescapes.
-    return {"rows": Markup(rows), "stats": summarise(records)}
+    return {
+        "rows": Markup(rows),
+        "stats": summarise(records),
+        "recent": build_recent_libraries(records),
+    }
+
+
+def latest_change(record: dict[str, Any]) -> tuple[date, str] | None:
+    """Return the newest usable record date and the label a reader should see."""
+    changes = [
+        (field, parsed)
+        for field in RECENCY_FIELDS
+        if (parsed := parse_iso_date(record.get(field))) is not None
+        and parsed <= date.today()
+    ]
+    if not changes:
+        return None
+    field, changed = max(changes, key=lambda entry: entry[1])
+    return changed, "Added" if field == "added" else "Updated"
+
+
+def render_recent_library(record: dict[str, Any], changed: date, label: str) -> str:
+    """Return one escaped entry for the server-rendered recent-libraries list."""
+    slug = escape(slug_for(record), quote=True)
+    return (
+        "<li>"
+        f'<a href="libraries/{slug}/">{escape(str(record["library"]))}</a> — '
+        f"{label} {changed.isoformat()}"
+        "</li>"
+    )
+
+
+def build_recent_libraries(records: list[dict[str, Any]]) -> Markup:
+    """Return the five newest explicitly dated records in stable display order."""
+    dated_records = [
+        (record, *change)
+        for record in records
+        if (change := latest_change(record)) is not None
+    ]
+    dated_records.sort(
+        key=lambda entry: (-entry[1].toordinal(), directory_sort_key(entry[0]))
+    )
+    return Markup(
+        "".join(
+            render_recent_library(record, changed, label)
+            for record, changed, label in dated_records[:RECENT_LIBRARY_LIMIT]
+        )
+    )
+
+
+def library_index_group(record: dict[str, Any]) -> str:
+    """Return the index heading for a record without inventing an alphabet.
+
+    Accented Latin names share their expected ASCII heading. Names beginning
+    with another script, a digit, or punctuation stay together under "Other"
+    rather than being silently omitted or assigned a misleading letter.
+    """
+    library = str(record["library"]).strip()
+    folded = (
+        unicodedata.normalize("NFKD", library).encode("ascii", "ignore").decode()
+    )
+    initial = folded[:1].upper()
+    return initial if initial.isascii() and initial.isalpha() else "Other"
+
+
+def build_library_index(records: list[dict[str, Any]]) -> str:
+    """Return the virtual Markdown page that links to every library page."""
+    groups: dict[str, list[dict[str, Any]]] = {}
+    for record in sorted(records, key=directory_sort_key):
+        groups.setdefault(library_index_group(record), []).append(record)
+
+    labels = sorted(groups, key=lambda label: (label == "Other", label))
+    jump_links = " ".join(
+        f'<a href="#{label.casefold()}">{label}</a>' for label in labels
+    )
+    sections = []
+    for label in labels:
+        entries = "\n".join(
+            "<li>"
+            f'<a href="libraries/{escape(slug_for(record), quote=True)}/">'
+            f'{escape(str(record["library"]))}</a> — '
+            f'{escape(str(record["city"]))}, {escape(str(record["nation"]))}'
+            "</li>"
+            for record in groups[label]
+        )
+        sections.append(f"## {label}\n\n<ul>\n{entries}\n</ul>")
+
+    section_markup = "\n\n".join(sections)
+
+    return (
+        "---\n"
+        "title: Library index\n"
+        "description: Browse every digitized medieval manuscript library in DMMapp.\n"
+        "social:\n"
+        "  cards: false\n"
+        "---\n\n"
+        "# Library index\n\n"
+        "Browse every library in DMMapp alphabetically.\n\n"
+        f'<nav aria-label="Browse libraries by name">{jump_links}</nav>\n\n'
+        f"{section_markup}\n"
+    )
 
 
 def on_files(files: Files, config: MkDocsConfig) -> Files:
@@ -543,6 +677,14 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
                 inclusion=InclusionLevel.NOT_IN_NAV,
             )
         )
+
+    files.append(
+        File.generated(
+            config,
+            LIBRARY_INDEX_URI,
+            content=build_library_index(records),
+        )
+    )
 
     slug_map = {str(record["id"]): slug_for(record) for record in records}
     files.append(

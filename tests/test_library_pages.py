@@ -295,12 +295,13 @@ def test_a_missing_dataset_fails_the_build(tmp_path):
 # ── Regression guard: the rest of the site is untouched ───────────────────
 
 
-def test_nav_does_not_list_the_generated_pages():
+def test_nav_lists_the_library_index_but_not_generated_library_pages():
     config = yaml.safe_load((REPO_ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
 
     assert config["hooks"] == ["hooks/library_pages.py"]
     assert hook.OUTPUT_DIR not in yaml.safe_dump(config["nav"])
-    assert len(config["nav"]) == 6
+    assert {"Library Index": hook.LIBRARY_INDEX_URI} in config["nav"]
+    assert len(config["nav"]) == 7
 
 
 # ── End-to-end build ──────────────────────────────────────────────────────
@@ -335,7 +336,7 @@ def built_site(tmp_path_factory) -> Path:
         "site_url: https://example.org/\n"
         "docs_dir: docs\n"
         "theme:\n  name: material\n"
-        "nav:\n  - Home: index.md\n"
+        "nav:\n  - Home: index.md\n  - Library index: library-index.md\n"
         f"hooks:\n  - {(REPO_ROOT / 'hooks' / 'library_pages.py').as_posix()}\n",
         encoding="utf-8",
     )
@@ -362,6 +363,50 @@ def test_generated_pages_reach_the_sitemap(built_site):
 
     assert "https://example.org/libraries/bodleian-library-1/" in sitemap
     assert "https://example.org/libraries/etc-passwd-script-alert-xss-script-quoted-9001/" in sitemap
+
+
+def test_library_index_lists_every_record_and_reaches_the_sitemap(built_site):
+    index = (built_site / "library-index" / "index.html").read_text(encoding="utf-8")
+    sitemap = (built_site / "sitemap.xml").read_text(encoding="utf-8")
+
+    links = re.findall(r'<li><a href="libraries/([^/]+)/">', index)
+
+    assert links == ["bodleian-library-1", "etc-passwd-script-alert-xss-script-quoted-9001"]
+    assert "https://example.org/library-index/" in sitemap
+
+
+def test_library_index_groups_accented_and_non_alphabetic_names():
+    accented_name = chr(0x00C5) + "ngstr" + chr(0x00F6) + "m Library"
+    records = [
+        {"id": 1, "library": accented_name, "city": "City", "nation": "Nation"},
+        {"id": 2, "library": "7 Hills Library", "city": "City", "nation": "Nation"},
+        {
+            "id": 3,
+            "library": chr(0x4E2D) + chr(0x6587),
+            "city": "City",
+            "nation": "Nation",
+        },
+    ]
+
+    index = hook.build_library_index(records)
+
+    assert "## A" in index
+    assert "## Other" in index
+    assert index.index(accented_name) < index.index("7 Hills Library")
+    assert index.count("<li>") == len(records)
+
+
+def test_homepage_library_index_link_uses_the_button_style():
+    template = (REPO_ROOT / "overrides" / "home.html").read_text(encoding="utf-8")
+    stylesheet = (REPO_ROOT / "docs" / "assets" / "dashboard.css").read_text(
+        encoding="utf-8"
+    )
+
+    assert 'class="hero__actions"' in template
+    assert 'class="btn-visit hero__index-link"' in template
+    assert 'class="bi bi-list-ol"' in template
+    assert "Browse every library alphabetically" in template
+    assert ".hero__actions .hero__index-link:hover" in stylesheet
 
 
 def test_built_pages_carry_unique_seo_metadata(built_site):
