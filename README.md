@@ -2,7 +2,7 @@
 
 > A curated, interactive directory of digitized medieval manuscript libraries worldwide with support for standardized image formats and open access resources.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: CC0 1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-green)](https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/)
 [![Build Status](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/actions/workflows/deploy.yml/badge.svg)](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/actions/workflows/deploy.yml)
 [![JSON Schema Validation](https://img.shields.io/badge/Data%20Format-JSON%20Schema-blue)](./schema.json)
@@ -95,7 +95,7 @@ Digitized-Medieval-Manuscripts-app/
 │
 ├── README.md               # This file
 ├── CONTRIBUTING.md         # Contribution guide
-└── LICENSE                 # MIT License
+└── LICENSE                 # CC0 1.0 Universal license
 ```
 
 ## Technology stack
@@ -180,9 +180,12 @@ Libraries that support standardized image formats (like IIIF) let you:
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
+This project is dedicated to the public domain under the
+[CC0 1.0 Universal license](./LICENSE).
 
-You're free to use, modify, and distribute this project with proper attribution.
+You can copy, modify, and distribute the project's directory data and site
+content without requesting permission. Check the source institution's terms
+before reusing material from a linked collection.
 
 ## Support and questions
 
