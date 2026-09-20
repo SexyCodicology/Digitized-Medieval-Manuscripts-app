@@ -290,17 +290,19 @@ same rows over for searching, sorting, and filtering.
                 <table
                         aria-label="Medieval manuscript libraries directory"
                         id="libraryTable"
+                        role="table"
                 >
                     <caption class="visually-hidden">
                         A sortable directory of digitized medieval manuscript libraries with
                         location, feature, and access information.
                     </caption>
-                    <thead>
-                    <tr>
+                    <thead role="rowgroup">
+                    <tr role="row">
                         <th
                                 aria-sort="none"
                                 class="col-library sortable"
                                 data-sort="library"
+                                role="columnheader"
                                 scope="col"
                                 tabindex="0"
                         >
@@ -313,6 +315,7 @@ same rows over for searching, sorting, and filtering.
                                 aria-sort="none"
                                 class="col-location sortable"
                                 data-sort="nation"
+                                role="columnheader"
                                 scope="col"
                                 tabindex="0"
                         >
@@ -321,11 +324,11 @@ same rows over for searching, sorting, and filtering.
                             <i aria-hidden="true" class="bi bi-sort-alpha-down sort-icon sort-icon--asc"></i>
                             <i aria-hidden="true" class="bi bi-sort-alpha-up-alt sort-icon sort-icon--desc"></i>
                         </th>
-                        <th class="col-features" scope="col">Features</th>
-                        <th class="col-access" scope="col">Access</th>
+                        <th class="col-features" role="columnheader" scope="col">Features</th>
+                        <th class="col-access" role="columnheader" scope="col">Access</th>
                     </tr>
                     </thead>
-                    <tbody id="tableBody">{{ dmm_directory.rows }}</tbody>
+                    <tbody id="tableBody" role="rowgroup">{{ dmm_directory.rows }}</tbody>
                 </table>
             </div>
 
