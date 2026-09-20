@@ -130,18 +130,24 @@ def bulk_jsonld(records: list[dict[str, Any]], site_url: str) -> str:
             {"@id": page_url(base, record["id"]) + "#record"}
             for record in records
         ],
+        "dcat:resource": [
+            {"@id": page_url(base, record["id"]) + "#access-point"}
+            for record in records
+        ],
         "dcat:distribution": [
             {
                 "@id": base + BULK_PATH,
                 "@type": "dcat:Distribution",
                 "dcat:downloadURL": {"@id": base + BULK_PATH},
                 "dcat:mediaType": {"@id": JSONLD_MEDIA_TYPE},
+                "dcterms:license": {"@id": CC0_URL},
             },
             {
                 "@id": base + RAW_DATA_PATH,
                 "@type": "dcat:Distribution",
                 "dcat:downloadURL": {"@id": base + RAW_DATA_PATH},
                 "dcat:mediaType": {"@id": JSON_MEDIA_TYPE},
+                "dcterms:license": {"@id": CC0_URL},
             },
         ],
     }

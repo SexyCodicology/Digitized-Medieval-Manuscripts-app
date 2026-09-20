@@ -45,17 +45,19 @@ The JSON-LD uses the [Data Catalog Vocabulary (DCAT)](https://www.w3.org/TR/voca
 It distinguishes a `dcat:CatalogRecord`—DMMapp's metadata entry—from a
 `dcat:Resource` representing the catalogued access point. A source institution's
 `website` is published as that resource's `dcat:landingPage`, not as an
-identity claim. The bulk catalogue lists the current records and the available
-distributions. These are static files rebuilt with the site, not a live API or
-SPARQL endpoint. GitHub Pages may serve JSON-LD with a generic content type;
+identity claim. The bulk catalogue links to both its metadata records and the
+access points they describe. It also lists the available distributions. These
+are static files rebuilt with the site, not a live API or SPARQL endpoint.
+GitHub Pages may serve JSON-LD with a generic content type;
 clients should parse the linked files as JSON-LD rather than assume HTTP
 content negotiation.
 
 The site's CC0 dedication applies to DMMapp's directory data and content. It
 does **not** grant rights to manuscripts, images, or metadata hosted by linked
 institutions. The linked-data graph therefore gives the DMMapp catalogue a CC0
-licence but does not copy that licence onto access points or manuscripts.
-Consult each source institution's terms before reuse.
+licence and repeats it on the DMMapp downloads, but does not copy that licence
+onto access points or manuscripts. Consult each source institution's terms
+before reuse.
 
 ## Interpret links and missing claims
 

@@ -93,11 +93,23 @@ def test_bulk_graph_contains_every_current_record_and_catalogue_license():
 
     assert (catalog, RDF.type, DCAT.Catalog) in graph
     assert len(list(graph.objects(catalog, DCAT.record))) == len(records)
+    resources = {
+        URIRef(SITE_URL + f"libraries/id-{record['id']}/#access-point")
+        for record in records
+    }
+    assert set(graph.objects(catalog, DCAT.resource)) == resources
     assert (
         catalog,
         DCTERMS.license,
         URIRef(linked_data.CC0_URL),
     ) in graph
+    for path in (linked_data.BULK_PATH, linked_data.RAW_DATA_PATH):
+        assert (
+            URIRef(SITE_URL + path),
+            DCTERMS.license,
+            URIRef(linked_data.CC0_URL),
+        ) in graph
+    assert all(not list(graph.objects(resource, DCTERMS.license)) for resource in resources)
     assert not list(graph.triples((None, URIRef("http://www.w3.org/2002/07/owl#sameAs"), None)))
 
 

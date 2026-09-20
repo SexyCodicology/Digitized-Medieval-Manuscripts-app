@@ -50,6 +50,15 @@ def verify(
     }
     if set(graph.objects(catalog_uri, DCAT.record)) != expected_records:
         errors.append("bulk catalogue record IDs differ from data.json")
+    expected_resources = {
+        URIRef(base + f"libraries/id-{record['id']}/#access-point")
+        for record in records
+    }
+    if set(graph.objects(catalog_uri, DCAT.resource)) != expected_resources:
+        errors.append("bulk catalogue resources differ from data.json")
+    for path in ("assets/dmmapp-linked-data.jsonld", "assets/data.json"):
+        if (URIRef(base + path), DCTERMS.license, CC0_URL) not in graph:
+            errors.append(f"bulk distribution {path} lacks its CC0 licence")
 
     sitemap = site / "sitemap.xml"
     try:
@@ -77,6 +86,8 @@ def verify(
             errors.append(f"record {record_id} is missing from the bulk graph")
         if (record_uri, FOAF.primaryTopic, resource_uri) not in record_graph:
             errors.append(f"record {record_id} lacks its distinct access point")
+        if (record_uri, FOAF.primaryTopic, resource_uri) not in graph:
+            errors.append(f"record {record_id} lacks its bulk access-point link")
         if (resource_uri, RDF.type, DCAT.Resource) not in record_graph:
             errors.append(f"record {record_id} has no DCAT access point")
         if (record_uri, DCTERMS.identifier, Literal(record_id)) not in record_graph:

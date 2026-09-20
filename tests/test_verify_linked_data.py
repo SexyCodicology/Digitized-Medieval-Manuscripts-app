@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from hooks.linked_data import bulk_jsonld, record_jsonld, retired_jsonld
@@ -92,3 +93,15 @@ def test_verifier_detects_wrong_bulk_identity(tmp_path):
     errors = verify(site, [RECORD], {"42": ["example-library-42"]}, SITE_URL)
 
     assert "bulk catalogue record IDs differ from data.json" in errors
+    assert "bulk catalogue resources differ from data.json" in errors
+
+
+def test_verifier_detects_unlicensed_directory_download(tmp_path):
+    site = built_site(tmp_path)
+    bulk = json.loads(bulk_jsonld([RECORD], SITE_URL))
+    bulk["@graph"][0]["dcat:distribution"][0].pop("dcterms:license")
+    write(site, "assets/dmmapp-linked-data.jsonld", json.dumps(bulk))
+
+    errors = verify(site, [RECORD], {"42": ["example-library-42"]}, SITE_URL)
+
+    assert any("dmmapp-linked-data.jsonld lacks its CC0 licence" in error for error in errors)
