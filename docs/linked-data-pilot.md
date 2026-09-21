@@ -113,3 +113,29 @@ python scripts/validate_linked_data_pilot.py
 The current ledger has 41 field decisions across the 25 selected records. A
 passing validator can still report pending decisions; the pilot is complete
 only when it reports zero pending.
+
+## Prepare a review packet
+
+Use the read-only report command to collect each pending candidate, its existing
+evidence, its corroborating source, and the question that a maintainer must
+resolve. The command writes Markdown to the terminal and does not update the
+catalogue or either review register.
+
+**Command safety**: Safe
+
+```bash
+python scripts/report_linked_data_pilot.py
+```
+
+Limit the packet to one or more records when you want a small review batch.
+
+**Command safety**: Safe
+
+```bash
+python scripts/report_linked_data_pilot.py --record-id 3 --record-id 24
+```
+
+Add `--all` when you also need previously completed decisions. The report stops
+if the catalogue, evidence ledger, assertion register, or pilot ledger fails its
+validator. It assembles evidence but cannot approve a relationship. Record a
+final decision only through the pull-request review process above.
