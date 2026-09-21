@@ -390,14 +390,19 @@
         "nation": "Belgium",
         "city": "Ghent",
         "library": "Universiteitsbibliotheek Gent",
-        "quantity": "Unknown",
-        "website": "https://lib.ugent.be/catalog/access%3Azoomable?q=manuscript",
+        "quantity": "Hundreds",
+        "website": "https://mmfc.be/s/start/objects?facet%5Bmmfc_digitalReproductionCount_ss%5D%5B%5D=Yes&facet%5Bmmfc_institutionFilter_ss%5D%5B%5D=Gent%2C+Universiteitsbibliotheek+Gent",
         "copyright": "Unknown",
-        "iiif": false,
+        "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": [],
-        "is_disabled": true,
+        "aggregators": [
+            {
+                "name": "Medieval Manuscripts in Flemish Collections",
+                "url": "https://mmfc.be/"
+            }
+        ],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-21",
         "licence_category": "Unknown",
         "wikidata_qid": "Q611001",
         "geonames_id": 2797656
