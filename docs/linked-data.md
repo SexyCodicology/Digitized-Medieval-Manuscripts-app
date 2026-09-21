@@ -38,6 +38,8 @@ dashboard. The build also publishes:
 
 - [Bulk JSON-LD](assets/dmmapp-linked-data.jsonld), with the directory
   catalogue and its active records.
+- [Reviewed link assertions](assets/link-assertions.csv), with the public
+  evidence and review provenance for relationships promoted to JSON-LD.
 - A JSON-LD file for each ID at `linked-data/records/<id>.jsonld`. Each human
   page advertises this file using an HTML `rel="alternate"` link.
 
@@ -99,14 +101,24 @@ Their fragment URLs are stable within this publication.
 ### Institution authority record
 
 `#institution-authority-record` means the related resource is a reviewed ISIL
-or Wikidata authority record describing the holding institution or relevant
-unit. It does not mean the DMMapp access-point resource is that institution.
+registry record describing the holding institution or relevant unit. DMMapp
+uses the reviewed registry URL because ISIL agencies do not share one universal
+linked-data resolver.
 
-### Place authority record
+### Holding institution
 
-`#place-authority-record` means the related resource is a reviewed GeoNames
-record for the city or place associated with the listed access point. It does
-not assert that the access point is a place.
+`#holding-institution` means the related resource is the reviewed Wikidata
+entity for the holding institution or relevant unit. DMMapp constructs the
+target from the approved QID using Wikidata's `/entity/<QID>` URI pattern. It
+does not mean the DMMapp access-point resource is that institution.
+
+### Listed place
+
+`#listed-place` means the related resource is the reviewed GeoNames place for
+the city or location associated with the listed access point. DMMapp constructs
+the target as `https://sws.geonames.org/<id>/`, which identifies the place
+rather than the document that describes it. It does not assert that the access
+point is a place.
 
 ### IIIF collection
 
@@ -118,6 +130,11 @@ Presentation API Collection endpoint whose scope fits the listed access point.
 `#iiif-example-manifest` means the related resource is a reviewed direct IIIF
 Presentation API Manifest for one named representative manuscript. It does
 not represent the complete collection.
+
+Each approved relationship has its own stable fragment URI on the ID page. Its
+RDF includes the two reviewed evidence URLs, review date, pull-request review,
+reviewer's public GitHub profile, and relationship note. The CSV register
+remains the source record for that provenance.
 
 ## Correct or extend a record
 

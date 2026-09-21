@@ -7,6 +7,7 @@ Run after ``mkdocs build --clean`` from the repository root:
 
 from __future__ import annotations
 
+import csv
 import json
 import re
 import sys
@@ -14,13 +15,19 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-from rdflib import Graph, Literal, Namespace, RDF, URIRef
+from rdflib import Graph, Literal, Namespace, RDF, URIRef, XSD
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from hooks.linked_data import ROLE_FRAGMENTS, assertion_target  # noqa: E402
+
 DCAT = Namespace("http://www.w3.org/ns/dcat#")
 DCTERMS = Namespace("http://purl.org/dc/terms/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 CC0_URL = URIRef("https://creativecommons.org/publicdomain/zero/1.0/")
+DCAT3_URL = URIRef("https://www.w3.org/TR/vocab-dcat-3/")
 
 
 def parse_graph(path: Path) -> Graph:
@@ -29,7 +36,11 @@ def parse_graph(path: Path) -> Graph:
 
 
 def verify(
-    site: Path, records: list[dict[str, Any]], aliases: dict[str, list[str]], site_url: str
+    site: Path,
+    records: list[dict[str, Any]],
+    aliases: dict[str, list[str]],
+    site_url: str,
+    assertions: list[dict[str, str]] | None = None,
 ) -> list[str]:
     """Return publication errors for every current record and alias."""
     errors: list[str] = []
@@ -45,6 +56,12 @@ def verify(
         errors.append("bulk graph has no DMMapp catalogue")
     if (catalog_uri, DCTERMS.license, CC0_URL) not in graph:
         errors.append("bulk catalogue lacks its CC0 licence")
+    if (catalog_uri, DCTERMS.conformsTo, DCAT3_URL) not in graph:
+        errors.append("bulk catalogue does not identify its DCAT profile")
+    if (catalog_uri, DCAT.landingPage, URIRef(base)) not in graph:
+        errors.append("bulk catalogue lacks its landing page")
+    if not list(graph.objects(catalog_uri, DCTERMS.description)):
+        errors.append("bulk catalogue lacks its description")
     expected_records = {
         URIRef(base + f"libraries/id-{record['id']}/#record") for record in records
     }
@@ -56,7 +73,11 @@ def verify(
     }
     if set(graph.objects(catalog_uri, DCAT.resource)) != expected_resources:
         errors.append("bulk catalogue resources differ from data.json")
-    for path in ("assets/dmmapp-linked-data.jsonld", "assets/data.json"):
+    for path in (
+        "assets/dmmapp-linked-data.jsonld",
+        "assets/data.json",
+        "assets/link-assertions.csv",
+    ):
         if (URIRef(base + path), DCTERMS.license, CC0_URL) not in graph:
             errors.append(f"bulk distribution {path} lacks its CC0 licence")
 
@@ -94,6 +115,79 @@ def verify(
             errors.append(f"record {record_id} has the wrong identifier")
         if list(record_graph.triples((resource_uri, DCTERMS.license, None))):
             errors.append(f"record {record_id} incorrectly licences source material")
+        approved = [
+            assertion
+            for assertion in assertions or []
+            if assertion.get("record_id") == record_id
+        ]
+        expected_relations = {
+            URIRef(page_url + f"#relation-{assertion['field']}"): assertion
+            for assertion in approved
+        }
+        actual_relations = set(
+            record_graph.objects(resource_uri, DCAT.qualifiedRelation)
+        )
+        if actual_relations != set(expected_relations):
+            errors.append(f"record {record_id} has the wrong approved relationships")
+        bulk_relations = set(graph.objects(resource_uri, DCAT.qualifiedRelation))
+        if bulk_relations != set(expected_relations):
+            errors.append(
+                f"record {record_id} has the wrong bulk approved relationships"
+            )
+        for relation_uri, assertion in expected_relations.items():
+            field = assertion["field"]
+            target = URIRef(
+                assertion_target(field, assertion["value"], assertion["source_url"])
+            )
+            role = URIRef(base + "linked-data/#" + ROLE_FRAGMENTS[field])
+            sources = {
+                URIRef(assertion["source_url"]),
+                URIRef(assertion["corroborating_url"]),
+            }
+            contributor = URIRef(f"https://github.com/{assertion['reviewer']}")
+            review = URIRef(assertion["review_url"])
+            note = Literal(assertion["note"])
+            for relation_graph, label in (
+                (record_graph, "record graph"),
+                (graph, "bulk graph"),
+            ):
+                if (relation_uri, RDF.type, DCAT.Relationship) not in relation_graph:
+                    errors.append(
+                        f"record {record_id} relation is untyped in the {label}"
+                    )
+                if (relation_uri, DCTERMS.relation, target) not in relation_graph:
+                    errors.append(
+                        f"record {record_id} relation has the wrong target in the {label}"
+                    )
+                if (relation_uri, DCAT.hadRole, role) not in relation_graph:
+                    errors.append(
+                        f"record {record_id} relation has the wrong role in the {label}"
+                    )
+                if set(relation_graph.objects(relation_uri, DCTERMS.source)) != sources:
+                    errors.append(
+                        f"record {record_id} relation lacks evidence in the {label}"
+                    )
+                reviewed = Literal(assertion["reviewed_on"], datatype=XSD.date)
+                if (relation_uri, DCTERMS.modified, reviewed) not in relation_graph:
+                    errors.append(
+                        f"record {record_id} relation lacks its review date in the {label}"
+                    )
+                if (
+                    relation_uri,
+                    DCTERMS.contributor,
+                    contributor,
+                ) not in relation_graph:
+                    errors.append(
+                        f"record {record_id} relation lacks its reviewer in the {label}"
+                    )
+                if (relation_uri, DCTERMS.isReferencedBy, review) not in relation_graph:
+                    errors.append(
+                        f"record {record_id} relation lacks its review URL in the {label}"
+                    )
+                if (relation_uri, DCTERMS.description, note) not in relation_graph:
+                    errors.append(
+                        f"record {record_id} relation lacks its note in the {label}"
+                    )
         if f'rel="canonical" href="{page_url}"' not in html:
             errors.append(f"record {record_id} lacks its canonical HTML URL")
         alternate = base + f"linked-data/records/{record_id}.jsonld"
@@ -149,12 +243,17 @@ def main() -> int:
                 encoding="utf-8"
             )
         )
+        with (REPO_ROOT / "docs" / "assets" / "link-assertions.csv").open(
+            encoding="utf-8",
+            newline="",
+        ) as source:
+            assertions = list(csv.DictReader(source))
         config = yaml.safe_load((REPO_ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
     except (OSError, ValueError) as error:
         print(f"Cannot verify linked data: {error}", file=sys.stderr)
         return 1
 
-    errors = verify(site, records, aliases, config["site_url"])
+    errors = verify(site, records, aliases, config["site_url"], assertions)
     if errors:
         for error in errors:
             print(f"  - {error}", file=sys.stderr)

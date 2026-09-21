@@ -218,6 +218,12 @@ of an external claim or the identity of the named reviewer. Use the repository's
 normal pull-request review before merging. If the proposal remains uncertain,
 leave the field and CSV row out; the directory entry remains available.
 
+The validator also checks that a Wikidata source names the approved QID on
+`www.wikidata.org`, that a GeoNames source names the approved numeric ID on a
+GeoNames domain, and that an IIIF source is the exact approved endpoint. These
+checks prevent a field from pointing at the wrong kind of authority target;
+they do not replace the maintainer's semantic review.
+
 The history check compares a pull request with its target branch. Values that
 were already public when this gate was introduced may remain while they are
 audited. Any addition or changed value, including a change to an older IIIF

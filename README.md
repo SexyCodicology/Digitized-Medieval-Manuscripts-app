@@ -41,7 +41,8 @@ Each library gets its own crawlable page, generated at build time, with:
 - **Open license**: Badge for freely reusable collections, alongside the institution's verbatim copyright statement
 - **Manuscript quantity**: Approximate number of digitized manuscripts (Few, Dozens, Hundreds, Thousands, Unknown)
 - **Aggregator memberships**: Every aggregating project the collection is discoverable through
-- **Optional identifiers**: ISIL, Wikidata QID, and GeoNames ID, when verified
+- **Optional identifiers**: Researched ISIL, Wikidata QID, and GeoNames ID values,
+  with maintainer-reviewed links published separately
 - **Stable record address**: An ID-only URL that survives a library-name correction
 - **A pre-filled "Report a data issue" link**: Opens a GitHub issue form that already identifies the record
 
@@ -49,6 +50,7 @@ Each library gets its own crawlable page, generated at build time, with:
 - Getting started guide for browsing, searching, and filtering the dashboard
 - Data structure guide covering every field, including optional identifiers and IIIF endpoints
 - Identifier research guide covering source criteria, evidence rows, review, and GeoNames attribution
+- Linked-data audit pilot and public approval register for semantic relationships
 - Guides to the automated data validation and weekly link-checking workflows
 - About the project, contributing guidelines, and local development setup
 - A codicology primer for readers new to manuscript studies
@@ -98,6 +100,9 @@ Digitized-Medieval-Manuscripts-app/
 │   ├── validate_data.py            # Validates data.json against schema.json
 │   ├── validate_identifier_evidence.py
 │   │                                # Checks the identifier evidence ledger
+│   ├── validate_link_assertions.py  # Checks maintainer-approved semantic links
+│   ├── verify_linked_data.py        # Verifies a complete local LOD build
+│   ├── verify_public_lod.py         # Verifies the deployed LOD release
 │   ├── apply_link_status.py        # Turns the weekly link-check report into
 │                                    # is_disabled/last_checked proposals
 │   └── backfill_licence_category.py
@@ -122,6 +127,7 @@ Digitized-Medieval-Manuscripts-app/
 │   ├── workflow-validation.md      # How automated data validation works
 │   ├── workflow-link-checking.md   # How the weekly link check works
 │   ├── linked-data.md              # Persistent IDs, JSON-LD, and rights policy
+│   ├── linked-data-pilot.md        # 25-record semantic-link audit sample
 │   ├── contributing.md             # How to contribute data or code
 │   ├── setup.md                    # Local development setup
 │   ├── support-us.md / store.md    # Patreon and merchandise
@@ -131,6 +137,7 @@ Digitized-Medieval-Manuscripts-app/
 │       ├── dashboard.js            # Dashboard interactivity
 │       ├── dashboard.test.js       # Node test suite for dashboard.js
 │       ├── dashboard.css           # Dashboard styling
+│       ├── link-assertions.csv     # Approved LOD links and review provenance
 │       ├── library-aliases.json     # Historical name-based URL registry
 │       └── data.json               # Library database
 │
@@ -167,7 +174,8 @@ are not committed as generated pages or exports.
 ### Data and validation
 - **Data format**: A single JSON array (`docs/assets/data.json`), validated against `schema.json`
 - **Data validation**: `scripts/validate_data.py` checks JSON syntax, required fields, data types, URL formats, identifier syntax, and aggregator name/URL consistency
-- **Identifier evidence**: `research/identifier-evidence.csv` records one verified or unresolved ISIL, Wikidata, and GeoNames decision for every record; `scripts/validate_identifier_evidence.py` checks that it agrees with the catalogue
+- **Identifier evidence**: `research/identifier-evidence.csv` records a source or unresolved decision for each ISIL, Wikidata, and GeoNames field; `scripts/validate_identifier_evidence.py` checks that it agrees with the catalogue
+- **Reviewed relationships**: `docs/assets/link-assertions.csv` records the evidence, reviewer, date, and pull request for authority and IIIF links that may appear as RDF relationships
 - **Automated testing**: `pytest` covers the build hook and scripts; a Node test suite (`docs/assets/dashboard.test.js`) covers the dashboard's client-side behavior
 - **Link health**: A weekly [lychee](https://github.com/lycheeverse/lychee)-based check flags unreachable collection URLs and proposes dated status updates by pull request
 - **GitHub Actions**: Automatic validation, testing, building, and deployment on every change

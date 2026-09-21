@@ -71,12 +71,19 @@ def test_unreviewed_authorities_rights_and_iiif_are_not_asserted():
 
 
 def test_approved_assertion_becomes_a_qualified_relation():
-    source = "https://www.wikidata.org/entity/Q123"
+    source = "https://www.wikidata.org/wiki/Q123"
+    corroborating = "https://source.example.org/about"
+    review_url = "https://github.com/example/repository/pull/1"
     assertion = {
         "record_id": "42",
         "field": "wikidata_qid",
         "value": "Q123",
         "source_url": source,
+        "corroborating_url": corroborating,
+        "reviewed_on": "2026-09-20",
+        "reviewer": "reviewer",
+        "review_url": review_url,
+        "note": "The authority item and official site identify the library.",
     }
     graph = parse(linked_data.record_jsonld(RECORD, SITE_URL, [assertion]))
     access_point = URIRef(SITE_URL + "libraries/id-42/#access-point")
@@ -85,12 +92,21 @@ def test_approved_assertion_becomes_a_qualified_relation():
     assert len(relations) == 1
     relation = relations[0]
     assert (relation, RDF.type, DCAT.Relationship) in graph
-    assert (relation, DCTERMS.relation, URIRef(source)) in graph
+    assert (relation, DCTERMS.relation, URIRef("https://www.wikidata.org/entity/Q123")) in graph
     assert (
         relation,
         DCAT.hadRole,
-        URIRef(SITE_URL + "linked-data/#institution-authority-record"),
+        URIRef(SITE_URL + "linked-data/#holding-institution"),
     ) in graph
+    assert (relation, DCTERMS.source, URIRef(source)) in graph
+    assert (relation, DCTERMS.source, URIRef(corroborating)) in graph
+    assert (relation, DCTERMS.isReferencedBy, URIRef(review_url)) in graph
+    assert (
+        relation,
+        DCTERMS.contributor,
+        URIRef("https://github.com/reviewer"),
+    ) in graph
+    assert list(graph.objects(relation, DCTERMS.modified))
     assert not list(
         graph.triples((None, URIRef("http://www.w3.org/2002/07/owl#sameAs"), None))
     )
@@ -107,6 +123,35 @@ def test_assertion_must_match_the_record_and_exact_value():
     access_point = URIRef(SITE_URL + "libraries/id-42/#access-point")
 
     assert not list(graph.objects(access_point, DCAT.qualifiedRelation))
+
+
+def test_authority_targets_use_canonical_linked_data_uris():
+    assertions = [
+        {
+            "record_id": "42",
+            "field": "wikidata_qid",
+            "value": "Q123",
+            "source_url": "https://www.wikidata.org/wiki/Q123",
+        },
+        {
+            "record_id": "42",
+            "field": "geonames_id",
+            "value": "2640729",
+            "source_url": "https://www.geonames.org/2640729/oxford.html",
+        },
+    ]
+    graph = parse(linked_data.record_jsonld(RECORD, SITE_URL, assertions))
+
+    assert (
+        None,
+        DCTERMS.relation,
+        URIRef("https://www.wikidata.org/entity/Q123"),
+    ) in graph
+    assert (
+        None,
+        DCTERMS.relation,
+        URIRef("https://sws.geonames.org/2640729/"),
+    ) in graph
 
 
 def test_hostile_text_is_json_escaped_and_does_not_create_markup():
@@ -142,7 +187,18 @@ def test_bulk_graph_contains_every_current_record_and_catalogue_license():
         DCTERMS.license,
         URIRef(linked_data.CC0_URL),
     ) in graph
-    for path in (linked_data.BULK_PATH, linked_data.RAW_DATA_PATH):
+    assert (
+        catalog,
+        DCTERMS.conformsTo,
+        URIRef(linked_data.DCAT3_URL),
+    ) in graph
+    assert (catalog, DCAT.landingPage, URIRef(SITE_URL)) in graph
+    assert list(graph.objects(catalog, DCTERMS.description))
+    for path in (
+        linked_data.BULK_PATH,
+        linked_data.RAW_DATA_PATH,
+        linked_data.ASSERTIONS_PATH,
+    ):
         assert (
             URIRef(SITE_URL + path),
             DCTERMS.license,

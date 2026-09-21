@@ -24,6 +24,12 @@ two distinct evidence URLs, check and review dates, a reviewer, and a DMMapp
 pull-request URL. The script cannot verify the factual relationship or
 authenticate the reviewer; maintainers do that in the pull request.
 
+For target-type consistency, the assertion validator requires a Wikidata
+source containing the approved QID on `www.wikidata.org`, a GeoNames source
+containing the approved ID on a GeoNames domain, and an IIIF source equal to
+the direct endpoint. The linked-data build then uses the canonical Wikidata
+entity URI and GeoNames place URI as relationship targets.
+
 Identifiers and IIIF endpoints that were already public when this gate was
 introduced remain visible while maintainers audit them. They are not
 automatically approved, and they are not exported as linked-data relationships

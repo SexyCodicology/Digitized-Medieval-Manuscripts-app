@@ -361,6 +361,28 @@ def test_the_built_homepage_ships_the_counts(built_home):
     assert re.search(r'id="showingCount">(.*?)<', built_home).group(1) == "2"
 
 
+def test_the_homepage_advertises_every_catalogue_download(built_home):
+    documents = [
+        json.loads(match)
+        for match in re.findall(
+            r'<script type="application/ld\+json">(.*?)</script>',
+            built_home,
+            re.DOTALL,
+        )
+    ]
+    dataset = next(document for document in documents if document.get("@type") == "Dataset")
+    downloads = {
+        distribution["contentUrl"]: distribution["encodingFormat"]
+        for distribution in dataset["distribution"]
+    }
+
+    assert downloads == {
+        "https://example.org/assets/data.json": "application/json",
+        "https://example.org/assets/dmmapp-linked-data.jsonld": "application/ld+json",
+        "https://example.org/assets/link-assertions.csv": "text/csv",
+    }
+
+
 def test_the_built_homepage_ships_recent_libraries_without_javascript(built_home):
     section = built_home.split('id="recent-libraries-heading"', 1)[1].split("</section>", 1)[0]
 

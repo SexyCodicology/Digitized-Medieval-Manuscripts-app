@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 from hooks.linked_data import bulk_jsonld, record_jsonld, retired_jsonld
 from scripts.verify_linked_data import verify
@@ -25,12 +26,25 @@ def write(site: Path, path: str, content: str) -> None:
     target.write_text(content, encoding="utf-8")
 
 
-def built_site(tmp_path: Path) -> Path:
+def built_site(
+    tmp_path: Path,
+    assertions: list[dict[str, str]] | None = None,
+    record: dict[str, Any] | None = None,
+) -> Path:
     """Build the minimum valid output for one active and one retired ID."""
+    current_record = record or RECORD
     active = SITE_URL + "libraries/id-42/"
     retired = SITE_URL + "libraries/id-7/"
-    write(tmp_path, "assets/dmmapp-linked-data.jsonld", bulk_jsonld([RECORD], SITE_URL))
-    write(tmp_path, "linked-data/records/42.jsonld", record_jsonld(RECORD, SITE_URL))
+    write(
+        tmp_path,
+        "assets/dmmapp-linked-data.jsonld",
+        bulk_jsonld([current_record], SITE_URL, assertions),
+    )
+    write(
+        tmp_path,
+        "linked-data/records/42.jsonld",
+        record_jsonld(current_record, SITE_URL, assertions),
+    )
     write(tmp_path, "linked-data/records/7.jsonld", retired_jsonld("7", SITE_URL))
     write(
         tmp_path,
@@ -105,3 +119,27 @@ def test_verifier_detects_unlicensed_directory_download(tmp_path):
     errors = verify(site, [RECORD], {"42": ["example-library-42"]}, SITE_URL)
 
     assert any("dmmapp-linked-data.jsonld lacks its CC0 licence" in error for error in errors)
+
+
+def test_verifier_checks_approved_relationship_provenance(tmp_path):
+    assertion = {
+        "record_id": "42",
+        "field": "geonames_id",
+        "value": "2640729",
+        "source_url": "https://www.geonames.org/2640729/oxford.html",
+        "corroborating_url": "https://example.org/collection",
+        "reviewed_on": "2026-09-21",
+        "reviewer": "reviewer",
+        "review_url": "https://github.com/example/repository/pull/1",
+        "note": "The city and collection location agree.",
+    }
+    record = {**RECORD, "geonames_id": 2640729}
+    site = built_site(tmp_path, [assertion], record)
+
+    assert verify(
+        site,
+        [record],
+        {"42": ["example-library-42"], "7": ["old-library-7"]},
+        SITE_URL,
+        [assertion],
+    ) == []

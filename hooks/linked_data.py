@@ -24,8 +24,11 @@ CONTEXT = {
     "foaf": "http://xmlns.com/foaf/0.1/",
 }
 CC0_URL = "https://creativecommons.org/publicdomain/zero/1.0/"
+DCAT3_URL = "https://www.w3.org/TR/vocab-dcat-3/"
 JSONLD_MEDIA_TYPE = "https://www.iana.org/assignments/media-types/application/ld+json"
 JSON_MEDIA_TYPE = "https://www.iana.org/assignments/media-types/application/json"
+CSV_MEDIA_TYPE = "https://www.iana.org/assignments/media-types/text/csv"
+XSD_DATE = "http://www.w3.org/2001/XMLSchema#date"
 RAW_DATA_PATH = "assets/data.json"
 ALIAS_REGISTRY_PATH = "assets/library-aliases.json"
 ASSERTIONS_PATH = "assets/link-assertions.csv"
@@ -37,8 +40,8 @@ ASSERTION_COLUMNS = (
 )
 ROLE_FRAGMENTS = {
     "isil": "institution-authority-record",
-    "wikidata_qid": "institution-authority-record",
-    "geonames_id": "place-authority-record",
+    "wikidata_qid": "holding-institution",
+    "geonames_id": "listed-place",
     "iiif_collection_url": "iiif-collection",
     "iiif_example_manifest_url": "iiif-example-manifest",
 }
@@ -121,16 +124,18 @@ def _approved_relationships(
     for assertion in assertions:
         field = assertion.get("field", "")
         value = assertion.get("value", "")
-        target = assertion.get("source_url", "")
+        source = assertion.get("source_url", "")
         if (
             assertion.get("record_id") != str(record["id"])
             or field not in ROLE_FRAGMENTS
             or str(record.get(field, "")) != value
-            or not isinstance(target, str)
-            or not _is_http_url(target)
+            or not isinstance(source, str)
+            or not _is_http_url(source)
         ):
             continue
-        relationships.append({
+        target = assertion_target(field, value, source)
+        relationship: dict[str, Any] = {
+            "@id": page_url(site_url, record["id"]) + f"#relation-{field}",
             "@type": "dcat:Relationship",
             "dcterms:relation": {"@id": target},
             "dcat:hadRole": {
@@ -138,8 +143,41 @@ def _approved_relationships(
                 + "linked-data/#"
                 + ROLE_FRAGMENTS[field]
             },
-        })
+            "dcterms:source": [{"@id": source}],
+        }
+        corroborating = assertion.get("corroborating_url", "")
+        if isinstance(corroborating, str) and _is_http_url(corroborating):
+            relationship["dcterms:source"].append({"@id": corroborating})
+        reviewed_on = assertion.get("reviewed_on", "")
+        if reviewed_on:
+            relationship["dcterms:modified"] = {
+                "@value": reviewed_on,
+                "@type": XSD_DATE,
+            }
+        review_url = assertion.get("review_url", "")
+        if isinstance(review_url, str) and _is_http_url(review_url):
+            relationship["dcterms:isReferencedBy"] = {"@id": review_url}
+        reviewer = assertion.get("reviewer", "")
+        if reviewer:
+            relationship["dcterms:contributor"] = {
+                "@id": f"https://github.com/{reviewer}"
+            }
+        note = assertion.get("note", "")
+        if note:
+            relationship["dcterms:description"] = note
+        relationships.append(relationship)
     return relationships
+
+
+def assertion_target(field: str, value: str, source_url: str) -> str:
+    """Return the canonical RDF target for an approved assertion."""
+    if field == "wikidata_qid":
+        return f"https://www.wikidata.org/entity/{value}"
+    if field == "geonames_id":
+        return f"https://sws.geonames.org/{value}/"
+    if field in {"iiif_collection_url", "iiif_example_manifest_url"}:
+        return value
+    return source_url
 
 
 def _is_http_url(value: str) -> bool:
@@ -188,7 +226,13 @@ def bulk_jsonld(
         "@id": base + "#catalog",
         "@type": "dcat:Catalog",
         "dcterms:title": "DMMapp digitized manuscript access directory",
+        "dcterms:description": (
+            "A curated directory of online access points to digitized medieval "
+            "manuscript collections."
+        ),
         "dcterms:license": {"@id": CC0_URL},
+        "dcterms:conformsTo": {"@id": DCAT3_URL},
+        "dcat:landingPage": {"@id": base},
         "dcat:record": [
             {"@id": page_url(base, record["id"]) + "#record"}
             for record in records
@@ -201,6 +245,7 @@ def bulk_jsonld(
             {
                 "@id": base + BULK_PATH,
                 "@type": "dcat:Distribution",
+                "dcterms:title": "DMMapp bulk JSON-LD",
                 "dcat:downloadURL": {"@id": base + BULK_PATH},
                 "dcat:mediaType": {"@id": JSONLD_MEDIA_TYPE},
                 "dcterms:license": {"@id": CC0_URL},
@@ -208,8 +253,17 @@ def bulk_jsonld(
             {
                 "@id": base + RAW_DATA_PATH,
                 "@type": "dcat:Distribution",
+                "dcterms:title": "DMMapp source catalogue JSON",
                 "dcat:downloadURL": {"@id": base + RAW_DATA_PATH},
                 "dcat:mediaType": {"@id": JSON_MEDIA_TYPE},
+                "dcterms:license": {"@id": CC0_URL},
+            },
+            {
+                "@id": base + ASSERTIONS_PATH,
+                "@type": "dcat:Distribution",
+                "dcterms:title": "DMMapp reviewed link assertion register",
+                "dcat:downloadURL": {"@id": base + ASSERTIONS_PATH},
+                "dcat:mediaType": {"@id": CSV_MEDIA_TYPE},
                 "dcterms:license": {"@id": CC0_URL},
             },
         ],

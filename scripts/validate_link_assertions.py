@@ -73,6 +73,28 @@ def valid_review_url(value: str) -> bool:
     )
 
 
+def source_identifies_target(field: str, value: str, source_url: str) -> bool:
+    """Return whether an authority source identifies the asserted target type."""
+    try:
+        parts = urlsplit(source_url)
+    except ValueError:
+        return False
+    host = (parts.hostname or "").lower()
+    path_segments = [segment for segment in parts.path.split("/") if segment]
+    if field == "wikidata_qid":
+        return host == "www.wikidata.org" and any(
+            segment == value or segment.startswith(f"{value}.")
+            for segment in path_segments
+        )
+    if field == "geonames_id":
+        return host in {"www.geonames.org", "sws.geonames.org"} and bool(
+            path_segments and path_segments[0] == value
+        )
+    if field in IIIF_FIELDS:
+        return source_url == value
+    return True
+
+
 def parse_date(value: str) -> date | None:
     """Return a past or present calendar date in extended ISO format."""
     try:
@@ -120,13 +142,14 @@ def validate(records: list[dict], rows: list[dict[str, str]]) -> list[str]:
         corroborating = row.get("corroborating_url", "")
         if not valid_url(source):
             errors.append(f"line {line}: {record_id}/{field} needs a public source URL")
+        elif not source_identifies_target(field, value, source):
+            errors.append(
+                f"line {line}: {record_id}/{field} source has the wrong target type"
+            )
         if not valid_url(corroborating) or corroborating == source:
             errors.append(
                 f"line {line}: {record_id}/{field} needs a distinct corroborating URL"
             )
-        if field in IIIF_FIELDS and source != value:
-            errors.append(f"line {line}: {record_id}/{field} source must be its endpoint")
-
         checked = parse_date(row.get("checked_on", ""))
         reviewed = parse_date(row.get("reviewed_on", ""))
         if checked is None:

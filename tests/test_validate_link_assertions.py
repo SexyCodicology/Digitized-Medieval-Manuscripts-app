@@ -16,10 +16,10 @@ REVIEW_URL = (
 
 def assertion(field: str, value: str) -> dict[str, str]:
     """Return a complete synthetic maintainer-reviewed assertion."""
-    source = (
-        value if field in validator.IIIF_FIELDS
-        else "https://authority.example.org/record/123"
-    )
+    source = {
+        "wikidata_qid": f"https://www.wikidata.org/wiki/{value}",
+        "geonames_id": f"https://www.geonames.org/{value}/place.html",
+    }.get(field, value if field in validator.IIIF_FIELDS else "https://isil.example.org/123")
     return {
         "record_id": "1",
         "field": field,
@@ -50,7 +50,7 @@ def test_existing_identifier_can_remain_pending_review():
     assert validator.validate([record], [assertion("wikidata_qid", "Q123")]) == []
 
 
-def test_approved_iiif_endpoint_requires_its_exact_source():
+def test_approved_iiif_endpoint_requires_the_correct_target_type():
     endpoint = "https://iiif.example.org/collection/123"
     record = {"id": 1, "iiif_collection_url": endpoint}
     row = assertion("iiif_collection_url", endpoint)
@@ -59,9 +59,28 @@ def test_approved_iiif_endpoint_requires_its_exact_source():
     assert validator.validate([record], [row]) == []
     row["source_url"] = "https://iiif.example.org/collection/other"
     assert any(
-        "source must be its endpoint" in error
+        "source has the wrong target type" in error
         for error in validator.validate([record], [row])
     )
+
+
+def test_authority_source_must_identify_the_asserted_target():
+    wikidata = assertion("wikidata_qid", "Q123")
+    wikidata["source_url"] = "https://www.wikidata.org/wiki/Q999"
+    geonames = assertion("geonames_id", "2640729")
+    geonames["source_url"] = "https://www.geonames.org/123/other.html"
+
+    wikidata_errors = validator.validate(
+        [{"id": 1, "wikidata_qid": "Q123"}],
+        [wikidata],
+    )
+    geonames_errors = validator.validate(
+        [{"id": 1, "geonames_id": 2640729}],
+        [geonames],
+    )
+
+    assert any("wrong target type" in error for error in wikidata_errors)
+    assert any("wrong target type" in error for error in geonames_errors)
 
 
 def test_unpublished_or_mismatched_row_cannot_stage_a_candidate():

@@ -18,6 +18,10 @@ RECORDS = [
     for record_id in (1, 42, 99)
 ]
 ALIASES = {str(record["id"]): [f"library-{record['id']}"] for record in RECORDS}
+ASSERTIONS = (
+    "record_id,field,value,source_url,corroborating_url,checked_on,reviewer,"
+    "reviewed_on,review_url,note\n"
+)
 
 
 def responses() -> dict[str, str]:
@@ -25,6 +29,7 @@ def responses() -> dict[str, str]:
     result = {
         BASE + "assets/data.json": json.dumps(RECORDS),
         BASE + "assets/dmmapp-linked-data.jsonld": bulk_jsonld(RECORDS, BASE),
+        BASE + "assets/link-assertions.csv": ASSERTIONS,
     }
     sitemap_locations = []
     for record in RECORDS:
@@ -58,7 +63,7 @@ def test_sample_ids_are_stable_and_unique():
 def test_public_release_accepts_current_pages_and_data():
     remote = responses()
 
-    assert inspect_site(BASE, RECORDS, ALIASES, remote.__getitem__) == []
+    assert inspect_site(BASE, RECORDS, ALIASES, ASSERTIONS, remote.__getitem__) == []
 
 
 def test_public_release_rejects_stale_data_and_missing_alternate():
@@ -68,7 +73,7 @@ def test_public_release_rejects_stale_data_and_missing_alternate():
         f'<link rel="canonical" href="{BASE}libraries/id-42/">'
     )
 
-    errors = inspect_site(BASE, RECORDS, ALIASES, remote.__getitem__)
+    errors = inspect_site(BASE, RECORDS, ALIASES, ASSERTIONS, remote.__getitem__)
 
     assert "public data.json does not match the checked-out release" in errors
     assert "public ID page 42 lacks its JSON-LD link" in errors
@@ -79,8 +84,17 @@ def test_public_release_rejects_wrong_alias_and_catalogue():
     remote[BASE + "libraries/library-1/"] = '<a href="../id-99/">Wrong</a>'
     remote[BASE + "assets/dmmapp-linked-data.jsonld"] = bulk_jsonld([], BASE)
 
-    errors = inspect_site(BASE, RECORDS, ALIASES, remote.__getitem__)
+    errors = inspect_site(BASE, RECORDS, ALIASES, ASSERTIONS, remote.__getitem__)
 
     assert "public JSON-LD catalogue record IDs differ from data.json" in errors
     assert "public alias library-1 has the wrong canonical URL" in errors
     assert "public alias library-1 lacks a visible target" in errors
+
+
+def test_public_release_rejects_a_stale_assertion_register():
+    remote = responses()
+    remote[BASE + "assets/link-assertions.csv"] += "stale,row\n"
+
+    errors = inspect_site(BASE, RECORDS, ALIASES, ASSERTIONS, remote.__getitem__)
+
+    assert "public link assertion register does not match the release" in errors

@@ -75,6 +75,7 @@ def inspect_site(
     base_url: str,
     records: list[dict[str, Any]],
     aliases: dict[str, list[str]],
+    expected_assertions: str,
     fetch: Callable[[str], str],
 ) -> list[str]:
     """Report content and discovery failures on the deployed static site."""
@@ -85,6 +86,9 @@ def inspect_site(
     remote_records = json.loads(fetch(base + "assets/data.json"))
     if remote_records != records:
         errors.append("public data.json does not match the checked-out release")
+    remote_assertions = fetch(base + "assets/link-assertions.csv")
+    if remote_assertions.splitlines() != expected_assertions.splitlines():
+        errors.append("public link assertion register does not match the release")
 
     bulk = json.loads(fetch(base + "assets/dmmapp-linked-data.jsonld"))
     if not isinstance(bulk, dict):
@@ -175,13 +179,22 @@ def main() -> int:
         aliases = json.loads(
             (REPO_ROOT / "docs/assets/library-aliases.json").read_text(encoding="utf-8")
         )
+        assertions = (REPO_ROOT / "docs/assets/link-assertions.csv").read_text(
+            encoding="utf-8"
+        )
     except (OSError, json.JSONDecodeError) as error:
         print(f"Cannot read local release data: {error}", file=sys.stderr)
         return 1
 
     for attempt in range(1, options.attempts + 1):
         try:
-            errors = inspect_site(options.base_url, records, aliases, fetch_text)
+            errors = inspect_site(
+                options.base_url,
+                records,
+                aliases,
+                assertions,
+                fetch_text,
+            )
         except (OSError, ValueError, UnicodeError, ElementTree.ParseError) as error:
             errors = [str(error)]
         if not errors:
