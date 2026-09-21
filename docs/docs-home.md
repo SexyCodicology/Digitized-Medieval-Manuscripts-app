@@ -23,6 +23,7 @@ Find what you need to get started, contribute, or develop.
 
 - [Update the dashboard data](update-data.md) — Add new libraries and edit existing entries
 - [Data structure guide](schema.md) — Understand library fields and how to fill them out
+- [Identifier research](identifier-research.md) — Verify and document ISIL, Wikidata, and GeoNames decisions
 
 ## For developers
 

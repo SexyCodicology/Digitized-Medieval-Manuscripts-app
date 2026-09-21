@@ -15,6 +15,7 @@
 - [ ] I have checked that the JSON is valid (no trailing commas).
 - [ ] I have checked that the entry validates against `schema.json` (required fields, correct types, valid `quantity` value).
 - [ ] I have evidence for any IIIF claim (`iiif: true`) and for the stated `copyright`/`is_free_cultural_works_license` license.
+- [ ] I have added or updated the three matching rows in `research/identifier-evidence.csv` when this change adds a record or changes an authority identifier.
 
 ### Code / documentation changes
 - [ ] I have tested this change locally with `mkdocs serve` (the dashboard and docs are both built by MkDocs).

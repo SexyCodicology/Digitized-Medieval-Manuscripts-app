@@ -4,7 +4,8 @@
 # and on manual dispatch. Runs scripts/validate_data.py, the same entry
 # point .github/workflows/deploy.yml runs before building the site, which
 # checks JSON syntax, schema compliance (required fields, data types, HTTP(S)
-# URLs), duplicate ids, and aggregator name/URL uniqueness.
+# URLs), duplicate ids, and aggregator name/URL uniqueness. Also checks that
+# the identifier research ledger covers every record and matches data.json.
 
 name: Data Guardrails
 
@@ -16,6 +17,9 @@ on:
       - 'schema.json'
       - 'scripts/validate_data.py'
       - 'hooks/library_pages.py'
+      - 'scripts/validate_identifier_evidence.py'
+      - 'scripts/verify_identifier_history.py'
+      - 'research/identifier-evidence.csv'
   workflow_dispatch:
 
 permissions:
@@ -43,6 +47,9 @@ jobs:
 
       - name: Validate data.json
         run: python scripts/validate_data.py
+
+      - name: Validate identifier evidence
+        run: python scripts/validate_identifier_evidence.py
 
       - name: Preserve published identifiers
         if: github.event_name == 'pull_request'

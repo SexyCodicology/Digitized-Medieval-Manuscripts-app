@@ -78,6 +78,7 @@ nav:
       - Data Schema: schema.md
       - Linked Data: linked-data.md
       - Update Data: update-data.md
+      - Identifier Research: identifier-research.md
       - Workflow Validation: workflow-validation.md
       - Link Health Check: workflow-link-checking.md
       - Contributing: contributing.md

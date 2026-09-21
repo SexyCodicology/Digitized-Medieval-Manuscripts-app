@@ -72,6 +72,7 @@ Your contribution will be automatically validated against our schema when you su
 3. **Data Types**: Values match expected types (string, boolean, etc.)
 4. **URL Format**: The `website` field contains a valid URL
 5. **Enum Values**: The `quantity` and `licence_category` fields use one of the allowed values
+6. **Identifier evidence**: Every record has one ISIL, Wikidata, and GeoNames decision in the evidence ledger
 
 ### Guidelines
 
@@ -89,6 +90,7 @@ Your contribution will be automatically validated against our schema when you su
 2. **Library Names**: Use the official name as it appears on the library's website
 3. **Location**: Use standardized country and city names (English spelling)
 4. **Quantity Estimation**: Choose the category that best matches the collection size — see the [Data Schema](schema.md#approximate-number-of-manuscripts) page for the exact category boundaries
+5. **Identifier evidence**: Add three ledger rows for every new record. Read [Identifier research](identifier-research.md) before adding an ISIL, Wikidata QID, or GeoNames ID.
 
 ## Contribute code
 
@@ -117,9 +119,12 @@ site locally.
 These are the same checks the [deploy workflow](workflow-validation.md) runs
 on every pull request:
 
+**Command safety**: Safe, State-changing
+
 ```bash
 pip install -r requirements-dev.txt
 python scripts/validate_data.py
+python scripts/validate_identifier_evidence.py
 pytest tests -q
 npm ci
 npm test
