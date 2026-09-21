@@ -236,6 +236,18 @@ value, record, or field to another.
 python scripts/validate_link_assertions.py
 ```
 
+For a record in the first linked-data pilot, update its field-level decision in
+[`linked-data-pilot-review.csv`](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/blob/master/research/linked-data-pilot-review.csv).
+Keep `pending` until the maintainer review has happened. Final `approve` and
+`correct` decisions must match the assertion register's reviewer, date, and PR
+URL.
+
+**Command safety**: Safe
+
+```bash
+python scripts/validate_linked_data_pilot.py
+```
+
 ### Homepage recency fields
 
 Two optional fields let the homepage show when a record was added or materially

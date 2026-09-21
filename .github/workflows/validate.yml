@@ -19,9 +19,11 @@ on:
       - 'hooks/library_pages.py'
       - 'scripts/validate_identifier_evidence.py'
       - 'scripts/validate_link_assertions.py'
+      - 'scripts/validate_linked_data_pilot.py'
       - 'scripts/verify_identifier_history.py'
       - 'scripts/verify_link_assertion_history.py'
       - 'research/identifier-evidence.csv'
+      - 'research/linked-data-pilot-review.csv'
       - 'docs/assets/link-assertions.csv'
   workflow_dispatch:
 
@@ -56,6 +58,9 @@ jobs:
 
       - name: Validate reviewed link assertions
         run: python scripts/validate_link_assertions.py
+
+      - name: Validate linked-data pilot decisions
+        run: python scripts/validate_linked_data_pilot.py
 
       - name: Preserve published identifiers
         if: github.event_name == 'pull_request'

@@ -102,6 +102,8 @@ Digitized-Medieval-Manuscripts-app/
 │   ├── validate_identifier_evidence.py
 │   │                                # Checks the identifier evidence ledger
 │   ├── validate_link_assertions.py  # Checks maintainer-approved semantic links
+│   ├── validate_linked_data_pilot.py
+│   │                                # Checks all field-level pilot decisions
 │   ├── verify_linked_data.py        # Verifies a complete local LOD build
 │   ├── verify_public_lod.py         # Verifies the deployed LOD release
 │   ├── apply_link_status.py        # Turns the weekly link-check report into
@@ -110,7 +112,9 @@ Digitized-Medieval-Manuscripts-app/
 ├── tests/                          # pytest suite for hooks/ and scripts/
 │
 ├── research/
-│   └── identifier-evidence.csv     # Source or unresolved decision per record and identifier
+│   ├── identifier-evidence.csv     # Source or unresolved decision per record and identifier
+│   └── linked-data-pilot-review.csv
+│                                    # Review outcome for each pilot candidate
 │
 ├── overrides/
 │   ├── home.html                   # Dashboard template (extends Material's main.html)
@@ -178,6 +182,7 @@ are not committed as generated pages or exports.
 - **Data validation**: `scripts/validate_data.py` checks JSON syntax, required fields, data types, URL formats, identifier syntax, and aggregator name/URL consistency
 - **Identifier evidence**: `research/identifier-evidence.csv` records a source or unresolved decision for each ISIL, Wikidata, and GeoNames field; `scripts/validate_identifier_evidence.py` checks that it agrees with the catalogue
 - **Reviewed relationships**: `docs/assets/link-assertions.csv` records the evidence, reviewer, date, and pull request for authority and IIIF links that may appear as RDF relationships
+- **Audit pilot**: `research/linked-data-pilot-review.csv` tracks all 41 field decisions in the 25-record pilot, including pending, corrected, removed, and deliberately absent candidates
 - **Automated testing**: `pytest` covers the build hook and scripts; a Node test suite (`docs/assets/dashboard.test.js`) covers the dashboard's client-side behavior
 - **Link health**: A weekly [lychee](https://github.com/lycheeverse/lychee)-based check flags unreachable collection URLs and proposes dated status updates by pull request
 - **GitHub Actions**: Automatic validation, testing, building, and deployment on every change

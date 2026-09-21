@@ -13,10 +13,12 @@ while maintainers check their target, type, and scope.
 Selected from the catalogue on 21 September 2026, the pilot spans 16 catalogue
 nation values, eight aggregators, repeated institution names,
 institution-versus-portal distinctions, six rights categories, IIIF and
-non-IIIF entries, and the only then-recorded direct IIIF Manifest. The approved
+non-IIIF entries, and the only then-recorded direct IIIF Manifest. The
+[`linked-data-pilot-review.csv`](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/blob/master/research/linked-data-pilot-review.csv)
+ledger is the source of truth for field-level progress. The approved
 [`link-assertions.csv`](assets/link-assertions.csv) register is the source of
-truth for progress. The research ledger provides candidate evidence; it is not
-an approval register.
+truth for relationships that may enter JSON-LD. The research ledger provides
+candidate evidence; it is not an approval register.
 
 ## Selected records
 
@@ -72,6 +74,21 @@ the public record name and values.
 7. Have a DMMapp maintainer review the final commit. Record that maintainer's
    GitHub name, review date, and pull-request URL only after the review happens.
 
+Record one of these decisions in the pilot ledger:
+
+| Decision | Use it when |
+| --- | --- |
+| `pending` | The candidate still awaits maintainer review. Leave all three review-provenance columns empty. |
+| `approve` | The candidate is correct. Add the matching assertion row and use the same reviewer, date, and PR URL in both files. |
+| `correct` | The candidate was wrong and `data.json` now contains a reviewed replacement. Add an assertion for the replacement. |
+| `remove` | The candidate was wrong and the field has been removed from `data.json`. |
+| `absent` | The deliberately empty control field should remain empty after review. |
+
+Do not use a final decision without a DMMapp maintainer's public GitHub name,
+review date, and DMMapp pull-request URL. The validator rejects a final
+`approve` or `correct` decision unless it has an exact assertion with matching
+review provenance.
+
 ## Completion criteria
 
 The pilot is complete when maintainers have assessed every populated authority
@@ -86,3 +103,13 @@ between a directory entry and an institution, place, or manuscript.
 Run the catalogue, evidence, assertion, and history checks before merging the
 pilot pull request. See [Update the dashboard data](update-data.md) for the
 commands and review sequence.
+
+**Command safety**: Safe
+
+```bash
+python scripts/validate_linked_data_pilot.py
+```
+
+The current ledger has 41 field decisions across the 25 selected records. A
+passing validator can still report pending decisions; the pilot is complete
+only when it reports zero pending.

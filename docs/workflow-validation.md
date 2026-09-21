@@ -30,6 +30,13 @@ containing the approved ID on a GeoNames domain, and an IIIF source equal to
 the direct endpoint. The linked-data build then uses the canonical Wikidata
 entity URI and GeoNames place URI as relationship targets.
 
+`scripts/validate_linked_data_pilot.py` checks the 25-record pilot at field
+level. It requires a decision for every selected candidate, preserves a
+five-field deliberate-absence control, and matches approved or corrected
+decisions to the assertion register. A passing check may include `pending`
+decisions; the command reports the pending count so maintainers cannot confuse
+structural validity with pilot completion.
+
 Identifiers and IIIF endpoints that were already public when this gate was
 introduced remain visible while maintainers audit them. They are not
 automatically approved, and they are not exported as linked-data relationships

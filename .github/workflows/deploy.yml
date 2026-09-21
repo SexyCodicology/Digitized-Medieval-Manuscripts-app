@@ -13,6 +13,7 @@ on:
       - 'schema.json'
       - 'scripts/**'
       - 'research/identifier-evidence.csv'
+      - 'research/linked-data-pilot-review.csv'
       - 'requirements.txt'
       - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
@@ -26,6 +27,7 @@ on:
       - 'schema.json'
       - 'scripts/**'
       - 'research/identifier-evidence.csv'
+      - 'research/linked-data-pilot-review.csv'
       - 'requirements.txt'
       - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
@@ -98,6 +100,9 @@ jobs:
 
       - name: Validate reviewed link assertions
         run: python scripts/validate_link_assertions.py
+
+      - name: Validate linked-data pilot decisions
+        run: python scripts/validate_linked_data_pilot.py
 
       - name: Require approval for changed links in pull requests
         if: github.event_name == 'pull_request'
