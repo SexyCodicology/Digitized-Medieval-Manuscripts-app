@@ -65,6 +65,12 @@ Existing values may be awaiting that semantic review. Only values listed in
 the approved [link assertion register](assets/link-assertions.csv) are emitted
 as linked-data relationships.
 
+Each generated library page embeds the DMMapp record and its catalogued access
+point as separate DCAT resources. Optional identifiers become qualified
+linked-data relationships only after a maintainer approves their role and
+evidence in the public assertion register. See [how identifiers reach linked
+data](identifier-research.md#how-these-identifiers-reach-linked-data).
+
 #### ISIL
 
 The International Standard Identifier for Libraries and Related Organizations,

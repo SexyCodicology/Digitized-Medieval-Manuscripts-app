@@ -101,7 +101,10 @@ follows the usual GitHub workflow: fork, branch, and open a pull request.
 
 - `hooks/library_pages.py` — the MkDocs build hook that generates the
   homepage directory table, the alphabetical library index, and one page per
-  library from `docs/assets/data.json`
+  library from `docs/assets/data.json`, including a conservative DCAT record
+  graph rendered into `<head>` by `overrides/main.html`
+- `hooks/linked_data.py` — the build hook that generates per-record and bulk
+  JSON-LD and adds only maintainer-approved external relationships
 - `docs/assets/dashboard.js` / `dashboard.css` — the dashboard's client-side
   search, filtering, sorting, export, and share behavior
 - `scripts/` — `validate_data.py` (schema validation), `apply_link_status.py`

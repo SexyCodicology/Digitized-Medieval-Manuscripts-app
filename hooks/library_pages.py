@@ -20,6 +20,7 @@ they use the ``http`` or ``https`` scheme.
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import re
 import unicodedata
@@ -36,6 +37,21 @@ from markupsafe import Markup
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.exceptions import PluginError
 from mkdocs.structure.files import File, Files, InclusionLevel
+
+# MkDocs loads hook files directly, including from test projects whose working
+# directory is not this repository. Load the sibling module by path in that
+# case, without mutating the process-wide import path.
+try:
+    from hooks import linked_data
+except ModuleNotFoundError:
+    linked_data_path = Path(__file__).with_name("linked_data.py")
+    linked_data_spec = importlib.util.spec_from_file_location(
+        "dmmapp_linked_data", linked_data_path
+    )
+    if linked_data_spec is None or linked_data_spec.loader is None:
+        raise ImportError(f"Cannot load linked-data hook at {linked_data_path}")
+    linked_data = importlib.util.module_from_spec(linked_data_spec)
+    linked_data_spec.loader.exec_module(linked_data)
 
 # Path of the dataset, relative to the docs directory.
 DATA_PATH = ("assets", "data.json")
@@ -71,9 +87,8 @@ REPOSITORY_ISSUES_URL = (
     "https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/issues/new"
 )
 REPORT_DATA_ISSUE_TEMPLATE = "report-data-issue.yml"
-LIBRARY_PAGE_URL_PREFIX = (
-    "https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/libraries/"
-)
+SITE_URL = "https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/"
+LIBRARY_PAGE_URL_PREFIX = f"{SITE_URL}libraries/"
 
 # Text fields every record must provide before a page can be generated for it.
 # The id is checked separately, because it is an integer and 0 is valid.
@@ -176,6 +191,11 @@ def safe_url(value: Any) -> str | None:
     return candidate
 
 
+def library_page_url(record: dict[str, Any]) -> str:
+    """Return the canonical public URL of one library's generated page."""
+    return f"{LIBRARY_PAGE_URL_PREFIX}{id_slug(record)}/"
+
+
 def report_data_issue_url(record: dict[str, Any]) -> str:
     """Return the fixed GitHub report URL with the public record identified.
 
@@ -183,7 +203,7 @@ def report_data_issue_url(record: dict[str, Any]) -> str:
     so contributed data cannot redirect a reader away from the repository.
     ``urlencode`` keeps every public value inside its intended query field.
     """
-    page_url = f"{LIBRARY_PAGE_URL_PREFIX}{id_slug(record)}/"
+    page_url = library_page_url(record)
     query = urlencode(
         {
             "template": REPORT_DATA_ISSUE_TEMPLATE,
@@ -303,6 +323,22 @@ def ensure_unique(values: list[str], records: list[dict[str, Any]]) -> list[str]
     ]
 
 
+def library_jsonld(record: dict[str, Any]) -> dict[str, Any]:
+    """Return the conservative directory graph embedded in a record page.
+
+    A DMMapp entry describes an access point; it is not the holding institution
+    or an individual manuscript. The inline graph therefore uses the same DCAT
+    ``CatalogRecord`` and ``Resource`` model as the downloadable JSON-LD. It
+    deliberately omits unreviewed authority and IIIF relationships. The
+    alternate representation adds only relationships from the separately
+    validated maintainer-approval register.
+    """
+    return {
+        "@context": linked_data.CONTEXT,
+        "@graph": linked_data.record_graph(record, SITE_URL),
+    }
+
+
 def render_page(record: dict[str, Any], title: str, description: str) -> str:
     """Return the Markdown source of one library page.
 
@@ -312,11 +348,15 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
     meta = yaml.safe_dump(
         # Cards off: rendering one per record would mean thousands of social
         # card images for pages that are never shared individually.
+        # structured_data is rendered into a JSON-LD <script> by main.html's
+        # extrahead block, via the tojson filter, which HTML/script-escapes
+        # it; values here are kept as-is rather than pre-escaped for display.
         {
             "title": title,
             "description": description,
             "social": {"cards": False},
             "dmm_record_id": record["id"],
+            "structured_data": library_jsonld(record),
         },
         allow_unicode=True,
         default_flow_style=False,

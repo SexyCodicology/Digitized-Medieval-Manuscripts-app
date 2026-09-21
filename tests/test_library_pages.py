@@ -362,6 +362,94 @@ def test_external_identifier_rows_are_omitted_when_fields_are_absent():
     assert ">None<" not in body
 
 
+# ── conservative DCAT JSON-LD front matter ───────────────────────────────
+
+
+def _structured_data(record: dict) -> dict:
+    markdown = hook.render_page(record, "Title", "Description")
+    return _front_matter(markdown)["structured_data"]
+
+
+def _structured_nodes(data: dict) -> dict[str, dict]:
+    return {node["@id"]: node for node in data["@graph"]}
+
+
+def test_structured_data_separates_the_record_from_its_access_point():
+    data = _structured_data({
+        "id": 12,
+        "library": "Bare Library",
+        "city": "Somewhere",
+        "nation": "Nowhere",
+    })
+
+    assert data["@context"] == hook.linked_data.CONTEXT
+    page = (
+        "https://sexycodicology.github.io/"
+        "Digitized-Medieval-Manuscripts-app/libraries/id-12/"
+    )
+    nodes = _structured_nodes(data)
+    record = nodes[page + "#record"]
+    access_point = nodes[page + "#access-point"]
+
+    assert record["@type"] == "dcat:CatalogRecord"
+    assert record["dcterms:identifier"] == "12"
+    assert record["foaf:primaryTopic"] == {"@id": access_point["@id"]}
+    assert access_point["@type"] == "dcat:Resource"
+    assert access_point["dcterms:title"] == "Bare Library"
+
+
+def test_structured_data_uses_website_as_the_access_point_landing_page():
+    data = _structured_data({
+        **HOSTILE_RECORD, "library": "Example Library",
+        "website": "https://example.org/manuscripts",
+    })
+    access_point = next(
+        node for node in data["@graph"] if node["@type"] == "dcat:Resource"
+    )
+
+    assert access_point["dcat:landingPage"] == {
+        "@id": "https://example.org/manuscripts"
+    }
+
+
+def test_structured_data_drops_an_unsafe_website():
+    data = _structured_data({**HOSTILE_RECORD, "website": "javascript:alert(1)"})
+    access_point = next(
+        node for node in data["@graph"] if node["@type"] == "dcat:Resource"
+    )
+
+    assert "dcat:landingPage" not in access_point
+
+
+def test_structured_data_omits_unreviewed_authority_values():
+    data = _structured_data({
+        **HOSTILE_RECORD,
+        "wikidata_qid": "Q1131283",
+        "geonames_id": 2640729,
+        "isil": "GB-OxBodl",
+    })
+
+    serialized = json.dumps(data)
+    assert "Q1131283" not in serialized
+    assert "2640729" not in serialized
+    assert "GB-OxBodl" not in serialized
+    assert "sameAs" not in serialized
+
+
+def test_structured_data_id_matches_the_report_data_issue_page_url():
+    record = {**HOSTILE_RECORD, "library": "Bodleian Library"}
+
+    data = _structured_data(record)
+    query = _report_data_issue_query(_page_body(record))
+
+    page = query["page_url"][0]
+    assert page.endswith("/libraries/id-9001/")
+    assert {node["@id"] for node in data["@graph"]} == {
+        page + "#record",
+        page + "#access-point",
+    }
+
+
 def test_rights_row_shows_verbatim_and_normalised_category():
     body = _page_body({
         **HOSTILE_RECORD,
@@ -745,6 +833,130 @@ def test_hostile_record_injects_nothing_into_the_built_page(built_site):
     assert "<img" not in article
     assert "javascript:" not in html
     assert "data:text/html" not in html
+
+
+# ── conservative DCAT JSON-LD in the built page ──────────────────────────
+
+
+@pytest.fixture(scope="module")
+def built_site_with_overrides(tmp_path_factory) -> Path:
+    """Build a miniature site through real MkDocs, using the real overrides.
+
+    ``built_site`` above uses the stock Material theme, which never loads
+    ``overrides/main.html`` and so never renders the JSON-LD block that lives
+    there. This fixture uses ``custom_dir`` like the production build does,
+    so the structured-data output is checked end to end.
+    """
+    project = tmp_path_factory.mktemp("site-overrides")
+    docs = project / "docs"
+    (docs / "assets").mkdir(parents=True)
+
+    dataset = [
+        {
+            "id": 1,
+            "library": "Bodleian Library",
+            "city": "Oxford",
+            "nation": "United Kingdom",
+            "quantity": "Thousands",
+            "copyright": "Public Domain",
+            "website": "https://digital.bodleian.ox.ac.uk",
+            "iiif": True,
+            "is_free_cultural_works_license": True,
+            "aggregators": [],
+            "isil": "GB-OxBodl",
+            "wikidata_qid": "Q1131283",
+            "geonames_id": 2640729,
+        },
+        HOSTILE_RECORD,
+    ]
+    (docs / "assets" / "data.json").write_text(json.dumps(dataset), encoding="utf-8")
+    (docs / "assets" / "library-aliases.json").write_text(
+        json.dumps({
+            "1": ["bodleian-library-1"],
+            "9001": ["etc-passwd-script-alert-xss-script-quoted-9001"],
+        }),
+        encoding="utf-8",
+    )
+    (docs / "index.md").write_text("# Directory\n", encoding="utf-8")
+    (project / "mkdocs.yml").write_text(
+        "site_name: Test\n"
+        "site_url: https://example.org/\n"
+        "docs_dir: docs\n"
+        f"theme:\n  name: material\n  custom_dir: {(REPO_ROOT / 'overrides').as_posix()}\n"
+        "nav:\n  - Home: index.md\n  - Library index: library-index.md\n"
+        f"hooks:\n  - {(REPO_ROOT / 'hooks' / 'library_pages.py').as_posix()}\n",
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [sys.executable, "-m", "mkdocs", "build", "--clean"],
+        cwd=project,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    return project / "site"
+
+
+def _ld_json_blocks(html: str) -> list[dict]:
+    return [
+        json.loads(match)
+        for match in re.findall(
+            r'<script type="application/ld\+json">(.*?)</script>', html, re.S
+        )
+    ]
+
+
+def test_the_built_library_page_ships_conservative_dcat_jsonld(
+    built_site_with_overrides,
+):
+    html = (
+        built_site_with_overrides / "libraries" / "id-1" / "index.html"
+    ).read_text(encoding="utf-8")
+
+    blocks = _ld_json_blocks(html)
+    documents = [block for block in blocks if "@graph" in block]
+    assert len(documents) == 1
+
+    data = documents[0]
+    nodes = _structured_nodes(data)
+    page = hook.SITE_URL + "libraries/id-1/"
+    assert nodes[page + "#record"]["@type"] == "dcat:CatalogRecord"
+    assert nodes[page + "#access-point"]["dcat:landingPage"] == {
+        "@id": "https://digital.bodleian.ox.ac.uk"
+    }
+    serialized = json.dumps(data)
+    assert "Q1131283" not in serialized
+    assert "GB-OxBodl" not in serialized
+    assert "2640729" not in serialized
+    assert "sameAs" not in serialized
+
+
+def test_the_hostile_records_jsonld_stays_valid_json_and_inert(built_site_with_overrides):
+    html = (
+        built_site_with_overrides
+        / "libraries"
+        / "id-9001"
+        / "index.html"
+    ).read_text(encoding="utf-8")
+
+    # json.loads succeeding on every block proves none of them was broken out
+    # of by the hostile library name (which contains a literal "</script>").
+    raw_blocks = re.findall(
+        r'<script type="application/ld\+json">(.*?)</script>', html, re.S
+    )
+    assert raw_blocks
+    for raw in raw_blocks:
+        assert "<script" not in raw.lower()
+
+    documents = [block for block in _ld_json_blocks(html) if "@graph" in block]
+    assert len(documents) == 1
+    titles = [
+        node["dcterms:title"]
+        for node in documents[0]["@graph"]
+        if "dcterms:title" in node
+    ]
+    assert any("script" in title for title in titles)
 
 
 def test_the_slug_map_matches_the_generated_pages(built_site):

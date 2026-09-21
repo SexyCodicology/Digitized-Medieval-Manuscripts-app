@@ -40,6 +40,19 @@ country code, but registered non-country prefixes are valid. The [ISIL
 technical guidance](https://biblstandard.dk/rfid/docs/clarification_28560-3.htm)
 describes those prefixes and the identifier length.
 
+## How these identifiers reach linked data
+
+The generated page embeds a DCAT `CatalogRecord` and a separate catalogued
+access point. The page may display the optional identifier values for readers,
+but their presence in `data.json` does not create a semantic relationship.
+
+After a maintainer approves a field-level claim in
+`docs/assets/link-assertions.csv`, the downloadable JSON-LD represents it as a
+qualified DCAT relationship. The relationship names its role and retains the
+evidence, review date, reviewer, and pull-request review URL. DMMapp does not
+publish `sameAs`: a directory access point is not identical to its holding
+institution or listed city.
+
 ## Record the decision in the evidence ledger
 
 The CSV header is fixed. Do not rename, reorder, or omit columns.

@@ -44,6 +44,9 @@ Each library gets its own crawlable page, generated at build time, with:
 - **Optional identifiers**: Researched ISIL, Wikidata QID, and GeoNames ID values,
   with maintainer-reviewed links published separately
 - **Stable record address**: An ID-only URL that survives a library-name correction
+- **Machine-readable structured data**: An inline DCAT record and access-point
+  graph, plus a downloadable JSON-LD representation whose external links require
+  recorded maintainer approval
 - **A pre-filled "Report a data issue" link**: Opens a GitHub issue form that already identifies the record
 
 ### Comprehensive documentation
