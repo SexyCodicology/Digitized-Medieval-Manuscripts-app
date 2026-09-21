@@ -77,6 +77,7 @@ nav:
       - Getting Started: getting-started.md
       - Data Schema: schema.md
       - Linked Data: linked-data.md
+      - Linked-data Audit Pilot: linked-data-pilot.md
       - Update Data: update-data.md
       - Identifier Research: identifier-research.md
       - Workflow Validation: workflow-validation.md

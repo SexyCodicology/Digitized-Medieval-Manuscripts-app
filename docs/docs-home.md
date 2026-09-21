@@ -15,6 +15,7 @@ Find what you need to get started, contribute, or develop.
 - [Getting started](getting-started.md) — Explore the dashboard and search for libraries
 - [Data schema](schema.md) — Understand how library data is structured
 - [Linked data](linked-data.md) — Cite stable record IDs and reuse machine-readable data
+- [Linked-data audit pilot](linked-data-pilot.md) — Review the first 25 authority and IIIF candidates
 - [What is Codicology?](codicology/index.md) — New to manuscript studies? Start with our codicology primer
 
 ## For contributors
@@ -24,6 +25,7 @@ Find what you need to get started, contribute, or develop.
 - [Update the dashboard data](update-data.md) — Add new libraries and edit existing entries
 - [Data structure guide](schema.md) — Understand library fields and how to fill them out
 - [Identifier research](identifier-research.md) — Verify and document ISIL, Wikidata, and GeoNames decisions
+- [Linked-data audit pilot](linked-data-pilot.md) — Apply the maintainer approval workflow to a representative sample
 
 ## For developers
 

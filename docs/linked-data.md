@@ -79,6 +79,11 @@ human-readable pages, but the JSON-LD does not promote them to relationships
 until a maintainer approves them. Automated validation does not authenticate
 the reviewer or prove that an authority target is correct.
 
+The [linked-data audit pilot](linked-data-pilot.md) selects 25 varied records
+for the first maintainer review batch. The selection includes duplicate-name
+and portal-scope cases so the team tests the difficult boundaries before
+expanding approvals across the catalogue.
+
 Approved links use the DCAT qualified-relation pattern. The DMMapp access point
 has a `dcat:qualifiedRelation` to a `dcat:Relationship`; that relationship
 links to the reviewed target with `dcterms:relation` and names its function
