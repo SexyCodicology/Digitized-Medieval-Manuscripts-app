@@ -150,9 +150,10 @@ When adding a record, add its current name-derived slug to
 [`library-aliases.json`](assets/library-aliases.json) under the same ID. When
 changing a name, append the new slug; never remove an older slug. The build
 and data validation reject missing current aliases and collisions. Pull-request
-CI also compares the registry with its base branch and rejects removed IDs or
-aliases. Never reuse the ID of a withdrawn record for a different access point;
-the meaning of an ID still needs human review when records are edited.
+CI compares the registry with its base branch, and deployment CI repeats that
+comparison against the previous `master` revision. Both checks reject removed
+IDs or aliases. Never reuse the ID of a withdrawn record for a different access
+point; the meaning of an ID still needs human review when records are edited.
 
 **Command safety**: Safe
 

@@ -66,10 +66,16 @@ research](identifier-research.md) for the research and review workflow.
 
 ## When validation runs
 
-The system checks your data in two situations:
+The dedicated Data Guardrails workflow checks your data in two situations:
 
 - **Automatically**: When you submit a pull request that changes the library data
 - **On demand**: When you manually request a validation check from the GitHub Actions tab
+
+The deployment workflow repeats the identifier and link-assertion history
+checks when a release reaches `master`. This second gate compares the release
+with the previous `master` revision. It protects published IDs and aliases even
+if a change reaches the deployment workflow outside the normal pull-request
+path.
 
 ## How the format check works
 

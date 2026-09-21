@@ -104,6 +104,14 @@ jobs:
       - name: Validate linked-data pilot decisions
         run: python scripts/validate_linked_data_pilot.py
 
+      - name: Preserve published identifiers in pull requests
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_identifier_history.py "${{ github.event.pull_request.base.sha }}"
+
+      - name: Preserve published identifiers on master
+        if: github.event_name == 'push'
+        run: python scripts/verify_identifier_history.py "${{ github.event.before }}"
+
       - name: Require approval for changed links in pull requests
         if: github.event_name == 'pull_request'
         run: python scripts/verify_link_assertion_history.py "${{ github.event.pull_request.base.sha }}"
