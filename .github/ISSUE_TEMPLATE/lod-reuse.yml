@@ -1,0 +1,73 @@
+name: Report linked-data reuse
+description: Tell DMMapp about a public project, publication, or tool that reuses its data.
+title: "LOD reuse: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reusing DMMapp. This issue is public. Do not include personal contact details, credentials, private URLs, or unpublished project information.
+
+  - type: input
+    id: project_name
+    attributes:
+      label: Project or publication name
+      description: Give the public name of the reuse.
+    validations:
+      required: true
+
+  - type: input
+    id: project_url
+    attributes:
+      label: Public URL
+      description: Link to the project, publication, dataset, repository, or teaching resource.
+      placeholder: "https://example.org/project"
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: How DMMapp data is used
+      description: Describe the user need and what the DMMapp data contributes.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: downloads
+    attributes:
+      label: DMMapp resources used
+      options:
+        - label: Catalogue JSON
+        - label: Bulk JSON-LD
+        - label: Per-record JSON-LD
+        - label: Stable ID pages
+        - label: Reviewed link assertion register
+
+  - type: dropdown
+    id: reuse_pattern
+    attributes:
+      label: Reuse pattern
+      options:
+        - One-time research snapshot
+        - Periodic data import
+        - Live links to DMMapp records
+        - Citation or reference only
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: record_scope
+    attributes:
+      label: Record scope
+      description: List relevant DMMapp IDs or describe the subset, if applicable.
+    validations:
+      required: false
+
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Corrections or missing capabilities
+      description: Describe concrete data corrections, interoperability gaps, or features that would improve this reuse.
+    validations:
+      required: false

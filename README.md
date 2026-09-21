@@ -55,6 +55,7 @@ Each library gets its own crawlable page, generated at build time, with:
 - About the project, contributing guidelines, and local development setup
 - A codicology primer for readers new to manuscript studies
 - [Linked-data guidance](./docs/linked-data.md) for citing record IDs and reusing the static JSON-LD exports
+- [Linked-data reuse guide](./docs/reuse-linked-data.md) with a parsing example and a public integration-reporting route
 
 ## Quick start
 
@@ -127,6 +128,7 @@ Digitized-Medieval-Manuscripts-app/
 │   ├── workflow-validation.md      # How automated data validation works
 │   ├── workflow-link-checking.md   # How the weekly link check works
 │   ├── linked-data.md              # Persistent IDs, JSON-LD, and rights policy
+│   ├── reuse-linked-data.md        # Consumer examples and reuse reporting
 │   ├── linked-data-pilot.md        # 25-record semantic-link audit sample
 │   ├── contributing.md             # How to contribute data or code
 │   ├── setup.md                    # Local development setup

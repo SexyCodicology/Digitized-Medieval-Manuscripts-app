@@ -61,6 +61,9 @@ licence and repeats it on the DMMapp downloads, but does not copy that licence
 onto access points or manuscripts. Consult each source institution's terms
 before reuse.
 
+For a runnable RDF example, citation guidance, and the public reuse-reporting
+form, see [Reuse DMMapp linked data](reuse-linked-data.md).
+
 ## Interpret links and missing claims
 
 DMMapp does not infer that two resources are identical from a shared name or

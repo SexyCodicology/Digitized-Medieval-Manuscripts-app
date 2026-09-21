@@ -15,6 +15,7 @@ Find what you need to get started, contribute, or develop.
 - [Getting started](getting-started.md) — Explore the dashboard and search for libraries
 - [Data schema](schema.md) — Understand how library data is structured
 - [Linked data](linked-data.md) — Cite stable record IDs and reuse machine-readable data
+- [Reuse linked data](reuse-linked-data.md) — Download, parse, cite, and report an integration
 - [Linked-data audit pilot](linked-data-pilot.md) — Review the first 25 authority and IIIF candidates
 - [What is Codicology?](codicology/index.md) — New to manuscript studies? Start with our codicology primer
 
