@@ -5,9 +5,9 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 2,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 2,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
 2,geonames_id,8349381,verified,https://sws.geonames.org/8349381/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
-3,isil,AU-ANL,verified,https://www.nla.gov.au/apps/libraries/?action=OrgDetails&id=9735,https://www.library.gov.au/,2026-09-21,The official registry identifies the National Library of Australia and NUC ANL; a maintainer must still confirm the full ISIL form.
-3,wikidata_qid,Q623578,verified,https://www.wikidata.org/wiki/Q623578,https://www.library.gov.au/,2026-09-21,The institution item and current official website identify the National Library of Australia.
-3,geonames_id,2172517,verified,https://sws.geonames.org/2172517/about.rdf,https://www.nla.gov.au/apps/libraries/?action=OrgDetails&id=9735,2026-09-21,The GeoNames record identifies Canberra and the official library registry gives a Canberra address.
+3,isil,AU-ANL,verified,https://www.nla.gov.au/apps/libraries/?action=OrgDetails&id=9735,https://www.library.gov.au/,2026-09-21,The NLA registry identifies NUC ANL. Wikidata lists AU-ANL without a reference and no issuing-registry page found states the full ISIL; maintainer confirmation remains required.
+3,wikidata_qid,Q623578,verified,https://www.wikidata.org/wiki/Q623578,https://www.library.gov.au/,2026-09-21,Q623578 and the official site identify the National Library of Australia; the live DMMapp access point is on the NLA domain and the candidate is ready for maintainer review as a holding-institution relationship.
+3,geonames_id,2172517,verified,https://sws.geonames.org/2172517/about.rdf,https://www.nla.gov.au/apps/libraries/?action=OrgDetails&id=9735,2026-09-21,GeoNames 2172517 identifies Canberra and the official NLA address gives Canberra ACT; the candidate is ready for maintainer review as a listed-place relationship.
 4,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 4,wikidata_qid,Q7603406,verified,https://www.wikidata.org/wiki/Q7603406,http://www.slsa.sa.gov.au,2026-09-20,Exact institution item; country and city agree; official website matches.
 4,geonames_id,2078025,verified,https://sws.geonames.org/2078025/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -69,8 +69,8 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 23,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
 23,geonames_id,2792413,verified,https://sws.geonames.org/2792413/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 24,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
-24,wikidata_qid,Q611001,verified,https://www.wikidata.org/wiki/Q611001,https://lib.ugent.be/en/libraries/,2026-09-21,The institution item and official library directory identify Ghent University Library.
-24,geonames_id,2797656,verified,https://sws.geonames.org/2797656/about.rdf,https://lib.ugent.be/en/libraries/,2026-09-21,The GeoNames record identifies Ghent and the official library directory lists multiple Ghent addresses.
+24,wikidata_qid,Q611001,verified,https://www.wikidata.org/wiki/Q611001,https://boekentoren.gent/en/articles/bibliothecair-erfgoed-be-lanceert-digitale-erfgoedbib,2026-09-21,Q611001 identifies Ghent University Library and the official Boekentoren site states that it provides 585 manuscripts through the Digital Heritage Library. The DMMapp landing page now returns 404; replacement and scope review remain required.
+24,geonames_id,2797656,verified,https://sws.geonames.org/2797656/about.rdf,https://lib.ugent.be/en/libraries/,2026-09-21,GeoNames 2797656 identifies Ghent and the official directory places the Book Tower at Rozier 9 in 9000 Gent. The DMMapp landing page now returns 404; replacement and scope review remain required.
 25,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 25,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
 25,geonames_id,2792482,verified,https://sws.geonames.org/2792482/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.

@@ -1,9 +1,9 @@
 record_id,field,candidate_value,decision,reviewer,reviewed_on,review_url,note
-3,isil,AU-ANL,pending,,,,The official registry identifies NUC ANL and the institution; confirm the full ISIL form and scope.
-3,wikidata_qid,Q623578,pending,,,,The authority item and official website match; confirm its holding-institution role for this access point.
-3,geonames_id,2172517,pending,,,,The official registry gives a Canberra address; confirm the listed-place relationship.
-24,wikidata_qid,Q611001,pending,,,,The authority item and official library directory match; confirm the institution scope against record 29.
-24,geonames_id,2797656,pending,,,,The official library directory lists Ghent addresses; confirm the listed-place relationship.
+3,isil,AU-ANL,pending,,,,The NLA registry publishes NUC ANL but no issuing-registry page found states the full ISIL and Wikidata gives no reference. Keep pending until a maintainer confirms the code and source.
+3,wikidata_qid,Q623578,pending,,,,Q623578 and the official site identify the National Library of Australia and the live access point is on the NLA domain. The candidate is ready for a maintainer decision as a holding-institution relationship.
+3,geonames_id,2172517,pending,,,,GeoNames 2172517 identifies Canberra and the official NLA address confirms Canberra ACT. The candidate is ready for a maintainer decision as a listed-place relationship.
+24,wikidata_qid,Q611001,pending,,,,Q611001 and official sources identify Ghent University Library as provider of a digitised manuscript corpus. The current DMMapp access point returns 404; keep pending until its replacement and the distinction from record 29 are reviewed.
+24,geonames_id,2797656,pending,,,,GeoNames 2797656 identifies Ghent and the official library address confirms Gent. The current DMMapp access point returns 404; keep pending until the resource scope is restored.
 29,geonames_id,2797656,pending,,,,The named provider has official Ghent addresses; confirm the place while keeping this portal distinct from record 24.
 44,geonames_id,3067696,pending,,,,GeoNames and the official National Library address corroborate Prague; maintainer approval is still required.
 47,geonames_id,2618425,pending,,,,GeoNames and the official Royal Danish Library address corroborate Copenhagen; compare the direct and ISOS access points before approval.
