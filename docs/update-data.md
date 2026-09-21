@@ -153,9 +153,9 @@ it lists the collection action first when both are present.
 
 ### Optional institutional identifiers
 
-You can add the following optional fields when you can verify them from their
-authoritative source. Do not guess an identifier, and leave the field out when
-you cannot find a reliable match.
+You can add the following optional fields after a DMMapp maintainer reviews
+the exact target and its relationship to the access point. Do not guess an
+identifier, and leave the field out when you cannot find a reliable match.
 
 - **isil**: The library's International Standard Identifier for Libraries,
   written as `<AgencyPrefix>-<LocalCode>`, for example `"GB-OxBodl"`. A
@@ -186,6 +186,49 @@ maintainer to complete those rows in your pull request before merging it.
 
 Follow the [Identifier research](identifier-research.md) guide for the exact
 ledger columns, source criteria, examples, and checks.
+
+### Review an authority or IIIF assertion
+
+Research status and maintainer approval are different. The identifier ledger
+records how a candidate was found; it does not approve the relationship.
+Existing identifier values published before this review gate remain visible
+while the maintainers audit them. Do not describe them as individually
+approved. For each new or changed `isil`, `wikidata_qid`, `geonames_id`,
+`iiif_collection_url`, or `iiif_example_manifest_url`, add one matching row to
+[`link-assertions.csv`](assets/link-assertions.csv). The row records the exact
+value, the authoritative target or endpoint URL, a distinct corroborating
+source for its relationship to this access point, the check date, the
+maintainer's GitHub username (without `@`) and review date, a DMMapp
+pull-request URL, and a short note explaining the relationship. Use real dates
+in `YYYY-MM-DD` format.
+
+Open a draft pull request with the proposed field and supporting source links
+first. Its evidence check will remain red until a maintainer has reviewed the
+claim. After the review, add the approved CSV row with that pull request's
+URL and push the final change. The maintainer then approves the latest push;
+an earlier approval is not enough after the CSV is updated. Do not write a
+reviewer's name or review date before that review has happened.
+
+A reviewer checks the target's type and scope as well as its identifier. A
+DMMapp record is **not** the institution, city, or manuscript. A GeoNames ID
+must identify the place associated with the listed institution, and a IIIF
+Collection must cover the listed access point rather than an entire unrelated
+holding. The CSV validator checks completeness and consistency, not the truth
+of an external claim or the identity of the named reviewer. Use the repository's
+normal pull-request review before merging. If the proposal remains uncertain,
+leave the field and CSV row out; the directory entry remains available.
+
+The history check compares a pull request with its target branch. Values that
+were already public when this gate was introduced may remain while they are
+audited. Any addition or changed value, including a change to an older IIIF
+endpoint, needs a matching approved row. Approval does not transfer from one
+value, record, or field to another.
+
+**Command safety**: Safe
+
+```bash
+python scripts/validate_link_assertions.py
+```
 
 ### Homepage recency fields
 

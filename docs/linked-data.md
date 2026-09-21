@@ -62,7 +62,7 @@ before reuse.
 ## Interpret links and missing claims
 
 DMMapp does not infer that two resources are identical from a shared name or
-URL. The initial graph contains no `sameAs` assertions. Institution, place,
+URL. The graph contains no `sameAs` assertions. Institution, place,
 aggregator, and IIIF relationships need evidence that identifies the correct
 target and its role. An `iiif: true` flag alone is not a collection endpoint;
 a representative IIIF Manifest is not a complete IIIF Collection.
@@ -71,6 +71,48 @@ a representative IIIF Manifest is not a complete IIIF Collection.
 does not verify the record's institutional identity, rights, or IIIF scope.
 An absent authority link or IIIF endpoint means DMMapp has not published that
 assertion, not that the institution or endpoint does not exist.
+The [public assertion register](assets/link-assertions.csv) contains only links
+that have passed maintainer review, with their source and review provenance.
+The separate research ledger may contain published values that still await
+that semantic review. Those values remain visible in the original JSON and on
+human-readable pages, but the JSON-LD does not promote them to relationships
+until a maintainer approves them. Automated validation does not authenticate
+the reviewer or prove that an authority target is correct.
+
+Approved links use the DCAT qualified-relation pattern. The DMMapp access point
+has a `dcat:qualifiedRelation` to a `dcat:Relationship`; that relationship
+links to the reviewed target with `dcterms:relation` and names its function
+with `dcat:hadRole`. This describes a scoped relationship without claiming
+that the DMMapp entry, institution, place, or IIIF resource is identical to
+another resource.
+
+## Approved relationship roles
+
+The following DMMapp role identifiers form a small controlled vocabulary.
+Their fragment URLs are stable within this publication.
+
+### Institution authority record
+
+`#institution-authority-record` means the related resource is a reviewed ISIL
+or Wikidata authority record describing the holding institution or relevant
+unit. It does not mean the DMMapp access-point resource is that institution.
+
+### Place authority record
+
+`#place-authority-record` means the related resource is a reviewed GeoNames
+record for the city or place associated with the listed access point. It does
+not assert that the access point is a place.
+
+### IIIF collection
+
+`#iiif-collection` means the related resource is a reviewed direct IIIF
+Presentation API Collection endpoint whose scope fits the listed access point.
+
+### IIIF example manifest
+
+`#iiif-example-manifest` means the related resource is a reviewed direct IIIF
+Presentation API Manifest for one named representative manuscript. It does
+not represent the complete collection.
 
 ## Correct or extend a record
 
@@ -91,6 +133,12 @@ the meaning of an ID still needs human review when records are edited.
 
 ```bash
 python scripts/validate_data.py
+```
+
+**Command safety**: Safe
+
+```bash
+python scripts/validate_link_assertions.py
 ```
 
 **Command safety**: State-changing (writes ignored build output and cache)
@@ -122,6 +170,7 @@ the deployment before promoting the release as usable.
 | Build and identifier behaviour | `hooks/library_pages.py`, `hooks/linked_data.py`, `mkdocs.yml` | 2026-09-20, local build | DMMapp maintainers | On route or hosting changes |
 | Public release smoke check | `.github/workflows/deploy.yml`, `scripts/verify_public_lod.py`; not yet run after a deployment | 2026-09-20, repository inspection | DMMapp maintainers | On publication changes |
 | Dataset licence boundary | `LICENSE`, `README.md`, `schema.json` | 2026-09-20, repository inspection | DMMapp maintainers | On licence or data-model changes |
+| Authority and IIIF release gate | `scripts/validate_link_assertions.py`, `scripts/verify_link_assertion_history.py`, `assets/link-assertions.csv`; no approved claims yet | 2026-09-21, local validation | DMMapp maintainers | On each proposed external assertion |
 | Public hosting and uptime | `mkdocs.yml`, `.github/workflows/deploy.yml`; no uptime commitment found | 2026-09-20, repository inspection | DMMapp maintainers | Confirm before claiming availability |
 
 Unconfirmed: ownership of long-term hosting, recovery targets, and an external

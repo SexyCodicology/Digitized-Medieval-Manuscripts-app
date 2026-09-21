@@ -16,6 +16,19 @@ The system performs two levels of checking:
 2. **Content check**: Confirms that all information is complete and correct
 
 Both checks happen automatically and provide instant feedback through GitHub.
+For optional authority identifiers and direct IIIF endpoints, the build also
+compares the proposed data with the pull request's target branch. Each added
+or changed link must have an exact matching row in the
+[public assertion register](assets/link-assertions.csv). The row must include
+two distinct evidence URLs, check and review dates, a reviewer, and a DMMapp
+pull-request URL. The script cannot verify the factual relationship or
+authenticate the reviewer; maintainers do that in the pull request.
+
+Identifiers and IIIF endpoints that were already public when this gate was
+introduced remain visible while maintainers audit them. They are not
+automatically approved, and they are not exported as linked-data relationships
+unless they have a row in the assertion register. The comparison prevents new
+unreviewed claims from enlarging this backlog.
 
 ### Identifier evidence check
 

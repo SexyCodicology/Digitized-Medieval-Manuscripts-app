@@ -37,7 +37,8 @@ These fields are essential to create a reliable, searchable directory.
 
 #### ID number
 
-A unique number that identifies this library in our database. IDs are assigned sequentially.
+A unique number that identifies this directory entry. New IDs need not be
+sequential; gaps are valid, and a retired ID must never be reused.
 
 **Example:** `502`
 
@@ -60,6 +61,9 @@ reason for each of the three fields on every record. Its check confirms that
 the ledger agrees with `data.json`; a maintainer still checks whether a source
 describes the correct institution or place. See [Identifier
 research](identifier-research.md) for the required rows and review workflow.
+Existing values may be awaiting that semantic review. Only values listed in
+the approved [link assertion register](assets/link-assertions.csv) are emitted
+as linked-data relationships.
 
 #### ISIL
 

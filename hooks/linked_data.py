@@ -8,6 +8,7 @@ into a false equivalence assertion.
 
 from __future__ import annotations
 
+import csv
 import json
 from pathlib import Path
 from typing import Any
@@ -27,8 +28,20 @@ JSONLD_MEDIA_TYPE = "https://www.iana.org/assignments/media-types/application/ld
 JSON_MEDIA_TYPE = "https://www.iana.org/assignments/media-types/application/json"
 RAW_DATA_PATH = "assets/data.json"
 ALIAS_REGISTRY_PATH = "assets/library-aliases.json"
+ASSERTIONS_PATH = "assets/link-assertions.csv"
 BULK_PATH = "assets/dmmapp-linked-data.jsonld"
 RECORD_PATH = "linked-data/records/{id}.jsonld"
+ASSERTION_COLUMNS = (
+    "record_id", "field", "value", "source_url", "corroborating_url",
+    "checked_on", "reviewer", "reviewed_on", "review_url", "note",
+)
+ROLE_FRAGMENTS = {
+    "isil": "institution-authority-record",
+    "wikidata_qid": "institution-authority-record",
+    "geonames_id": "place-authority-record",
+    "iiif_collection_url": "iiif-collection",
+    "iiif_example_manifest_url": "iiif-example-manifest",
+}
 
 
 def site_base(site_url: str) -> str:
@@ -54,12 +67,16 @@ def page_url(site_url: str, record_id: int) -> str:
     return site_base(site_url) + page_path(record_id)
 
 
-def record_graph(record: dict[str, Any], site_url: str) -> list[dict[str, Any]]:
+def record_graph(
+    record: dict[str, Any],
+    site_url: str,
+    assertions: list[dict[str, str]] | None = None,
+) -> list[dict[str, Any]]:
     """Describe one DMMapp record and its catalogued access point.
 
     The website is a landing page, not an identity link or a rights claim.
-    Authority and IIIF links require separately reviewed evidence and are not
-    inferred from the existing optional fields here.
+    Authority and IIIF links are emitted only from separately reviewed
+    assertions, never inferred from optional catalogue fields alone.
     """
     base = page_url(site_url, record["id"])
     access_point: dict[str, Any] = {
@@ -74,6 +91,10 @@ def record_graph(record: dict[str, Any], site_url: str) -> list[dict[str, Any]]:
     website = record.get("website")
     if isinstance(website, str) and _is_http_url(website):
         access_point["dcat:landingPage"] = {"@id": website}
+
+    relationships = _approved_relationships(record, site_url, assertions or [])
+    if relationships:
+        access_point["dcat:qualifiedRelation"] = relationships
 
     catalogue_record: dict[str, Any] = {
         "@id": base + "#record",
@@ -90,6 +111,37 @@ def record_graph(record: dict[str, Any], site_url: str) -> list[dict[str, Any]]:
     return [catalogue_record, access_point]
 
 
+def _approved_relationships(
+    record: dict[str, Any],
+    site_url: str,
+    assertions: list[dict[str, str]],
+) -> list[dict[str, Any]]:
+    """Build qualified relations that exactly match approved catalogue values."""
+    relationships = []
+    for assertion in assertions:
+        field = assertion.get("field", "")
+        value = assertion.get("value", "")
+        target = assertion.get("source_url", "")
+        if (
+            assertion.get("record_id") != str(record["id"])
+            or field not in ROLE_FRAGMENTS
+            or str(record.get(field, "")) != value
+            or not isinstance(target, str)
+            or not _is_http_url(target)
+        ):
+            continue
+        relationships.append({
+            "@type": "dcat:Relationship",
+            "dcterms:relation": {"@id": target},
+            "dcat:hadRole": {
+                "@id": site_base(site_url)
+                + "linked-data/#"
+                + ROLE_FRAGMENTS[field]
+            },
+        })
+    return relationships
+
+
 def _is_http_url(value: str) -> bool:
     try:
         parts = urlsplit(value)
@@ -98,9 +150,16 @@ def _is_http_url(value: str) -> bool:
     return parts.scheme.lower() in {"http", "https"} and bool(parts.netloc)
 
 
-def record_jsonld(record: dict[str, Any], site_url: str) -> str:
+def record_jsonld(
+    record: dict[str, Any],
+    site_url: str,
+    assertions: list[dict[str, str]] | None = None,
+) -> str:
     """Serialise one record as a standalone JSON-LD graph."""
-    document = {"@context": CONTEXT, "@graph": record_graph(record, site_url)}
+    document = {
+        "@context": CONTEXT,
+        "@graph": record_graph(record, site_url, assertions),
+    }
     return _serialize(document)
 
 
@@ -118,7 +177,11 @@ def retired_jsonld(record_id: str, site_url: str) -> str:
     return _serialize(document)
 
 
-def bulk_jsonld(records: list[dict[str, Any]], site_url: str) -> str:
+def bulk_jsonld(
+    records: list[dict[str, Any]],
+    site_url: str,
+    assertions: list[dict[str, str]] | None = None,
+) -> str:
     """Serialise the catalog, distribution, and all directory records."""
     base = site_base(site_url)
     catalog = {
@@ -153,7 +216,7 @@ def bulk_jsonld(records: list[dict[str, Any]], site_url: str) -> str:
     }
     graph = [catalog]
     for record in records:
-        graph.extend(record_graph(record, base))
+        graph.extend(record_graph(record, base, assertions))
     return _serialize({"@context": CONTEXT, "@graph": graph})
 
 
@@ -167,10 +230,25 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
     """Add static JSON-LD representations to the MkDocs build."""
     source = Path(config.docs_dir) / RAW_DATA_PATH
     registry_path = Path(config.docs_dir) / ALIAS_REGISTRY_PATH
+    assertions_path = Path(config.docs_dir) / ASSERTIONS_PATH
     try:
         records = json.loads(source.read_text(encoding="utf-8"))
         registry = json.loads(registry_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as error:
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        raise PluginError(f"Cannot publish linked data: {error}") from error
+    try:
+        if assertions_path.is_file():
+            with assertions_path.open(encoding="utf-8", newline="") as assertion_file:
+                reader = csv.DictReader(assertion_file)
+                if tuple(reader.fieldnames or ()) != ASSERTION_COLUMNS:
+                    raise ValueError(
+                        "link-assertions.csv has unexpected or reordered columns"
+                    )
+                assertions = list(reader)
+        else:
+            # Small third-party or test builds can omit the optional register.
+            assertions = []
+    except (OSError, ValueError) as error:
         raise PluginError(f"Cannot publish linked data: {error}") from error
     if not isinstance(records, list):
         raise PluginError(f"{source} must contain a list of records")
@@ -187,7 +265,7 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
             File.generated(
                 config,
                 RECORD_PATH.format(id=record["id"]),
-                content=record_jsonld(record, site_url),
+                content=record_jsonld(record, site_url, assertions),
             )
         )
     current_ids = {str(record["id"]) for record in records}
@@ -203,7 +281,7 @@ def on_files(files: Files, config: MkDocsConfig) -> Files:
         File.generated(
             config,
             BULK_PATH,
-            content=bulk_jsonld(records, site_url),
+            content=bulk_jsonld(records, site_url, assertions),
         )
     )
     return files

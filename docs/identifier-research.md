@@ -15,6 +15,13 @@ The authoritative catalogue remains `docs/assets/data.json`. The accompanying
 was reached. The ledger has one row for every record and identifier field,
 including identifiers that remain absent because the research was unresolved.
 
+Research status is not maintainer approval. Values introduced before the
+approval gate remain public while DMMapp maintainers audit their target and
+scope. Only an exact row in
+[`link-assertions.csv`](assets/link-assertions.csv), backed by a reviewed DMMapp
+pull request, marks a relationship as approved for linked-data publication.
+Every new or changed value requires that approval before merge.
+
 ## Decide whether to add an identifier
 
 Add a value only after you confirm the exact match. Leave the field absent when
@@ -128,6 +135,8 @@ Review the catalogue and ledger together.
    the gap.
 5. Run the validation commands, or confirm that the `validate-data` GitHub
    check passed on the pull request.
+6. For a new or changed value, confirm that the approved assertion row records
+   the reviewer and the final reviewed pull-request revision.
 
 ## Evidence and review
 

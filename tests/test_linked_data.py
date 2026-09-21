@@ -70,6 +70,45 @@ def test_unreviewed_authorities_rights_and_iiif_are_not_asserted():
     assert "sameAs" not in document
 
 
+def test_approved_assertion_becomes_a_qualified_relation():
+    source = "https://www.wikidata.org/entity/Q123"
+    assertion = {
+        "record_id": "42",
+        "field": "wikidata_qid",
+        "value": "Q123",
+        "source_url": source,
+    }
+    graph = parse(linked_data.record_jsonld(RECORD, SITE_URL, [assertion]))
+    access_point = URIRef(SITE_URL + "libraries/id-42/#access-point")
+    relations = list(graph.objects(access_point, DCAT.qualifiedRelation))
+
+    assert len(relations) == 1
+    relation = relations[0]
+    assert (relation, RDF.type, DCAT.Relationship) in graph
+    assert (relation, DCTERMS.relation, URIRef(source)) in graph
+    assert (
+        relation,
+        DCAT.hadRole,
+        URIRef(SITE_URL + "linked-data/#institution-authority-record"),
+    ) in graph
+    assert not list(
+        graph.triples((None, URIRef("http://www.w3.org/2002/07/owl#sameAs"), None))
+    )
+
+
+def test_assertion_must_match_the_record_and_exact_value():
+    assertions = [{
+        "record_id": "42",
+        "field": "wikidata_qid",
+        "value": "Q999",
+        "source_url": "https://www.wikidata.org/entity/Q999",
+    }]
+    graph = parse(linked_data.record_jsonld(RECORD, SITE_URL, assertions))
+    access_point = URIRef(SITE_URL + "libraries/id-42/#access-point")
+
+    assert not list(graph.objects(access_point, DCAT.qualifiedRelation))
+
+
 def test_hostile_text_is_json_escaped_and_does_not_create_markup():
     hostile = {**RECORD, "library": '</script><script>alert("xss")</script>'}
     document = linked_data.record_jsonld(hostile, SITE_URL)

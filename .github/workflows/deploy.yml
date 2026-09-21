@@ -46,6 +46,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
@@ -93,6 +95,17 @@ jobs:
 
       - name: Validate identifier evidence
         run: python scripts/validate_identifier_evidence.py
+
+      - name: Validate reviewed link assertions
+        run: python scripts/validate_link_assertions.py
+
+      - name: Require approval for changed links in pull requests
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_link_assertion_history.py "${{ github.event.pull_request.base.sha }}"
+
+      - name: Require approval for changed links on master
+        if: github.event_name == 'push'
+        run: python scripts/verify_link_assertion_history.py "${{ github.event.before }}"
 
       - name: Test Build Hooks
         run: pytest tests -q

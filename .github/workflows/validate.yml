@@ -4,8 +4,8 @@
 # and on manual dispatch. Runs scripts/validate_data.py, the same entry
 # point .github/workflows/deploy.yml runs before building the site, which
 # checks JSON syntax, schema compliance (required fields, data types, HTTP(S)
-# URLs), duplicate ids, and aggregator name/URL uniqueness. Also checks that
-# the identifier research ledger covers every record and matches data.json.
+# URLs), duplicate ids, and aggregator name/URL uniqueness. It also checks the
+# research ledger, reviewed assertions, stable aliases, and publication history.
 
 name: Data Guardrails
 
@@ -18,8 +18,11 @@ on:
       - 'scripts/validate_data.py'
       - 'hooks/library_pages.py'
       - 'scripts/validate_identifier_evidence.py'
+      - 'scripts/validate_link_assertions.py'
       - 'scripts/verify_identifier_history.py'
+      - 'scripts/verify_link_assertion_history.py'
       - 'research/identifier-evidence.csv'
+      - 'docs/assets/link-assertions.csv'
   workflow_dispatch:
 
 permissions:
@@ -51,6 +54,13 @@ jobs:
       - name: Validate identifier evidence
         run: python scripts/validate_identifier_evidence.py
 
+      - name: Validate reviewed link assertions
+        run: python scripts/validate_link_assertions.py
+
       - name: Preserve published identifiers
         if: github.event_name == 'pull_request'
         run: python scripts/verify_identifier_history.py "${{ github.event.pull_request.base.sha }}"
+
+      - name: Require approval for changed links
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_link_assertion_history.py "${{ github.event.pull_request.base.sha }}"
