@@ -5,16 +5,16 @@ record_id,field,candidate_value,decision,reviewer,reviewed_on,review_url,note
 24,wikidata_qid,Q611001,pending,,,,The authority item and official library directory match; confirm the institution scope against record 29.
 24,geonames_id,2797656,pending,,,,The official library directory lists Ghent addresses; confirm the listed-place relationship.
 29,geonames_id,2797656,pending,,,,The named provider has official Ghent addresses; confirm the place while keeping this portal distinct from record 24.
-44,geonames_id,3067696,pending,,,,Confirm the place for the Manuscriptorium access point.
-47,geonames_id,2618425,pending,,,,Confirm the place against the direct institution entry and record 670.
+44,geonames_id,3067696,pending,,,,GeoNames and the official National Library address corroborate Prague; maintainer approval is still required.
+47,geonames_id,2618425,pending,,,,GeoNames and the official Royal Danish Library address corroborate Copenhagen; compare the direct and ISOS access points before approval.
 51,geonames_id,2640729,pending,,,,The official visitor guide places the Bodleian Library in Oxford; confirm the institution-level relationship.
 62,geonames_id,2640729,pending,,,,The official visitor guide confirms Oxford; confirm the place for this digital portal without conflating it with the city.
-78,geonames_id,3021000,pending,,,,Confirm the place disambiguates this generic library name.
-154,isil,,pending,,,,Confirm whether the absence of an exact institution identifier should remain.
-154,wikidata_qid,,pending,,,,Confirm whether the absence of an exact institution entity should remain.
-154,geonames_id,,pending,,,,Confirm whether the absent place identifier should remain or can be resolved safely.
-154,iiif_collection_url,,pending,,,,Confirm whether the listed portal exposes a scoped IIIF Collection endpoint.
-154,iiif_example_manifest_url,,pending,,,,Confirm whether a representative IIIF Manifest should be recorded.
+78,geonames_id,3021000,pending,,,,GeoNames and the official Douai municipal library address disambiguate the generic name; maintainer approval is still required.
+154,isil,,pending,,,,Municipal and ARCA pages confirm the Castres library but do not publish an exact ISIL; confirm the deliberate absence.
+154,wikidata_qid,,pending,,,,Municipal and ARCA pages confirm the Castres library but do not establish a unique institution entity; confirm the deliberate absence.
+154,geonames_id,,pending,,,,The municipal address identifies Castres but no exact GeoNames authority crosswalk was asserted; confirm the deliberate absence.
+154,iiif_collection_url,,pending,,,,ARCA exposes the collection and item images but this audit did not verify a scoped Presentation API Collection endpoint; confirm the absence.
+154,iiif_example_manifest_url,,pending,,,,ARCA exposes item images but this audit did not select and verify a representative Presentation API Manifest; confirm the absence.
 235,geonames_id,2950159,pending,,,,The official locations page lists two Berlin buildings; confirm the place against the direct entry and record 275.
 238,isil,DE-61,pending,,,,The issuing registry and official contact page match; confirm the institution or unit scope.
 238,wikidata_qid,Q2496254,pending,,,,The authority item and official contact page match; confirm the entity scope.
@@ -27,16 +27,16 @@ record_id,field,candidate_value,decision,reviewer,reviewed_on,review_url,note
 267,geonames_id,2867714,pending,,,,The official visitor page gives a Munich address; confirm the listed-place relationship.
 267,iiif_example_manifest_url,https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00096095/manifest,pending,,,,Confirm that this is a direct representative Manifest and not a complete Collection.
 275,geonames_id,2950159,pending,,,,The named provider's official page lists Berlin locations; confirm the place while preserving portal scope.
-318,geonames_id,2964574,pending,,,,Confirm the place for the Irish Script on Screen access point.
+318,geonames_id,2964574,pending,,,,GeoNames and the official National Library of Ireland address corroborate Dublin; ISOS confirms the access-point scope.
 396,geonames_id,11694534,pending,,,,The official directions place the Wellington library in Thorndon; confirm that suburb-level precision is appropriate.
-402,wikidata_qid,Q24101,pending,,,,Confirm the institution scope against record 613 and its aggregator view.
-402,geonames_id,3094802,pending,,,,Confirm that the place matches the listed city and country for this access point.
+402,wikidata_qid,Q24101,pending,,,,Wikidata and the official Jagiellonian Digital Library contact page corroborate the institution; compare record 613 before approval.
+402,geonames_id,3094802,pending,,,,GeoNames and the official Jagiellonian Digital Library address corroborate Krakow; maintainer approval is still required.
 409,geonames_id,686578,pending,,,,The National Library of Romania gives the Batthyaneum branch's Alba Iulia address; confirm the branch relationship.
-411,wikidata_qid,Q1670994,pending,,,,Confirm the entity scope against record 669 and its different access point.
-411,geonames_id,2650225,pending,,,,Confirm the place despite the catalogue country-label difference.
-433,geonames_id,2673730,pending,,,,Confirm the place for the Alvin portal access point.
-515,geonames_id,4931972,pending,,,,Confirm the city for the institution-wide Digital Scriptorium entry.
+411,wikidata_qid,Q1670994,pending,,,,Wikidata and the official National Library of Scotland contact page corroborate the institution; compare record 669 before approval.
+411,geonames_id,2650225,pending,,,,GeoNames and the official library address corroborate Edinburgh; the catalogue's Scotland label needs no place-ID change.
+433,geonames_id,2673730,pending,,,,GeoNames and the National Library of Sweden visitor address corroborate Stockholm; retain the Alvin access-point scope.
+515,geonames_id,4931972,pending,,,,GeoNames and Harvard Library's flagship Widener location corroborate Cambridge; confirm the institution-wide Digital Scriptorium scope.
 574,geonames_id,6691831,pending,,,,The Vatican Library's official contact page gives a Vatican City address; confirm the sovereign-city relationship.
-613,geonames_id,3094802,pending,,,,Confirm the place while preserving the e-Codices access-point scope.
-669,geonames_id,2650225,pending,,,,Confirm the place for the Irish Script on Screen access point.
-670,geonames_id,2618425,pending,,,,Confirm the place and resolve the access-point name against record 47.
+613,geonames_id,3094802,pending,,,,GeoNames and the official holding-institution address corroborate Krakow; retain the e-Codices access-point scope.
+669,geonames_id,2650225,pending,,,,GeoNames and the official National Library of Scotland address corroborate Edinburgh; ISOS confirms the access-point scope.
+670,geonames_id,2618425,pending,,,,GeoNames and the official Royal Danish Library address corroborate Copenhagen; ISOS identifies Det Kongelige Bibliotek as Royal Danish Library.
