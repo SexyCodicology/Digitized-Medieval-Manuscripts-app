@@ -22,6 +22,7 @@ CONTEXT = {
     "dcat": "http://www.w3.org/ns/dcat#",
     "dcterms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
 }
 CC0_URL = "https://creativecommons.org/publicdomain/zero/1.0/"
 DCAT3_URL = "https://www.w3.org/TR/vocab-dcat-3/"
@@ -46,6 +47,15 @@ ROLE_FRAGMENTS = {
     "iiif_example_manifest_url": "iiif-example-manifest",
 }
 ACCESS_POINT_TYPE_FRAGMENT = "directory-access-point"
+# Human-readable labels for the fragments in ROLE_FRAGMENTS, matching the
+# headings documented under "Approved relationship roles" in linked-data.md.
+ROLE_LABELS = {
+    "institution-authority-record": "Institution authority record",
+    "holding-institution": "Holding institution",
+    "listed-place": "Listed place",
+    "iiif-collection": "IIIF collection",
+    "iiif-example-manifest": "IIIF example manifest",
+}
 
 
 def site_base(site_url: str) -> str:
@@ -272,10 +282,25 @@ def bulk_jsonld(
             },
         ],
     }
-    graph = [catalog]
+    graph = [catalog, *_role_concepts(base)]
     for record in records:
         graph.extend(record_graph(record, base, assertions))
     return _serialize({"@context": CONTEXT, "@graph": graph})
+
+
+def _role_concepts(site_url: str) -> list[dict[str, Any]]:
+    """Describe the local role vocabulary as SKOS concepts, not just HTML prose.
+
+    Without this, a consumer loading the bulk graph into a triple store sees
+    only opaque dcat:hadRole IRIs; the term definitions live solely on the
+    linked-data.md HTML page. A minimal skos:prefLabel stub keeps the
+    vocabulary self-describing from the RDF alone.
+    """
+    base = site_base(site_url) + "linked-data/#"
+    return [
+        {"@id": base + fragment, "@type": "skos:Concept", "skos:prefLabel": label}
+        for fragment, label in ROLE_LABELS.items()
+    ]
 
 
 def _serialize(document: dict[str, Any]) -> str:

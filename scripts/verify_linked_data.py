@@ -24,12 +24,14 @@ if str(REPO_ROOT) not in sys.path:
 from hooks.linked_data import (  # noqa: E402
     ACCESS_POINT_TYPE_FRAGMENT,
     ROLE_FRAGMENTS,
+    ROLE_LABELS,
     assertion_target,
 )
 
 DCAT = Namespace("http://www.w3.org/ns/dcat#")
 DCTERMS = Namespace("http://purl.org/dc/terms/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
+SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 CC0_URL = URIRef("https://creativecommons.org/publicdomain/zero/1.0/")
 DCAT3_URL = URIRef("https://www.w3.org/TR/vocab-dcat-3/")
 
@@ -66,6 +68,12 @@ def verify(
         errors.append("bulk catalogue lacks its landing page")
     if not list(graph.objects(catalog_uri, DCTERMS.description)):
         errors.append("bulk catalogue lacks its description")
+    for fragment, label in ROLE_LABELS.items():
+        concept = URIRef(base + "linked-data/#" + fragment)
+        if (concept, RDF.type, SKOS.Concept) not in graph:
+            errors.append(f"bulk graph role concept {fragment} is not typed as skos:Concept")
+        if (concept, SKOS.prefLabel, Literal(label)) not in graph:
+            errors.append(f"bulk graph role concept {fragment} lacks its skos:prefLabel")
     expected_records = {
         URIRef(base + f"libraries/id-{record['id']}/#record") for record in records
     }

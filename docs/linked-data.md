@@ -117,7 +117,10 @@ a downloadable dataset or a live data service.
 ## Approved relationship roles
 
 The following DMMapp role identifiers form a small controlled vocabulary.
-Their fragment URLs are stable within this publication.
+Their fragment URLs are stable within this publication. The bulk JSON-LD also
+describes each one as a `skos:Concept` with a `skos:prefLabel`, so a consumer
+loading the graph into RDF tooling does not need to fetch and scrape this HTML
+page to know what a role term means.
 
 ### Institution authority record
 

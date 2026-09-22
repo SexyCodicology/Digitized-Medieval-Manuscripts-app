@@ -15,6 +15,7 @@ SITE_URL = "https://example.org/dmmapp/"
 DCAT = Namespace("http://www.w3.org/ns/dcat#")
 DCTERMS = Namespace("http://purl.org/dc/terms/")
 FOAF = Namespace("http://xmlns.com/foaf/0.1/")
+SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 
 RECORD = {
     "id": 42,
@@ -211,6 +212,16 @@ def test_bulk_graph_contains_every_current_record_and_catalogue_license():
         ) in graph
     assert all(not list(graph.objects(resource, DCTERMS.license)) for resource in resources)
     assert not list(graph.triples((None, URIRef("http://www.w3.org/2002/07/owl#sameAs"), None)))
+
+
+def test_bulk_graph_describes_its_role_vocabulary_as_skos_concepts():
+    graph = parse(linked_data.bulk_jsonld([], SITE_URL))
+
+    for fragment, label in linked_data.ROLE_LABELS.items():
+        concept = URIRef(SITE_URL + "linked-data/#" + fragment)
+        assert (concept, RDF.type, SKOS.Concept) in graph
+        assert (concept, SKOS.prefLabel, Literal(label)) in graph
+    assert set(linked_data.ROLE_LABELS) == set(linked_data.ROLE_FRAGMENTS.values())
 
 
 def test_retired_record_keeps_its_identifier_without_old_claims():
