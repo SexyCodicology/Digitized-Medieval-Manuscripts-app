@@ -86,10 +86,11 @@ current terms before reuse.
 
 DMMapp is a static site built with MkDocs and Material for MkDocs. Its
 searchable directory uses a JSON data file, which the build process validates
-before publishing the site. Each library's page also carries a schema.org
-`Organization` block in JSON-LD, so search engines and linked-data tools can
-read the institution's name, location, and any verified Wikidata, ISIL, or
-GeoNames identifiers directly from the page.
+before publishing the site. Each record page embeds a DCAT `CatalogRecord` and
+the access point it describes. A linked JSON-LD representation can add
+institution, place, or IIIF relationships only after a maintainer approves the
+claim and its public evidence. DMMapp does not equate an access point with an
+institution by using `sameAs`.
 
 ## How we write
 

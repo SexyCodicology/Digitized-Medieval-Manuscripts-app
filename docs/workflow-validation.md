@@ -16,6 +16,33 @@ The system performs two levels of checking:
 2. **Content check**: Confirms that all information is complete and correct
 
 Both checks happen automatically and provide instant feedback through GitHub.
+For optional authority identifiers and direct IIIF endpoints, the build also
+compares the proposed data with the pull request's target branch. Each added
+or changed link must have an exact matching row in the
+[public assertion register](assets/link-assertions.csv). The row must include
+two distinct evidence URLs, check and review dates, a reviewer, and a DMMapp
+pull-request URL. The script cannot verify the factual relationship or
+authenticate the reviewer; maintainers do that in the pull request.
+
+For target-type consistency, the assertion validator requires a Wikidata
+source containing the approved QID on `www.wikidata.org`, a GeoNames source
+containing the approved ID on a GeoNames domain, and an IIIF source equal to
+the direct endpoint. The linked-data build then uses the canonical Wikidata
+entity URI and GeoNames place URI as relationship targets.
+
+`scripts/validate_linked_data_pilot.py` checks the 25-record pilot at field
+level. It requires a decision for every selected candidate, preserves the
+deliberate-absence control, and matches approved or corrected decisions to the
+assertion register. A well-formed pending candidate may remain unpublished when
+the corresponding catalogue field is empty; it cannot silently replace a
+populated value. A passing check may include `pending` decisions, so the command
+reports the pending count and the review packet reports publication state.
+
+Identifiers and IIIF endpoints that were already public when this gate was
+introduced remain visible while maintainers audit them. They are not
+automatically approved, and they are not exported as linked-data relationships
+unless they have a row in the assertion register. The comparison prevents new
+unreviewed claims from enlarging this backlog.
 
 ### Identifier evidence check
 
@@ -38,12 +65,36 @@ record describes the right institution or place. Reviewers must assess that
 match using the linked sources. See [Identifier
 research](identifier-research.md) for the research and review workflow.
 
+### IIIF evidence check
+
+The IIIF evidence check reads `research/iiif-evidence.csv`. It requires one
+row for every direct Collection or representative Manifest published in
+`data.json`, plus every pending endpoint proposal in the linked-data pilot.
+Published endpoints use `verified`; unpublished pilot candidates use
+`proposed`.
+
+The direct endpoint must be both `value` and `source_url`. Each row also needs
+a distinct, exact public catalogue, institutional, or item URL that
+corroborates the endpoint's scope, a real check date, and a safe evidence note.
+The check rejects missing, duplicate, extra, or malformed rows. It runs offline
+and cannot prove that the external JSON implements IIIF or describes the right
+resource. A maintainer must inspect both cited sources.
+
+See [IIIF endpoint research](iiif-research.md) for the source criteria and
+review workflow.
+
 ## When validation runs
 
-The system checks your data in two situations:
+The dedicated Data Guardrails workflow checks your data in two situations:
 
 - **Automatically**: When you submit a pull request that changes the library data
 - **On demand**: When you manually request a validation check from the GitHub Actions tab
+
+The deployment workflow repeats the identifier and link-assertion history
+checks when a release reaches `master`. This second gate compares the release
+with the previous `master` revision. It protects published IDs and aliases even
+if a change reaches the deployment workflow outside the normal pull-request
+path.
 
 ## How the format check works
 
@@ -97,6 +148,8 @@ The system verifies:
 3. **IDs are unique**
    - Every record's ID must be a positive whole number
    - No two records may share the same ID
+   - The alias registry must contain the current slug for every ID and must
+     not assign one historical slug to two records
 
 4. **Websites are valid**
    - Website addresses follow proper format: `https://example.com`

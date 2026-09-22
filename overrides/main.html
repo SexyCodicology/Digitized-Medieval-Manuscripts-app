@@ -28,6 +28,13 @@ minimal; page-specific behaviour belongs in the templates that extend it.
 
 {% block extrahead %}
   {{ super() }}
+  {% if page.meta and page.meta.dmm_record_id is defined %}
+    <link rel="alternate" type="application/ld+json"
+          href="{{ config.site_url }}linked-data/records/{{ page.meta.dmm_record_id }}.jsonld">
+  {% endif %}
+  {% if page.meta and page.meta.dmm_alias_target %}
+    <meta http-equiv="refresh" content="0; url={{ page.meta.dmm_alias_target }}">
+  {% endif %}
   <link rel="manifest" href="{{ 'assets/site.webmanifest' | url }}">
   <link rel="apple-touch-icon" href="{{ 'assets/apple-touch-icon.png' | url }}">
 

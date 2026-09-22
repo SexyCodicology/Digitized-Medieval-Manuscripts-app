@@ -15,6 +15,13 @@ The authoritative catalogue remains `docs/assets/data.json`. The accompanying
 was reached. The ledger has one row for every record and identifier field,
 including identifiers that remain absent because the research was unresolved.
 
+Research status is not maintainer approval. Values introduced before the
+approval gate remain public while DMMapp maintainers audit their target and
+scope. Only an exact row in
+[`link-assertions.csv`](assets/link-assertions.csv), backed by a reviewed DMMapp
+pull request, marks a relationship as approved for linked-data publication.
+Every new or changed value requires that approval before merge.
+
 ## Decide whether to add an identifier
 
 Add a value only after you confirm the exact match. Leave the field absent when
@@ -33,21 +40,18 @@ country code, but registered non-country prefixes are valid. The [ISIL
 technical guidance](https://biblstandard.dk/rfid/docs/clarification_28560-3.htm)
 describes those prefixes and the identifier length.
 
-## How these identifiers reach the page
+## How these identifiers reach linked data
 
-Each generated library page also embeds a schema.org `Organization` block
-built from these same three fields. `wikidata_qid` becomes a `sameAs` claim
-on the Organization itself, because it identifies the institution. `isil`
-becomes a named `identifier` (a `PropertyValue`), because it is a code, not a
-URL that a `sameAs` claim requires. `geonames_id` becomes a `sameAs` on a
-nested `Place` under `location` instead of on the Organization, because — as
-the table above already states — it identifies the listed city, not the
-institution; putting it on the Organization would wrongly assert that the
-library and its city are the same thing.
+The generated page embeds a DCAT `CatalogRecord` and a separate catalogued
+access point. The page may display the optional identifier values for readers,
+but their presence in `data.json` does not create a semantic relationship.
 
-A verified `wikidata_qid` therefore makes a public same-thing claim about the
-institution, not just a display link on the page. Give it the same scrutiny
-you give any other published identifier.
+After a maintainer approves a field-level claim in
+`docs/assets/link-assertions.csv`, the downloadable JSON-LD represents it as a
+qualified DCAT relationship. The relationship names its role and retains the
+evidence, review date, reviewer, and pull-request review URL. DMMapp does not
+publish `sameAs`: a directory access point is not identical to its holding
+institution or listed city.
 
 ## Record the decision in the evidence ledger
 
@@ -144,6 +148,8 @@ Review the catalogue and ledger together.
    the gap.
 5. Run the validation commands, or confirm that the `validate-data` GitHub
    check passed on the pull request.
+6. For a new or changed value, confirm that the approved assertion row records
+   the reviewer and the final reviewed pull-request revision.
 
 ## Evidence and review
 

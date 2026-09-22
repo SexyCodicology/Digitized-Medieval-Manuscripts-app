@@ -76,8 +76,12 @@ nav:
       - Overview: docs-home.md
       - Getting Started: getting-started.md
       - Data Schema: schema.md
+      - Linked Data: linked-data.md
+      - Reuse Linked Data: reuse-linked-data.md
+      - Linked-data Audit Pilot: linked-data-pilot.md
       - Update Data: update-data.md
       - Identifier Research: identifier-research.md
+      - IIIF Endpoint Research: iiif-research.md
       - Workflow Validation: workflow-validation.md
       - Link Health Check: workflow-link-checking.md
       - Contributing: contributing.md
@@ -123,12 +127,13 @@ plugins:
         - categories
       image: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/assets/web-app-manifest-512x512.png
 
-# Generates one page per record in docs/assets/data.json at build time.
+# Generates stable and legacy-compatible pages from data.json at build time.
 # The pages are virtual, so they are never written into docs/ or committed,
-# and they are deliberately kept out of `nav` above — 584 sidebar entries
+# and they are deliberately kept out of `nav` above — hundreds of sidebar entries
 # would be unusable. MkDocs still lists them in sitemap.xml.
 hooks:
   - hooks/library_pages.py
+  - hooks/linked_data.py
 
 extra:
   social:

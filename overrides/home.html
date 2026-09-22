@@ -64,6 +64,16 @@ same rows over for searching, sorting, and filtering.
             "@type": "DataDownload",
             "encodingFormat": "application/json",
             "contentUrl": config.site_url ~ "assets/data.json"
+        },
+        {
+            "@type": "DataDownload",
+            "encodingFormat": "application/ld+json",
+            "contentUrl": config.site_url ~ "assets/dmmapp-linked-data.jsonld"
+        },
+        {
+            "@type": "DataDownload",
+            "encodingFormat": "text/csv",
+            "contentUrl": config.site_url ~ "assets/link-assertions.csv"
         }
     ]
 } %}

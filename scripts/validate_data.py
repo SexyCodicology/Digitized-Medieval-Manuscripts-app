@@ -28,6 +28,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_PATH = REPO_ROOT / "schema.json"
 DATA_PATH = REPO_ROOT / "docs" / "assets" / "data.json"
 
+# Reuse the build hook's slug rules so CI and publication cannot disagree about
+# which historical URLs must remain available.
+sys.path.insert(0, str(REPO_ROOT))
+from hooks.library_pages import build_alias_pages, load_alias_registry, PluginError  # noqa: E402
+
 # An aggregator's url is its canonical home page, so the same aggregator must
 # not be recorded with two different URLs across the dataset. schema.json
 # validates one record at a time and cannot express a cross-record rule, so it
@@ -278,6 +283,18 @@ def main() -> int:
     records = load_json(DATA_PATH)
 
     errors = validate(schema, records)
+    if not errors:
+        try:
+            aliases = load_alias_registry(str(REPO_ROOT / "docs"))
+            missing = {str(record["id"]) for record in records} - aliases.keys()
+            if missing:
+                errors.append(
+                    "alias registry has no entry for IDs: " + ", ".join(sorted(missing))
+                )
+            else:
+                build_alias_pages(records, "https://example.org/", aliases)
+        except PluginError as error:
+            errors.append(str(error))
     if errors:
         print(f"Data validation failed with {len(errors)} issue(s):", file=sys.stderr)
         for message in errors:

@@ -73,6 +73,7 @@ Your contribution will be automatically validated against our schema when you su
 4. **URL Format**: The `website` field contains a valid URL
 5. **Enum Values**: The `quantity` and `licence_category` fields use one of the allowed values
 6. **Identifier evidence**: Every record has one ISIL, Wikidata, and GeoNames decision in the evidence ledger
+7. **IIIF evidence**: Every published direct IIIF endpoint has a checked endpoint and exact corroborating page in the IIIF evidence ledger
 
 ### Guidelines
 
@@ -91,6 +92,7 @@ Your contribution will be automatically validated against our schema when you su
 3. **Location**: Use standardized country and city names (English spelling)
 4. **Quantity Estimation**: Choose the category that best matches the collection size — see the [Data Schema](schema.md#approximate-number-of-manuscripts) page for the exact category boundaries
 5. **Identifier evidence**: Add three ledger rows for every new record. Read [Identifier research](identifier-research.md) before adding an ISIL, Wikidata QID, or GeoNames ID.
+6. **IIIF evidence**: Read [IIIF endpoint research](iiif-research.md) before adding a Collection or representative Manifest URL.
 
 ## Contribute code
 
@@ -101,13 +103,22 @@ follows the usual GitHub workflow: fork, branch, and open a pull request.
 
 - `hooks/library_pages.py` — the MkDocs build hook that generates the
   homepage directory table, the alphabetical library index, and one page per
-  library from `docs/assets/data.json`, including that page's schema.org
-  JSON-LD (rendered into `<head>` by `overrides/main.html`)
+  library from `docs/assets/data.json`, including a conservative DCAT record
+  graph rendered into `<head>` by `overrides/main.html`
+- `hooks/linked_data.py` — the build hook that generates per-record and bulk
+  JSON-LD and adds only maintainer-approved external relationships
 - `docs/assets/dashboard.js` / `dashboard.css` — the dashboard's client-side
   search, filtering, sorting, export, and share behavior
-- `scripts/` — `validate_data.py` (schema validation), `apply_link_status.py`
-  (turns the weekly link check into data proposals), and
-  `backfill_licence_category.py`
+- `scripts/` — `validate_data.py` (schema validation);
+  `validate_identifier_evidence.py`, `validate_iiif_evidence.py`, and
+  `validate_link_assertions.py` (check the research and approval ledgers
+  against `data.json`); `validate_linked_data_pilot.py` (checks the 25-record
+  pilot); `verify_identifier_history.py` and `verify_link_assertion_history.py`
+  (reject a pull request that drops a published ID, alias, or approved link);
+  `verify_linked_data.py` and `verify_public_lod.py` (check the built and
+  deployed linked-data release); `report_linked_data_pilot.py` (renders the
+  pilot review packet); `apply_link_status.py` (turns the weekly link check
+  into data proposals); and `backfill_licence_category.py`
 - `tests/` — the pytest suite covering `hooks/` and `scripts/`
 - `docs/assets/dashboard.test.js` — the Node test suite covering
   `dashboard.js`
@@ -126,10 +137,14 @@ on every pull request:
 pip install -r requirements-dev.txt
 python scripts/validate_data.py
 python scripts/validate_identifier_evidence.py
-pytest tests -q
+python scripts/validate_iiif_evidence.py
+python scripts/validate_link_assertions.py
+python scripts/validate_linked_data_pilot.py
+python -m pytest tests -q
 npm ci
 npm test
 mkdocs build --clean
+python scripts/verify_linked_data.py site
 ```
 
 ### Guidelines

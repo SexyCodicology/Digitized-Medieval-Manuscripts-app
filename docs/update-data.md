@@ -71,6 +71,13 @@ Every library entry must include:
 - **is_free_cultural_works_license**: Free license status (`true` or `false`)
 - **aggregators**: The aggregating projects the library is discoverable through, as a list. Use `[]` when there are none.
 
+Each ID has a stable public page. For a new entry, add its name-derived slug
+to [`library-aliases.json`](assets/library-aliases.json) under the new ID. If
+you change a library name, append the new slug under the existing ID and keep
+every older slug. This preserves links shared before the correction. The
+[linked-data guide](linked-data.md) explains the identifier policy. If you are
+unsure of the correct slug, ask a maintainer to prepare this part of the change.
+
 ### Aggregator entries
 
 Each entry in **aggregators** needs a **name** and a **url**. List one entry per
@@ -144,11 +151,17 @@ collection or manuscript. DMMapp labels the resulting detail-page actions as
 **Browse IIIF collection** and **Open example manuscript in IIIF: [label]**;
 it lists the collection action first when both are present.
 
+Record every published direct endpoint in `research/iiif-evidence.csv`. Add the
+direct JSON URL, an exact institutional catalogue or item page, the date you
+checked both, and a short scope note. A generic collection homepage does not
+corroborate a representative Manifest. Follow [IIIF endpoint
+research](iiif-research.md) for the exact columns, statuses, and checks.
+
 ### Optional institutional identifiers
 
-You can add the following optional fields when you can verify them from their
-authoritative source. Do not guess an identifier, and leave the field out when
-you cannot find a reliable match.
+You can add the following optional fields after a DMMapp maintainer reviews
+the exact target and its relationship to the access point. Do not guess an
+identifier, and leave the field out when you cannot find a reliable match.
 
 - **isil**: The library's International Standard Identifier for Libraries,
   written as `<AgencyPrefix>-<LocalCode>`, for example `"GB-OxBodl"`. A
@@ -179,6 +192,68 @@ maintainer to complete those rows in your pull request before merging it.
 
 Follow the [Identifier research](identifier-research.md) guide for the exact
 ledger columns, source criteria, examples, and checks.
+
+### Review an authority or IIIF assertion
+
+Research status and maintainer approval are different. The identifier ledger
+records how a candidate was found; it does not approve the relationship.
+Existing identifier values published before this review gate remain visible
+while the maintainers audit them. Do not describe them as individually
+approved. For each new or changed `isil`, `wikidata_qid`, `geonames_id`,
+`iiif_collection_url`, or `iiif_example_manifest_url`, add one matching row to
+[`link-assertions.csv`](assets/link-assertions.csv). The row records the exact
+value, the authoritative target or endpoint URL, a distinct corroborating
+source for its relationship to this access point, the check date, the
+maintainer's GitHub username (without `@`) and review date, a DMMapp
+pull-request URL, and a short note explaining the relationship. Use real dates
+in `YYYY-MM-DD` format.
+
+Open a draft pull request with the proposed field and supporting source links
+first. Its evidence check will remain red until a maintainer has reviewed the
+claim. After the review, add the approved CSV row with that pull request's
+URL and push the final change. The maintainer then approves the latest push;
+an earlier approval is not enough after the CSV is updated. Do not write a
+reviewer's name or review date before that review has happened.
+
+A reviewer checks the target's type and scope as well as its identifier. A
+DMMapp record is **not** the institution, city, or manuscript. A GeoNames ID
+must identify the place associated with the listed institution, and a IIIF
+Collection must cover the listed access point rather than an entire unrelated
+holding. The CSV validator checks completeness and consistency, not the truth
+of an external claim or the identity of the named reviewer. Use the repository's
+normal pull-request review before merging. If the proposal remains uncertain,
+leave the field and CSV row out; the directory entry remains available.
+
+The validator also checks that a Wikidata source names the approved QID on
+`www.wikidata.org`, that a GeoNames source names the approved numeric ID on a
+GeoNames domain, and that an IIIF source is the exact approved endpoint. These
+checks prevent a field from pointing at the wrong kind of authority target;
+they do not replace the maintainer's semantic review.
+
+The history check compares a pull request with its target branch. Values that
+were already public when this gate was introduced may remain while they are
+audited. Any addition or changed value, including a change to an older IIIF
+endpoint, needs a matching approved row. Approval does not transfer from one
+value, record, or field to another.
+
+**Command safety**: Safe
+
+```bash
+python scripts/validate_link_assertions.py
+python scripts/validate_iiif_evidence.py
+```
+
+For a record in the first linked-data pilot, update its field-level decision in
+[`linked-data-pilot-review.csv`](https://github.com/SexyCodicology/Digitized-Medieval-Manuscripts-app/blob/master/research/linked-data-pilot-review.csv).
+Keep `pending` until the maintainer review has happened. Final `approve` and
+`correct` decisions must match the assertion register's reviewer, date, and PR
+URL.
+
+**Command safety**: Safe
+
+```bash
+python scripts/validate_linked_data_pilot.py
+```
 
 ### Homepage recency fields
 

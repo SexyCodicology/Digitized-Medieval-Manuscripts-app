@@ -13,6 +13,8 @@ on:
       - 'schema.json'
       - 'scripts/**'
       - 'research/identifier-evidence.csv'
+      - 'research/iiif-evidence.csv'
+      - 'research/linked-data-pilot-review.csv'
       - 'requirements.txt'
       - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
@@ -26,6 +28,8 @@ on:
       - 'schema.json'
       - 'scripts/**'
       - 'research/identifier-evidence.csv'
+      - 'research/iiif-evidence.csv'
+      - 'research/linked-data-pilot-review.csv'
       - 'requirements.txt'
       - 'requirements-dev.txt'
       - '.github/workflows/deploy.yml'
@@ -46,6 +50,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
@@ -94,8 +100,33 @@ jobs:
       - name: Validate identifier evidence
         run: python scripts/validate_identifier_evidence.py
 
+      - name: Validate IIIF evidence
+        run: python scripts/validate_iiif_evidence.py
+
+      - name: Validate reviewed link assertions
+        run: python scripts/validate_link_assertions.py
+
+      - name: Validate linked-data pilot decisions
+        run: python scripts/validate_linked_data_pilot.py
+
+      - name: Preserve published identifiers in pull requests
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_identifier_history.py "${{ github.event.pull_request.base.sha }}"
+
+      - name: Preserve published identifiers on master
+        if: github.event_name == 'push'
+        run: python scripts/verify_identifier_history.py "${{ github.event.before }}"
+
+      - name: Require approval for changed links in pull requests
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_link_assertion_history.py "${{ github.event.pull_request.base.sha }}"
+
+      - name: Require approval for changed links on master
+        if: github.event_name == 'push'
+        run: python scripts/verify_link_assertion_history.py "${{ github.event.before }}"
+
       - name: Test Build Hooks
-        run: pytest tests -q
+        run: python -m pytest tests -q
 
       - name: Install dashboard test dependencies
         run: npm ci
@@ -105,6 +136,9 @@ jobs:
 
       - name: Build MkDocs Site
         run: mkdocs build --clean
+
+      - name: Verify linked-data publication
+        run: python scripts/verify_linked_data.py site
 
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
@@ -123,6 +157,17 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/master'
     steps:
+      - name: Checkout release source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up Python for publication check
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
+
+      - name: Verify public linked-data URLs
+        run: python scripts/verify_public_lod.py "${{ steps.deployment.outputs.page_url }}"

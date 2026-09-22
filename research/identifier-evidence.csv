@@ -5,9 +5,9 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 2,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 2,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
 2,geonames_id,8349381,verified,https://sws.geonames.org/8349381/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
-3,isil,AU-ANL,verified,http://www.nla.gov.au/apps/ilrs/?action=IlrsSearch&nuc=ANL,,2026-09-20,Issuing registry names the same institution in Canberra.
-3,wikidata_qid,Q623578,verified,https://www.wikidata.org/wiki/Q623578,https://www.nla.gov.au/,2026-09-20,Exact institution item; country and city agree; official website matches.
-3,geonames_id,2172517,verified,https://sws.geonames.org/2172517/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+3,isil,AU-ANL,verified,https://www.nla.gov.au/apps/libraries/?action=OrgDetails&id=9735,https://www.wikidata.org/wiki/Q623578,2026-09-22,The official NLA directory identifies current NUC ANL and Wikidata Q623578 explicitly lists ISIL AU-ANL for the National Library of Australia. Confirm that this NUC-to-ISIL mapping meets the maintainer's issuing-registry standard before approval.
+3,wikidata_qid,Q623578,verified,https://www.wikidata.org/wiki/Q623578,https://www.library.gov.au/,2026-09-22,Q623578 identifies the National Library of Australia as a national library in Canberra and links its official site. The DMMapp access point also resolves on the NLA domain; the candidate is ready for maintainer review as a holding-institution relationship.
+3,geonames_id,2172517,verified,https://sws.geonames.org/2172517/about.rdf,https://www.nla.gov.au/apps/libraries/?action=OrgDetails&id=9735,2026-09-22,The GeoNames RDF record identifies 2172517 as Canberra in Australia and the official NLA directory identifies the National Library of Australia in Canberra ACT. The candidate is ready for maintainer review as a listed-place relationship.
 4,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 4,wikidata_qid,Q7603406,verified,https://www.wikidata.org/wiki/Q7603406,http://www.slsa.sa.gov.au,2026-09-20,Exact institution item; country and city agree; official website matches.
 4,geonames_id,2078025,verified,https://sws.geonames.org/2078025/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -69,8 +69,8 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 23,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
 23,geonames_id,2792413,verified,https://sws.geonames.org/2792413/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 24,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
-24,wikidata_qid,Q611001,verified,https://www.wikidata.org/wiki/Q611001,http://lib.ugent.be/en,2026-09-20,Exact institution item; country and city agree; official website matches.
-24,geonames_id,2797656,verified,https://sws.geonames.org/2797656/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+24,wikidata_qid,Q611001,verified,https://www.wikidata.org/wiki/Q611001,https://boekentoren.gent/en/articles/bibliothecair-erfgoed-be-lanceert-digitale-erfgoedbib,2026-09-22,Q611001 identifies Ghent University Library in Ghent. The official Boekentoren site states that it provides 585 manuscripts through the Digital Heritage Library and the live MMFC filter names Universiteitsbibliotheek Gent and manuscripts. This access point is distinct from record 29's curated Heritage Gems selection.
+24,geonames_id,2797656,verified,https://sws.geonames.org/2797656/about.rdf,https://lib.ugent.be/en/libraries/,2026-09-22,The GeoNames RDF record identifies 2797656 as Ghent in Belgium and the official library directory places the Book Tower at Rozier 9 in 9000 Gent. The live MMFC filter names Universiteitsbibliotheek Gent and manuscripts; record 29 remains a distinct curated portal.
 25,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 25,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
 25,geonames_id,2792482,verified,https://sws.geonames.org/2792482/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -85,7 +85,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 28,geonames_id,2792482,verified,https://sws.geonames.org/2792482/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 29,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 29,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-29,geonames_id,2797656,verified,https://sws.geonames.org/2797656/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+29,geonames_id,2797656,verified,https://sws.geonames.org/2797656/about.rdf,https://lib.ugent.be/en/libraries/,2026-09-22,The GeoNames RDF record identifies 2797656 as Ghent in Belgium and the provider's official directory lists its Book Tower in Gent. The live Heritage Gems filter names Universiteitsbibliotheek Gent and manuscripts; the candidate is ready for maintainer review while this portal remains distinct from record 24.
 30,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 30,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
 30,geonames_id,2803138,verified,https://sws.geonames.org/2803138/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -121,7 +121,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 43,geonames_id,3067696,verified,https://sws.geonames.org/3067696/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 44,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 44,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-44,geonames_id,3067696,verified,https://sws.geonames.org/3067696/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+44,geonames_id,3067696,verified,https://sws.geonames.org/3067696/about.rdf,https://www.nkp.cz/en/contacts,2026-09-21,GeoNames identifies Prague; the official National Library contact page places the institution in Praha 1.
 45,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 45,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 45,geonames_id,3067696,verified,https://sws.geonames.org/3067696/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -130,7 +130,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 46,geonames_id,3078610,verified,https://sws.geonames.org/3078610/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 47,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 47,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-47,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+47,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,https://www.kb.dk/en/about-us/contact,2026-09-22,GeoNames identifies Copenhagen in Denmark as a national capital; the official Royal Danish Library contact page gives its Copenhagen postal address. The catalogue URL now redirects to the broader Find materials page and needs separate access-point review.
 48,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 48,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 48,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -142,7 +142,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 50,geonames_id,2640729,verified,https://sws.geonames.org/2640729/about.rdf,https://www.wikidata.org/wiki/Q34217,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
 51,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 51,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-51,geonames_id,2640729,verified,https://sws.geonames.org/2640729/about.rdf,https://www.wikidata.org/wiki/Q34217,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+51,geonames_id,2640729,verified,https://sws.geonames.org/2640729/about.rdf,https://visit.bodleian.ox.ac.uk/plan-your-visit/how-to-get-here,2026-09-21,The GeoNames record identifies Oxford and the official visitor guide places the Bodleian Library in Oxford.
 52,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 52,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 52,geonames_id,2643123,verified,https://sws.geonames.org/2643123/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -172,7 +172,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 61,geonames_id,2640729,verified,https://sws.geonames.org/2640729/about.rdf,https://www.wikidata.org/wiki/Q34217,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
 62,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 62,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-62,geonames_id,2640729,verified,https://sws.geonames.org/2640729/about.rdf,https://www.wikidata.org/wiki/Q34217,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+62,geonames_id,2640729,verified,https://sws.geonames.org/2640729/about.rdf,https://visit.bodleian.ox.ac.uk/plan-your-visit/how-to-get-here,2026-09-21,The GeoNames record identifies Oxford and the official Bodleian visitor guide confirms the institutional location; the portal scope remains for maintainer review.
 63,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 63,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 63,geonames_id,2643743,verified,https://sws.geonames.org/2643743/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
@@ -220,7 +220,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 77,geonames_id,658225,verified,https://sws.geonames.org/658225/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 78,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 78,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-78,geonames_id,3021000,verified,https://sws.geonames.org/3021000/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+78,geonames_id,3021000,verified,https://sws.geonames.org/3021000/about.rdf,https://www.douai.fr/bibliotheques-municipales,2026-09-21,GeoNames identifies Douai; the municipal library page locates the main library in Douai.
 79,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 79,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 79,geonames_id,2984114,verified,https://sws.geonames.org/2984114/about.rdf,https://www.wikidata.org/wiki/Q41876,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
@@ -440,9 +440,9 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 153,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 153,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 153,geonames_id,2974389,verified,https://sws.geonames.org/2974389/about.rdf,https://www.wikidata.org/wiki/Q167152,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
-154,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
-154,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-154,geonames_id,,unresolved,,,2026-09-20,4 same-name place candidates; no unique location crosswalk.
+154,isil,,unresolved,,,2026-09-21,The municipal and ARCA pages confirm the institution but do not publish an exact ISIL for this unit.
+154,wikidata_qid,,unresolved,,,2026-09-21,The municipal and ARCA pages confirm the institution but do not establish a unique institution entity.
+154,geonames_id,,unresolved,,,2026-09-21,The official municipal address resolves Castres but no GeoNames candidate was asserted without an exact authority crosswalk.
 155,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 155,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 155,geonames_id,2988507,verified,https://sws.geonames.org/2988507/about.rdf,https://www.wikidata.org/wiki/Q90,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
@@ -658,16 +658,16 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 234,geonames_id,2886242,verified,https://sws.geonames.org/2886242/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 235,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 235,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-235,geonames_id,2950159,verified,https://sws.geonames.org/2950159/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+235,geonames_id,2950159,verified,https://sws.geonames.org/2950159/about.rdf,https://staatsbibliothek-berlin.de/die-staatsbibliothek/standorte,2026-09-21,The GeoNames record identifies Berlin and the library's official locations page lists its two Berlin buildings.
 236,isil,DE-22,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-22.jsonld,,2026-09-20,Issuing registry names the same institution in Bamberg.
 236,wikidata_qid,Q324689,verified,https://www.wikidata.org/wiki/Q324689,https://isil.staatsbibliothek-berlin.de/api/org/DE-22.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
 236,geonames_id,2952984,verified,https://sws.geonames.org/2952984/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 237,isil,DE-16,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-16.jsonld,,2026-09-20,Issuing registry names the same institution in Heidelberg.
 237,wikidata_qid,Q880794,verified,https://www.wikidata.org/wiki/Q880794,https://www.ub.uni-heidelberg.de/,2026-09-20,Exact institution item; country and city agree; official website matches.
 237,geonames_id,2907911,verified,https://sws.geonames.org/2907911/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
-238,isil,DE-61,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-61.jsonld,,2026-09-20,Issuing registry names the same institution in Dusseldorf.
-238,wikidata_qid,Q2496254,verified,https://www.wikidata.org/wiki/Q2496254,http://www.ulb.hhu.de,2026-09-20,Exact institution item; country and city agree; official website matches.
-238,geonames_id,2934246,verified,https://sws.geonames.org/2934246/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+238,isil,DE-61,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-61.jsonld,https://www.ulb.hhu.de/en/the-library/organisation-locations-contact,2026-09-21,The issuing registry and official contact page identify the Düsseldorf University and State Library.
+238,wikidata_qid,Q2496254,verified,https://www.wikidata.org/wiki/Q2496254,https://www.ulb.hhu.de/en/the-library/organisation-locations-contact,2026-09-21,The institution item and official contact page identify the Düsseldorf University and State Library.
+238,geonames_id,2934246,verified,https://sws.geonames.org/2934246/about.rdf,https://www.ulb.hhu.de/en/the-library/organisation-locations-contact,2026-09-21,The GeoNames record identifies Düsseldorf and the official contact page gives a Düsseldorf address.
 239,isil,DE-384,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-384.jsonld,,2026-09-20,Issuing registry names the same institution in Augsburg.
 239,wikidata_qid,Q2496283,verified,https://www.wikidata.org/wiki/Q2496283,https://isil.staatsbibliothek-berlin.de/api/org/DE-384.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
 239,geonames_id,2954172,verified,https://sws.geonames.org/2954172/about.rdf,https://www.wikidata.org/wiki/Q2749,2026-09-20,Exact city item and coordinates confirm the GeoNames populated place.
@@ -731,9 +731,9 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 260,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 260,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
 260,geonames_id,2936974,verified,https://sws.geonames.org/2936974/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
-261,isil,DE-61,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-61.jsonld,,2026-09-20,Issuing registry names the same institution in Dusseldorf.
-261,wikidata_qid,Q2496254,verified,https://www.wikidata.org/wiki/Q2496254,https://isil.staatsbibliothek-berlin.de/api/org/DE-61.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
-261,geonames_id,2934246,verified,https://sws.geonames.org/2934246/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+261,isil,DE-61,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-61.jsonld,https://www.ulb.hhu.de/en/the-library/organisation-locations-contact,2026-09-21,The issuing registry and official contact page identify the institution named by the Handschriftenportal access point.
+261,wikidata_qid,Q2496254,verified,https://www.wikidata.org/wiki/Q2496254,https://www.ulb.hhu.de/en/the-library/organisation-locations-contact,2026-09-21,The institution item and official contact page identify the institution named by the Handschriftenportal access point.
+261,geonames_id,2934246,verified,https://sws.geonames.org/2934246/about.rdf,https://www.ulb.hhu.de/en/the-library/organisation-locations-contact,2026-09-21,The GeoNames record identifies Düsseldorf and the named institution's official contact page gives a Düsseldorf address.
 262,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 262,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 262,geonames_id,2917788,verified,https://sws.geonames.org/2917788/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -749,9 +749,9 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 266,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 266,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 266,geonames_id,2870233,verified,https://sws.geonames.org/2870233/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
-267,isil,DE-12,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-12.jsonld,,2026-09-20,Issuing registry names the same institution in Munich.
+267,isil,DE-12,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-12.jsonld,https://www.bsb-muenchen.de/en/search-and-service/visits-to-the-library/how-to-find-us/,2026-09-21,The issuing registry names the Bayerische Staatsbibliothek and its official visitor page gives the Munich address.
 267,wikidata_qid,Q256507,verified,https://www.wikidata.org/wiki/Q256507,https://isil.staatsbibliothek-berlin.de/api/org/DE-12.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
-267,geonames_id,2867714,verified,https://sws.geonames.org/2867714/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+267,geonames_id,2867714,verified,https://sws.geonames.org/2867714/about.rdf,https://www.bsb-muenchen.de/en/search-and-service/visits-to-the-library/how-to-find-us/,2026-09-21,The GeoNames record identifies Munich and the library's official visitor page gives a Munich address.
 268,isil,DE-2186,verified,https://isil.staatsbibliothek-berlin.de/api/org/DE-2186.jsonld,,2026-09-20,Issuing registry names the same institution in Stralsund.
 268,wikidata_qid,Q966013,verified,https://www.wikidata.org/wiki/Q966013,https://isil.staatsbibliothek-berlin.de/api/org/DE-2186.jsonld,2026-09-20,Exact institution item; country and city agree; issuing registry corroborates.
 268,geonames_id,2826287,verified,https://sws.geonames.org/2826287/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -775,7 +775,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 274,geonames_id,2955272,verified,https://sws.geonames.org/2955272/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 275,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 275,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-275,geonames_id,2950159,verified,https://sws.geonames.org/2950159/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+275,geonames_id,2950159,verified,https://sws.geonames.org/2950159/about.rdf,https://staatsbibliothek-berlin.de/die-staatsbibliothek/standorte,2026-09-21,The GeoNames record identifies Berlin and the named provider's official locations page lists two Berlin buildings; the portal scope remains for maintainer review.
 276,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 276,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 276,geonames_id,2874225,verified,https://sws.geonames.org/2874225/about.rdf,https://www.wikidata.org/wiki/Q1720,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
@@ -901,7 +901,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 317,geonames_id,2964574,verified,https://sws.geonames.org/2964574/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 318,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 318,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-318,geonames_id,2964574,verified,https://sws.geonames.org/2964574/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+318,geonames_id,2964574,verified,https://sws.geonames.org/2964574/about.rdf,https://www.nli.ie/contact,2026-09-21,GeoNames identifies Dublin; the official National Library of Ireland contact page gives its Dublin address.
 319,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 319,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 319,geonames_id,2964574,verified,https://sws.geonames.org/2964574/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1126,7 +1126,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 395,geonames_id,2751773,verified,https://sws.geonames.org/2751773/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 396,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 396,wikidata_qid,,unresolved,,,2026-09-20,Candidate location did not confirm the listed city and country.
-396,geonames_id,11694534,verified,https://sws.geonames.org/11694534/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+396,geonames_id,11694534,verified,https://sws.geonames.org/11694534/about.rdf,https://natlib.govt.nz/wellington/getting-here,2026-09-21,The GeoNames record identifies Thorndon and the library's official directions place its Wellington building in Thorndon.
 397,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 397,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 397,geonames_id,2193733,verified,https://sws.geonames.org/2193733/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1143,8 +1143,8 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 401,wikidata_qid,Q7029922,verified,https://www.wikidata.org/wiki/Q7029922,https://www.bu.umk.pl,2026-09-20,Exact institution item; country and city agree; official website matches.
 401,geonames_id,3083271,verified,https://sws.geonames.org/3083271/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
 402,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
-402,wikidata_qid,Q24101,verified,https://www.wikidata.org/wiki/Q24101,http://www.bj.uj.edu.pl,2026-09-20,Exact institution item; country and city agree; official website matches.
-402,geonames_id,3094802,verified,https://sws.geonames.org/3094802/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+402,wikidata_qid,Q24101,verified,https://www.wikidata.org/wiki/Q24101,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-22,The Wikidata item identifies the Jagiellonian Library as a university library in Krakow and links its official site; the official Jagiellonian Digital Library contact page names Biblioteka Jagiellonska at its Krakow address.
+402,geonames_id,3094802,verified,https://sws.geonames.org/3094802/about.rdf,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-22,GeoNames identifies Krakow in Poland as an administrative-seat populated place; the official Jagiellonian Digital Library contact page gives the library's Krakow address.
 403,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 403,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 403,geonames_id,756135,verified,https://sws.geonames.org/756135/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1165,10 +1165,10 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 408,geonames_id,681290,verified,https://sws.geonames.org/681290/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 409,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 409,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-409,geonames_id,686578,verified,https://sws.geonames.org/686578/about.rdf,https://www.wikidata.org/wiki/Q16897566,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+409,geonames_id,686578,verified,https://sws.geonames.org/686578/about.rdf,https://bibnat.ro/adresa-biblioteca-batthyaneum/,2026-09-21,The GeoNames record identifies Alba Iulia and the National Library of Romania gives the Batthyaneum branch's Alba Iulia address.
 411,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
-411,wikidata_qid,Q1670994,verified,https://www.wikidata.org/wiki/Q1670994,https://www.nls.uk/,2026-09-20,Exact institution item; country and city agree; official website matches.
-411,geonames_id,2650225,verified,https://sws.geonames.org/2650225/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+411,wikidata_qid,Q1670994,verified,https://www.wikidata.org/wiki/Q1670994,https://www.nls.uk/contact/,2026-09-22,The Wikidata item identifies the National Library of Scotland as a national library located in Edinburgh; the official contact page names the institution and gives its Edinburgh address.
+411,geonames_id,2650225,verified,https://sws.geonames.org/2650225/about.rdf,https://www.nls.uk/contact/,2026-09-22,GeoNames identifies Edinburgh with country code GB as an administrative-seat populated place; the official National Library of Scotland contact page gives its Edinburgh address.
 412,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 412,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 412,geonames_id,2651222,verified,https://sws.geonames.org/2651222/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1231,7 +1231,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 432,geonames_id,2693678,verified,https://sws.geonames.org/2693678/about.rdf,https://www.wikidata.org/wiki/Q2167,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
 433,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 433,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-433,geonames_id,2673730,verified,https://sws.geonames.org/2673730/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+433,geonames_id,2673730,verified,https://sws.geonames.org/2673730/about.rdf,https://www.kb.se/om-oss/kort-om-kb/other-languages/suomi.html,2026-09-21,GeoNames identifies Stockholm; the National Library of Sweden page gives its visitor address in Stockholm.
 434,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 434,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 434,geonames_id,2658822,verified,https://sws.geonames.org/2658822/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1471,7 +1471,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 513,geonames_id,5327684,verified,https://sws.geonames.org/5327684/about.rdf,https://www.wikidata.org/wiki/Q484678,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
 515,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 515,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-515,geonames_id,4931972,verified,https://sws.geonames.org/4931972/about.rdf,https://www.wikidata.org/wiki/Q49111,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
+515,geonames_id,4931972,verified,https://sws.geonames.org/4931972/about.rdf,https://library.harvard.edu/libraries/widener,2026-09-21,GeoNames identifies Cambridge; Harvard Library locates its flagship Widener Library in Cambridge.
 516,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 516,wikidata_qid,Q210081,verified,https://www.wikidata.org/wiki/Q210081,https://thewalters.org/,2026-09-20,Exact institution item; country and city agree; official website matches.
 516,geonames_id,4347778,verified,https://sws.geonames.org/4347778/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
@@ -1588,7 +1588,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 573,geonames_id,,unresolved,,,2026-09-20,41 same-name place candidates; no unique location crosswalk.
 574,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 574,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-574,geonames_id,6691831,verified,https://sws.geonames.org/6691831/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+574,geonames_id,6691831,verified,https://sws.geonames.org/6691831/about.rdf,https://www.vaticanlibrary.va/en/the-library/contacts-and-offices.html,2026-09-21,The GeoNames record identifies Vatican City and the Vatican Library's official contact page gives a Vatican City address.
 575,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 575,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 575,geonames_id,2657782,verified,https://sws.geonames.org/2657782/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1702,7 +1702,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 612,geonames_id,2658042,verified,https://sws.geonames.org/2658042/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 613,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 613,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-613,geonames_id,3094802,verified,https://sws.geonames.org/3094802/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
+613,geonames_id,3094802,verified,https://sws.geonames.org/3094802/about.rdf,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-22,GeoNames identifies Krakow in Poland as an administrative-seat populated place; the official Jagiellonian Digital Library contact page gives the library's Krakow address and the e-codices collection facet exposes two manuscript deposits currently held there.
 614,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 614,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 614,geonames_id,2991214,verified,https://sws.geonames.org/2991214/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1855,10 +1855,10 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 668,geonames_id,2964574,verified,https://sws.geonames.org/2964574/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 669,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 669,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-669,geonames_id,2650225,verified,https://sws.geonames.org/2650225/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+669,geonames_id,2650225,verified,https://sws.geonames.org/2650225/about.rdf,https://www.nls.uk/contact/,2026-09-22,GeoNames identifies Edinburgh with country code GB as an administrative-seat populated place; the official library contact page corroborates the institution named by the manuscript-specific ISOS access point.
 670,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 670,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-670,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
+670,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,https://www.kb.dk/en/about-us/contact,2026-09-22,GeoNames identifies Copenhagen in Denmark as a national capital; the official library contact page corroborates the Royal Danish Library named by the manuscript-specific ISOS access point.
 671,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 671,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
 671,geonames_id,2653941,verified,https://sws.geonames.org/2653941/about.rdf,https://www.wikidata.org/wiki/Q350,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.

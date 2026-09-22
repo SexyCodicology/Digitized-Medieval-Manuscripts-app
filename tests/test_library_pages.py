@@ -107,7 +107,7 @@ def test_hostile_library_name_produces_a_safe_slug():
 
 
 def test_hostile_record_content_is_escaped():
-    markdown = hook.build_pages([HOSTILE_RECORD])["libraries/etc-passwd-script-alert-xss-script-quoted-9001.md"]
+    markdown = hook.build_pages([HOSTILE_RECORD])["libraries/id-9001.md"]
     body = markdown.split("---", 2)[2]
 
     # No dataset value opens a tag; the text survives as escaped entities.
@@ -119,7 +119,7 @@ def test_hostile_record_content_is_escaped():
 
 
 def test_hostile_record_front_matter_cannot_break_out():
-    markdown = hook.build_pages([HOSTILE_RECORD])["libraries/etc-passwd-script-alert-xss-script-quoted-9001.md"]
+    markdown = hook.build_pages([HOSTILE_RECORD])["libraries/id-9001.md"]
     meta = _front_matter(markdown)
 
     # MkDocs renders templates without autoescaping, so these two values reach
@@ -170,7 +170,7 @@ def test_safe_urls_are_kept(value):
 
 
 def test_unsafe_links_do_not_become_clickable():
-    markdown = hook.build_pages([HOSTILE_RECORD])["libraries/etc-passwd-script-alert-xss-script-quoted-9001.md"]
+    markdown = hook.build_pages([HOSTILE_RECORD])["libraries/id-9001.md"]
 
     body = markdown.split("---", 2)[2]
 
@@ -234,7 +234,7 @@ def test_report_control_prefills_the_public_record_identity():
         "library_name": ["Bodleian Library"],
         "page_url": [
             "https://sexycodicology.github.io/"
-            "Digitized-Medieval-Manuscripts-app/libraries/bodleian-library-9001/"
+            "Digitized-Medieval-Manuscripts-app/libraries/id-9001/"
         ],
     }
 
@@ -279,7 +279,7 @@ def test_report_control_survives_a_missing_collection_url():
     assert query["page_url"] == [
         "https://sexycodicology.github.io/"
         "Digitized-Medieval-Manuscripts-app/libraries/"
-        "etc-passwd-script-alert-xss-script-quoted-9001/"
+        "id-9001/"
     ]
     assert "None" not in body
 
@@ -362,7 +362,7 @@ def test_external_identifier_rows_are_omitted_when_fields_are_absent():
     assert ">None<" not in body
 
 
-# ── schema.org JSON-LD front matter ───────────────────────────────────────
+# ── conservative DCAT JSON-LD front matter ───────────────────────────────
 
 
 def _structured_data(record: dict) -> dict:
@@ -370,7 +370,11 @@ def _structured_data(record: dict) -> dict:
     return _front_matter(markdown)["structured_data"]
 
 
-def test_structured_data_is_present_with_only_required_fields():
+def _structured_nodes(data: dict) -> dict[str, dict]:
+    return {node["@id"]: node for node in data["@graph"]}
+
+
+def test_structured_data_separates_the_record_from_its_access_point():
     data = _structured_data({
         "id": 12,
         "library": "Bare Library",
@@ -378,41 +382,46 @@ def test_structured_data_is_present_with_only_required_fields():
         "nation": "Nowhere",
     })
 
-    assert data["@context"] == "https://schema.org"
-    assert data["@type"] == "Organization"
-    assert data["@id"] == (
+    assert data["@context"] == hook.linked_data.CONTEXT
+    page = (
         "https://sexycodicology.github.io/"
-        "Digitized-Medieval-Manuscripts-app/libraries/bare-library-12/"
+        "Digitized-Medieval-Manuscripts-app/libraries/id-12/"
     )
-    assert data["name"] == "Bare Library"
-    assert data["address"] == {
-        "@type": "PostalAddress",
-        "addressLocality": "Somewhere",
-        "addressCountry": "Nowhere",
-    }
-    # Nothing to claim identity with, so none of these are invented.
-    assert "sameAs" not in data
-    assert "identifier" not in data
-    assert "location" not in data
-    assert "url" not in data
+    nodes = _structured_nodes(data)
+    record = nodes[page + "#record"]
+    access_point = nodes[page + "#access-point"]
+
+    assert record["@type"] == "dcat:CatalogRecord"
+    assert record["dcterms:identifier"] == "12"
+    assert record["foaf:primaryTopic"] == {"@id": access_point["@id"]}
+    assert access_point["@type"] == "dcat:Resource"
+    assert access_point["dcterms:title"] == "Bare Library"
 
 
-def test_structured_data_uses_website_as_the_organization_url():
+def test_structured_data_uses_website_as_the_access_point_landing_page():
     data = _structured_data({
         **HOSTILE_RECORD, "library": "Example Library",
         "website": "https://example.org/manuscripts",
     })
+    access_point = next(
+        node for node in data["@graph"] if node["@type"] == "dcat:Resource"
+    )
 
-    assert data["url"] == "https://example.org/manuscripts"
+    assert access_point["dcat:landingPage"] == {
+        "@id": "https://example.org/manuscripts"
+    }
 
 
 def test_structured_data_drops_an_unsafe_website():
     data = _structured_data({**HOSTILE_RECORD, "website": "javascript:alert(1)"})
+    access_point = next(
+        node for node in data["@graph"] if node["@type"] == "dcat:Resource"
+    )
 
-    assert "url" not in data
+    assert "dcat:landingPage" not in access_point
 
 
-def test_structured_data_wikidata_is_the_only_top_level_sameas():
+def test_structured_data_omits_unreviewed_authority_values():
     data = _structured_data({
         **HOSTILE_RECORD,
         "wikidata_qid": "Q1131283",
@@ -420,33 +429,11 @@ def test_structured_data_wikidata_is_the_only_top_level_sameas():
         "isil": "GB-OxBodl",
     })
 
-    # Wikidata identifies the institution itself, so it is a same-thing claim
-    # about the Organization node.
-    assert data["sameAs"] == ["https://www.wikidata.org/wiki/Q1131283"]
-
-
-def test_structured_data_geonames_identifies_the_location_not_the_institution():
-    data = _structured_data({**HOSTILE_RECORD, "geonames_id": 2640729})
-
-    # geonames_id names the library's location, so its sameAs claim belongs
-    # to a nested Place, never to the Organization itself — claiming the
-    # library "is the same thing as" its city would be a category error.
-    assert "sameAs" not in data or "geonames.org" not in str(data.get("sameAs"))
-    assert data["location"] == {
-        "@type": "Place",
-        "sameAs": "https://www.geonames.org/2640729",
-    }
-
-
-def test_structured_data_isil_is_a_property_value_not_a_sameas():
-    data = _structured_data({**HOSTILE_RECORD, "isil": "GB-OxBodl"})
-
-    # ISIL is a bare code with no single dereferenceable per-record URL, so
-    # it is a named identifier, not a (URL-only) sameAs claim.
-    assert data["identifier"] == [
-        {"@type": "PropertyValue", "propertyID": "ISIL", "value": "GB-OxBodl"}
-    ]
-    assert "GB-OxBodl" not in [entry for entry in data.get("sameAs", [])]
+    serialized = json.dumps(data)
+    assert "Q1131283" not in serialized
+    assert "2640729" not in serialized
+    assert "GB-OxBodl" not in serialized
+    assert "sameAs" not in serialized
 
 
 def test_structured_data_id_matches_the_report_data_issue_page_url():
@@ -455,7 +442,12 @@ def test_structured_data_id_matches_the_report_data_issue_page_url():
     data = _structured_data(record)
     query = _report_data_issue_query(_page_body(record))
 
-    assert data["@id"] == query["page_url"][0]
+    page = query["page_url"][0]
+    assert page.endswith("/libraries/id-9001/")
+    assert {node["@id"] for node in data["@graph"]} == {
+        page + "#record",
+        page + "#access-point",
+    }
 
 
 def test_rights_row_shows_verbatim_and_normalised_category():
@@ -578,7 +570,7 @@ def test_identical_library_names_get_distinct_slugs_and_titles():
     ]
     pages = hook.build_pages(twins)
 
-    assert set(pages) == {"libraries/stadtbibliothek-1.md", "libraries/stadtbibliothek-2.md"}
+    assert set(pages) == {"libraries/id-1.md", "libraries/id-2.md"}
 
     titles = [_front_matter(markdown)["title"] for markdown in pages.values()]
     assert len(set(titles)) == 2
@@ -595,6 +587,39 @@ def test_records_differing_only_by_id_still_get_unique_metadata():
 
     assert len({entry["title"] for entry in meta}) == 3
     assert len({entry["description"] for entry in meta}) == 3
+
+
+def test_alias_registry_preserves_current_slugs_and_accepts_earlier_names(records):
+    registry = hook.load_alias_registry(str(DOCS_DIR))
+
+    assert len(registry) == len(records)
+    assert all(hook.slug_for(record) in registry[str(record["id"])] for record in records)
+
+    renamed = {**records[0], "library": "A corrected institutional name"}
+    with pytest.raises(hook.PluginError, match="missing its current slug"):
+        hook.build_alias_pages([renamed], "https://example.org/", {
+            str(renamed["id"]): [hook.slug_for(records[0])]
+        })
+
+    pages = hook.build_alias_pages([renamed], "https://example.org/", {
+        str(renamed["id"]): [hook.slug_for(records[0]), hook.slug_for(renamed)]
+    })
+    assert len(pages) == 2
+    assert all(f"../id-{renamed['id']}/" in page for page in pages.values())
+
+
+def test_alias_collision_and_retired_id_are_handled_explicitly():
+    record = {**HOSTILE_RECORD, "id": 2, "library": "Example"}
+    with pytest.raises(hook.PluginError, match="collides"):
+        hook.build_alias_pages([record], "https://example.org/", {
+            "1": [hook.slug_for(record)],
+            "2": [hook.slug_for(record)],
+        })
+
+    retired = hook.render_retired_page("1")
+    assert "Retired directory record 1" in retired
+    assert "dmm_record_id: 1" in retired
+    assert "no longer lists this access point" in retired
 
 
 # ── External dependency failure ───────────────────────────────────────────
@@ -645,7 +670,7 @@ def test_a_missing_dataset_fails_the_build(tmp_path):
 def test_nav_lists_the_library_index_but_not_generated_library_pages():
     config = yaml.safe_load((REPO_ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
 
-    assert config["hooks"] == ["hooks/library_pages.py"]
+    assert config["hooks"] == ["hooks/library_pages.py", "hooks/linked_data.py"]
     assert hook.OUTPUT_DIR not in yaml.safe_dump(config["nav"])
     assert {"Library Index": hook.LIBRARY_INDEX_URI} in config["nav"]
     assert len(config["nav"]) == 7
@@ -677,14 +702,24 @@ def built_site(tmp_path_factory) -> Path:
         HOSTILE_RECORD,
     ]
     (docs / "assets" / "data.json").write_text(json.dumps(dataset), encoding="utf-8")
+    (docs / "assets" / "library-aliases.json").write_text(
+        json.dumps({
+            "1": ["bodleian-library-1"],
+            "9001": ["etc-passwd-script-alert-xss-script-quoted-9001"],
+        }),
+        encoding="utf-8",
+    )
     (docs / "index.md").write_text("# Directory\n", encoding="utf-8")
     (project / "mkdocs.yml").write_text(
         "site_name: Test\n"
         "site_url: https://example.org/\n"
         "docs_dir: docs\n"
         "theme:\n  name: material\n"
+        f"  custom_dir: {(REPO_ROOT / 'overrides').as_posix()}\n"
         "nav:\n  - Home: index.md\n  - Library index: library-index.md\n"
-        f"hooks:\n  - {(REPO_ROOT / 'hooks' / 'library_pages.py').as_posix()}\n",
+        "hooks:\n"
+        f"  - {(REPO_ROOT / 'hooks' / 'library_pages.py').as_posix()}\n"
+        f"  - {(REPO_ROOT / 'hooks' / 'linked_data.py').as_posix()}\n",
         encoding="utf-8",
     )
 
@@ -698,18 +733,20 @@ def built_site(tmp_path_factory) -> Path:
     return project / "site"
 
 
-def test_build_emits_one_page_per_record(built_site):
+def test_build_emits_id_pages_and_legacy_aliases(built_site):
     assert sorted(path.name for path in (built_site / "libraries").iterdir()) == [
         "bodleian-library-1",
         "etc-passwd-script-alert-xss-script-quoted-9001",
+        "id-1",
+        "id-9001",
     ]
 
 
 def test_generated_pages_reach_the_sitemap(built_site):
     sitemap = (built_site / "sitemap.xml").read_text(encoding="utf-8")
 
-    assert "https://example.org/libraries/bodleian-library-1/" in sitemap
-    assert "https://example.org/libraries/etc-passwd-script-alert-xss-script-quoted-9001/" in sitemap
+    assert "https://example.org/libraries/id-1/" in sitemap
+    assert "https://example.org/libraries/id-9001/" in sitemap
 
 
 def test_library_index_lists_every_record_and_reaches_the_sitemap(built_site):
@@ -719,14 +756,14 @@ def test_library_index_lists_every_record_and_reaches_the_sitemap(built_site):
     hrefs = re.findall(r'<li><a href="([^\"]+)">', index)
 
     assert hrefs == [
-        "../libraries/bodleian-library-1/",
-        "../libraries/etc-passwd-script-alert-xss-script-quoted-9001/",
+        "../libraries/id-1/",
+        "../libraries/id-9001/",
     ]
     assert [
         urljoin("https://example.org/DMMapp/library-index/", href) for href in hrefs
     ] == [
-        "https://example.org/DMMapp/libraries/bodleian-library-1/",
-        "https://example.org/DMMapp/libraries/etc-passwd-script-alert-xss-script-quoted-9001/",
+        "https://example.org/DMMapp/libraries/id-1/",
+        "https://example.org/DMMapp/libraries/id-9001/",
     ]
     assert "https://example.org/library-index/" in sitemap
 
@@ -767,7 +804,7 @@ def test_homepage_library_index_link_uses_the_button_style():
 
 def test_built_pages_carry_unique_seo_metadata(built_site):
     titles, descriptions = set(), set()
-    for page in (built_site / "libraries").glob("*/index.html"):
+    for page in (built_site / "libraries").glob("id-*/index.html"):
         html = page.read_text(encoding="utf-8")
         titles.add(re.search(r"<title>(.*?)</title>", html, re.S).group(1))
         descriptions.add(
@@ -780,7 +817,7 @@ def test_built_pages_carry_unique_seo_metadata(built_site):
 
 def test_hostile_record_injects_nothing_into_the_built_page(built_site):
     html = (
-        built_site / "libraries" / "etc-passwd-script-alert-xss-script-quoted-9001" / "index.html"
+        built_site / "libraries" / "id-9001" / "index.html"
     ).read_text(encoding="utf-8")
 
     # MkDocs renders templates without autoescaping, so the two front-matter
@@ -798,7 +835,7 @@ def test_hostile_record_injects_nothing_into_the_built_page(built_site):
     assert "data:text/html" not in html
 
 
-# ── schema.org JSON-LD in the built page (real theme overrides) ───────────
+# ── conservative DCAT JSON-LD in the built page ──────────────────────────
 
 
 @pytest.fixture(scope="module")
@@ -833,6 +870,13 @@ def built_site_with_overrides(tmp_path_factory) -> Path:
         HOSTILE_RECORD,
     ]
     (docs / "assets" / "data.json").write_text(json.dumps(dataset), encoding="utf-8")
+    (docs / "assets" / "library-aliases.json").write_text(
+        json.dumps({
+            "1": ["bodleian-library-1"],
+            "9001": ["etc-passwd-script-alert-xss-script-quoted-9001"],
+        }),
+        encoding="utf-8",
+    )
     (docs / "index.md").write_text("# Directory\n", encoding="utf-8")
     (project / "mkdocs.yml").write_text(
         "site_name: Test\n"
@@ -863,38 +907,36 @@ def _ld_json_blocks(html: str) -> list[dict]:
     ]
 
 
-def test_the_built_library_page_ships_organization_jsonld(built_site_with_overrides):
+def test_the_built_library_page_ships_conservative_dcat_jsonld(
+    built_site_with_overrides,
+):
     html = (
-        built_site_with_overrides / "libraries" / "bodleian-library-1" / "index.html"
+        built_site_with_overrides / "libraries" / "id-1" / "index.html"
     ).read_text(encoding="utf-8")
 
     blocks = _ld_json_blocks(html)
-    organizations = [block for block in blocks if block.get("@type") == "Organization"]
-    assert len(organizations) == 1
+    documents = [block for block in blocks if "@graph" in block]
+    assert len(documents) == 1
 
-    data = organizations[0]
-    assert data["name"] == "Bodleian Library"
-    assert data["url"] == "https://digital.bodleian.ox.ac.uk"
-    assert data["address"] == {
-        "@type": "PostalAddress",
-        "addressLocality": "Oxford",
-        "addressCountry": "United Kingdom",
+    data = documents[0]
+    nodes = _structured_nodes(data)
+    page = hook.SITE_URL + "libraries/id-1/"
+    assert nodes[page + "#record"]["@type"] == "dcat:CatalogRecord"
+    assert nodes[page + "#access-point"]["dcat:landingPage"] == {
+        "@id": "https://digital.bodleian.ox.ac.uk"
     }
-    assert data["sameAs"] == ["https://www.wikidata.org/wiki/Q1131283"]
-    assert data["location"] == {
-        "@type": "Place",
-        "sameAs": "https://www.geonames.org/2640729",
-    }
-    assert data["identifier"] == [
-        {"@type": "PropertyValue", "propertyID": "ISIL", "value": "GB-OxBodl"}
-    ]
+    serialized = json.dumps(data)
+    assert "Q1131283" not in serialized
+    assert "GB-OxBodl" not in serialized
+    assert "2640729" not in serialized
+    assert "sameAs" not in serialized
 
 
 def test_the_hostile_records_jsonld_stays_valid_json_and_inert(built_site_with_overrides):
     html = (
         built_site_with_overrides
         / "libraries"
-        / "etc-passwd-script-alert-xss-script-quoted-9001"
+        / "id-9001"
         / "index.html"
     ).read_text(encoding="utf-8")
 
@@ -907,9 +949,14 @@ def test_the_hostile_records_jsonld_stays_valid_json_and_inert(built_site_with_o
     for raw in raw_blocks:
         assert "<script" not in raw.lower()
 
-    organizations = [block for block in _ld_json_blocks(html) if block.get("@type") == "Organization"]
-    assert len(organizations) == 1
-    assert "script" in organizations[0]["name"]  # the raw value survived, just inert
+    documents = [block for block in _ld_json_blocks(html) if "@graph" in block]
+    assert len(documents) == 1
+    titles = [
+        node["dcterms:title"]
+        for node in documents[0]["@graph"]
+        if "dcterms:title" in node
+    ]
+    assert any("script" in title for title in titles)
 
 
 def test_the_slug_map_matches_the_generated_pages(built_site):
@@ -921,6 +968,21 @@ def test_the_slug_map_matches_the_generated_pages(built_site):
     }
     for slug in slugs.values():
         assert (built_site / "libraries" / slug / "index.html").is_file()
+
+
+def test_stable_pages_offer_rdf_and_aliases_resolve_to_them(built_site):
+    stable = (built_site / "libraries" / "id-1" / "index.html").read_text(encoding="utf-8")
+    alias = (built_site / "libraries" / "bodleian-library-1" / "index.html").read_text(
+        encoding="utf-8"
+    )
+
+    assert 'rel="canonical" href="https://example.org/libraries/id-1/"' in stable
+    assert 'rel="alternate" type="application/ld+json"' in stable
+    assert 'https://example.org/linked-data/records/1.jsonld' in stable
+    assert 'rel="canonical" href="https://example.org/libraries/id-1/"' in alias
+    assert 'http-equiv="refresh" content="0; url=https://example.org/libraries/id-1/"' in alias
+    assert (built_site / "linked-data" / "records" / "1.jsonld").is_file()
+    assert (built_site / "assets" / "dmmapp-linked-data.jsonld").is_file()
 
 
 # ── Broken-link status on a generated page ────────────────────────────────

@@ -4,8 +4,8 @@
 # and on manual dispatch. Runs scripts/validate_data.py, the same entry
 # point .github/workflows/deploy.yml runs before building the site, which
 # checks JSON syntax, schema compliance (required fields, data types, HTTP(S)
-# URLs), duplicate ids, and aggregator name/URL uniqueness. Also checks that
-# the identifier research ledger covers every record and matches data.json.
+# URLs), duplicate ids, and aggregator name/URL uniqueness. It also checks the
+# research ledger, reviewed assertions, stable aliases, and publication history.
 
 name: Data Guardrails
 
@@ -13,10 +13,20 @@ on:
   pull_request:
     paths:
       - 'docs/assets/data.json'
+      - 'docs/assets/library-aliases.json'
       - 'schema.json'
       - 'scripts/validate_data.py'
+      - 'hooks/library_pages.py'
       - 'scripts/validate_identifier_evidence.py'
+      - 'scripts/validate_iiif_evidence.py'
+      - 'scripts/validate_link_assertions.py'
+      - 'scripts/validate_linked_data_pilot.py'
+      - 'scripts/verify_identifier_history.py'
+      - 'scripts/verify_link_assertion_history.py'
       - 'research/identifier-evidence.csv'
+      - 'research/iiif-evidence.csv'
+      - 'research/linked-data-pilot-review.csv'
+      - 'docs/assets/link-assertions.csv'
   workflow_dispatch:
 
 permissions:
@@ -29,6 +39,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -45,3 +57,20 @@ jobs:
 
       - name: Validate identifier evidence
         run: python scripts/validate_identifier_evidence.py
+
+      - name: Validate IIIF evidence
+        run: python scripts/validate_iiif_evidence.py
+
+      - name: Validate reviewed link assertions
+        run: python scripts/validate_link_assertions.py
+
+      - name: Validate linked-data pilot decisions
+        run: python scripts/validate_linked_data_pilot.py
+
+      - name: Preserve published identifiers
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_identifier_history.py "${{ github.event.pull_request.base.sha }}"
+
+      - name: Require approval for changed links
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_link_assertion_history.py "${{ github.event.pull_request.base.sha }}"

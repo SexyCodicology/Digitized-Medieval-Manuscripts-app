@@ -590,7 +590,7 @@
   color: var(--md-default-fg-color);
 }
 
-/* The name links to the library's own generated page (libraries/<slug>/). */
+/* The name links to the library's stable generated page (libraries/id-<id>/). */
 a.library-name {
   display: block;
   text-decoration: none;

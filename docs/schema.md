@@ -37,11 +37,17 @@ These fields are essential to create a reliable, searchable directory.
 
 #### ID number
 
-A unique number that identifies this library in our database. IDs are assigned sequentially.
+A unique number that identifies this directory entry. New IDs need not be
+sequential; gaps are valid, and a retired ID must never be reused.
 
 **Example:** `502`
 
 **Why it matters:** This number prevents duplicate entries and ensures accurate record tracking.
+
+The public page uses `/libraries/id-<id>/` so a name correction does not change
+the record's address. Never reuse a retired ID. See [Linked data and persistent
+identifiers](linked-data.md) for the difference between a DMMapp record and a
+source institution.
 
 ### Optional institutional identifiers
 
@@ -55,12 +61,15 @@ reason for each of the three fields on every record. Its check confirms that
 the ledger agrees with `data.json`; a maintainer still checks whether a source
 describes the correct institution or place. See [Identifier
 research](identifier-research.md) for the required rows and review workflow.
+Existing values may be awaiting that semantic review. Only values listed in
+the approved [link assertion register](assets/link-assertions.csv) are emitted
+as linked-data relationships.
 
-Each generated library page also publishes these three fields as schema.org
-JSON-LD — as a `sameAs`, a named `identifier`, or a nested `location`,
-depending on what the field identifies. See [how these identifiers reach the
-page](identifier-research.md#how-these-identifiers-reach-the-page) for the
-mapping.
+Each generated library page embeds the DMMapp record and its catalogued access
+point as separate DCAT resources. Optional identifiers become qualified
+linked-data relationships only after a maintainer approves their role and
+evidence in the public assertion register. See [how identifiers reach linked
+data](identifier-research.md#how-these-identifiers-reach-linked-data).
 
 #### ISIL
 
