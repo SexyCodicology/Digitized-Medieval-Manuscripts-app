@@ -63,6 +63,48 @@ def fetch_text(url: str) -> str:
     return body.decode("utf-8")
 
 
+def fetch_content_type(url: str) -> str:
+    """Read one public file's Content-Type header without its body."""
+    request = Request(
+        url, method="HEAD", headers={"User-Agent": "DMMapp-release-check/1.0"}
+    )
+    with urlopen(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
+        if response.status != 200:
+            raise ValueError(f"{url} returned HTTP {response.status}")
+        return response.headers.get("Content-Type", "")
+
+
+def content_type_errors(
+    base_url: str,
+    records: list[dict[str, Any]],
+    fetch_type: Callable[[str], str],
+) -> list[str]:
+    """Report distribution URLs whose Content-Type disagrees with their format.
+
+    GitHub Pages may serve JSON-LD with a generic content type (see
+    docs/linked-data.md); this turns that documented uncertainty into a
+    checked fact on every deployment instead of an unverified assumption.
+    """
+    base = base_url.rstrip("/") + "/"
+    checks = [
+        (base + "assets/dmmapp-linked-data.jsonld", "application/ld+json"),
+        (base + "assets/link-assertions.csv", "text/csv"),
+    ]
+    checks.extend(
+        (base + f"linked-data/records/{record_id}.jsonld", "application/ld+json")
+        for record_id in sample_ids(records)
+    )
+    errors = []
+    for url, expected in checks:
+        actual = fetch_type(url).split(";", 1)[0].strip()
+        if actual != expected:
+            errors.append(
+                f"{url} served Content-Type {actual or '(missing)'!r}, "
+                f"expected {expected!r}"
+            )
+    return errors
+
+
 def sample_ids(records: list[dict[str, Any]]) -> list[str]:
     """Select first, middle, and last IDs without relying on dataset order."""
     ids = sorted(record["id"] for record in records)
@@ -195,6 +237,7 @@ def main() -> int:
                 assertions,
                 fetch_text,
             )
+            errors += content_type_errors(options.base_url, records, fetch_content_type)
         except (OSError, ValueError, UnicodeError, ElementTree.ParseError) as error:
             errors = [str(error)]
         if not errors:

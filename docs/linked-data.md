@@ -50,9 +50,13 @@ It distinguishes a `dcat:CatalogRecord`—DMMapp's metadata entry—from a
 identity claim. The bulk catalogue links to both its metadata records and the
 access points they describe. It also lists the available distributions. These
 are static files rebuilt with the site, not a live API or SPARQL endpoint.
-GitHub Pages may serve JSON-LD with a generic content type;
-clients should parse the linked files as JSON-LD rather than assume HTTP
-content negotiation.
+GitHub Pages does not offer HTTP content negotiation; clients should parse the
+linked files as JSON-LD by their known path rather than by requesting a
+particular `Accept` type. The post-deployment smoke check
+(`scripts/verify_public_lod.py`) confirms the served `Content-Type` header on
+the bulk JSON-LD, a sample of per-record JSON-LD files, and the assertion CSV,
+so a hosting change that starts serving them generically fails the release
+check instead of going unnoticed.
 
 The site's CC0 dedication applies to DMMapp's directory data and content. It
 does **not** grant rights to manuscripts, images, or metadata hosted by linked

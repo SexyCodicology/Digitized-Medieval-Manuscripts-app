@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 
 from hooks.linked_data import bulk_jsonld, record_jsonld
-from scripts.verify_public_lod import inspect_site, sample_ids
+from scripts.verify_public_lod import content_type_errors, inspect_site, sample_ids
 
 BASE = "https://example.org/dmmapp/"
 RECORDS = [
@@ -98,3 +98,36 @@ def test_public_release_rejects_a_stale_assertion_register():
     errors = inspect_site(BASE, RECORDS, ALIASES, ASSERTIONS, remote.__getitem__)
 
     assert "public link assertion register does not match the release" in errors
+
+
+def content_types() -> dict[str, str]:
+    """Represent a release whose distributions serve the expected media types."""
+    result = {
+        BASE + "assets/dmmapp-linked-data.jsonld": "application/ld+json; charset=utf-8",
+        BASE + "assets/link-assertions.csv": "text/csv",
+    }
+    for record_id in sample_ids(RECORDS):
+        result[BASE + f"linked-data/records/{record_id}.jsonld"] = "application/ld+json"
+    return result
+
+
+def test_content_type_errors_accepts_correctly_served_distributions():
+    assert content_type_errors(BASE, RECORDS, content_types().__getitem__) == []
+
+
+def test_content_type_errors_rejects_a_generic_media_type():
+    remote = content_types()
+    remote[BASE + "assets/dmmapp-linked-data.jsonld"] = "application/octet-stream"
+    remote[BASE + "assets/link-assertions.csv"] = ""
+
+    errors = content_type_errors(BASE, RECORDS, remote.__getitem__)
+
+    assert any(
+        "assets/dmmapp-linked-data.jsonld served Content-Type 'application/octet-stream'"
+        in error
+        for error in errors
+    )
+    assert any(
+        "assets/link-assertions.csv served Content-Type '(missing)'" in error
+        for error in errors
+    )
