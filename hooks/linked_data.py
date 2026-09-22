@@ -45,6 +45,7 @@ ROLE_FRAGMENTS = {
     "iiif_collection_url": "iiif-collection",
     "iiif_example_manifest_url": "iiif-example-manifest",
 }
+ACCESS_POINT_TYPE_FRAGMENT = "directory-access-point"
 
 
 def site_base(site_url: str) -> str:
@@ -85,6 +86,9 @@ def record_graph(
     access_point: dict[str, Any] = {
         "@id": base + "#access-point",
         "@type": "dcat:Resource",
+        "dcterms:type": {
+            "@id": site_base(site_url) + "linked-data/#" + ACCESS_POINT_TYPE_FRAGMENT
+        },
         "dcterms:title": record["library"],
         "dcterms:description": (
             "A directory-listed access point to digitized medieval manuscripts "

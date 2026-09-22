@@ -21,7 +21,11 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from hooks.linked_data import ROLE_FRAGMENTS, assertion_target  # noqa: E402
+from hooks.linked_data import (  # noqa: E402
+    ACCESS_POINT_TYPE_FRAGMENT,
+    ROLE_FRAGMENTS,
+    assertion_target,
+)
 
 DCAT = Namespace("http://www.w3.org/ns/dcat#")
 DCTERMS = Namespace("http://purl.org/dc/terms/")
@@ -111,6 +115,9 @@ def verify(
             errors.append(f"record {record_id} lacks its bulk access-point link")
         if (resource_uri, RDF.type, DCAT.Resource) not in record_graph:
             errors.append(f"record {record_id} has no DCAT access point")
+        access_point_type = URIRef(base + "linked-data/#" + ACCESS_POINT_TYPE_FRAGMENT)
+        if (resource_uri, DCTERMS.type, access_point_type) not in record_graph:
+            errors.append(f"record {record_id} lacks its dcterms:type")
         if (record_uri, DCTERMS.identifier, Literal(record_id)) not in record_graph:
             errors.append(f"record {record_id} has the wrong identifier")
         if list(record_graph.triples((resource_uri, DCTERMS.license, None))):

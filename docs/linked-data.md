@@ -96,6 +96,20 @@ with `dcat:hadRole`. This describes a scoped relationship without claiming
 that the DMMapp entry, institution, place, or IIIF resource is identical to
 another resource.
 
+## Resource types
+
+DCAT's `dcat:Resource` class is not meant to be used directly on an instance;
+the [DCAT vocabulary](https://www.w3.org/TR/vocab-dcat-3/) recommends either a
+more specific sub-class or a `dcterms:type` value naming the resource's kind.
+DMMapp is not a `dcat:Dataset` publisher or a `dcat:DataService`, so every
+access point carries the following `dcterms:type` instead.
+
+### Directory access point
+
+`#directory-access-point` means the described `dcat:Resource` is a DMMapp
+directory entry for an online access point. It does not mean the resource is
+a downloadable dataset or a live data service.
+
 ## Approved relationship roles
 
 The following DMMapp role identifiers form a small controlled vocabulary.

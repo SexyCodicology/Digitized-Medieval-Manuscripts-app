@@ -49,6 +49,11 @@ def test_record_graph_distinguishes_metadata_from_access_point():
     assert (access_point, RDF.type, DCAT.Resource) in graph
     assert (
         access_point,
+        DCTERMS.type,
+        URIRef(SITE_URL + "linked-data/#" + linked_data.ACCESS_POINT_TYPE_FRAGMENT),
+    ) in graph
+    assert (
+        access_point,
         DCAT.landingPage,
         URIRef("https://source.example.org/manuscripts"),
     ) in graph
