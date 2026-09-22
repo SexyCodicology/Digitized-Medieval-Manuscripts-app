@@ -18,11 +18,13 @@ on:
       - 'scripts/validate_data.py'
       - 'hooks/library_pages.py'
       - 'scripts/validate_identifier_evidence.py'
+      - 'scripts/validate_iiif_evidence.py'
       - 'scripts/validate_link_assertions.py'
       - 'scripts/validate_linked_data_pilot.py'
       - 'scripts/verify_identifier_history.py'
       - 'scripts/verify_link_assertion_history.py'
       - 'research/identifier-evidence.csv'
+      - 'research/iiif-evidence.csv'
       - 'research/linked-data-pilot-review.csv'
       - 'docs/assets/link-assertions.csv'
   workflow_dispatch:
@@ -55,6 +57,9 @@ jobs:
 
       - name: Validate identifier evidence
         run: python scripts/validate_identifier_evidence.py
+
+      - name: Validate IIIF evidence
+        run: python scripts/validate_iiif_evidence.py
 
       - name: Validate reviewed link assertions
         run: python scripts/validate_link_assertions.py

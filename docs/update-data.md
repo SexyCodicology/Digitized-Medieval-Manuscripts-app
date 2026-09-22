@@ -151,6 +151,12 @@ collection or manuscript. DMMapp labels the resulting detail-page actions as
 **Browse IIIF collection** and **Open example manuscript in IIIF: [label]**;
 it lists the collection action first when both are present.
 
+Record every published direct endpoint in `research/iiif-evidence.csv`. Add the
+direct JSON URL, an exact institutional catalogue or item page, the date you
+checked both, and a short scope note. A generic collection homepage does not
+corroborate a representative Manifest. Follow [IIIF endpoint
+research](iiif-research.md) for the exact columns, statuses, and checks.
+
 ### Optional institutional identifiers
 
 You can add the following optional fields after a DMMapp maintainer reviews
@@ -234,6 +240,7 @@ value, record, or field to another.
 
 ```bash
 python scripts/validate_link_assertions.py
+python scripts/validate_iiif_evidence.py
 ```
 
 For a record in the first linked-data pilot, update its field-level decision in

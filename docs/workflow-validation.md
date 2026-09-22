@@ -65,6 +65,24 @@ record describes the right institution or place. Reviewers must assess that
 match using the linked sources. See [Identifier
 research](identifier-research.md) for the research and review workflow.
 
+### IIIF evidence check
+
+The IIIF evidence check reads `research/iiif-evidence.csv`. It requires one
+row for every direct Collection or representative Manifest published in
+`data.json`, plus every pending endpoint proposal in the linked-data pilot.
+Published endpoints use `verified`; unpublished pilot candidates use
+`proposed`.
+
+The direct endpoint must be both `value` and `source_url`. Each row also needs
+a distinct, exact public catalogue, institutional, or item URL that
+corroborates the endpoint's scope, a real check date, and a safe evidence note.
+The check rejects missing, duplicate, extra, or malformed rows. It runs offline
+and cannot prove that the external JSON implements IIIF or describes the right
+resource. A maintainer must inspect both cited sources.
+
+See [IIIF endpoint research](iiif-research.md) for the source criteria and
+review workflow.
+
 ## When validation runs
 
 The dedicated Data Guardrails workflow checks your data in two situations:

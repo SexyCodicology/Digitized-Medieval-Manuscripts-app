@@ -55,16 +55,18 @@ the public record name and values.
 
 ## Review one record
 
-1. Open the record in `data.json` and all three matching rows in
-   `research/identifier-evidence.csv`.
+1. Open the record in `data.json`, all three matching authority rows in
+   `research/identifier-evidence.csv`, and any matching direct-endpoint row in
+   `research/iiif-evidence.csv`.
 2. Confirm what the DMMapp record describes: an institution, a branch, a
    manuscript portal, or an aggregator-specific access point.
 3. Open every cited source. Check the target's name, type, location, parent or
    branch relationship, and public URL. A search-result resemblance is not
    enough.
-4. For an IIIF endpoint, inspect the returned Presentation API JSON and confirm
-   whether it is a Collection or one representative Manifest. Confirm that its
-   contents fit this access point.
+4. For an IIIF endpoint, follow the [IIIF endpoint research](iiif-research.md)
+   guide. Inspect the returned Presentation API JSON and the exact corroborating
+   catalogue page. Confirm whether it is a Collection or one representative
+   Manifest and that its contents fit this access point.
 5. Decide each populated field separately: approve it, correct it with new
    evidence, remove it, or leave it pending. Do not let approval of one field
    imply approval of another. A pending candidate for an empty field remains
@@ -101,13 +103,17 @@ Completion does not require every record to gain links. It requires clear,
 reviewable decisions and conservative RDF. DMMapp never publishes `sameAs`
 between a directory entry and an institution, place, or manuscript.
 
-Run the catalogue, evidence, assertion, and history checks before merging the
-pilot pull request. See [Update the dashboard data](update-data.md) for the
-commands and review sequence.
+Run the catalogue, authority evidence, IIIF evidence, assertion, and history
+checks before merging the pilot pull request. See [Update the dashboard
+data](update-data.md) for the commands and review sequence.
 
 **Command safety**: Safe
 
 ```bash
+python scripts/validate_data.py
+python scripts/validate_identifier_evidence.py
+python scripts/validate_iiif_evidence.py
+python scripts/validate_link_assertions.py
 python scripts/validate_linked_data_pilot.py
 ```
 

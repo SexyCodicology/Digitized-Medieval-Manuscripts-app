@@ -73,6 +73,7 @@ Your contribution will be automatically validated against our schema when you su
 4. **URL Format**: The `website` field contains a valid URL
 5. **Enum Values**: The `quantity` and `licence_category` fields use one of the allowed values
 6. **Identifier evidence**: Every record has one ISIL, Wikidata, and GeoNames decision in the evidence ledger
+7. **IIIF evidence**: Every published direct IIIF endpoint has a checked endpoint and exact corroborating page in the IIIF evidence ledger
 
 ### Guidelines
 
@@ -91,6 +92,7 @@ Your contribution will be automatically validated against our schema when you su
 3. **Location**: Use standardized country and city names (English spelling)
 4. **Quantity Estimation**: Choose the category that best matches the collection size — see the [Data Schema](schema.md#approximate-number-of-manuscripts) page for the exact category boundaries
 5. **Identifier evidence**: Add three ledger rows for every new record. Read [Identifier research](identifier-research.md) before adding an ISIL, Wikidata QID, or GeoNames ID.
+6. **IIIF evidence**: Read [IIIF endpoint research](iiif-research.md) before adding a Collection or representative Manifest URL.
 
 ## Contribute code
 
@@ -128,6 +130,7 @@ on every pull request:
 pip install -r requirements-dev.txt
 python scripts/validate_data.py
 python scripts/validate_identifier_evidence.py
+python scripts/validate_iiif_evidence.py
 pytest tests -q
 npm ci
 npm test

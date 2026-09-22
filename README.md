@@ -53,6 +53,7 @@ Each library gets its own crawlable page, generated at build time, with:
 - Getting started guide for browsing, searching, and filtering the dashboard
 - Data structure guide covering every field, including optional identifiers and IIIF endpoints
 - Identifier research guide covering source criteria, evidence rows, review, and GeoNames attribution
+- IIIF endpoint research guide covering resource type, scope, evidence, and review
 - Linked-data audit pilot and public approval register for semantic relationships
 - Guides to the automated data validation and weekly link-checking workflows
 - About the project, contributing guidelines, and local development setup
@@ -104,6 +105,7 @@ Digitized-Medieval-Manuscripts-app/
 │   ├── validate_data.py            # Validates data.json against schema.json
 │   ├── validate_identifier_evidence.py
 │   │                                # Checks the identifier evidence ledger
+│   ├── validate_iiif_evidence.py  # Checks direct IIIF endpoint evidence
 │   ├── validate_link_assertions.py  # Checks maintainer-approved semantic links
 │   ├── validate_linked_data_pilot.py
 │   │                                # Checks all field-level pilot decisions
@@ -116,6 +118,7 @@ Digitized-Medieval-Manuscripts-app/
 │
 ├── research/
 │   ├── identifier-evidence.csv     # Source or unresolved decision per record and identifier
+│   ├── iiif-evidence.csv           # Evidence for published and proposed direct endpoints
 │   └── linked-data-pilot-review.csv
 │                                    # Review outcome for each pilot candidate
 │
@@ -132,6 +135,7 @@ Digitized-Medieval-Manuscripts-app/
 │   ├── schema.md                   # Data structure guide
 │   ├── update-data.md              # How to add or edit library entries
 │   ├── identifier-research.md       # Evidence and review for authority identifiers
+│   ├── iiif-research.md             # Evidence and review for direct IIIF endpoints
 │   ├── workflow-validation.md      # How automated data validation works
 │   ├── workflow-link-checking.md   # How the weekly link check works
 │   ├── linked-data.md              # Persistent IDs, JSON-LD, and rights policy
@@ -184,6 +188,7 @@ are not committed as generated pages or exports.
 - **Data format**: A single JSON array (`docs/assets/data.json`), validated against `schema.json`
 - **Data validation**: `scripts/validate_data.py` checks JSON syntax, required fields, data types, URL formats, identifier syntax, and aggregator name/URL consistency
 - **Identifier evidence**: `research/identifier-evidence.csv` records a source or unresolved decision for each ISIL, Wikidata, and GeoNames field; `scripts/validate_identifier_evidence.py` checks that it agrees with the catalogue
+- **IIIF evidence**: `research/iiif-evidence.csv` records the direct endpoint, exact corroborating page, and check date for each published or proposed Collection and Manifest; `scripts/validate_iiif_evidence.py` checks that it agrees with the catalogue and pilot
 - **Reviewed relationships**: `docs/assets/link-assertions.csv` records the evidence, reviewer, date, and pull request for authority and IIIF links that may appear as RDF relationships
 - **Audit pilot**: `research/linked-data-pilot-review.csv` tracks all 41 field decisions in the 25-record pilot, including pending, corrected, removed, and deliberately absent candidates
 - **Automated testing**: `pytest` covers the build hook and scripts; a Node test suite (`docs/assets/dashboard.test.js`) covers the dashboard's client-side behavior

@@ -12,16 +12,19 @@ from pathlib import Path
 
 try:
     from scripts import validate_identifier_evidence as evidence_validator
+    from scripts import validate_iiif_evidence as iiif_evidence_validator
     from scripts import validate_link_assertions as assertion_validator
     from scripts import validate_linked_data_pilot as pilot_validator
 except (ImportError, ModuleNotFoundError):  # Direct execution sets scripts/ first.
     import validate_identifier_evidence as evidence_validator  # type: ignore[no-redef]
+    import validate_iiif_evidence as iiif_evidence_validator  # type: ignore[no-redef]
     import validate_link_assertions as assertion_validator  # type: ignore[no-redef]
     import validate_linked_data_pilot as pilot_validator  # type: ignore[no-redef]
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = REPO_ROOT / "docs" / "assets" / "data.json"
 EVIDENCE_PATH = REPO_ROOT / "research" / "identifier-evidence.csv"
+IIIF_EVIDENCE_PATH = REPO_ROOT / "research" / "iiif-evidence.csv"
 PILOT_PATH = REPO_ROOT / "research" / "linked-data-pilot-review.csv"
 ASSERTIONS_PATH = REPO_ROOT / "docs" / "assets" / "link-assertions.csv"
 
@@ -94,15 +97,20 @@ def catalogue_state(record: dict, row: dict[str, str]) -> str:
 def render_report(
     records: list[dict],
     pilot_rows: list[dict[str, str]],
-    evidence_rows: list[dict[str, str]],
+    identifier_evidence_rows: list[dict[str, str]],
+    iiif_evidence_rows: list[dict[str, str]],
     *,
     record_ids: set[str] | None = None,
     pending_only: bool = True,
 ) -> str:
     """Return a Markdown review packet from the validated pilot sources."""
     records_by_id = {str(record["id"]): record for record in records}
-    evidence_by_key = {
-        (row["record_id"], row["field"]): row for row in evidence_rows
+    identifier_evidence_by_key = {
+        (row["record_id"], row["field"]): row
+        for row in identifier_evidence_rows
+    }
+    iiif_evidence_by_key = {
+        (row["record_id"], row["field"]): row for row in iiif_evidence_rows
     }
     selected = [
         row
@@ -164,21 +172,18 @@ def render_report(
                 "",
                 (
                     "| Field | Candidate | Catalogue state | Decision | Source | "
-                    "Corroboration | Review question |"
+                    "Corroboration | Checked | Review question |"
                 ),
-                "| --- | --- | --- | --- | --- | --- | --- |",
+                "| --- | --- | --- | --- | --- | --- | --- | --- |",
             ]
         )
         for row in grouped[record_id]:
             key = (record_id, row["field"])
-            evidence = evidence_by_key.get(key, {})
-            candidate = row["candidate_value"]
             if row["field"] in assertion_validator.IIIF_FIELDS:
-                source = candidate
-                corroborating = str(record.get("website", ""))
+                evidence = iiif_evidence_by_key.get(key, {})
             else:
-                source = evidence.get("source_url", "")
-                corroborating = evidence.get("corroborating_url", "")
+                evidence = identifier_evidence_by_key.get(key, {})
+            candidate = row["candidate_value"]
             lines.append(
                 "| "
                 + " | ".join(
@@ -187,8 +192,12 @@ def render_report(
                         code_value(candidate),
                         markdown_text(catalogue_state(record, row)),
                         code_value(row["decision"]),
-                        url_value(source, "Source"),
-                        url_value(corroborating, "Corroboration"),
+                        url_value(evidence.get("source_url", ""), "Source"),
+                        url_value(
+                            evidence.get("corroborating_url", ""),
+                            "Corroboration",
+                        ),
+                        markdown_text(evidence.get("checked_on", "")) or "—",
                         markdown_text(row["note"]),
                     ]
                 )
@@ -213,8 +222,8 @@ def render_report(
                 "public DMMapp pull request."
             ),
             (
-                "4. Run the pilot and assertion validators before merging a "
-                "final decision."
+                "4. Run the catalogue, evidence, pilot, and assertion "
+                "validators before merging a final decision."
             ),
             "",
             (
@@ -257,6 +266,10 @@ def main() -> int:
         ):
             raise ValueError("data.json must contain records with numeric IDs")
         evidence_rows = read_csv(EVIDENCE_PATH, evidence_validator.COLUMNS)
+        iiif_evidence_rows = read_csv(
+            IIIF_EVIDENCE_PATH,
+            iiif_evidence_validator.COLUMNS,
+        )
         pilot_rows = read_csv(PILOT_PATH, pilot_validator.COLUMNS)
         assertions = read_csv(ASSERTIONS_PATH, assertion_validator.COLUMNS)
     except (OSError, ValueError, json.JSONDecodeError) as error:
@@ -271,6 +284,14 @@ def main() -> int:
         *(
             f"assertion: {error}"
             for error in assertion_validator.validate(records, assertions)
+        ),
+        *(
+            f"IIIF evidence: {error}"
+            for error in iiif_evidence_validator.validate(
+                records,
+                pilot_rows,
+                iiif_evidence_rows,
+            )
         ),
         *(
             f"pilot: {error}"
@@ -298,6 +319,7 @@ def main() -> int:
             records,
             pilot_rows,
             evidence_rows,
+            iiif_evidence_rows,
             record_ids=record_ids or None,
             pending_only=not args.all,
         ),

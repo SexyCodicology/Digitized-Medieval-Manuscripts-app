@@ -81,6 +81,7 @@ nav:
       - Linked-data Audit Pilot: linked-data-pilot.md
       - Update Data: update-data.md
       - Identifier Research: identifier-research.md
+      - IIIF Endpoint Research: iiif-research.md
       - Workflow Validation: workflow-validation.md
       - Link Health Check: workflow-link-checking.md
       - Contributing: contributing.md

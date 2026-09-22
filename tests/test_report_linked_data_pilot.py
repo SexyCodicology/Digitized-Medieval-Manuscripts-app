@@ -54,16 +54,36 @@ def evidence_row() -> dict[str, str]:
     }
 
 
+def iiif_evidence_row(manifest: str) -> dict[str, str]:
+    """Return one synthetic IIIF evidence row."""
+    return {
+        "record_id": "3",
+        "field": "iiif_example_manifest_url",
+        "value": manifest,
+        "status": "proposed",
+        "source_url": manifest,
+        "corroborating_url": "https://catalogue.example.org/manuscript/3",
+        "checked_on": "2026-09-22",
+        "note": "The direct Manifest and catalogue record identify the same item.",
+    }
+
+
 def test_report_renders_pending_evidence_and_escapes_tables(monkeypatch):
     monkeypatch.setattr(reporter.pilot_validator, "PILOT_RECORD_IDS", frozenset({"3"}))
 
-    report = reporter.render_report([record()], [pilot_row()], [evidence_row()])
+    report = reporter.render_report(
+        [record()],
+        [pilot_row()],
+        [evidence_row()],
+        [],
+    )
 
     assert "1 field decision across 1 record; 1 decision remains pending" in report
     assert "## 3: National \\| &lt;script&gt;alert(1)&lt;/script&gt;" in report
     assert "<script>" not in report
     assert "[Source](<https://www.wikidata.org/wiki/Q123>)" in report
     assert "[Corroboration](<https://example.org/about>)" in report
+    assert "2026-09-21" in report
     assert "Confirm the target \\| scope." in report
 
 
@@ -71,24 +91,37 @@ def test_report_hides_final_decisions_unless_requested(monkeypatch):
     monkeypatch.setattr(reporter.pilot_validator, "PILOT_RECORD_IDS", frozenset({"3"}))
     row = pilot_row(decision="approve")
 
-    pending = reporter.render_report([record()], [row], [evidence_row()])
+    pending = reporter.render_report([record()], [row], [evidence_row()], [])
     complete = reporter.render_report(
-        [record()], [row], [evidence_row()], pending_only=False
+        [record()],
+        [row],
+        [evidence_row()],
+        [],
+        pending_only=False,
     )
 
     assert "No decisions match the selected filters." in pending
     assert "`approve`" in complete
 
 
-def test_report_uses_candidate_and_website_for_iiif(monkeypatch):
+def test_report_uses_iiif_evidence_sources(monkeypatch):
     monkeypatch.setattr(reporter.pilot_validator, "PILOT_RECORD_IDS", frozenset({"3"}))
     manifest = "https://iiif.example.org/manifest"
     row = pilot_row(field="iiif_example_manifest_url", candidate=manifest)
 
-    report = reporter.render_report([record()], [row], [])
+    report = reporter.render_report(
+        [record()],
+        [row],
+        [],
+        [iiif_evidence_row(manifest)],
+    )
 
     assert f"[Source](<{manifest}>)" in report
-    assert "[Corroboration](<https://example.org/collection>)" in report
+    assert (
+        "[Corroboration](<https://catalogue.example.org/manuscript/3>)"
+        in report
+    )
+    assert "2026-09-22" in report
     assert "Unpublished proposal" in report
 
 
@@ -121,6 +154,7 @@ def test_report_filters_selected_records(monkeypatch):
         [record(), record(24)],
         rows,
         [evidence_row()],
+        [],
         record_ids={"24"},
     )
 
