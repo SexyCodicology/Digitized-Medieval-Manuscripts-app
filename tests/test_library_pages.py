@@ -323,6 +323,50 @@ def test_access_point_title_is_secondary_and_escaped():
     assert '<script>alert("x")</script>' not in row
 
 
+def test_alternate_names_are_visible_below_the_institution_and_escaped():
+    record = {
+        **HOSTILE_RECORD,
+        "library": "Example Library",
+        "access_point_title": "Example portal",
+        "library_alternate_names": [
+            {"name": "Example Libraries", "language": "en"},
+            {"name": '<img src=x onerror=alert(1)> & Co'},
+        ],
+    }
+    body = _page_body(record)
+    row = hook.render_row(record)
+
+    for rendered in (body, row):
+        assert 'library-alternate-names' in rendered
+        assert 'Also known as:' in rendered
+        assert '<span lang="en">Example Libraries</span>' in rendered
+        assert '&lt;img src=x onerror=alert(1)&gt; &amp; Co' in rendered
+        assert '<img src=x onerror=alert(1)>' not in rendered
+        assert rendered.count('Also known as:') == 1
+    assert body.index('<h1>Example Library</h1>') < body.index('Also known as:')
+    assert body.index('Also known as:') < body.index('library-page__location')
+    assert row.index('Also known as:') < row.index('Example portal')
+
+
+def test_absent_or_unusable_alternate_names_add_no_label():
+    for entries in (None, [], [{}], [{"name": "  "}]):
+        record = {**HOSTILE_RECORD, "library_alternate_names": entries}
+        assert 'Also known as:' not in _page_body(record)
+        assert 'Also known as:' not in hook.render_row(record)
+
+
+def test_unusable_language_tag_is_not_added_to_markup():
+    record = {
+        **HOSTILE_RECORD,
+        "library_alternate_names": [
+            {"name": "Example Library", "language": 'en" onclick="bad()'},
+        ],
+    }
+
+    assert '<span>Example Library</span>' in _page_body(record)
+    assert 'onclick=' not in _page_body(record)
+
+
 def test_the_part_of_row_lists_every_membership():
     body = _page_body({**HOSTILE_RECORD, "aggregators": [
         {"name": "Polonsky", "url": "https://polonsky.example.org"},
@@ -499,8 +543,8 @@ def test_iiif_collection_endpoint_renders_a_distinct_viewer_action():
     )
 
     assert action is not None
-    assert "Visit the collection" in body
-    assert body.index("Visit the collection") < body.index("Browse IIIF collection")
+    assert "Browse digitised manuscripts" in body
+    assert body.index("Browse digitised manuscripts") < body.index("Browse IIIF collection")
     viewer_url = urlsplit(unescape(action.group(1)))
     assert viewer_url.scheme == "https"
     assert viewer_url.netloc == "www.universalviewer.dev"
@@ -544,7 +588,7 @@ def test_iiif_collection_action_precedes_a_named_example_manifest():
         "iiif_example_manifest_label": "Example manuscript",
     })
 
-    assert body.index("Visit the collection") < body.index("Browse IIIF collection")
+    assert body.index("Browse digitised manuscripts") < body.index("Browse IIIF collection")
     assert body.index("Browse IIIF collection") < body.index(
         "Open example manuscript in IIIF: Example manuscript"
     )
@@ -1017,9 +1061,11 @@ def test_a_broken_link_page_carries_a_dated_notice():
     assert "confirmed broken on 2026-08-02" in body
     assert 'class="badge badge--broken"' in body
     # The link stays reachable but is never offered as a working collection.
-    assert "Visit the collection" not in body
+    assert "Browse digitised manuscripts" not in body
     assert "Try the collection anyway" in body
     assert "btn-visit--broken" in body
+    assert "btn-visit--primary" not in body
+    assert body.index('class="library-page__broken"') < body.index("Try the collection anyway")
 
 
 def test_a_broken_page_without_a_date_still_warns():
@@ -1036,8 +1082,44 @@ def test_a_page_without_the_field_has_no_notice():
     body = _page_body({**HOSTILE_RECORD, "website": "https://example.org"})
 
     assert "library-page__broken" not in body
-    assert "Visit the collection" in body
+    assert "Browse digitised manuscripts" in body
     assert "broken" not in body.lower()
+
+
+def test_collection_button_uses_the_record_url_above_the_facts():
+    website = 'https://example.org/manuscripts?name="old"&view=grid'
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "library": "Example Library",
+        "city": "Oxford",
+        "nation": "United Kingdom",
+        "website": website,
+        "iiif_collection_url": "https://example.org/iiif/collection.json",
+    })
+
+    button = (
+        '<a class="btn-visit btn-visit--primary" '
+        'href="https://example.org/manuscripts?name=&quot;old&quot;&amp;view=grid"'
+    )
+    assert button in body
+    assert body.count("Browse digitised manuscripts") == 1
+    assert body.index("<h1>Example Library</h1>") < body.index("Oxford, United Kingdom")
+    assert body.index("Oxford, United Kingdom") < body.index(button)
+    assert body.index(button) < body.index('class="library-page__facts"')
+    assert body.index(button) < body.index("Browse IIIF collection")
+    assert body.index(button) < body.index("Report a data issue")
+    assert 'href="' + website + '"' not in body
+
+
+def test_unusable_collection_url_has_plain_fallback_before_facts():
+    body = _page_body(HOSTILE_RECORD)
+
+    assert "No collection URL is recorded for this library." in body
+    assert body.index("No collection URL is recorded") < body.index(
+        'class="library-page__facts"'
+    )
+    assert "Browse digitised manuscripts" not in body
+    assert 'class="btn-visit btn-visit--primary"' not in body
 
 
 def test_a_working_link_page_carries_a_dated_confirmation():
