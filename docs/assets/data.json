@@ -390,6 +390,12 @@
         "nation": "Belgium",
         "city": "Ghent",
         "library": "Universiteitsbibliotheek Gent",
+        "library_alternate_names": [
+            {
+                "name": "Ghent University Library",
+                "language": "en"
+            }
+        ],
         "quantity": "Hundreds",
         "website": "https://mmfc.be/s/start/objects?facet%5Bmmfc_digitalReproductionCount_ss%5D%5B%5D=Yes&facet%5Bmmfc_institutionFilter_ss%5D%5B%5D=Gent%2C+Universiteitsbibliotheek+Gent",
         "copyright": "Unknown",
@@ -402,7 +408,7 @@
             }
         ],
         "last_checked": "2026-09-21",
-        "last_edited": "2026-09-21",
+        "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "wikidata_qid": "Q611001",
         "geonames_id": 2797656
@@ -495,6 +501,12 @@
         "nation": "Belgium",
         "city": "Ghent",
         "library": "Universiteitsbibliotheek Gent",
+        "library_alternate_names": [
+            {
+                "name": "Ghent University Library",
+                "language": "en"
+            }
+        ],
         "quantity": "Dozens",
         "website": "https://erfgoedparels.be/zoeken?materials%5B%5D=handschrift&providers%5B%5D=universiteitsbibliotheek+gent",
         "copyright": "Unknown",
@@ -507,6 +519,7 @@
             }
         ],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "geonames_id": 2797656
     },
@@ -823,6 +836,7 @@
         "nation": "England",
         "city": "Oxford",
         "library": "The Bodleian Library",
+        "access_point_title": "Digital Bodleian",
         "quantity": "Unknown",
         "website": "https://digital.bodleian.ox.ac.uk",
         "copyright": "Unknown",
@@ -830,6 +844,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "geonames_id": 2640729
     },
@@ -970,12 +985,14 @@
         "nation": "England",
         "city": "Oxford",
         "library": "New Digital Bodleian",
+        "access_point_title": "Western Medieval Manuscripts",
         "quantity": "Unknown",
         "website": "https://digital.bodleian.ox.ac.uk/collections/western-medieval-manuscripts/",
         "copyright": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
+        "last_edited": "2026-09-22",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2640729
     },
@@ -1212,7 +1229,7 @@
         "id": 78,
         "nation": "France",
         "city": "Douai",
-        "library": "Bibliothèque municipale",
+        "library": "Bibliothèque Marceline Desbordes-Valmore",
         "quantity": "Unknown",
         "website": "https://arca.irht.cnrs.fr/collection/1725/manuscripts",
         "copyright": "Public Domain Mark 1.0",
@@ -1225,6 +1242,7 @@
             }
         ],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-22",
         "licence_category": "CC0",
         "geonames_id": 3021000
     },

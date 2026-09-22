@@ -22,12 +22,14 @@ record_id,field,value,language,status,source_url,checked_on,note
 21,library,Gemeindearchiv,,pending,,,
 22,library,"Koninklijke Bibliotheek van Belgie, Bibliotheque royale de Belgique",,pending,,,
 23,library,Bibliotheques de l'Universite de Liege,,pending,,,
-24,library,Universiteitsbibliotheek Gent,,pending,,,First name-review batch; verify the holding institution and access-point scope.
+24,library,Universiteitsbibliotheek Gent,,verified,https://www.ugent.be/nl/univgent/bibliotheek,2026-09-22,UGent publishes this Dutch name for the university library network; the MMFC institution filter names the same network and remains its own access point.
+24,library_alternate_names,Ghent University Library,en,verified,https://www.ugent.be/en/ghentuniv/library,2026-09-22,UGent's English page names the same university library network.
 25,library,KU Leuven Bibliotheken,,verified,https://bib.kuleuven.be/,2026-09-22,Official Dutch name on the KU Leuven Libraries site; records remain distinct access points.
 26,library,Erfgoedbibliotheek Hendrik Conscience,,pending,,,
 27,library,Bibliotheek Hasselt Limburg,,pending,,,
 28,library,KU Leuven Bibliotheken,,verified,https://bib.kuleuven.be/,2026-09-22,Official Dutch name on the KU Leuven Libraries site; records remain distinct access points.
-29,library,Universiteitsbibliotheek Gent,,pending,,,First name-review batch; verify the holding institution and access-point scope.
+29,library,Universiteitsbibliotheek Gent,,verified,https://www.ugent.be/nl/univgent/bibliotheek,2026-09-22,UGent publishes this Dutch name for the university library network; the Erfgoedparels provider filter names it and remains a distinct access point from record 24.
+29,library_alternate_names,Ghent University Library,en,verified,https://www.ugent.be/en/ghentuniv/library,2026-09-22,UGent's English page names the same university library network.
 30,library,Universiteit Antwerpen,,pending,,,
 31,library,Museum Plantin-Moretus,,pending,,,
 32,library,Openbare Bibliotheek Brugge,,pending,,,
@@ -46,7 +48,8 @@ record_id,field,value,language,status,source_url,checked_on,note
 48,library,The Arnamagnaean Manuscript Collection,,pending,,,
 49,library,The British Library,,verified,https://www.bl.uk/collection/digitised-manuscripts-archives,2026-09-22,The institution publishes this access page and holds many listed manuscripts; it also points to images from other archives so this name is not an item-level holding claim.
 50,library,Balliol College Special Collections,,pending,,,
-51,library,The Bodleian Library,,pending,,,First name-review batch; verify the holding institution and access-point scope.
+51,library,The Bodleian Library,,pending,https://digital.bodleian.ox.ac.uk/,2026-09-22,Digital Bodleian includes holdings from the Bodleian Libraries and Oxford college libraries; this portal-wide access point has no single verified holding institution.
+51,access_point_title,Digital Bodleian,,verified,https://digital.bodleian.ox.ac.uk/,2026-09-22,The portal publishes this title and describes content from the Bodleian Libraries and Oxford college libraries.
 52,library,University of Manchester Library: The John Rylands Library,,pending,,,
 53,library,"Wren Library, Trinity College",,pending,,,
 54,library,"Parker Library, Corpus Christi College",,pending,,,
@@ -56,7 +59,8 @@ record_id,field,value,language,status,source_url,checked_on,note
 59,library,Polonsky Project,,pending,,,
 60,library,Leeds University Library,,pending,,,
 61,library,Early Manuscripts at Oxford University,,pending,,,
-62,library,New Digital Bodleian,,pending,,,First name-review batch; verify the holding institution and access-point scope.
+62,library,New Digital Bodleian,,pending,https://digital.bodleian.ox.ac.uk/collections/western-medieval-manuscripts/,2026-09-22,The current value names a portal rather than a holder; this collection includes manuscripts held by the Bodleian and Oxford colleges so the preferred institution name needs an editorial decision.
+62,access_point_title,Western Medieval Manuscripts,,verified,https://digital.bodleian.ox.ac.uk/collections/western-medieval-manuscripts/,2026-09-22,The collection page publishes this title and says it includes manuscripts from the Bodleian and Oxford colleges.
 63,library,British Library Catalogue of Illuminated Manuscripts,,pending,,,
 64,library,"St. John's College Library, University of Cambridge",,pending,,,
 65,library,The Courtauld Institute of Art,,pending,,,
@@ -72,7 +76,7 @@ record_id,field,value,language,status,source_url,checked_on,note
 75,library,National Library of Finland,,pending,,,
 76,library,Abo Akademis bibliotek,,pending,,,
 77,library,Finnish Literature Society,,pending,,,
-78,library,Bibliothèque municipale,,pending,https://www.douai.fr/bibliotheques-municipales,2026-09-22,First name-review batch; the city describes a library network and the specific holder of this ARCA collection still needs confirmation.
+78,library,Bibliothèque Marceline Desbordes-Valmore,,verified,https://arca.irht.cnrs.fr/repository/475,2026-09-22,ARCA links collection 1725 to this Douai repository and lists this branch name; the city also publishes this name for the main library and its heritage manuscripts.
 79,library,Bibliothèque Carnegie,,pending,,,
 80,library,Médiathèque Toussaint,,pending,,,
 81,library,Bibliothèque de la Part-Dieu,,pending,,,
