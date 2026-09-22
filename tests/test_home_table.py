@@ -109,6 +109,23 @@ def test_a_row_links_the_library_to_its_generated_page():
     assert '<a href="https://polonsky.example.org"' in row
 
 
+def test_server_rendered_row_shows_alternate_names_below_the_library():
+    record = {
+        **SAFE_RECORD,
+        "library_alternate_names": [
+            {"name": "Bodleian Libraries", "language": "en"},
+            {"name": "Bibliothèques Bodleian", "language": "fr"},
+        ],
+        "access_point_title": "Digital Bodleian",
+    }
+    row = hook.render_row(record)
+
+    assert row.index("Bodleian Library</a>") < row.index("Also known as:")
+    assert row.index("Also known as:") < row.index("Digital Bodleian")
+    assert '<span lang="en">Bodleian Libraries</span>' in row
+    assert '<span lang="fr">Bibliothèques Bodleian</span>' in row
+
+
 def test_each_cell_carries_its_column_class_and_no_inline_style():
     """dashboard.css's ≤640px card layout re-targets cells by these classes
     (col-library/col-location/col-features/col-access), matching the classes
@@ -302,7 +319,13 @@ def built_home(tmp_path_factory) -> str:
     (docs / "assets" / "data.json").write_text(
         json.dumps(
             [
-                {**SAFE_RECORD, "added": "2026-08-01"},
+                {
+                    **SAFE_RECORD,
+                    "added": "2026-08-01",
+                    "library_alternate_names": [
+                        {"name": "Bodleian Libraries", "language": "en"},
+                    ],
+                },
                 {**HOSTILE_RECORD, "last_edited": "2026-08-02"},
             ]
         ),
@@ -344,6 +367,15 @@ def test_the_built_homepage_ships_the_rows(built_home):
     assert len(ROW_PATTERN.findall(body)) == 2
     assert "Bodleian Library" in body
     assert 'href="libraries/id-1/"' in body
+
+
+def test_the_built_homepage_shows_alternate_names_without_javascript(built_home):
+    body = built_home.split('<tbody id="tableBody" role="rowgroup">', 1)[1].split("</tbody>", 1)[0]
+
+    assert '<span lang="en">Bodleian Libraries</span>' in body
+    assert 'Also known as:' in body
+    assert 'Search libraries, alternate names…' in built_home
+    assert 'alternate institution name' in built_home
 
 
 def test_the_built_homepage_ships_the_counts(built_home):

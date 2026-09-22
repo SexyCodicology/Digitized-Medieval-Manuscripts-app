@@ -609,6 +609,17 @@ a.library-name:focus-visible {
   margin-top: 0.2rem;
 }
 
+.library-alternate-names {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  margin-top: 0.2rem;
+}
+
+.library-alternate-names__label {
+  font-weight: 600;
+}
+
 .library-project {
   font-size: 0.8rem;
   margin-top: 0.2rem;
@@ -725,6 +736,32 @@ a.library-name:focus-visible {
   background: #b71c1c;
   border-color: #b71c1c;
   color: #fff;
+}
+
+.library-page__primary-action {
+  margin: 1rem 0;
+}
+
+.library-page__primary-action p {
+  margin: 0;
+}
+
+.library-page__primary-action .btn-visit--primary {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color, #fff);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.65rem 1.1rem;
+  white-space: normal;
+}
+
+.library-page__primary-action .btn-visit--primary:hover {
+  box-shadow: 0 0 0 2px var(--md-primary-fg-color);
+}
+
+.library-page__primary-action .btn-visit:focus-visible {
+  outline: 3px solid var(--md-accent-fg-color);
+  outline-offset: 3px;
 }
 
 [data-md-color-scheme="slate"] .btn-visit--broken {
@@ -1179,6 +1216,11 @@ a.library-name:focus-visible {
   font-size: 0.9rem;
 }
 
+.md-typeset .library-page__alternate-names {
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem;
+}
+
 .library-page__badges {
   display: flex;
   flex-wrap: wrap;
@@ -1201,6 +1243,12 @@ a.library-name:focus-visible {
 }
 
 @media screen and (max-width: 45em) {
+  .library-page__primary-action .btn-visit {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   .md-typeset .library-page__facts {
     grid-template-columns: 1fr;
     gap: 0.1rem;

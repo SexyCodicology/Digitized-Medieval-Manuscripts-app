@@ -63,6 +63,7 @@ OUTPUT_DIR = "libraries"
 SLUG_MAP_URI = "assets/library-slugs.json"
 ALIAS_REGISTRY_URI = ("assets", "library-aliases.json")
 ALIAS_PATTERN = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
+LANGUAGE_TAG_PATTERN = re.compile(r"[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*\Z")
 
 # Virtual source file for the crawlable alphabetical library index.
 LIBRARY_INDEX_URI = "library-index.md"
@@ -445,6 +446,8 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         facts.append(("Part of", ", ".join(links)))
 
     rows = "".join(f"<dt>{name}</dt><dd>{value}</dd>" for name, value in facts)
+    alternate_names = render_alternate_names(record, page=True)
+    alternate_markup = f"{alternate_names}\n\n" if alternate_names else ""
 
     website = safe_url(record.get("website"))
     if not website:
@@ -459,11 +462,17 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         )
     else:
         visit = (
-            f'<p><a class="btn-visit" href="{escape(website, quote=True)}" '
-            f'rel="noopener noreferrer" target="_blank">Visit the collection</a></p>'
+            f'<p><a class="btn-visit btn-visit--primary" '
+            f'href="{escape(website, quote=True)}" '
+            'rel="noopener noreferrer" target="_blank">'
+            'Browse digitised manuscripts</a></p>'
         )
 
     iiif_viewer = iiif_viewer_actions(record)
+    secondary_actions = (
+        f'<div class="library-page__actions">{iiif_viewer}</div>\n\n'
+        if iiif_viewer else ""
+    )
 
     report_url = escape(report_data_issue_url(record), quote=True)
     report = (
@@ -495,12 +504,15 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
     return (
         f"---\n{meta}---\n\n"
         f"<h1>{escape(str(record['library']))}</h1>\n\n"
+        f"{alternate_markup}"
         f"<p class=\"library-page__location\">{escape(str(record['city']))}, "
         f"{escape(str(record['nation']))}</p>\n\n"
+        f"{notice if broken else ''}"
+        f'<div class="library-page__primary-action">{visit}</div>\n\n'
+        f"{notice if not broken else ''}"
         f'<p class="library-page__badges">{"".join(badges)}</p>\n\n'
-        f"{notice}"
         f'<dl class="library-page__facts">{rows}</dl>\n\n'
-        f'<div class="library-page__actions">{visit}{iiif_viewer}</div>\n\n'
+        f"{secondary_actions}"
         f"{report}\n\n"
         "[Back to the library directory](../index.md)\n"
     )
@@ -676,6 +688,36 @@ def safe_text(value: Any) -> str:
     return escape(value.strip())
 
 
+def render_alternate_names(record: dict[str, Any], *, page: bool = False) -> str:
+    """Show current institution names without treating them as portal titles."""
+    entries = record.get("library_alternate_names")
+    if not isinstance(entries, list):
+        return ""
+
+    names = []
+    for entry in entries:
+        if not isinstance(entry, dict) or not (name := safe_text(entry.get("name"))):
+            continue
+        language = entry.get("language")
+        lang = (
+            f' lang="{escape(language, quote=True)}"'
+            if isinstance(language, str) and LANGUAGE_TAG_PATTERN.fullmatch(language)
+            else ""
+        )
+        names.append(f"<span{lang}>{name}</span>")
+
+    if not names:
+        return ""
+    classes = "library-alternate-names"
+    if page:
+        classes += " library-page__alternate-names"
+    return (
+        f'<div class="{classes}">'
+        '<span class="library-alternate-names__label">Also known as:</span> '
+        f'{"; ".join(names)}</div>'
+    )
+
+
 def iiif_viewer_actions(record: dict[str, Any]) -> str:
     """Return safe, explicitly scoped Universal Viewer actions for a record."""
     collection = safe_url(record.get("iiif_collection_url"))
@@ -792,7 +834,8 @@ def render_row(record: dict[str, Any]) -> str:
     return (
         f'<tr data-record-id="{record["id"]}" role="row">'
         f'<td class="col-library" role="cell"><a class="library-name" href="libraries/{slug}/">'
-        f'{escape(str(record["library"]))}</a>{access_point}{render_projects(record)}</td>'
+        f'{escape(str(record["library"]))}</a>{render_alternate_names(record)}'
+        f'{access_point}{render_projects(record)}</td>'
         f'<td class="col-location" role="cell"><div class="location-nation">{escape(str(record["nation"]))}</div>'
         '<div class="location-city"><i class="bi bi-dot" aria-hidden="true"></i>'
         f'{escape(str(record["city"]))}</div></td>'
