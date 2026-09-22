@@ -131,10 +131,13 @@ pip install -r requirements-dev.txt
 python scripts/validate_data.py
 python scripts/validate_identifier_evidence.py
 python scripts/validate_iiif_evidence.py
-pytest tests -q
+python scripts/validate_link_assertions.py
+python scripts/validate_linked_data_pilot.py
+python -m pytest tests -q
 npm ci
 npm test
 mkdocs build --clean
+python scripts/verify_linked_data.py site
 ```
 
 ### Guidelines
