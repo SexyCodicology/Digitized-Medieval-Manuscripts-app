@@ -109,9 +109,16 @@ follows the usual GitHub workflow: fork, branch, and open a pull request.
   JSON-LD and adds only maintainer-approved external relationships
 - `docs/assets/dashboard.js` / `dashboard.css` — the dashboard's client-side
   search, filtering, sorting, export, and share behavior
-- `scripts/` — `validate_data.py` (schema validation), `apply_link_status.py`
-  (turns the weekly link check into data proposals), and
-  `backfill_licence_category.py`
+- `scripts/` — `validate_data.py` (schema validation);
+  `validate_identifier_evidence.py`, `validate_iiif_evidence.py`, and
+  `validate_link_assertions.py` (check the research and approval ledgers
+  against `data.json`); `validate_linked_data_pilot.py` (checks the 25-record
+  pilot); `verify_identifier_history.py` and `verify_link_assertion_history.py`
+  (reject a pull request that drops a published ID, alias, or approved link);
+  `verify_linked_data.py` and `verify_public_lod.py` (check the built and
+  deployed linked-data release); `report_linked_data_pilot.py` (renders the
+  pilot review packet); `apply_link_status.py` (turns the weekly link check
+  into data proposals); and `backfill_licence_category.py`
 - `tests/` — the pytest suite covering `hooks/` and `scripts/`
 - `docs/assets/dashboard.test.js` — the Node test suite covering
   `dashboard.js`
