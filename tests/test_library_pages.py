@@ -11,6 +11,7 @@ import json
 import re
 import subprocess
 import sys
+from datetime import date, timedelta
 from html import unescape
 from pathlib import Path
 from urllib.parse import parse_qs, urljoin, urlsplit
@@ -180,7 +181,7 @@ def test_unsafe_links_do_not_become_clickable():
     # The project is still named, but not linked.
     assert "&lt;b&gt;Project&lt;/b&gt;" in body
     # The report control does not depend on the unsafe collection URL.
-    assert body.count("<a") == 1
+    assert body.count("<a ") == 1
     assert "btn-report-data-issue" in body
 
 
@@ -577,6 +578,32 @@ def test_named_example_manifest_renders_a_distinct_viewer_action():
     assert viewer_url.query == ""
     assert viewer_url.fragment.startswith("?")
     assert parse_qs(viewer_url.fragment[1:]) == {"manifest": [manifest]}
+    assert (
+        '<a class="iiif-manifest-link" '
+        'href="https://example.org/iiif/manifest.json?item=12&amp;locale=en" '
+        'rel="noopener noreferrer" target="_blank">'
+        'View example manifest JSON</a>'
+    ) in body
+    assert body.index("Open example manuscript in IIIF") < body.index(
+        "View example manifest JSON"
+    )
+    assert body.index("Browse digitised manuscripts") < body.index(
+        "View example manifest JSON"
+    )
+    assert body.index("View example manifest JSON") < body.index("Report a data issue")
+
+
+def test_direct_manifest_url_escapes_attribute_characters():
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "iiif_example_manifest_url": 'https://example.org/manifest?item="12"&view=1',
+        "iiif_example_manifest_label": '<img src=x onerror="bad()">',
+    })
+
+    assert 'href="https://example.org/manifest?item=&quot;12&quot;&amp;view=1"' in body
+    assert "&lt;img src=x onerror=" in body
+    assert '<img src=x' not in body
+    assert body.count('View example manifest JSON') == 1
 
 
 def test_iiif_collection_action_precedes_a_named_example_manifest():
@@ -600,6 +627,7 @@ def test_iiif_viewer_actions_are_absent_without_an_endpoint():
     assert "Browse IIIF collection" not in body
     assert "Open example manuscript in IIIF" not in body
     assert "btn-iiif-viewer" not in body
+    assert "View example manifest JSON" not in body
 
 
 def test_unsafe_or_unnamed_iiif_endpoints_do_not_render_viewer_actions():
@@ -613,6 +641,7 @@ def test_unsafe_or_unnamed_iiif_endpoints_do_not_render_viewer_actions():
 
     assert "Browse IIIF collection" not in body
     assert "Open example manuscript in IIIF" not in body
+    assert "View example manifest JSON" not in body
     assert "javascript:" not in body
 
     unnamed_example = _page_body({
@@ -621,6 +650,45 @@ def test_unsafe_or_unnamed_iiif_endpoints_do_not_render_viewer_actions():
     })
 
     assert "Open example manuscript in IIIF" not in unnamed_example
+    assert "View example manifest JSON" not in unnamed_example
+
+
+@pytest.mark.parametrize("last_edited", [None, "2026-02-30", '<img src=x>', "future"])
+def test_record_provenance_omits_unusable_edit_dates(last_edited):
+    value = (
+        (date.today() + timedelta(days=1)).isoformat()
+        if last_edited == "future" else last_edited
+    )
+    body = _page_body({**HOSTILE_RECORD, "id": 25, "last_edited": value})
+
+    assert "About this directory entry" in body
+    assert "DMMapp record ID: 25" in body
+    assert "Record last edited:" not in body
+    assert '<img src=x>' not in body
+    assert body.index('library-page__facts') < body.index('library-page__provenance')
+    assert body.index('library-page__provenance') < body.index('Report a data issue')
+
+
+def test_record_provenance_has_valid_edit_date_separate_from_link_check():
+    edited = date.today().isoformat()
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "id": 25,
+        "website": "https://example.org/manuscripts",
+        "last_checked": "2026-08-02",
+        "last_edited": edited,
+        "iiif_example_manifest_url": "https://example.org/manifest.json",
+        "iiif_example_manifest_label": "Long manuscript label",
+    })
+
+    assert f'Record last edited: <time datetime="{edited}">{edited}</time>' in body
+    assert "DMMapp record ID: 25" in body
+    assert "last confirmed working on 2026-08-02" in body
+    assert body.index('library-page__facts') < body.index('View example manifest JSON')
+    assert body.index('View example manifest JSON') < body.index(
+        'library-page__provenance'
+    )
+    assert body.index('library-page__provenance') < body.index('Report a data issue')
 
 
 # ── Collisions ────────────────────────────────────────────────────────────

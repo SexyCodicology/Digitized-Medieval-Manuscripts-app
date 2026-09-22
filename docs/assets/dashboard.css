@@ -620,6 +620,16 @@ a.library-name:focus-visible {
   font-weight: 600;
 }
 
+.library-collection-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.75rem;
+  color: var(--dash-muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+
 .library-project {
   font-size: 0.8rem;
   margin-top: 0.2rem;
@@ -779,6 +789,27 @@ a.library-name:focus-visible {
 
 .library-page__actions p {
   margin: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.library-page__actions .btn-iiif-viewer {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.library-page__actions .iiif-manifest-link {
+  display: inline-block;
+  padding: 0.35rem 0;
+  color: var(--md-typeset-a-color);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.library-page__actions .iiif-manifest-link:focus-visible {
+  outline: 3px solid var(--md-accent-fg-color);
+  outline-offset: 3px;
 }
 
 .btn-iiif-viewer {
@@ -1034,6 +1065,20 @@ a.library-name:focus-visible {
     flex-direction: column;
   }
 
+  .hero__actions > * {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .toggle-group,
+  .export-group {
+    flex-wrap: wrap;
+  }
+
+  .toggle-group__btn {
+    flex: 1 1 auto;
+  }
+
   .filter-row--selects {
     align-items: stretch;
   }
@@ -1041,6 +1086,12 @@ a.library-name:focus-visible {
   .filter-select {
     min-width: 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1069,6 +1120,18 @@ a.library-name:focus-visible {
    natural, unbroken width — word-break is reset to normal below — and the
    badges drop to the next line whenever there isn't room beside it. */
 @media (max-width: 640px) {
+  .table-scroll .md-typeset__scrollwrap {
+    margin: 0;
+    overflow: visible;
+  }
+
+  .table-scroll .md-typeset__table {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   #dashboard-root #libraryTable,
   #dashboard-root #libraryTable tbody {
     display: block;
@@ -1240,6 +1303,29 @@ a.library-name:focus-visible {
 
 .md-typeset .library-page__facts dd {
   margin: 0;
+}
+
+.library-page__provenance {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+  padding-top: 0.75rem;
+}
+
+.library-page__provenance p {
+  margin: 0;
+}
+
+.library-page__provenance-heading {
+  font-weight: 600;
+}
+
+.library-page__provenance-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.75rem;
 }
 
 @media screen and (max-width: 45em) {
