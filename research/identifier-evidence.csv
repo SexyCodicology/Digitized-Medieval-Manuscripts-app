@@ -1143,8 +1143,8 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 401,wikidata_qid,Q7029922,verified,https://www.wikidata.org/wiki/Q7029922,https://www.bu.umk.pl,2026-09-20,Exact institution item; country and city agree; official website matches.
 401,geonames_id,3083271,verified,https://sws.geonames.org/3083271/about.rdf,,2026-09-20,Same-city institution location crosswalk confirms the GeoNames ID.
 402,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
-402,wikidata_qid,Q24101,verified,https://www.wikidata.org/wiki/Q24101,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-21,The Wikidata item and official Jagiellonian Digital Library contact page identify the same Krakow institution.
-402,geonames_id,3094802,verified,https://sws.geonames.org/3094802/about.rdf,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-21,GeoNames identifies Krakow; the official Jagiellonian Digital Library contact page gives the Krakow address.
+402,wikidata_qid,Q24101,verified,https://www.wikidata.org/wiki/Q24101,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-22,The Wikidata item identifies the Jagiellonian Library as a university library in Krakow and links its official site; the official Jagiellonian Digital Library contact page names Biblioteka Jagiellonska at its Krakow address.
+402,geonames_id,3094802,verified,https://sws.geonames.org/3094802/about.rdf,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-22,GeoNames identifies Krakow in Poland as an administrative-seat populated place; the official Jagiellonian Digital Library contact page gives the library's Krakow address.
 403,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 403,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 403,geonames_id,756135,verified,https://sws.geonames.org/756135/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1702,7 +1702,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 612,geonames_id,2658042,verified,https://sws.geonames.org/2658042/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 613,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 613,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-613,geonames_id,3094802,verified,https://sws.geonames.org/3094802/about.rdf,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-21,GeoNames identifies Krakow; the official Jagiellonian Digital Library contact page gives the holding institution's Krakow address.
+613,geonames_id,3094802,verified,https://sws.geonames.org/3094802/about.rdf,https://jbc.bj.uj.edu.pl/en/dlibra/text?id=contact,2026-09-22,GeoNames identifies Krakow in Poland as an administrative-seat populated place; the official Jagiellonian Digital Library contact page gives the library's Krakow address and the e-codices collection facet exposes two manuscript deposits currently held there.
 614,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 614,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 614,geonames_id,2991214,verified,https://sws.geonames.org/2991214/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
