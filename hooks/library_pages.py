@@ -473,6 +473,7 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         f'<div class="library-page__actions">{iiif_viewer}</div>\n\n'
         if iiif_viewer else ""
     )
+    record_provenance = render_record_provenance(record)
 
     report_url = escape(report_data_issue_url(record), quote=True)
     report = (
@@ -513,6 +514,7 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         f'<p class="library-page__badges">{"".join(badges)}</p>\n\n'
         f'<dl class="library-page__facts">{rows}</dl>\n\n'
         f"{secondary_actions}"
+        f"{record_provenance}\n\n"
         f"{report}\n\n"
         "[Back to the library directory](../index.md)\n"
     )
@@ -746,8 +748,34 @@ def iiif_viewer_actions(record: dict[str, Any]) -> str:
             '<i class="bi bi-images" aria-hidden="true"></i>'
             f"Open example manuscript in IIIF: {example_label}</a></p>"
         )
+        actions.append(
+            f'<p><a class="iiif-manifest-link" '
+            f'href="{escape(example_manifest, quote=True)}" '
+            'rel="noopener noreferrer" target="_blank">'
+            'View example manifest JSON</a></p>'
+        )
 
     return "".join(actions)
+
+
+def render_record_provenance(record: dict[str, Any]) -> str:
+    """Show directory metadata without presenting it as link-check evidence."""
+    edited = parse_iso_date(record.get("last_edited"))
+    edited_text = ""
+    if edited is not None and edited <= date.today():
+        edited_text = (
+            f'<span>Record last edited: <time datetime="{edited.isoformat()}">'
+            f'{edited.isoformat()}</time></span>'
+        )
+    return (
+        '<aside class="library-page__provenance" '
+        'aria-label="About this directory entry">'
+        '<p class="library-page__provenance-heading">'
+        'About this directory entry</p>'
+        '<p class="library-page__provenance-details">'
+        f'<span>DMMapp record ID: {escape(str(record["id"]))}</span>'
+        f'{edited_text}</p></aside>'
+    )
 
 
 def render_projects(record: dict[str, Any]) -> str:
@@ -831,11 +859,18 @@ def render_row(record: dict[str, Any]) -> str:
         f'<div class="library-access-point">{access_point_title}</div>'
         if access_point_title else ""
     )
+    quantity = safe_text(record.get("quantity")) or "Unknown"
+    rights = safe_text(record.get("licence_category")) or "Unknown"
+    collection_summary = (
+        '<div class="library-collection-summary">'
+        f'<span>Approx. manuscripts: {quantity}</span>'
+        f'<span>Rights category: {rights}</span></div>'
+    )
     return (
         f'<tr data-record-id="{record["id"]}" role="row">'
         f'<td class="col-library" role="cell"><a class="library-name" href="libraries/{slug}/">'
         f'{escape(str(record["library"]))}</a>{render_alternate_names(record)}'
-        f'{access_point}{render_projects(record)}</td>'
+        f'{access_point}{collection_summary}{render_projects(record)}</td>'
         f'<td class="col-location" role="cell"><div class="location-nation">{escape(str(record["nation"]))}</div>'
         '<div class="location-city"><i class="bi bi-dot" aria-hidden="true"></i>'
         f'{escape(str(record["city"]))}</div></td>'

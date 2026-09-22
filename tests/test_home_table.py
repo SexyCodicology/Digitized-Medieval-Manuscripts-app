@@ -126,6 +126,39 @@ def test_server_rendered_row_shows_alternate_names_below_the_library():
     assert '<span lang="fr">Bibliothèques Bodleian</span>' in row
 
 
+def test_collection_summary_follows_names_and_precedes_projects():
+    row = hook.render_row({
+        **SAFE_RECORD,
+        "library_alternate_names": [{"name": "Bodleian Libraries"}],
+        "access_point_title": "Digital Bodleian",
+        "licence_category": "CC0",
+    })
+
+    assert 'Approx. manuscripts: Thousands' in row
+    assert 'Rights category: CC0' in row
+    assert row.index('Also known as:') < row.index('Digital Bodleian')
+    assert row.index('Digital Bodleian') < row.index('Approx. manuscripts:')
+    assert row.index('Approx. manuscripts:') < row.index('Rights category:')
+    assert row.index('Rights category:') < row.index('library-project')
+    assert row.count('role="cell"') == 4
+
+
+def test_collection_summary_shows_unknown_and_escapes_values():
+    unknown = hook.render_row({**SAFE_RECORD, "quantity": "Unknown"})
+    hostile = hook.render_row({
+        **SAFE_RECORD,
+        "quantity": '<img src=x onerror="bad()">',
+        "licence_category": '<script>alert("x")</script>',
+    })
+
+    assert 'Approx. manuscripts: Unknown' in unknown
+    assert 'Rights category: Unknown' in unknown
+    assert 'Approx. manuscripts: &lt;img src=x onerror=' in hostile
+    assert 'Rights category: &lt;script&gt;alert(' in hostile
+    assert '<img src=x' not in hostile
+    assert '<script>alert(' not in hostile
+
+
 def test_each_cell_carries_its_column_class_and_no_inline_style():
     """dashboard.css's ≤640px card layout re-targets cells by these classes
     (col-library/col-location/col-features/col-access), matching the classes
@@ -376,6 +409,15 @@ def test_the_built_homepage_shows_alternate_names_without_javascript(built_home)
     assert 'Also known as:' in body
     assert 'Search libraries, alternate names…' in built_home
     assert 'alternate institution name' in built_home
+
+
+def test_the_built_homepage_shows_collection_summaries_without_javascript(built_home):
+    body = built_home.split('<tbody id="tableBody" role="rowgroup">', 1)[1].split("</tbody>", 1)[0]
+
+    assert 'Approx. manuscripts: Thousands' in body
+    assert 'Approx. manuscripts: Few' in body
+    assert body.count('Rights category: Unknown') == 2
+    assert body.count('class="library-collection-summary"') == 2
 
 
 def test_the_built_homepage_ships_the_counts(built_home):
