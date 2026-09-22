@@ -12,24 +12,18 @@ import json
 import sys
 from pathlib import Path
 
-try:
-    from scripts import validate_linked_data_pilot as pilot_validator
-    from scripts.validate_link_assertions import (
-        IIIF_FIELDS,
-        parse_date,
-        safe_note,
-        valid_url,
-    )
-except (ImportError, ModuleNotFoundError):  # Direct execution sets scripts/ first.
-    import validate_linked_data_pilot as pilot_validator  # type: ignore[no-redef]
-    from validate_link_assertions import (  # type: ignore[no-redef]
-        IIIF_FIELDS,
-        parse_date,
-        safe_note,
-        valid_url,
-    )
-
 REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts import validate_linked_data_pilot as pilot_validator  # noqa: E402
+from scripts.validate_link_assertions import (  # noqa: E402
+    IIIF_FIELDS,
+    parse_date,
+    safe_note,
+    valid_url,
+)
+
 DATA_PATH = REPO_ROOT / "docs" / "assets" / "data.json"
 PILOT_PATH = REPO_ROOT / "research" / "linked-data-pilot-review.csv"
 EVIDENCE_PATH = REPO_ROOT / "research" / "iiif-evidence.csv"

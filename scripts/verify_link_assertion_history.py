@@ -15,12 +15,12 @@ import sys
 from pathlib import Path
 from typing import Any
 
-try:
-    from scripts.validate_link_assertions import COLUMNS, FIELDS
-except ModuleNotFoundError:  # Direct execution sets scripts/ as sys.path[0].
-    from validate_link_assertions import COLUMNS, FIELDS
-
 REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts.validate_link_assertions import COLUMNS, FIELDS  # noqa: E402
+
 DATA_PATH = "docs/assets/data.json"
 ASSERTIONS_PATH = REPO_ROOT / "docs" / "assets" / "link-assertions.csv"
 

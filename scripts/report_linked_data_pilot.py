@@ -10,18 +10,15 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-try:
-    from scripts import validate_identifier_evidence as evidence_validator
-    from scripts import validate_iiif_evidence as iiif_evidence_validator
-    from scripts import validate_link_assertions as assertion_validator
-    from scripts import validate_linked_data_pilot as pilot_validator
-except (ImportError, ModuleNotFoundError):  # Direct execution sets scripts/ first.
-    import validate_identifier_evidence as evidence_validator  # type: ignore[no-redef]
-    import validate_iiif_evidence as iiif_evidence_validator  # type: ignore[no-redef]
-    import validate_link_assertions as assertion_validator  # type: ignore[no-redef]
-    import validate_linked_data_pilot as pilot_validator  # type: ignore[no-redef]
-
 REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts import validate_identifier_evidence as evidence_validator  # noqa: E402
+from scripts import validate_iiif_evidence as iiif_evidence_validator  # noqa: E402
+from scripts import validate_link_assertions as assertion_validator  # noqa: E402
+from scripts import validate_linked_data_pilot as pilot_validator  # noqa: E402
+
 DATA_PATH = REPO_ROOT / "docs" / "assets" / "data.json"
 EVIDENCE_PATH = REPO_ROOT / "research" / "identifier-evidence.csv"
 IIIF_EVIDENCE_PATH = REPO_ROOT / "research" / "iiif-evidence.csv"

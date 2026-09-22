@@ -13,28 +13,20 @@ import re
 import sys
 from pathlib import Path
 
-try:
-    from scripts.validate_link_assertions import (
-        COLUMNS as ASSERTION_COLUMNS,
-        FIELDS,
-        REVIEWER_NAME,
-        parse_date,
-        safe_note,
-        valid_url,
-        valid_review_url,
-    )
-except ModuleNotFoundError:  # Direct execution sets scripts/ as sys.path[0].
-    from validate_link_assertions import (  # type: ignore[no-redef]
-        COLUMNS as ASSERTION_COLUMNS,
-        FIELDS,
-        REVIEWER_NAME,
-        parse_date,
-        safe_note,
-        valid_url,
-        valid_review_url,
-    )
-
 REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts.validate_link_assertions import (  # noqa: E402
+    COLUMNS as ASSERTION_COLUMNS,
+    FIELDS,
+    REVIEWER_NAME,
+    parse_date,
+    safe_note,
+    valid_url,
+    valid_review_url,
+)
+
 DATA_PATH = REPO_ROOT / "docs" / "assets" / "data.json"
 ASSERTIONS_PATH = REPO_ROOT / "docs" / "assets" / "link-assertions.csv"
 PILOT_PATH = REPO_ROOT / "research" / "linked-data-pilot-review.csv"
