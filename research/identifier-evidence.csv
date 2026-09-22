@@ -130,7 +130,7 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 46,geonames_id,3078610,verified,https://sws.geonames.org/3078610/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 47,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 47,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-47,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,https://www.kb.dk/en/about-us/contact,2026-09-21,GeoNames identifies Copenhagen; the official Royal Danish Library contact page gives its Copenhagen postal address.
+47,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,https://www.kb.dk/en/about-us/contact,2026-09-22,GeoNames identifies Copenhagen in Denmark as a national capital; the official Royal Danish Library contact page gives its Copenhagen postal address. The catalogue URL now redirects to the broader Find materials page and needs separate access-point review.
 48,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 48,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 48,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1167,8 +1167,8 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 409,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 409,geonames_id,686578,verified,https://sws.geonames.org/686578/about.rdf,https://bibnat.ro/adresa-biblioteca-batthyaneum/,2026-09-21,The GeoNames record identifies Alba Iulia and the National Library of Romania gives the Batthyaneum branch's Alba Iulia address.
 411,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
-411,wikidata_qid,Q1670994,verified,https://www.wikidata.org/wiki/Q1670994,https://www.nls.uk/contact/,2026-09-21,The Wikidata item and official contact page identify the National Library of Scotland in Edinburgh.
-411,geonames_id,2650225,verified,https://sws.geonames.org/2650225/about.rdf,https://www.nls.uk/contact/,2026-09-21,GeoNames identifies Edinburgh; the official National Library of Scotland contact page gives its Edinburgh address.
+411,wikidata_qid,Q1670994,verified,https://www.wikidata.org/wiki/Q1670994,https://www.nls.uk/contact/,2026-09-22,The Wikidata item identifies the National Library of Scotland as a national library located in Edinburgh; the official contact page names the institution and gives its Edinburgh address.
+411,geonames_id,2650225,verified,https://sws.geonames.org/2650225/about.rdf,https://www.nls.uk/contact/,2026-09-22,GeoNames identifies Edinburgh with country code GB as an administrative-seat populated place; the official National Library of Scotland contact page gives its Edinburgh address.
 412,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 412,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
 412,geonames_id,2651222,verified,https://sws.geonames.org/2651222/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
@@ -1855,10 +1855,10 @@ record_id,field,value,status,source_url,corroborating_url,checked_on,note
 668,geonames_id,2964574,verified,https://sws.geonames.org/2964574/about.rdf,,2026-09-20,Unique populated-place match in country extract and exact-ID GeoNames RDF record.
 669,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 669,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
-669,geonames_id,2650225,verified,https://sws.geonames.org/2650225/about.rdf,https://www.nls.uk/contact/,2026-09-21,GeoNames identifies Edinburgh; the official library contact page corroborates the institution behind the ISOS access point.
+669,geonames_id,2650225,verified,https://sws.geonames.org/2650225/about.rdf,https://www.nls.uk/contact/,2026-09-22,GeoNames identifies Edinburgh with country code GB as an administrative-seat populated place; the official library contact page corroborates the institution named by the manuscript-specific ISOS access point.
 670,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 670,wikidata_qid,,unresolved,,,2026-09-20,No unique exact-name Wikidata item found in this search pass.
-670,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,https://www.kb.dk/en/about-us/contact,2026-09-21,GeoNames identifies Copenhagen; the official library contact page corroborates the institution behind the ISOS access point.
+670,geonames_id,2618425,verified,https://sws.geonames.org/2618425/about.rdf,https://www.kb.dk/en/about-us/contact,2026-09-22,GeoNames identifies Copenhagen in Denmark as a national capital; the official library contact page corroborates the Royal Danish Library named by the manuscript-specific ISOS access point.
 671,isil,,unresolved,,,2026-09-20,No exact issuing-registry match was confirmed for this institution or unit.
 671,wikidata_qid,,unresolved,,,2026-09-20,No matching official website or verified ISIL corroborated the candidate.
 671,geonames_id,2653941,verified,https://sws.geonames.org/2653941/about.rdf,https://www.wikidata.org/wiki/Q350,2026-09-20,Matching Wikidata city and country item confirms the GeoNames ID.
