@@ -25,6 +25,13 @@ Pages does not issue a server-side 301 redirect for these pages. The
 [`library-aliases.json`](assets/library-aliases.json) registry retains the
 historical slugs. If a record is withdrawn, its ID page and JSON-LD file remain
 available as withdrawal notices rather than silently identifying another entry.
+Static GitHub Pages hosting cannot return a custom status for these paths, so
+a withdrawn record's pages still respond `200 OK`; do not treat that response
+code as confirmation that a record is still active, and do not rely on `404`
+or `410` to detect a withdrawal the way DMMapp's own link checker does for
+external collection URLs (see
+[Link Health Check](workflow-link-checking.md))—check the page content or the
+JSON-LD `dcterms:description` instead.
 
 The maintainers intend to preserve these IDs and aliases. This is a project
 stewardship policy, not an uptime or permanent-hosting guarantee from GitHub
