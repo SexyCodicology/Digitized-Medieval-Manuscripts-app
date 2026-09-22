@@ -126,7 +126,7 @@ jobs:
         run: python scripts/verify_link_assertion_history.py "${{ github.event.before }}"
 
       - name: Test Build Hooks
-        run: pytest tests -q
+        run: python -m pytest tests -q
 
       - name: Install dashboard test dependencies
         run: npm ci
