@@ -411,7 +411,10 @@
         "id": 25,
         "nation": "Belgium",
         "city": "Leuven",
-        "library": "KU Leuven Libraries",
+        "library": "KU Leuven Bibliotheken",
+        "library_alternate_names": [
+            {"name": "KU Leuven Libraries", "language": "en"}
+        ],
         "quantity": "Unknown",
         "website": "https://kuleuven.limo.libis.be/discovery/collectionDiscovery?collectionId=81428376490001488&vid=32KUL_KUL%3AKULeuven",
         "copyright": "Public Domain",
@@ -419,6 +422,7 @@
         "is_free_cultural_works_license": true,
         "aggregators": [],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-22",
         "licence_category": "CC0",
         "geonames_id": 2792482
     },
@@ -467,6 +471,9 @@
         "nation": "Belgium",
         "city": "Leuven",
         "library": "KU Leuven Bibliotheken",
+        "library_alternate_names": [
+            {"name": "KU Leuven Libraries", "language": "en"}
+        ],
         "quantity": "Dozens",
         "website": "https://erfgoedparels.be/zoeken?materials%5B%5D=handschrift&providers%5B%5D=ku+leuven+bibliotheken",
         "copyright": "Unknown",
@@ -479,6 +486,7 @@
             }
         ],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "geonames_id": 2792482
     },
@@ -782,7 +790,8 @@
         "id": 49,
         "nation": "England",
         "city": "London",
-        "library": "The British Library Digitised Manuscripts",
+        "library": "The British Library",
+        "access_point_title": "Digitised manuscripts and archives",
         "quantity": "Hundreds",
         "website": "https://www.bl.uk/collection/digitised-manuscripts-archives",
         "copyright": "Unknown",
@@ -790,6 +799,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "geonames_id": 2643743
     },

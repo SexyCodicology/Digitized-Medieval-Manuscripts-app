@@ -100,7 +100,10 @@ under CC BY 4.0; credit GeoNames when reusing its place data.
 
 #### Library name
 
-The official name of the institution that holds the manuscript collection.
+The verified official name of the institution or relevant unit that holds the
+manuscript collection. Keep its self-published form, script, and diacritics.
+The name labels a directory entry; the entry's stable ID identifies an access
+point, not the institution itself.
 
 **Tips:**
 - Use the formal institutional name as it appears on their website
@@ -110,6 +113,30 @@ The official name of the institution that holds the manuscript collection.
 **Example:** `"National Library of France"` or `"Bodleian Library"`
 
 **Why it matters:** Researchers use the library name to find specific collections and verify the source of manuscripts.
+
+#### Access-point title and alternate institution names
+
+Use optional `access_point_title` for a source-verified name of the portal or
+collection reached through this record. It appears below the institution name
+and titles the access point in JSON-LD. When absent, the access point retains
+`library` as a directory label; this is not an identity claim.
+
+Use optional `library_alternate_names` for verified *current* names or
+translations of the same institution. Each entry has a `name` and may have a
+BCP 47 `language` tag, such as `en`. Alternate names help readers find a
+record through dashboard search and appear in the source JSON and exports.
+They are not published as RDF labels on the access point. Do not put former
+names or portal titles here.
+
+```json
+"library": "KU Leuven Bibliotheken",
+"library_alternate_names": [
+  {"name": "KU Leuven Libraries", "language": "en"}
+]
+```
+
+Use the [institution-name research procedure](name-research.md) to record the
+public source and check the related authority claims before a correction.
 
 ### Geographic information
 

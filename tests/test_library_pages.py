@@ -302,6 +302,27 @@ def _page_body(record: dict) -> str:
     return markdown.split("---", 2)[2]
 
 
+def test_access_point_title_is_secondary_and_escaped():
+    body = _page_body({
+        **HOSTILE_RECORD,
+        "library": "Example Library",
+        "access_point_title": '<script>alert("x")</script>',
+    })
+
+    assert "<h1>Example Library</h1>" in body
+    assert "<dt>Access point</dt><dd>&lt;script&gt;" in body
+    assert '<script>alert("x")</script>' not in body
+
+    row = hook.render_row({
+        **HOSTILE_RECORD,
+        "library": "Example Library",
+        "access_point_title": '<script>alert("x")</script>',
+    })
+    assert '<a class="library-name"' in row
+    assert '<div class="library-access-point">&lt;script&gt;' in row
+    assert '<script>alert("x")</script>' not in row
+
+
 def test_the_part_of_row_lists_every_membership():
     body = _page_body({**HOSTILE_RECORD, "aggregators": [
         {"name": "Polonsky", "url": "https://polonsky.example.org"},

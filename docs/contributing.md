@@ -72,8 +72,9 @@ Your contribution will be automatically validated against our schema when you su
 3. **Data Types**: Values match expected types (string, boolean, etc.)
 4. **URL Format**: The `website` field contains a valid URL
 5. **Enum Values**: The `quantity` and `licence_category` fields use one of the allowed values
-6. **Identifier evidence**: Every record has one ISIL, Wikidata, and GeoNames decision in the evidence ledger
-7. **IIIF evidence**: Every published direct IIIF endpoint has a checked endpoint and exact corroborating page in the IIIF evidence ledger
+6. **Name evidence**: Every record has a preferred-name decision; new names and titles cite a public source
+7. **Identifier evidence**: Every record has one ISIL, Wikidata, and GeoNames decision in the evidence ledger
+8. **IIIF evidence**: Every published direct IIIF endpoint has a checked endpoint and exact corroborating page in the IIIF evidence ledger
 
 ### Guidelines
 
@@ -88,11 +89,12 @@ Your contribution will be automatically validated against our schema when you su
 #### Best Practices
 
 1. **Website URLs**: Use the most direct link to the digitized manuscript collection
-2. **Library Names**: Use the official name as it appears on the library's website
+2. **Library Names**: Use the institution's official self-published name. For a correction or an alternate name, follow [Institution-name research](name-research.md) and cite the public source.
 3. **Location**: Use standardized country and city names (English spelling)
 4. **Quantity Estimation**: Choose the category that best matches the collection size — see the [Data Schema](schema.md#approximate-number-of-manuscripts) page for the exact category boundaries
-5. **Identifier evidence**: Add three ledger rows for every new record. Read [Identifier research](identifier-research.md) before adding an ISIL, Wikidata QID, or GeoNames ID.
-6. **IIIF evidence**: Read [IIIF endpoint research](iiif-research.md) before adding a Collection or representative Manifest URL.
+5. **Name evidence**: Add a preferred-name decision for a new record. Read [Institution-name research](name-research.md) before changing a name or adding a portal title.
+6. **Identifier evidence**: Add three ledger rows for every new record. Read [Identifier research](identifier-research.md) before adding an ISIL, Wikidata QID, or GeoNames ID.
+7. **IIIF evidence**: Read [IIIF endpoint research](iiif-research.md) before adding a Collection or representative Manifest URL.
 
 ## Contribute code
 
@@ -110,6 +112,8 @@ follows the usual GitHub workflow: fork, branch, and open a pull request.
 - `docs/assets/dashboard.js` / `dashboard.css` — the dashboard's client-side
   search, filtering, sorting, export, and share behavior
 - `scripts/` — `validate_data.py` (schema validation);
+  `validate_name_evidence.py` and `verify_name_history.py` (name evidence
+  and changed-name checks);
   `validate_identifier_evidence.py`, `validate_iiif_evidence.py`, and
   `validate_link_assertions.py` (check the research and approval ledgers
   against `data.json`); `validate_linked_data_pilot.py` (checks the 25-record
@@ -136,6 +140,7 @@ on every pull request:
 ```bash
 pip install -r requirements-dev.txt
 python scripts/validate_data.py
+python scripts/validate_name_evidence.py
 python scripts/validate_identifier_evidence.py
 python scripts/validate_iiif_evidence.py
 python scripts/validate_link_assertions.py

@@ -603,6 +603,12 @@ a.library-name:focus-visible {
   text-decoration: underline;
 }
 
+.library-access-point {
+  color: var(--dash-muted);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
 .library-project {
   font-size: 0.8rem;
   margin-top: 0.2rem;

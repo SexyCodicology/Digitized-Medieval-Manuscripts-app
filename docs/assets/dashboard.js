@@ -38,6 +38,7 @@ const EXPORT_FIELDS = [
   'iiif', 'iiif_collection_url', 'iiif_example_manifest_url', 'iiif_example_manifest_label',
   'is_free_cultural_works_license', 'aggregators',
   'is_disabled', 'last_checked', 'isil', 'wikidata_qid', 'geonames_id',
+  'access_point_title', 'library_alternate_names',
 ];
 
 // Separates the aggregator memberships of one library inside the single
@@ -428,6 +429,10 @@ document$.subscribe(() => {
       const matchSearch =
         !term ||
         d.library?.toLowerCase().includes(term) ||
+        d.access_point_title?.toLowerCase().includes(term) ||
+        (Array.isArray(d.library_alternate_names) &&
+          d.library_alternate_names.some(entry =>
+            typeof entry?.name === 'string' && entry.name.toLowerCase().includes(term))) ||
         d.city?.toLowerCase().includes(term)    ||
         d.nation?.toLowerCase().includes(term)  ||
         names.some(name => name.toLowerCase().includes(term)) ||
@@ -612,14 +617,19 @@ document$.subscribe(() => {
   /**
    * Return the value written to one CSV cell.
    *
-   * Every field is scalar except aggregators, which is flattened to
-   * "name (url)" per membership so the column stays readable in a
-   * spreadsheet instead of becoming "[object Object]".
+   * Flatten aggregator memberships and alternate institution names to
+   * readable text instead of writing "[object Object]" into CSV cells.
    * @param {Object} record
    * @param {string} field
    * @returns {*}
    */
   function exportValue(record, field) {
+    if (field === 'library_alternate_names') {
+      return (Array.isArray(record.library_alternate_names) ? record.library_alternate_names : [])
+        .filter(entry => typeof entry?.name === 'string')
+        .map(entry => entry.language ? `${entry.name} [${entry.language}]` : entry.name)
+        .join(CSV_AGGREGATOR_SEPARATOR);
+    }
     if (field !== 'aggregators') return record[field];
     return aggregatorsOf(record)
       .map(a => (a.url ? `${a.name} (${a.url})` : a.name))

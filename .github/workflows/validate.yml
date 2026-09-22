@@ -16,6 +16,8 @@ on:
       - 'docs/assets/library-aliases.json'
       - 'schema.json'
       - 'scripts/validate_data.py'
+      - 'scripts/validate_name_evidence.py'
+      - 'scripts/verify_name_history.py'
       - 'hooks/library_pages.py'
       - 'scripts/validate_identifier_evidence.py'
       - 'scripts/validate_iiif_evidence.py'
@@ -24,6 +26,7 @@ on:
       - 'scripts/verify_identifier_history.py'
       - 'scripts/verify_link_assertion_history.py'
       - 'research/identifier-evidence.csv'
+      - 'research/name-evidence.csv'
       - 'research/iiif-evidence.csv'
       - 'research/linked-data-pilot-review.csv'
       - 'docs/assets/link-assertions.csv'
@@ -55,6 +58,9 @@ jobs:
       - name: Validate data.json
         run: python scripts/validate_data.py
 
+      - name: Validate institution-name evidence
+        run: python scripts/validate_name_evidence.py
+
       - name: Validate identifier evidence
         run: python scripts/validate_identifier_evidence.py
 
@@ -70,6 +76,10 @@ jobs:
       - name: Preserve published identifiers
         if: github.event_name == 'pull_request'
         run: python scripts/verify_identifier_history.py "${{ github.event.pull_request.base.sha }}"
+
+      - name: Require evidence for changed names
+        if: github.event_name == 'pull_request'
+        run: python scripts/verify_name_history.py "${{ github.event.pull_request.base.sha }}"
 
       - name: Require approval for changed links
         if: github.event_name == 'pull_request'

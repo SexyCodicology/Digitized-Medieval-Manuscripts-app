@@ -53,6 +53,7 @@ Each library gets its own crawlable page, generated at build time, with:
 - Getting started guide for browsing, searching, and filtering the dashboard
 - Data structure guide covering every field, including optional identifiers and IIIF endpoints
 - Identifier research guide covering source criteria, evidence rows, review, and GeoNames attribution
+- [Institution-name research guide](./docs/name-research.md) covering official names, portal titles, alternate names, and evidence
 - IIIF endpoint research guide covering resource type, scope, evidence, and review
 - Linked-data audit pilot and public approval register for semantic relationships
 - Guides to the automated data validation and weekly link-checking workflows
