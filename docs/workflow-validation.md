@@ -31,11 +31,12 @@ the direct endpoint. The linked-data build then uses the canonical Wikidata
 entity URI and GeoNames place URI as relationship targets.
 
 `scripts/validate_linked_data_pilot.py` checks the 25-record pilot at field
-level. It requires a decision for every selected candidate, preserves a
-five-field deliberate-absence control, and matches approved or corrected
-decisions to the assertion register. A passing check may include `pending`
-decisions; the command reports the pending count so maintainers cannot confuse
-structural validity with pilot completion.
+level. It requires a decision for every selected candidate, preserves the
+deliberate-absence control, and matches approved or corrected decisions to the
+assertion register. A well-formed pending candidate may remain unpublished when
+the corresponding catalogue field is empty; it cannot silently replace a
+populated value. A passing check may include `pending` decisions, so the command
+reports the pending count and the review packet reports publication state.
 
 Identifiers and IIIF endpoints that were already public when this gate was
 introduced remain visible while maintainers audit them. They are not

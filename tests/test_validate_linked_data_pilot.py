@@ -6,6 +6,8 @@ import csv
 import json
 from datetime import date
 
+import pytest
+
 from scripts import validate_linked_data_pilot as validator
 
 REVIEW_URL = (
@@ -56,14 +58,51 @@ def test_repository_pilot_is_complete_and_pending():
     assert validator.validate(records, rows, assertions) == []
 
 
-def test_pending_decision_must_match_data_and_have_no_review(monkeypatch):
+def test_pending_proposal_may_be_unpublished_but_has_no_review(monkeypatch):
     monkeypatch.setattr(validator, "PILOT_RECORD_IDS", frozenset({"3"}))
-    row = pilot_row()
+    manifest = "https://iiif.example.org/manifest"
+    row = pilot_row(field="iiif_example_manifest_url", candidate=manifest)
+
+    assert validator.validate([{"id": 3}], [row], []) == []
+
     row["reviewer"] = "reviewer"
-    errors = validator.validate([{"id": 3, "wikidata_qid": "Q999"}], [row], [])
+    errors = validator.validate([{"id": 3}], [row], [])
 
     assert any("must not name a review" in error for error in errors)
-    assert any("disagrees with data.json" in error for error in errors)
+
+
+def test_pending_candidate_cannot_replace_published_value(monkeypatch):
+    monkeypatch.setattr(validator, "PILOT_RECORD_IDS", frozenset({"3"}))
+    row = pilot_row()
+    errors = validator.validate(
+        [{"id": 3, "wikidata_qid": "Q999"}],
+        [row],
+        [],
+    )
+
+    assert any("cannot replace a published value" in error for error in errors)
+
+
+@pytest.mark.parametrize(
+    ("field", "candidate"),
+    [
+        ("isil", "AUANL"),
+        ("wikidata_qid", "q123"),
+        ("geonames_id", "0"),
+        ("iiif_collection_url", "file:///collection.json"),
+        ("iiif_example_manifest_url", "not-a-url"),
+    ],
+)
+def test_pending_candidate_must_have_the_expected_shape(
+    monkeypatch,
+    field,
+    candidate,
+):
+    monkeypatch.setattr(validator, "PILOT_RECORD_IDS", frozenset({"3"}))
+    row = pilot_row(field=field, candidate=candidate)
+    errors = validator.validate([{"id": 3}], [row], [])
+
+    assert any("malformed candidate value" in error for error in errors)
 
 
 def test_approval_requires_an_exact_assertion_and_matching_review(monkeypatch):

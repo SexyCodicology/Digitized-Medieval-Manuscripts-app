@@ -89,6 +89,24 @@ def test_report_uses_candidate_and_website_for_iiif(monkeypatch):
 
     assert f"[Source](<{manifest}>)" in report
     assert "[Corroboration](<https://example.org/collection>)" in report
+    assert "Unpublished proposal" in report
+
+
+def test_catalogue_state_describes_each_publication_outcome():
+    row = pilot_row()
+
+    assert reporter.catalogue_state({}, row) == "Unpublished proposal"
+    assert reporter.catalogue_state({}, {**row, "candidate_value": ""}) == (
+        "No published value"
+    )
+    assert reporter.catalogue_state({"wikidata_qid": "Q123"}, row) == "Published"
+    assert reporter.catalogue_state({"wikidata_qid": "Q456"}, row) == (
+        "Published replacement"
+    )
+    assert reporter.catalogue_state(
+        {},
+        {**row, "decision": "remove"},
+    ) == "Removed"
 
 
 def test_report_filters_selected_records(monkeypatch):

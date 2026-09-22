@@ -77,6 +77,20 @@ def record_scope(record: dict) -> str:
     return "Direct catalogue access point"
 
 
+def catalogue_state(record: dict, row: dict[str, str]) -> str:
+    """Describe whether the reviewed candidate is already public."""
+    current_value = record.get(row["field"])
+    current = "" if current_value is None else str(current_value)
+    candidate = row["candidate_value"]
+    if row["decision"] == "remove" and not current:
+        return "Removed"
+    if not current:
+        return "Unpublished proposal" if candidate else "No published value"
+    if current == candidate:
+        return "Published"
+    return "Published replacement"
+
+
 def render_report(
     records: list[dict],
     pilot_rows: list[dict[str, str]],
@@ -121,6 +135,10 @@ def render_report(
             "not approve an assertion or establish that an external target is "
             "semantically correct."
         ),
+        (
+            "The catalogue state distinguishes values already present in "
+            "`data.json` from unpublished proposals."
+        ),
     ]
     if not selected:
         lines.extend(["", "No decisions match the selected filters."])
@@ -145,10 +163,10 @@ def render_report(
                 + markdown_text(record.get("nation", "")),
                 "",
                 (
-                    "| Field | Candidate | Decision | Source | Corroboration | "
-                    "Review question |"
+                    "| Field | Candidate | Catalogue state | Decision | Source | "
+                    "Corroboration | Review question |"
                 ),
-                "| --- | --- | --- | --- | --- | --- |",
+                "| --- | --- | --- | --- | --- | --- | --- |",
             ]
         )
         for row in grouped[record_id]:
@@ -167,6 +185,7 @@ def render_report(
                     [
                         code_value(row["field"]),
                         code_value(candidate),
+                        markdown_text(catalogue_state(record, row)),
                         code_value(row["decision"]),
                         url_value(source, "Source"),
                         url_value(corroborating, "Corroboration"),

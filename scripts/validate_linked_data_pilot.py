@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -19,6 +20,7 @@ try:
         REVIEWER_NAME,
         parse_date,
         safe_note,
+        valid_url,
         valid_review_url,
     )
 except ModuleNotFoundError:  # Direct execution sets scripts/ as sys.path[0].
@@ -28,6 +30,7 @@ except ModuleNotFoundError:  # Direct execution sets scripts/ as sys.path[0].
         REVIEWER_NAME,
         parse_date,
         safe_note,
+        valid_url,
         valid_review_url,
     )
 
@@ -55,6 +58,19 @@ COLUMNS = (
 DECISIONS = frozenset({"pending", "approve", "correct", "remove", "absent"})
 REVIEW_COLUMNS = ("reviewer", "reviewed_on", "review_url")
 ABSENCE_CONTROL_ID = "154"
+CANDIDATE_PATTERNS = {
+    "isil": re.compile(r"[A-Z]{1,4}-[A-Za-z0-9][A-Za-z0-9:/-]*\Z"),
+    "wikidata_qid": re.compile(r"Q[1-9][0-9]*\Z"),
+    "geonames_id": re.compile(r"[1-9][0-9]*\Z"),
+}
+
+
+def valid_candidate(field: str, value: str) -> bool:
+    """Return whether a non-empty pilot candidate has the expected shape."""
+    if field in FIELDS and field.endswith("_url"):
+        return valid_url(value)
+    pattern = CANDIDATE_PATTERNS.get(field)
+    return pattern is not None and pattern.fullmatch(value) is not None
 
 
 def assertion_for(
@@ -155,12 +171,16 @@ def validate(
             continue
         if not safe_note(row.get("note", "")):
             errors.append(f"{prefix} needs a safe review note")
+        if candidate and not valid_candidate(field, candidate):
+            errors.append(f"{prefix} has a malformed candidate value")
 
         if decision == "pending":
             if any(row.get(column) for column in REVIEW_COLUMNS):
                 errors.append(f"{prefix} pending decision must not name a review")
-            if candidate != current:
-                errors.append(f"{prefix} pending candidate disagrees with data.json")
+            if current and candidate != current:
+                errors.append(
+                    f"{prefix} pending candidate cannot replace a published value"
+                )
             continue
 
         errors.extend(review_errors(line, row))

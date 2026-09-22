@@ -14,7 +14,7 @@ record_id,field,candidate_value,decision,reviewer,reviewed_on,review_url,note
 154,wikidata_qid,,pending,,,,Municipal and ARCA pages confirm the Castres library but do not establish a unique institution entity; confirm the deliberate absence.
 154,geonames_id,,pending,,,,The municipal address identifies Castres but no exact GeoNames authority crosswalk was asserted; confirm the deliberate absence.
 154,iiif_collection_url,,pending,,,,ARCA exposes the collection and item images but this audit did not verify a scoped Presentation API Collection endpoint; confirm the absence.
-154,iiif_example_manifest_url,,pending,,,,ARCA exposes item images but this audit did not select and verify a representative Presentation API Manifest; confirm the absence.
+154,iiif_example_manifest_url,https://api.irht.cnrs.fr/ark:/63955/f3c0etxh8kt0/manifest.json,pending,,,,ARCA identifies this as the direct Presentation API 2 Manifest for Castres MS 3; it is labelled France Castres Bibliothèque municipale 3 intégral and contains 411 canvases. The candidate is not published in data.json; confirm its representative scope before approval.
 235,geonames_id,2950159,pending,,,,The official locations page lists two Berlin buildings; confirm the place against the direct entry and record 275.
 238,isil,DE-61,pending,,,,The issuing registry and official contact page match; confirm the institution or unit scope.
 238,wikidata_qid,Q2496254,pending,,,,The authority item and official contact page match; confirm the entity scope.

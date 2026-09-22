@@ -47,7 +47,7 @@ candidate evidence; it is not an approval register.
 | 515 | Harvard University | GeoNames | Covers Digital Scriptorium and an institution-wide name. |
 | 409 | Batthyaneum Library – Branch of the National Library of Romania | GeoNames | Tests a named branch of a national library. |
 | 78 | Bibliothèque municipale, Douai | GeoNames | Tests a generic repeated name disambiguated by place. |
-| 154 | Bibliothèque municipale, Castres | None | Ensures the pilot also preserves a justified absence of identifiers. |
+| 154 | Bibliothèque municipale, Castres | IIIF Manifest proposal; no authority identifiers | Tests an unpublished endpoint proposal while preserving justified identifier absences. |
 | 396 | National Library of New Zealand | GeoNames | Tests whether the listed suburb and institutional location align. |
 
 Names are shortened in this table only. `data.json` remains authoritative for
@@ -67,10 +67,11 @@ the public record name and values.
    contents fit this access point.
 5. Decide each populated field separately: approve it, correct it with new
    evidence, remove it, or leave it pending. Do not let approval of one field
-   imply approval of another.
-6. For an approved relationship, add the exact current value and provenance to
-   `link-assertions.csv`. For a correction or removal, update `data.json` and
-   the research ledger in the same pull request.
+   imply approval of another. A pending candidate for an empty field remains
+   an unpublished proposal; do not add it to `data.json` before review.
+6. For an approved relationship, add the value to `data.json` and add its exact
+   provenance to `link-assertions.csv` in the same pull request. For a
+   correction or removal, update `data.json` and the research ledger there too.
 7. Have a DMMapp maintainer review the final commit. Record that maintainer's
    GitHub name, review date, and pull-request URL only after the review happens.
 
@@ -78,7 +79,7 @@ Record one of these decisions in the pilot ledger:
 
 | Decision | Use it when |
 | --- | --- |
-| `pending` | The candidate still awaits maintainer review. Leave all three review-provenance columns empty. |
+| `pending` | The candidate still awaits maintainer review. Leave all three review-provenance columns empty. If the catalogue field is empty, the candidate may remain an unpublished proposal. |
 | `approve` | The candidate is correct. Add the matching assertion row and use the same reviewer, date, and PR URL in both files. |
 | `correct` | The candidate was wrong and `data.json` now contains a reviewed replacement. Add an assertion for the replacement. |
 | `remove` | The candidate was wrong and the field has been removed from `data.json`. |
@@ -116,10 +117,10 @@ only when it reports zero pending.
 
 ## Prepare a review packet
 
-Use the read-only report command to collect each pending candidate, its existing
-evidence, its corroborating source, and the question that a maintainer must
-resolve. The command writes Markdown to the terminal and does not update the
-catalogue or either review register.
+Use the read-only report command to collect each pending candidate, its
+catalogue publication state, its existing evidence, its corroborating source,
+and the question that a maintainer must resolve. The command writes Markdown to
+the terminal and does not update the catalogue or either review register.
 
 **Command safety**: Safe
 
