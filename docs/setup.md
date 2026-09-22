@@ -99,17 +99,33 @@ Install the extra development dependencies, which add `pytest` and
 pip install -r requirements-dev.txt
 ```
 
-Validate `docs/assets/data.json` against `schema.json`:
+Validate `docs/assets/data.json` against `schema.json`, the identifier and
+IIIF evidence ledgers, the reviewed link-assertion register, and the
+linked-data pilot decisions:
 
 ```bash
 python scripts/validate_data.py
+python scripts/validate_identifier_evidence.py
+python scripts/validate_iiif_evidence.py
+python scripts/validate_link_assertions.py
+python scripts/validate_linked_data_pilot.py
 ```
 
-Run the pytest suite covering the build hook (`hooks/library_pages.py`) and
-scripts:
+Check that your branch hasn't silently dropped a published ID, alias, or
+approved link since it diverged from `master`:
 
 ```bash
-pytest tests -q
+python scripts/verify_identifier_history.py "$(git merge-base HEAD origin/master)"
+python scripts/verify_link_assertion_history.py "$(git merge-base HEAD origin/master)"
+```
+
+Run the pytest suite covering the build hooks (`hooks/library_pages.py`,
+`hooks/linked_data.py`) and scripts. Use `python -m pytest`, not a bare
+`pytest`, so the repo root is on `sys.path` and the tests can import `hooks`
+and `scripts` as packages:
+
+```bash
+python -m pytest tests -q
 ```
 
 Run the Node test suite covering the dashboard's client-side behavior
@@ -119,6 +135,13 @@ its only dependency:
 ```bash
 npm ci
 npm test
+```
+
+After `mkdocs build --clean` (see [Build the site](#build-the-site) above),
+verify the built linked-data release:
+
+```bash
+python scripts/verify_linked_data.py site
 ```
 
 ## Verify your setup
