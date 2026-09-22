@@ -95,6 +95,41 @@ def check_duplicate_ids(records: list) -> list[str]:
     return errors
 
 
+def check_name_fields(records: list) -> list[str]:
+    """Reject blank or repeated names within one directory entry."""
+    errors = []
+    for index, record in enumerate(records):
+        if not isinstance(record, dict):
+            continue
+        record_id = record.get("id")
+        preferred = record.get("library")
+        if isinstance(preferred, str) and not preferred.strip():
+            errors.append(f"record {index} (id: {record_id}): library is blank")
+        title = record.get("access_point_title")
+        if isinstance(title, str) and not title.strip():
+            errors.append(f"record {index} (id: {record_id}): access_point_title is blank")
+
+        names = record.get("library_alternate_names")
+        if not isinstance(names, list):
+            continue
+        seen = {preferred.strip().casefold()} if isinstance(preferred, str) else set()
+        for entry in names:
+            if not isinstance(entry, dict) or not isinstance(entry.get("name"), str):
+                continue
+            name = entry["name"].strip()
+            if not name:
+                errors.append(
+                    f"record {index} (id: {record_id}): alternate name is blank"
+                )
+            elif name.casefold() in seen:
+                errors.append(
+                    f"record {index} (id: {record_id}): alternate name "
+                    f"{name!r} repeats another institution name"
+                )
+            seen.add(name.casefold())
+    return errors
+
+
 def check_aggregator_uniqueness(records: list) -> list[str]:
     """Return one message per aggregator naming or URL conflict.
 
@@ -271,6 +306,7 @@ def validate(schema: dict, records: Any) -> list[str]:
     return [
         *check_schema(schema, records),
         *check_duplicate_ids(records),
+        *check_name_fields(records),
         *check_aggregator_uniqueness(records),
         *check_link_status(records),
         *check_iiif_links(records),

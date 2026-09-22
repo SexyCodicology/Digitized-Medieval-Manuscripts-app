@@ -44,6 +44,17 @@ automatically approved, and they are not exported as linked-data relationships
 unless they have a row in the assertion register. The comparison prevents new
 unreviewed claims from enlarging this backlog.
 
+### Institution-name evidence check
+
+The name check reads `research/name-evidence.csv`. It requires one
+preferred-name row for every record. Existing unreviewed labels remain
+`pending`; every published `access_point_title` or alternate name needs an
+exact `verified` row with a public source and check date. A pull-request
+history check also requires verified evidence when a preferred name, title,
+or alternate name is newly published. The checks cannot decide whether the
+source identifies the correct holding institution. Follow
+[Institution-name research](name-research.md) for the editorial review.
+
 ### Identifier evidence check
 
 The identifier evidence check reads `research/identifier-evidence.csv` and
@@ -90,11 +101,11 @@ The dedicated Data Guardrails workflow checks your data in two situations:
 - **Automatically**: When you submit a pull request that changes the library data
 - **On demand**: When you manually request a validation check from the GitHub Actions tab
 
-The deployment workflow repeats the identifier and link-assertion history
-checks when a release reaches `master`. This second gate compares the release
-with the previous `master` revision. It protects published IDs and aliases even
-if a change reaches the deployment workflow outside the normal pull-request
-path.
+The deployment workflow repeats the identifier, name, and link-assertion
+history checks when a release reaches `master`. This second gate compares the
+release with the previous `master` revision. It protects published IDs,
+aliases, and name evidence even if a change reaches the deployment workflow
+outside the normal pull-request path.
 
 ## How the format check works
 

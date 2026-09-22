@@ -391,6 +391,10 @@ def render_page(record: dict[str, Any], title: str, description: str) -> str:
         ("Open licence", "Yes" if record.get("is_free_cultural_works_license") else "No"),
     ]
 
+    access_point_title = safe_text(record.get("access_point_title"))
+    if access_point_title:
+        facts.insert(0, ("Access point", access_point_title))
+
     isil = record.get("isil")
     if isil:
         facts.append(("ISIL", escape(str(isil))))
@@ -780,10 +784,15 @@ def render_row(record: dict[str, Any]) -> str:
     header, which needs the same treatment.
     """
     slug = id_slug(record)
+    access_point_title = safe_text(record.get("access_point_title"))
+    access_point = (
+        f'<div class="library-access-point">{access_point_title}</div>'
+        if access_point_title else ""
+    )
     return (
         f'<tr data-record-id="{record["id"]}" role="row">'
         f'<td class="col-library" role="cell"><a class="library-name" href="libraries/{slug}/">'
-        f'{escape(str(record["library"]))}</a>{render_projects(record)}</td>'
+        f'{escape(str(record["library"]))}</a>{access_point}{render_projects(record)}</td>'
         f'<td class="col-location" role="cell"><div class="location-nation">{escape(str(record["nation"]))}</div>'
         '<div class="location-city"><i class="bi bi-dot" aria-hidden="true"></i>'
         f'{escape(str(record["city"]))}</div></td>'

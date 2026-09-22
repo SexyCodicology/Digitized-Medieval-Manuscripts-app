@@ -81,6 +81,25 @@ def test_a_normal_record_passes(schema):
     assert validator.validate(schema, [VALID_RECORD]) == []
 
 
+def test_verified_name_fields_accept_a_portal_title_and_translation(schema):
+    record = {
+        **VALID_RECORD,
+        "access_point_title": "Digital collection",
+        "library_alternate_names": [{"name": "Bibliothèque exemple", "language": "fr"}],
+    }
+    assert validator.validate(schema, [record]) == []
+
+
+@pytest.mark.parametrize("field,value", [
+    ("access_point_title", "  "),
+    ("library_alternate_names", [{"name": "  "}]),
+    ("library_alternate_names", [{"name": "BODLEIAN LIBRARY"}]),
+    ("library_alternate_names", [{"name": "Exemple", "language": "not_a_tag"}]),
+])
+def test_invalid_name_fields_are_rejected(schema, field, value):
+    assert validator.validate(schema, [{**VALID_RECORD, field: value}])
+
+
 def test_explicit_iiif_collection_and_example_fields_pass(schema):
     record = {
         **copy.deepcopy(VALID_RECORD),

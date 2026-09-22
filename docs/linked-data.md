@@ -57,6 +57,12 @@ It distinguishes a `dcat:CatalogRecord`—DMMapp's metadata entry—from a
 identity claim. The bulk catalogue links to both its metadata records and the
 access points they describe. It also lists the available distributions. These
 are static files rebuilt with the site, not a live API or SPARQL endpoint.
+When a verified `access_point_title` exists, it supplies that resource's
+`dcterms:title`; otherwise `library` remains its human-readable directory
+label. Alternate institution names in the source JSON support search and
+export, but are not RDF labels on the access point. Name corrections follow
+the separate [institution-name research](name-research.md) procedure and do
+not by themselves approve a holding-institution relationship.
 GitHub Pages does not offer HTTP content negotiation; clients should parse the
 linked files as JSON-LD by their known path rather than by requesting a
 particular `Accept` type. The post-deployment smoke check

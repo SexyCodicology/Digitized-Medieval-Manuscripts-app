@@ -600,7 +600,7 @@ test('filters-active badge: hidden with none active, counts only the four collap
   assert.equal(badge.textContent, '0');
 });
 
-const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,licence_category,quantity,iiif,iiif_collection_url,iiif_example_manifest_url,iiif_example_manifest_label,is_free_cultural_works_license,aggregators,is_disabled,last_checked,isil,wikidata_qid,geonames_id';
+const EXPORT_CSV_HEADER = 'id,library,nation,city,website,copyright,licence_category,quantity,iiif,iiif_collection_url,iiif_example_manifest_url,iiif_example_manifest_label,is_free_cultural_works_license,aggregators,is_disabled,last_checked,isil,wikidata_qid,geonames_id,access_point_title,library_alternate_names';
 
 function makeRecord(overrides) {
   return Object.assign({
@@ -710,7 +710,7 @@ test('export: CSV and JSON reflect the currently filtered records, not the full 
   assert.ok(csvLines[1].includes('https://example.org/iiif/alpha/manifest'));
   assert.ok(csvLines[1].includes('Alpha manuscript'));
   assert.ok(!csvDownload.content.includes('Beta Library'), 'the filtered-out record must not appear in the export');
-  assert.deepEqual(csvLines[1].split(',').slice(-3), ['GB-OxBodl', 'Q1131283', '2640729']);
+  assert.deepEqual(csvLines[1].split(',').slice(-5), ['GB-OxBodl', 'Q1131283', '2640729', '', '']);
 
   assert.deepEqual(JSON.parse(jsonDownload.content), [data[0]]);
   assert.equal(
@@ -911,6 +911,34 @@ test('search matches a second-position aggregator name', async () => {
   searchInput.dispatchEvent(new window.Event('input'));
 
   assert.deepEqual(visibleIds(window), ['1', '2']);
+});
+
+test('verified alternate names and access-point titles are searchable and exported', async () => {
+  const record = makeRecord({
+    library: 'KU Leuven Bibliotheken',
+    access_point_title: 'Manuscript collection',
+    library_alternate_names: [{ name: 'KU Leuven Libraries', language: 'en' }],
+  });
+  const dom = loadDashboard({
+    rowsHtml: '<tr data-record-id="1"><td>KU Leuven Bibliotheken</td><td>Leuven</td><td></td><td></td></tr>',
+    fetchImpl: () => Promise.resolve({ ok: true, json: () => Promise.resolve([record]) }),
+  });
+  await flushMicrotasks();
+
+  const { window } = dom;
+  const search = window.document.getElementById('searchInput');
+  search.value = 'ku leuven libraries';
+  search.dispatchEvent(new window.Event('input'));
+  assert.deepEqual(visibleIds(window), ['1']);
+  search.value = 'manuscript collection';
+  search.dispatchEvent(new window.Event('input'));
+  assert.deepEqual(visibleIds(window), ['1']);
+
+  const downloads = stubDownloads(window);
+  window.document.getElementById('exportCsvBtn').click();
+  window.document.getElementById('exportJsonBtn').click();
+  assert.ok(downloads[0].content.includes('Manuscript collection,KU Leuven Libraries [en]'));
+  assert.deepEqual(JSON.parse(downloads[1].content)[0].library_alternate_names, record.library_alternate_names);
 });
 
 test('a library with no memberships survives every aggregator filter unscathed', async () => {

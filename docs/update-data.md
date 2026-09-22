@@ -71,6 +71,14 @@ Every library entry must include:
 - **is_free_cultural_works_license**: Free license status (`true` or `false`)
 - **aggregators**: The aggregating projects the library is discoverable through, as a list. Use `[]` when there are none.
 
+Use the institution's current official name for **library**, preserving its
+script and diacritics. If a verified portal or collection has a different
+title, add optional **access_point_title**. Put verified current translations
+or alternate institution names in optional **library_alternate_names**, with
+a language tag when known. See [Institution-name research](name-research.md)
+for examples, evidence rules, and the separate name register. Do not use a
+matching name or website to merge two record IDs.
+
 Each ID has a stable public page. For a new entry, add its name-derived slug
 to [`library-aliases.json`](assets/library-aliases.json) under the new ID. If
 you change a library name, append the new slug under the existing ID and keep

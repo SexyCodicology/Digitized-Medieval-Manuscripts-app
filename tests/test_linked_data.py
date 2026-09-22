@@ -63,6 +63,22 @@ def test_record_graph_distinguishes_metadata_from_access_point():
     assert list(graph.objects(access_point, DCTERMS.description))
 
 
+def test_access_point_title_does_not_relabel_the_institution_or_create_an_identity_link():
+    record = {
+        **RECORD,
+        "access_point_title": "Manuscript portal",
+        "library_alternate_names": [{"name": "Bibliothèque exemple", "language": "fr"}],
+    }
+    document = linked_data.record_jsonld(record, SITE_URL)
+    graph = parse(document)
+    base = SITE_URL + "libraries/id-42/"
+
+    assert (URIRef(base + "#record"), DCTERMS.title, Literal("Example Library")) in graph
+    assert (URIRef(base + "#access-point"), DCTERMS.title, Literal("Manuscript portal")) in graph
+    assert "Bibliothèque exemple" not in document
+    assert "sameAs" not in document
+
+
 def test_unreviewed_authorities_rights_and_iiif_are_not_asserted():
     document = linked_data.record_jsonld(RECORD, SITE_URL)
     graph = parse(document)

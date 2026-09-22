@@ -99,7 +99,7 @@ def record_graph(
         "dcterms:type": {
             "@id": site_base(site_url) + "linked-data/#" + ACCESS_POINT_TYPE_FRAGMENT
         },
-        "dcterms:title": record["library"],
+        "dcterms:title": record.get("access_point_title") or record["library"],
         "dcterms:description": (
             "A directory-listed access point to digitized medieval manuscripts "
             f"associated with {record['city']}, {record['nation']}."
