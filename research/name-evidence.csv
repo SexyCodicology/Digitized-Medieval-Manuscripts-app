@@ -61,7 +61,7 @@ record_id,field,value,language,status,source_url,checked_on,note
 61,library,Early Manuscripts at Oxford University,,pending,,,
 62,library,New Digital Bodleian,,pending,https://digital.bodleian.ox.ac.uk/collections/western-medieval-manuscripts/,2026-09-22,The current value names a portal rather than a holder; this collection includes manuscripts held by the Bodleian and Oxford colleges so the preferred institution name needs an editorial decision.
 62,access_point_title,Western Medieval Manuscripts,,verified,https://digital.bodleian.ox.ac.uk/collections/western-medieval-manuscripts/,2026-09-22,The collection page publishes this title and says it includes manuscripts from the Bodleian and Oxford colleges.
-63,library,British Library Catalogue of Illuminated Manuscripts,,pending,,,
+63,library,The British Library,,verified,https://www.bl.uk/collection/digitised-manuscripts-archives,2026-09-23,The current access page names the British Library as holder. ID 49 shares this URL; the historical Catalogue of Illuminated Manuscripts scope needs separate review.
 64,library,"St. John's College Library, University of Cambridge",,pending,,,
 65,library,The Courtauld Institute of Art,,pending,,,
 66,library,Victoria and Albert Museum,,pending,,,
@@ -97,10 +97,10 @@ record_id,field,value,language,status,source_url,checked_on,note
 96,library,Bibliothèque patrimoniale,,pending,,,
 97,library,Bibliothèque Inguimbertine,,pending,,,
 99,library,Bibliothèque Alexis de Tocqueville,,pending,,,
-100,library,Bibliothèque municipale,,pending,https://www.rouen.fr/fr/adresse/bibliotheque-villon,2026-09-22,The city names Bibliothèque municipale et patrimoniale Villon; confirm that ARCA collection 2575 represents its holdings before changing this label.
+100,library,Bibliothèque municipale et patrimoniale Villon,,verified,https://rouen.fr/adresse/bibliotheque-villon,2026-09-23,ARCA collection 2575 links to repository 548 at the same Villon street address.
 101,library,Bibliothèque Bussy-Rabutin,,pending,,,
 102,library,Bibliothèque Méjanes,,pending,,,
-103,library,Bibliothèque municipale,,pending,https://bourges.fr/site/bibliotheques,2026-09-22,The city names Bibliothèque des Quatre piliers as its manuscript-holding branch; confirm the ARCA collection scope before changing this label.
+103,library,Bibliothèque des Quatre piliers,,verified,https://www.bourges.fr/site/bibliotheques?accessibilite=1,2026-09-23,ARCA collection 1503 links to repository 138 at the same Quatre-Piliers street address.
 104,library,Médiathèque de la communauté urbaine d'Alençon,,pending,,,
 105,library,Musée de Cluny,,pending,,,
 106,library,Bibliothèque des Dominicains,,pending,,,
@@ -150,7 +150,7 @@ record_id,field,value,language,status,source_url,checked_on,note
 151,library,Bibliothèque municipale,,pending,,,
 152,library,Archives Historiques du diocèse de Nantes,,pending,,,
 153,library,Bibliothèque municipale,,pending,,,
-154,library,Bibliothèque municipale,,pending,,,First name-review batch; verify the holding institution and access-point scope.
+154,library,Médiathèque de Castres-Sidobre,,verified,https://www.ville-castres.fr/mediatheque/,2026-09-23,ARCA collection 3127 links to repository 411 at the same 2 avenue du Sidobre address.
 155,library,Bibliothèque du Chapitre métropolitain (Notre-Dame),,pending,,,
 156,library,"Université catholique de l'Ouest, Bibliothèque universitaire",,pending,,,
 157,library,Bibliothèque municipale,,pending,,,
