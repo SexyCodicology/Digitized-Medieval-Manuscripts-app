@@ -1000,7 +1000,7 @@
         "id": 63,
         "nation": "England",
         "city": "London",
-        "library": "British Library Catalogue of Illuminated Manuscripts",
+        "library": "The British Library",
         "quantity": "Thousands",
         "website": "https://www.bl.uk/collection/digitised-manuscripts-archives",
         "copyright": "Unknown",
@@ -1008,6 +1008,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-23",
         "licence_category": "Unknown",
         "geonames_id": 2643743
     },
@@ -1645,7 +1646,7 @@
         "id": 100,
         "nation": "France",
         "city": "Rouen",
-        "library": "Bibliothèque municipale",
+        "library": "Bibliothèque municipale et patrimoniale Villon",
         "quantity": "Hundreds",
         "website": "https://arca.irht.cnrs.fr/collection/2575/manuscripts",
         "copyright": "Public Domain Mark 1.0",
@@ -1658,6 +1659,7 @@
             }
         ],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-23",
         "licence_category": "CC0",
         "geonames_id": 2982652
     },
@@ -1705,7 +1707,7 @@
         "id": 103,
         "nation": "France",
         "city": "Bourges",
-        "library": "Bibliothèque municipale",
+        "library": "Bibliothèque des Quatre piliers",
         "quantity": "Dozens",
         "website": "https://arca.irht.cnrs.fr/collection/1503/manuscripts",
         "copyright": "Public Domain Mark 1.0",
@@ -1718,6 +1720,7 @@
             }
         ],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-23",
         "licence_category": "CC0",
         "geonames_id": 3031005
     },
@@ -2695,7 +2698,7 @@
         "id": 154,
         "nation": "France",
         "city": "Castres",
-        "library": "Bibliothèque municipale",
+        "library": "Médiathèque de Castres-Sidobre",
         "quantity": "Few",
         "website": "https://arca.irht.cnrs.fr/collection/3127/manuscripts",
         "copyright": "Public Domain Mark 1.0",
@@ -2708,6 +2711,7 @@
             }
         ],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-23",
         "licence_category": "CC0"
     },
     {
