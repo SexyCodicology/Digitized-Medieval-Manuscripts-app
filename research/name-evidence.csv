@@ -356,7 +356,7 @@ record_id,field,value,language,status,source_url,checked_on,note
 371,library,Rijksmuseum Twenthe,,pending,,,
 372,library,Stadsarchief en Athenaeumbibliotheek,,pending,,,
 373,library,Universiteitsbibliotheek Vrije Universiteit,,pending,,,
-374,library,Universiteitsbibliotheek Nijmegen / Radboud Universiteit (they have no own website with digitized mss),,pending,,,
+374,library,Universiteitsbibliotheek van de Radboud Universiteit,,verified,https://www.ru.nl/sites/default/files/2024-07/gebruiksvoorwaarden_digitale_bibliotheek.pdf,2026-09-23,Radboud uses this full form for its university library; its Bijzondere Collecties page identifies the library as holder of the manuscripts. The access point is Radboud's own digital Handschriften collection.
 375,library,Rijksuniversiteit Groningen,,pending,,,
 376,library,Museum Rotterdam,,pending,,,
 377,library,Regionaal Archief Alkmaar,,pending,,,
