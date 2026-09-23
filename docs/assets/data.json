@@ -6317,21 +6317,17 @@
         "id": 374,
         "nation": "Netherlands",
         "city": "Nijmegen",
-        "library": "Universiteitsbibliotheek Nijmegen / Radboud Universiteit (they have no own website with digitized mss)",
+        "library": "Universiteitsbibliotheek van de Radboud Universiteit",
         "quantity": "Hundreds",
-        "website": "https://www.mmdc.nl/static/site/search/?searchMode=advanced&recordId=null&selectedRecordId=null&maximumRecords=15&recordDisplayLevel=1&startRecord=1&showMap=1&freetextsearch=Type%2Bin%2Bquery&shelfmark=nijmegen%2Bub&author=Type%2Bin%2Bquery...%2B%28autocompleted%29",
+        "website": "https://bijzonderecollecties.ubn.ru.nl/digital/collection/Handschriften/search/searchterm/Middle%20Ages/field/subjee/mode/exact/conn/and",
         "copyright": "Unknown",
-        "iiif": false,
+        "iiif": true,
         "is_free_cultural_works_license": false,
-        "aggregators": [
-            {
-                "name": "Medieval Manuscripts in Dutch Collections (MMDC)",
-                "url": "https://www.mmdc.nl"
-            }
-        ],
-        "last_checked": "2026-09-21",
+        "aggregators": [],
+        "last_checked": "2026-09-23",
         "licence_category": "Unknown",
-        "geonames_id": 2750053
+        "geonames_id": 2750053,
+        "last_edited": "2026-09-23"
     },
     {
         "id": 375,
