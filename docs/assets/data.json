@@ -4437,7 +4437,7 @@
         "city": "Dusseldorf",
         "library": "Universitäts- und Landesbibliothek Düsseldorf",
         "quantity": "Hundreds",
-        "website": "https://handschriftenportal.de/search?q=Universit%C3%A4ts-%20und%20Landesbibliothek%20D%C3%BCsseldorf&hl=true",
+        "website": "https://handschriftenportal.de/search?hl=true&fq=%7B%22repository-facet%22%3A%5B%22Universit%C3%A4ts-+und+Landesbibliothek+D%C3%BCsseldorf%22%5D%2C%22digitized-object-facet%22%3A%5Btrue%5D%7D",
         "copyright": "Unknown",
         "iiif": true,
         "is_free_cultural_works_license": false,
@@ -4447,11 +4447,12 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-09-23",
         "licence_category": "Unknown",
         "isil": "DE-61",
         "wikidata_qid": "Q2496254",
-        "geonames_id": 2934246
+        "geonames_id": 2934246,
+        "last_edited": "2026-09-23"
     },
     {
         "id": 262,
