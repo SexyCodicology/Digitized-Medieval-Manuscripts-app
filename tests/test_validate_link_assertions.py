@@ -34,12 +34,21 @@ def assertion(field: str, value: str) -> dict[str, str]:
     }
 
 
-def test_current_catalogue_requires_no_unpublished_research():
+def test_current_catalogue_has_only_reviewed_assertions():
     records = json.loads(validator.DATA_PATH.read_text(encoding="utf-8"))
     with validator.ASSERTIONS_PATH.open(encoding="utf-8", newline="") as source:
         rows = list(csv.DictReader(source))
 
-    assert rows == []
+    expected = {
+        (record_id, field, value)
+        for record_id in ("238", "261")
+        for field, value in (
+            ("isil", "DE-61"),
+            ("wikidata_qid", "Q2496254"),
+            ("geonames_id", "2934246"),
+        )
+    }
+    assert {(row["record_id"], row["field"], row["value"]) for row in rows} == expected
     assert validator.validate(records, rows) == []
 
 

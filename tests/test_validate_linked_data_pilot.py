@@ -46,7 +46,7 @@ def assertion(field: str, value: str) -> dict[str, str]:
     }
 
 
-def test_repository_pilot_is_complete_and_pending():
+def test_repository_pilot_tracks_approved_and_pending_decisions():
     records = json.loads(validator.DATA_PATH.read_text(encoding="utf-8"))
     with validator.PILOT_PATH.open(encoding="utf-8", newline="") as source:
         rows = list(csv.DictReader(source))
@@ -54,7 +54,13 @@ def test_repository_pilot_is_complete_and_pending():
         assertions = list(csv.DictReader(source))
 
     assert len(rows) == 41
-    assert all(row["decision"] == "pending" for row in rows)
+    approved = {(row["record_id"], row["field"]) for row in rows if row["decision"] == "approve"}
+    assert approved == {
+        (record_id, field)
+        for record_id in ("238", "261")
+        for field in ("isil", "wikidata_qid", "geonames_id")
+    }
+    assert sum(row["decision"] == "pending" for row in rows) == 35
     assert validator.validate(records, rows, assertions) == []
 
 
