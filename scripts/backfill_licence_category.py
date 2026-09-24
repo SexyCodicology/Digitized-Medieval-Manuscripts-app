@@ -55,7 +55,6 @@ COPYRIGHT_TO_LICENCE_CATEGORY = {
     "CC-BY": "CC-BY",
     "CC0 1.0": "CC0",
     "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication": "CC0",
-    "Images and transcriptions on this page, including medium image downloads, may be used under the Creative Commons Attribution 4.0 International Licence unless otherwise stated.": "Mixed/Item-specific",
     "Non-commercial reuse with attribution": "CC-BY-NC",
     "Private study only (ISOS)": "All Rights Reserved",
     "Public Domain": "CC0",
