@@ -9,9 +9,9 @@ record_id,field,value,language,status,source_url,checked_on,note
 8,library,University of Melbourne,,pending,,,
 9,library,University of Sydney,,pending,,,
 10,library,Art Gallery of Ballarat,,pending,,,
-11,library,Osterreichischen Nationalbibliothek,,pending,,,
+11,library,Österreichische Nationalbibliothek,,verified,https://www.onb.ac.at/sammlungen/sammlung-von-handschriften-und-alten-drucken/bestaende,2026-09-24,Official page footer and copyright identify the institution by this name; its digital catalogue remains the access point.
 12,library,Universitätsbibliothek Karl-Franzens,,pending,,,
-13,library,Oberosterreichische Landesbibliothek,,pending,,,
+13,library,Oberösterreichische Landesbibliothek,,verified,https://www.landesbibliothek.at/,2026-09-24,Official home page welcomes readers to the institution by this name; its digital manuscript portal remains the access point.
 14,library,Augustiner-Chorherrenstift Klosterneuburg,,pending,,,
 15,library,"Erzabtei St. Peter, Bibliothek",,pending,,,
 16,library,Zisterzienserstift Zwettl,,pending,,,
