@@ -59,8 +59,8 @@ def test_repository_pilot_tracks_approved_and_pending_decisions():
         (record_id, field)
         for record_id in ("238", "261")
         for field in ("isil", "wikidata_qid", "geonames_id")
-    }
-    assert sum(row["decision"] == "pending" for row in rows) == 35
+    } | {("154", "iiif_example_manifest_url")}
+    assert sum(row["decision"] == "pending" for row in rows) == 34
     assert validator.validate(records, rows, assertions) == []
 
 
