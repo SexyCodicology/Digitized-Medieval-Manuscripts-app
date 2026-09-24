@@ -158,7 +158,7 @@
         "id": 11,
         "nation": "Austria",
         "city": "Vienna",
-        "library": "Osterreichischen Nationalbibliothek",
+        "library": "Österreichische Nationalbibliothek",
         "quantity": "Thousands",
         "website": "https://search.onb.ac.at/primo-explore/search?query=any%2Ccontains%2C*&tab=onb_digital&search_scope=ONB_digital&vid=ONB&facet=searchcreationdate%2Cinclude%2C-500%7C%2C%7C1500&offset=0&fn=search",
         "copyright": "Unknown",
@@ -168,7 +168,8 @@
         "last_checked": "2026-09-21",
         "licence_category": "Unknown",
         "wikidata_qid": "Q304037",
-        "geonames_id": 2761369
+        "geonames_id": 2761369,
+        "last_edited": "2026-09-24"
     },
     {
         "id": 12,
@@ -189,7 +190,7 @@
         "id": 13,
         "nation": "Austria",
         "city": "Linz",
-        "library": "Oberosterreichische Landesbibliothek",
+        "library": "Oberösterreichische Landesbibliothek",
         "quantity": "Hundreds",
         "website": "https://digi.landesbibliothek.at/viewer/browse/",
         "copyright": "Unknown",
@@ -199,7 +200,8 @@
         "last_checked": "2026-09-21",
         "licence_category": "Unknown",
         "wikidata_qid": "Q1439945",
-        "geonames_id": 2772400
+        "geonames_id": 2772400,
+        "last_edited": "2026-09-24"
     },
     {
         "id": 14,
@@ -6932,7 +6934,7 @@
         "nation": "Scotland",
         "city": "Edinburgh",
         "library": "National Library of Scotland",
-        "quantity": "Few",
+        "quantity": "Unknown",
         "website": "https://digital.nls.uk/gallery/category/historical-manuscripts",
         "copyright": "Unknown",
         "iiif": false,
@@ -6940,7 +6942,8 @@
         "aggregators": [],
         "licence_category": "Unknown",
         "wikidata_qid": "Q1670994",
-        "geonames_id": 2650225
+        "geonames_id": 2650225,
+        "last_edited": "2026-09-24"
     },
     {
         "id": 412,
@@ -8974,7 +8977,7 @@
         "nation": "United States of America",
         "city": "New York",
         "library": "The Morgan Library & Museum",
-        "quantity": "Hundreds",
+        "quantity": "Unknown",
         "website": "https://www.themorgan.org/manuscripts/list?field_medieval_centuries_tid=All&field_image_available_tid=11766&field_ms_type_tid=All&field_country_taxonomy_tid=All",
         "copyright": "Unknown",
         "iiif": false,
@@ -8982,7 +8985,8 @@
         "aggregators": [],
         "licence_category": "Unknown",
         "wikidata_qid": "Q1478423",
-        "geonames_id": 5128581
+        "geonames_id": 5128581,
+        "last_edited": "2026-09-24"
     },
     {
         "id": 527,
