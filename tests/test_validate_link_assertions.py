@@ -48,6 +48,13 @@ def test_current_catalogue_has_only_reviewed_assertions():
             ("geonames_id", "2934246"),
         )
     }
+    expected.add(
+        (
+            "154",
+            "iiif_example_manifest_url",
+            "https://api.irht.cnrs.fr/ark:/63955/f3c0etxh8kt0/manifest.json",
+        )
+    )
     assert {(row["record_id"], row["field"], row["value"]) for row in rows} == expected
     assert validator.validate(records, rows) == []
 

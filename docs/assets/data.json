@@ -775,12 +775,13 @@
         "city": "Copenhagen",
         "library": "Det Kongelige Bibliotek",
         "quantity": "Unknown",
-        "website": "http://www.kb.dk/en/nb/materialer/haandskrifter/HA/e-mss/e_mss.html",
+        "website": "https://digitalesamlinger.kb.dk/manus/vmanus/2011/dec/ha/subject898/en/?notAfter=1500-12-31",
         "copyright": "Unknown",
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-09-24",
+        "last_edited": "2026-09-24",
         "licence_category": "Unknown",
         "geonames_id": 2618425
     },
@@ -986,13 +987,13 @@
         "city": "Oxford",
         "library": "New Digital Bodleian",
         "access_point_title": "Western Medieval Manuscripts",
-        "quantity": "Unknown",
+        "quantity": "Thousands",
         "website": "https://digital.bodleian.ox.ac.uk/collections/western-medieval-manuscripts/",
         "copyright": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_edited": "2026-09-22",
+        "last_edited": "2026-09-24",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2640729
     },
@@ -2703,6 +2704,8 @@
         "website": "https://arca.irht.cnrs.fr/collection/3127/manuscripts",
         "copyright": "Public Domain Mark 1.0",
         "iiif": true,
+        "iiif_example_manifest_url": "https://api.irht.cnrs.fr/ark:/63955/f3c0etxh8kt0/manifest.json",
+        "iiif_example_manifest_label": "Castres, Bibliothèque municipale, MS 3",
         "is_free_cultural_works_license": true,
         "aggregators": [
             {
@@ -2711,7 +2714,7 @@
             }
         ],
         "last_checked": "2026-09-21",
-        "last_edited": "2026-09-23",
+        "last_edited": "2026-09-24",
         "licence_category": "CC0"
     },
     {
@@ -6710,7 +6713,7 @@
         "id": 396,
         "nation": "New Zealand",
         "city": "Thorndon",
-        "library": "National Library of New Zealand",
+        "library": "Alexander Turnbull Library",
         "quantity": "Unknown",
         "website": "https://www.flickr.com/photos/nationallibrarynz_commons/sets/72157625795521244/with/5343925075",
         "copyright": "Unknown",
@@ -6718,6 +6721,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "last_checked": "2026-09-21",
+        "last_edited": "2026-09-24",
         "licence_category": "Unknown",
         "geonames_id": 11694534
     },
@@ -9530,11 +9534,13 @@
         "city": "Vatican City",
         "library": "Biblioteca Apostolica Vaticana",
         "quantity": "Thousands",
-        "website": "https://opac.vatlib.it/mss/search?f%5B%5D=g%3A1&sm=os&f%5B%5D=f%3Amss",
+        "website": "https://digi.vatlib.it/mss/?ling=en",
         "copyright": "Unknown",
-        "iiif": false,
+        "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
+        "last_checked": "2026-09-24",
+        "last_edited": "2026-09-24",
         "licence_category": "Unknown",
         "geonames_id": 6691831
     },
