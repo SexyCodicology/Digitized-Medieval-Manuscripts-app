@@ -378,7 +378,7 @@ record_id,field,value,language,status,source_url,checked_on,note
 393,library,Teylers Museum,,pending,,,
 394,library,Stadsbibliotheek Haarlem,,pending,,,
 395,library,Erfgoed Leiden en Omstreken,,pending,,,
-396,library,National Library of New Zealand,,pending,,,First name-review batch; verify the holding institution and access-point scope.
+396,library,Alexander Turnbull Library,,verified,https://natlib.govt.nz/collections/a-z-of-all-collections/manuscripts/alexander-turnbull-library-collections,2026-09-24,The official National Library page identifies the Alexander Turnbull Library as the holding division; the older National Library name describes its parent institution.
 397,library,Sir George Grey Special Collections,,pending,,,
 398,library,University of Canterbury,,pending,,,
 399,library,Riksarkivet - National Archives,,pending,,,
