@@ -47,3 +47,4 @@ User-agent: Bytespider
 Allow: /
 
 Sitemap: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/sitemap.xml
+Sitemap: https://sexycodicology.github.io/Digitized-Medieval-Manuscripts-app/image-sitemap.xml

@@ -85,6 +85,7 @@ nav:
       - IIIF Endpoint Research: iiif-research.md
       - Workflow Validation: workflow-validation.md
       - Link Health Check: workflow-link-checking.md
+      - Site Migration: workflow-site-migration.md
       - Contributing: contributing.md
       - Project Setup: setup.md
   - Support Us:
@@ -135,6 +136,7 @@ plugins:
 hooks:
   - hooks/library_pages.py
   - hooks/linked_data.py
+  - hooks/image_sitemap.py
 
 extra:
   social:

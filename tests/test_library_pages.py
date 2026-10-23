@@ -803,7 +803,9 @@ def test_a_missing_dataset_fails_the_build(tmp_path):
 def test_nav_lists_the_library_index_but_not_generated_library_pages():
     config = yaml.safe_load((REPO_ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
 
-    assert config["hooks"] == ["hooks/library_pages.py", "hooks/linked_data.py"]
+    assert config["hooks"] == [
+        "hooks/library_pages.py", "hooks/linked_data.py", "hooks/image_sitemap.py"
+    ]
     assert hook.OUTPUT_DIR not in yaml.safe_dump(config["nav"])
     assert {"Library Index": hook.LIBRARY_INDEX_URI} in config["nav"]
     assert len(config["nav"]) == 7
@@ -880,6 +882,13 @@ def test_generated_pages_reach_the_sitemap(built_site):
 
     assert "https://example.org/libraries/id-1/" in sitemap
     assert "https://example.org/libraries/id-9001/" in sitemap
+
+
+def test_compatibility_aliases_remain_published_but_are_not_in_the_sitemap(built_site):
+    sitemap = (built_site / "sitemap.xml").read_text(encoding="utf-8")
+    for slug in ("bodleian-library-1", "etc-passwd-script-alert-xss-script-quoted-9001"):
+        assert (built_site / "libraries" / slug / "index.html").is_file()
+        assert f"https://example.org/libraries/{slug}/" not in sitemap
 
 
 def test_library_index_lists_every_record_and_reaches_the_sitemap(built_site):
