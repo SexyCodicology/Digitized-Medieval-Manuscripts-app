@@ -7,6 +7,9 @@ categories:
 authors:
 - giulio
 slug: create-your-own-dmmapp
+description: >-
+  Discover the original DMMapp Open Source edition and how researchers can reuse
+  its directory code to build searchable databases and interactive maps.
 ---
 # Create your own DMMapp!
 
@@ -29,7 +32,7 @@ Thanks to your amazing support on Patreon we were able to convert our DMMapp int
 
 The Open Source version is very similar to what you are used to see on the DMMapp: an interactive map, together with tables to show off the data.
 Besides some structural edits (i.e.: the name of the pages) the main difference between the Open Source edition and the DMMapp is that the the administrative side of the DMMapp is available only to us, Sexy Codicology Team, to edit the contents of the database. **The Open Source edition, instead, allows you to create, read, update, and delete database entries ("CRUD", in jargon), register admins, reset passwords, etc.**
-![](assets/uploads/2023/02/378112a974ea62a5ada1312e77debc52.gif)
+![Animated demonstration of the original DMMapp Open Source administration interface](assets/uploads/2023/02/378112a974ea62a5ada1312e77debc52.gif)
 
 ### "I am not an expert at programming. Can I make it work?"
 
