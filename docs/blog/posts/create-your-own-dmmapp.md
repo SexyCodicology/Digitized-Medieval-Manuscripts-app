@@ -11,7 +11,7 @@ slug: create-your-own-dmmapp
 # Create your own DMMapp!
 
 Yes!  **We are delighted to announce that the code makes the DMMapp work is now** **available for everyone on GitHub****!**
-![](assets/uploads/2023/02/080212e3228e08575cd6f6f2ac237a0b.gif)
+![Animated demonstration of the original DMMapp manuscript directory](assets/uploads/2023/02/080212e3228e08575cd6f6f2ac237a0b.gif)
 When we developed the new [DMMapp](https://digitizedmedievalmanuscripts.org/), we were of the opinion that the application we created should be reusable: everyone should have the possibility to recreate the DMMapp, or to create a similar app.
 So, we took what we created, removed most of the Sexy Codicology modifications and links, and release the code on GitHub and **as of today, you can create your own project based on the DMMapp!**
 What does this mean? Although Sexy Codicology focuses on digitized medieval manuscripts, there are so many other potential projects that might benefit for an app with a similar structure as the DMMapp:
