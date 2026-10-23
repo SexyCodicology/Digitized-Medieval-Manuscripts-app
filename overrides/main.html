@@ -28,6 +28,9 @@ minimal; page-specific behaviour belongs in the templates that extend it.
 
 {% block extrahead %}
   {{ super() }}
+  {% if page and page.is_homepage %}
+    <meta name="msvalidate.01" content="8BD961C96FEAE9158351C4F02B56C2D1" />
+  {% endif %}
   {% if page.meta and page.meta.dmm_record_id is defined %}
     <link rel="alternate" type="application/ld+json"
           href="{{ config.site_url }}linked-data/records/{{ page.meta.dmm_record_id }}.jsonld">
