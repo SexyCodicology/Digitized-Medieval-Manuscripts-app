@@ -36,6 +36,7 @@ Find what you need to get started, contribute, or develop.
 - [Contributing guide](contributing.md) — Contribute code, documentation, and project improvements
 - [How we validate data](workflow-validation.md) — Understand automated checks and error resolution
 - [How we check for broken links](workflow-link-checking.md) — Weekly link health monitoring and maintenance
+- [Maintain the site migration](workflow-site-migration.md) — Preserve redirects and monitor search discovery
 - [Project setup](setup.md) — Install dependencies and run the project locally
 
 ## Quick links
