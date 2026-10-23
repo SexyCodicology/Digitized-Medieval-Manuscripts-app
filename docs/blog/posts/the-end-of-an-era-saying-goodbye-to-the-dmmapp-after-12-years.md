@@ -10,6 +10,12 @@ slug: the-end-of-an-era-saying-goodbye-to-the-dmmapp-after-12-years
 ---
 # The End of an Era: Saying Goodbye to the DMMapp after 12+ Years
 
+!!! info "Archive note: the project has moved"
+    The closure plan below was superseded by the migration of the DMMapp and
+    its blog to GitHub Pages. The [directory](../../index.md) and
+    [blog](../index.md) remain available. This article preserves the original
+    announcement from December 2025.
+
 ## **It’s hard to say goodbye, but it’s time to pass the torch.**
 
 <!-- more -->
