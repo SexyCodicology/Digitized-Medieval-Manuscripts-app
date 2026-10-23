@@ -7,6 +7,9 @@ categories:
 authors:
 - giulio
 slug: create-your-own-dmmapp
+description: >-
+  Discover the original DMMapp Open Source edition and how researchers can reuse
+  its directory code to build searchable databases and interactive maps.
 ---
 # Create your own DMMapp!
 
