@@ -10,7 +10,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 616052
     },
@@ -25,7 +25,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 8349381
     },
@@ -40,7 +40,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "AU-ANL",
         "wikidata_qid": "Q623578",
@@ -58,7 +58,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q7603406",
         "geonames_id": 2078025
@@ -107,7 +107,7 @@
         "licence_category": "Unknown",
         "wikidata_qid": "Q127990",
         "geonames_id": 2172517,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 8,
@@ -120,7 +120,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q319078",
         "geonames_id": 2158177
@@ -165,7 +165,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q304037",
         "geonames_id": 2761369,
@@ -182,7 +182,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2778067
     },
@@ -197,7 +197,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q1439945",
         "geonames_id": 2772400,
@@ -294,7 +294,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2766824
     },
@@ -368,7 +368,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2800866
     },
@@ -383,7 +383,7 @@
         "iiif": false,
         "is_free_cultural_works_license": true,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2792413
     },
@@ -409,7 +409,7 @@
                 "url": "https://mmfc.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "wikidata_qid": "Q611001",
@@ -432,7 +432,7 @@
         "iiif": true,
         "is_free_cultural_works_license": true,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-22",
         "licence_category": "CC0",
         "geonames_id": 2792482
@@ -453,7 +453,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2803138
     },
@@ -473,7 +473,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2796491
     },
@@ -499,7 +499,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "geonames_id": 2792482
@@ -526,7 +526,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "geonames_id": 2797656
@@ -547,7 +547,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY",
         "geonames_id": 2803138
     },
@@ -567,7 +567,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2803138
     },
@@ -587,7 +587,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Mixed/Item-specific",
         "geonames_id": 2800931
     },
@@ -602,7 +602,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q631641",
         "geonames_id": 727011
@@ -618,7 +618,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q7789602",
         "geonames_id": 6167865
@@ -634,7 +634,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 6167865
     },
@@ -649,7 +649,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 6174041
     },
@@ -692,7 +692,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q12342237",
         "geonames_id": 3069011
@@ -713,7 +713,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -733,7 +733,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Mixed/Item-specific",
         "geonames_id": 3067696
     },
@@ -753,7 +753,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -773,7 +773,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3078610
     },
@@ -788,7 +788,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-24",
         "licence_category": "Unknown",
         "geonames_id": 2618425
@@ -804,7 +804,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2618425
     },
@@ -820,7 +820,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "geonames_id": 2643743
@@ -836,7 +836,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2640729
     },
@@ -852,7 +852,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-22",
         "licence_category": "Unknown",
         "geonames_id": 2640729
@@ -868,7 +868,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Mixed/Item-specific",
         "geonames_id": 2643123
     },
@@ -883,7 +883,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2653941
     },
@@ -898,7 +898,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2653941
     },
@@ -913,7 +913,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 2644531
     },
@@ -942,7 +942,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2653941
     },
@@ -959,7 +959,7 @@
         "aggregators": [],
         "licence_category": "Unknown",
         "geonames_id": 2640729,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 60,
@@ -989,7 +989,7 @@
         "aggregators": [],
         "licence_category": "Unknown",
         "geonames_id": 2640729,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 62,
@@ -1006,7 +1006,7 @@
         "last_edited": "2026-09-24",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2640729,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 63,
@@ -1019,7 +1019,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-23",
         "licence_category": "Unknown",
         "geonames_id": 2643743
@@ -1035,7 +1035,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2653941
     },
@@ -1051,7 +1051,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q734266",
         "geonames_id": 2643743
@@ -1067,7 +1067,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2643743
     },
@@ -1082,7 +1082,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2643743
     },
@@ -1097,7 +1097,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2643743
     },
@@ -1114,7 +1114,7 @@
         "aggregators": [],
         "licence_category": "Unknown",
         "geonames_id": 2650628,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 70,
@@ -1127,7 +1127,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q2901355",
         "geonames_id": 2643123
@@ -1143,7 +1143,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2643743
     },
@@ -1203,7 +1203,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 658225
     },
@@ -1218,7 +1218,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q4086346",
         "geonames_id": 633679
@@ -1234,7 +1234,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 658225
     },
@@ -2164,7 +2164,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2983990
     },
@@ -3332,7 +3332,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2988507
     },
@@ -3361,7 +3361,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3007477
     },
@@ -3396,7 +3396,7 @@
         "iiif": false,
         "is_free_cultural_works_license": true,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 3031582
     },
@@ -3411,7 +3411,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2988358
     },
@@ -3480,7 +3480,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2971549
     },
@@ -3535,7 +3535,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2988507
     },
@@ -3570,7 +3570,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2988507
     },
@@ -3700,7 +3700,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -3788,7 +3788,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q19606462"
     },
@@ -3803,7 +3803,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q2860488"
     },
@@ -3891,7 +3891,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3034483
     },
@@ -3906,7 +3906,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3024875
     },
@@ -3948,7 +3948,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2977948
     },
@@ -3967,7 +3967,7 @@
         "isil": "DE-31",
         "wikidata_qid": "Q799084",
         "geonames_id": 2892794,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 232,
@@ -4000,7 +4000,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2867714
     },
@@ -4015,7 +4015,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2886242
     },
@@ -4030,7 +4030,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2950159
     },
@@ -4045,7 +4045,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-22",
         "wikidata_qid": "Q324689",
@@ -4062,7 +4062,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-16",
         "wikidata_qid": "Q880794",
@@ -4114,7 +4114,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2950159
     },
@@ -4129,7 +4129,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-17",
         "wikidata_qid": "Q1806348",
@@ -4146,7 +4146,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2935022
     },
@@ -4178,7 +4178,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q28733453",
         "geonames_id": 2920512
@@ -4209,7 +4209,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-27",
         "wikidata_qid": "Q1255096",
@@ -4226,7 +4226,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "isil": "DE-66",
         "wikidata_qid": "Q1622057",
@@ -4259,7 +4259,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-Kn193",
         "wikidata_qid": "Q664138",
@@ -4277,7 +4277,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-32",
         "wikidata_qid": "Q50711",
@@ -4294,7 +4294,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2925533
     },
@@ -4309,7 +4309,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-24",
         "wikidata_qid": "Q317950",
@@ -4326,7 +4326,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2925177
     },
@@ -4341,7 +4341,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-21",
         "wikidata_qid": "Q2496347",
@@ -4358,7 +4358,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2955936
     },
@@ -4378,7 +4378,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2952372
     },
@@ -4398,7 +4398,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-5",
         "wikidata_qid": "Q2496248",
@@ -4420,7 +4420,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-17",
         "wikidata_qid": "Q1806348",
@@ -4442,7 +4442,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2936974
     },
@@ -4462,7 +4462,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-61",
         "wikidata_qid": "Q2496254",
@@ -4485,7 +4485,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2917788
     },
@@ -4505,7 +4505,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-9",
         "wikidata_qid": "Q2496314",
@@ -4527,7 +4527,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-15",
         "wikidata_qid": "Q872896",
@@ -4549,7 +4549,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-2551",
         "wikidata_qid": "Q1615998",
@@ -4571,7 +4571,7 @@
                 "url": "https://www.digitale-sammlungen.de/en/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 2870233
     },
@@ -4593,7 +4593,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "isil": "DE-12",
         "wikidata_qid": "Q256507",
@@ -4615,7 +4615,7 @@
                 "url": "https://handschriftenportal.de/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-2186",
         "wikidata_qid": "Q966013",
@@ -4632,7 +4632,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2867714
     },
@@ -4649,7 +4649,7 @@
         "iiif_example_manifest_label": "Sammelhandschrift, Universitätsbibliothek Rostock, Mss. philol. 27",
         "is_free_cultural_works_license": true,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "isil": "DE-28",
         "wikidata_qid": "Q1504057",
@@ -4666,7 +4666,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-MUS-710014",
         "wikidata_qid": "Q700216",
@@ -4698,7 +4698,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2867714
     },
@@ -4713,7 +4713,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-128",
         "wikidata_qid": "Q1622950",
@@ -4750,7 +4750,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2874225
     },
@@ -4765,11 +4765,12 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-1876",
         "wikidata_qid": "Q2496246",
-        "geonames_id": 2929670
+        "geonames_id": 2929670,
+        "is_disabled": true
     },
     {
         "id": 278,
@@ -4796,7 +4797,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2874225
     },
@@ -4811,7 +4812,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2866070
     },
@@ -4826,7 +4827,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -4845,7 +4846,7 @@
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2891122
     },
@@ -4860,7 +4861,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2861650
     },
@@ -4890,7 +4891,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -4921,7 +4922,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2849483
     },
@@ -4951,7 +4952,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2911298
     },
@@ -4966,7 +4967,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2875877
     },
@@ -4982,7 +4983,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "isil": "DE-180",
         "wikidata_qid": "Q2496322",
@@ -4999,7 +5000,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2834282
     },
@@ -5014,7 +5015,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -5370,7 +5371,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2855745
     },
@@ -5390,7 +5391,7 @@
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2875601
     },
@@ -5405,7 +5406,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q1063819",
         "geonames_id": 3054643
@@ -5421,7 +5422,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3054643
     },
@@ -5436,7 +5437,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3413829
     },
@@ -5456,7 +5457,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964574
     },
@@ -5476,7 +5477,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964574
     },
@@ -5496,7 +5497,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964574
     },
@@ -5516,7 +5517,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964574
     },
@@ -5536,7 +5537,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2962668
     },
@@ -5556,7 +5557,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2965786
     },
@@ -5576,7 +5577,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964180
     },
@@ -5596,7 +5597,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2965140
     },
@@ -5616,7 +5617,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2965570
     },
@@ -5636,7 +5637,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964528
     },
@@ -5656,7 +5657,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "wikidata_qid": "Q113292122",
         "geonames_id": 2964574
@@ -5677,7 +5678,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964574
     },
@@ -5697,7 +5698,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964574
     },
@@ -5712,7 +5713,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2964574
     },
@@ -5742,7 +5743,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3313533
     },
@@ -5757,7 +5758,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q856419",
         "geonames_id": 3176959
@@ -5773,7 +5774,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3182722
     },
@@ -5788,7 +5789,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 3173331
     },
@@ -5808,7 +5809,7 @@
                 "url": "https://www.internetculturale.it/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3171180
     },
@@ -5823,7 +5824,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q16532469",
         "geonames_id": 3174051
@@ -5839,7 +5840,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3181928
     },
@@ -5854,7 +5855,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3176959
     },
@@ -5925,7 +5926,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3164603
     },
@@ -5940,7 +5941,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3181928
     },
@@ -5955,7 +5956,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3181928
     },
@@ -5970,7 +5971,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3167022
     },
@@ -5985,7 +5986,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -5999,7 +6000,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3173331
     },
@@ -6014,7 +6015,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -6028,7 +6029,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3176959
     },
@@ -6057,7 +6058,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3170621
     },
@@ -6077,7 +6078,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658348
     },
@@ -6097,7 +6098,7 @@
                 "url": "https://www.internetculturale.it/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3176959
     },
@@ -6141,7 +6142,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 1850147
     },
@@ -6156,7 +6157,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q2496353",
         "geonames_id": 2745912
@@ -6172,7 +6173,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2747373
     },
@@ -6187,7 +6188,7 @@
         "iiif": true,
         "is_free_cultural_works_license": true,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY",
         "geonames_id": 2751773
     },
@@ -6202,7 +6203,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q3282747",
         "geonames_id": 2745912
@@ -6218,7 +6219,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2745912
     },
@@ -6233,7 +6234,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2747357
     },
@@ -6248,7 +6249,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q2267622",
         "geonames_id": 2751792
@@ -6264,7 +6265,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q200899",
         "geonames_id": 2755251
@@ -6294,7 +6295,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q1505892",
         "geonames_id": 2756071
@@ -6310,7 +6311,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2756987
     },
@@ -6325,7 +6326,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2759794
     },
@@ -6340,7 +6341,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2750053,
         "last_edited": "2026-09-23"
@@ -6356,7 +6357,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q850730",
         "geonames_id": 2755251
@@ -6377,7 +6378,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2747891
     },
@@ -6425,7 +6426,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2743477
     },
@@ -6445,7 +6446,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2747891
     },
@@ -6465,7 +6466,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2746301
     },
@@ -6480,7 +6481,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q190804",
         "geonames_id": 2759794
@@ -6515,7 +6516,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2756669
     },
@@ -6535,7 +6536,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2758401
     },
@@ -6550,7 +6551,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2756987
     },
@@ -6570,7 +6571,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2743477
     },
@@ -6590,7 +6591,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2755476
     },
@@ -6610,7 +6611,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2755420
     },
@@ -6630,7 +6631,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2747351
     },
@@ -6645,7 +6646,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2747357
     },
@@ -6665,7 +6666,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2757874
     },
@@ -6681,7 +6682,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q474563",
         "geonames_id": 2755003
@@ -6697,7 +6698,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2755003
     },
@@ -6717,7 +6718,7 @@
                 "url": "https://www.mmdc.nl"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2751773
     },
@@ -6732,7 +6733,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-24",
         "licence_category": "Unknown",
         "geonames_id": 11694534
@@ -6762,7 +6763,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q432475",
         "geonames_id": 2192362
@@ -6778,7 +6779,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3143244
     },
@@ -6793,7 +6794,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3081368
     },
@@ -6808,7 +6809,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q7029922",
         "geonames_id": 3083271
@@ -6840,7 +6841,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 756135
     },
@@ -6855,7 +6856,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3088171
     },
@@ -6870,7 +6871,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3094802
     },
@@ -6885,7 +6886,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2267057
     },
@@ -6900,7 +6901,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2740637
     },
@@ -6915,7 +6916,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 681290
     },
@@ -6935,7 +6936,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 686578
     },
@@ -6966,7 +6967,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2651222
     },
@@ -6981,7 +6982,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q192775",
         "geonames_id": 2648579
@@ -6997,7 +6998,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q160302",
         "geonames_id": 2650225
@@ -7013,7 +7014,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2638864
     },
@@ -7043,7 +7044,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3117735
     },
@@ -7058,7 +7059,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q383568",
         "geonames_id": 2509954
@@ -7074,7 +7075,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3128760
     },
@@ -7089,7 +7090,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3117735
     },
@@ -7118,7 +7119,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3128760
     },
@@ -7133,7 +7134,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q85696770",
         "geonames_id": 3117735
@@ -7177,7 +7178,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2510911
     },
@@ -7192,7 +7193,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3106672
     },
@@ -7207,7 +7208,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -7221,7 +7222,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q11680213",
         "geonames_id": 2513674
@@ -7237,7 +7238,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3104324
     },
@@ -7257,7 +7258,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2693678
     },
@@ -7277,7 +7278,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2673730
     },
@@ -7297,7 +7298,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658822
     },
@@ -7317,7 +7318,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "isil": "CH-001107-9",
         "wikidata_qid": "Q667858",
@@ -7339,7 +7340,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660925
     },
@@ -7359,7 +7360,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660902
     },
@@ -7379,7 +7380,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2657896
     },
@@ -7399,7 +7400,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660646
     },
@@ -7419,7 +7420,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658822
     },
@@ -7439,7 +7440,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "isil": "CH-000086-2",
         "wikidata_qid": "Q1440938",
@@ -7520,7 +7521,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2661881
     },
@@ -7560,7 +7561,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660718
     },
@@ -7580,7 +7581,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658786
     },
@@ -7640,7 +7641,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC"
     },
     {
@@ -7699,7 +7700,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "isil": "CH-000095-1",
         "wikidata_qid": "Q539405",
@@ -7783,7 +7784,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2659496
     },
@@ -7843,7 +7844,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2659994
     },
@@ -7863,7 +7864,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658564
     },
@@ -7987,7 +7988,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2659811
     },
@@ -8048,7 +8049,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658576
     },
@@ -8068,7 +8069,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2661197
     },
@@ -8083,7 +8084,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2658581
     },
@@ -8165,7 +8166,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2661604
     },
@@ -8225,7 +8226,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2661250
     },
@@ -8347,7 +8348,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660727
     },
@@ -8386,7 +8387,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2659811
     },
@@ -8406,7 +8407,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2659811
     },
@@ -8486,7 +8487,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2659525
     },
@@ -8565,7 +8566,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658864
     },
@@ -8625,7 +8626,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC"
     },
     {
@@ -8644,7 +8645,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658564
     },
@@ -8764,7 +8765,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2657896
     },
@@ -8811,7 +8812,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5128581
     },
@@ -8835,7 +8836,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4560349
     },
@@ -8855,7 +8856,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5327684
     },
@@ -8875,7 +8876,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4931972
     },
@@ -8890,7 +8891,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "wikidata_qid": "Q210081",
         "geonames_id": 4347778
@@ -8926,7 +8927,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -8946,7 +8947,7 @@
             }
         ],
         "licence_category": "Unknown",
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 522,
@@ -8966,7 +8967,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 4671654,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 523,
@@ -8979,7 +8980,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -9015,7 +9016,7 @@
             }
         ],
         "licence_category": "Unknown",
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 528,
@@ -9035,7 +9036,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5128581,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 529,
@@ -9055,7 +9056,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5128581,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 530,
@@ -9075,7 +9076,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5101717,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 533,
@@ -9095,7 +9096,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5054551,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 534,
@@ -9115,7 +9116,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5391959,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 536,
@@ -9135,7 +9136,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5341704,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 538,
@@ -9153,7 +9154,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5128581
     },
@@ -9173,7 +9174,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5128581
     },
@@ -9193,7 +9194,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5128581
     },
@@ -9213,7 +9214,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5387877
     },
@@ -9233,7 +9234,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -9252,7 +9253,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5128581
     },
@@ -9272,7 +9273,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -9291,7 +9292,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -9310,7 +9311,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5128581
     },
@@ -9325,7 +9326,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5155438
     },
@@ -9340,7 +9341,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q731126",
         "geonames_id": 5368361
@@ -9356,7 +9357,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4862034
     },
@@ -9398,7 +9399,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4997787
     },
@@ -9431,7 +9432,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4407066
     },
@@ -9446,7 +9447,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4719457
     },
@@ -9461,7 +9462,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4887398
     },
@@ -9476,7 +9477,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -9490,7 +9491,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q7895173",
         "geonames_id": 5368361
@@ -9525,7 +9526,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 5392400
     },
@@ -9553,7 +9554,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "last_edited": "2026-09-24",
         "licence_category": "Unknown",
         "geonames_id": 6691831
@@ -9585,7 +9586,7 @@
         "is_free_cultural_works_license": false,
         "aggregators": [],
         "is_disabled": true,
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3182351
     },
@@ -9600,7 +9601,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 3173435
     },
@@ -9635,7 +9636,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 3169070
     },
@@ -9650,7 +9651,7 @@
         "iiif": false,
         "is_free_cultural_works_license": true,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY",
         "geonames_id": 3469058
     },
@@ -9665,7 +9666,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3060972
     },
@@ -9694,7 +9695,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 524901
     },
@@ -9718,7 +9719,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0"
     },
     {
@@ -9737,7 +9738,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0"
     },
     {
@@ -9756,7 +9757,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4561628
     },
@@ -9776,7 +9777,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4560349
     },
@@ -9791,7 +9792,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q54685096",
         "geonames_id": 3065067
@@ -9812,7 +9813,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2666199
     },
@@ -9832,7 +9833,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3169070
     },
@@ -9852,7 +9853,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -9910,7 +9911,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY",
         "geonames_id": 4560349
     },
@@ -9945,7 +9946,7 @@
         "iiif": true,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 3179781
     },
@@ -9960,7 +9961,7 @@
         "iiif": false,
         "is_free_cultural_works_license": false,
         "aggregators": [],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "wikidata_qid": "Q1113843",
         "geonames_id": 3178957
@@ -9981,7 +9982,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2661604
     },
@@ -10001,7 +10002,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2661321
     },
@@ -10021,7 +10022,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2661035
     },
@@ -10041,7 +10042,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660830
     },
@@ -10061,7 +10062,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660727
     },
@@ -10081,7 +10082,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660646
     },
@@ -10101,7 +10102,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660646
     },
@@ -10121,7 +10122,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2660646
     },
@@ -10141,7 +10142,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "isil": "CH-000232-2",
         "wikidata_qid": "Q14847939",
@@ -10203,7 +10204,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658822
     },
@@ -10223,7 +10224,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2658483
     },
@@ -10303,7 +10304,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0"
     },
     {
@@ -10341,7 +10342,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "isil": "DE-159",
         "wikidata_qid": "Q15825659",
@@ -10386,7 +10387,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 4887398
     },
@@ -10446,7 +10447,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "geonames_id": 2988507
     },
@@ -10486,7 +10487,7 @@
                 "url": "https://www.e-codices.unifr.ch"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC",
         "isil": "DE-24",
         "wikidata_qid": "Q317950",
@@ -10508,7 +10509,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4560349
     },
@@ -10528,7 +10529,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0"
     },
     {
@@ -10547,7 +10548,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4560349
     },
@@ -10571,7 +10572,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0"
     },
     {
@@ -10590,7 +10591,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4560349
     },
@@ -10610,7 +10611,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4560349
     },
@@ -10634,7 +10635,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4560349
     },
@@ -10654,7 +10655,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4560349
     },
@@ -10674,7 +10675,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0"
     },
     {
@@ -10693,7 +10694,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 4560349
     },
@@ -10713,7 +10714,7 @@
                 "url": "https://bibliophilly.library.upenn.edu/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 5217246
     },
@@ -10733,7 +10734,7 @@
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
         ],
-        "last_checked": "2026-09-21",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "isil": "DE-46",
         "wikidata_qid": "Q1680376",
@@ -10755,7 +10756,7 @@
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2918632
     },
@@ -10775,7 +10776,7 @@
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2904789
     },
@@ -10795,7 +10796,7 @@
                 "url": "https://diglib.hab.de/?db=mss&lang=en"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY",
         "geonames_id": 2857458
     },
@@ -10835,7 +10836,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2792482
     },
@@ -10855,7 +10856,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2791964
     },
@@ -10875,7 +10876,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2792482
     },
@@ -10895,7 +10896,7 @@
                 "url": "https://erfgoedparels.be/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2788709
     },
@@ -10915,7 +10916,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -10934,7 +10935,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4887398
     },
@@ -10954,7 +10955,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -10973,7 +10974,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 4930956
     },
@@ -10995,7 +10996,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5122432,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 653,
@@ -11014,7 +11015,7 @@
             }
         ],
         "licence_category": "Unknown",
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 654,
@@ -11034,7 +11035,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5132143,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 655,
@@ -11053,7 +11054,7 @@
             }
         ],
         "licence_category": "Unknown",
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 656,
@@ -11073,7 +11074,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 4954738,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 657,
@@ -11093,7 +11094,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 4997787,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 658,
@@ -11112,7 +11113,7 @@
             }
         ],
         "licence_category": "Unknown",
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 659,
@@ -11130,7 +11131,7 @@
                 "url": "https://search.digital-scriptorium.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown"
     },
     {
@@ -11151,7 +11152,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5110629,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 662,
@@ -11171,7 +11172,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5128581,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 663,
@@ -11190,7 +11191,7 @@
             }
         ],
         "licence_category": "Unknown",
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 664,
@@ -11210,7 +11211,7 @@
         ],
         "licence_category": "Unknown",
         "geonames_id": 5369906,
-        "last_checked": "2026-10-19"
+        "last_checked": "2026-10-26"
     },
     {
         "id": 666,
@@ -11228,7 +11229,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2643743
     },
@@ -11248,7 +11249,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2963398
     },
@@ -11268,7 +11269,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2964574
     },
@@ -11288,7 +11289,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2650225
     },
@@ -11308,7 +11309,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2618425
     },
@@ -11328,7 +11329,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2653941
     },
@@ -11348,7 +11349,7 @@
                 "url": "https://www.isos.dias.ie/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "All Rights Reserved",
         "geonames_id": 2960992
     },
@@ -11568,7 +11569,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 2772470
     },
@@ -11588,7 +11589,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 2766429
     },
@@ -11608,7 +11609,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 2761369
     },
@@ -11628,7 +11629,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 728193
     },
@@ -11648,7 +11649,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3078610
     },
@@ -11668,7 +11669,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3078610
     },
@@ -11688,7 +11689,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3077835
     },
@@ -11708,7 +11709,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3075522
     },
@@ -11728,7 +11729,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3074967
     },
@@ -11748,7 +11749,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3074149
     },
@@ -11768,7 +11769,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3074587
     },
@@ -11788,7 +11789,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3072463
     },
@@ -11808,7 +11809,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3072463
     },
@@ -11828,7 +11829,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3071961
     },
@@ -11848,7 +11849,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3070720
     },
@@ -11868,7 +11869,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3070291
     },
@@ -11888,7 +11889,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3069663
     },
@@ -11908,7 +11909,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3069011
     },
@@ -11928,7 +11929,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3069011
     },
@@ -11948,7 +11949,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3068160
     },
@@ -11968,7 +11969,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3068160
     },
@@ -11988,7 +11989,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067882
     },
@@ -12008,7 +12009,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -12028,7 +12029,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -12048,7 +12049,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -12068,7 +12069,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -12088,7 +12089,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -12108,7 +12109,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -12128,7 +12129,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -12148,7 +12149,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067696
     },
@@ -12168,7 +12169,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3067078
     },
@@ -12188,7 +12189,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3070820
     },
@@ -12208,7 +12209,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3063853
     },
@@ -12228,7 +12229,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3064379
     },
@@ -12248,7 +12249,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3064079
     },
@@ -12268,7 +12269,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3062184
     },
@@ -12288,7 +12289,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3054643
     },
@@ -12308,7 +12309,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3054643
     },
@@ -12328,7 +12329,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3413829
     },
@@ -12348,7 +12349,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 593116
     },
@@ -12368,7 +12369,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 683506
     },
@@ -12388,7 +12389,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 792680
     },
@@ -12408,7 +12409,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 792680
     },
@@ -12428,7 +12429,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 3117735
     },
@@ -12448,7 +12449,7 @@
                 "url": "https://www.manuscriptorium.com/en/front-page-english/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC-BY-NC-SA",
         "geonames_id": 4140963
     },
@@ -13332,7 +13333,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2673730
     },
@@ -13352,7 +13353,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0"
     },
     {
@@ -13371,7 +13372,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2671392
     },
@@ -13391,7 +13392,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Mixed/Item-specific",
         "geonames_id": 2711537
     },
@@ -13411,7 +13412,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "Unknown",
         "geonames_id": 2694762
     },
@@ -13431,7 +13432,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2673730
     },
@@ -13451,7 +13452,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2673730
     },
@@ -13471,7 +13472,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2665902
     },
@@ -13491,7 +13492,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2711537
     },
@@ -13511,7 +13512,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2678210
     },
@@ -13531,7 +13532,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2666199
     },
@@ -13551,7 +13552,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2664454
     },
@@ -13571,7 +13572,7 @@
                 "url": "https://www.alvin-portal.org/"
             }
         ],
-        "last_checked": "2026-10-19",
+        "last_checked": "2026-10-26",
         "licence_category": "CC0",
         "geonames_id": 2666199
     }
