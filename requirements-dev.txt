@@ -9,4 +9,4 @@ pytest>=9.1.1
 jsonschema>=4.26.0,<5
 
 # Parse the published JSON-LD as RDF in build-hook tests.
-rdflib>=7,<8
+rdflib>=7.6.0,<8
