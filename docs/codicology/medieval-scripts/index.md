@@ -28,7 +28,7 @@ the following hierarchy:
 - Antiqua
 - Humanistic cursive
 
-## Insular Scripts
+## [Insular Scripts](insular-scripts.md)
 
 - Insular majuscule
 - Insular minuscule
