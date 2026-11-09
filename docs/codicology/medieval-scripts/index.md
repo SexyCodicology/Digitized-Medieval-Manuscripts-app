@@ -44,7 +44,7 @@ the following hierarchy:
 
 ## Protogothic
 
-## Rustic Capitals
+## [Rustic Capitals](rustic-capitals.md)
 
 ## Square Capitals
 
